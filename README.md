@@ -307,6 +307,6 @@ Released under the [MIT License](LICENSE). See `LICENSE` for details.
 **Quantech** · Team ID `VTU-QFF-HC-0014` · Tier `Online`
 · Built with ⚛️ Qiskit for the VTU-QFF Hackathon
 
-[⬆ Back to Top](#Quantech)
+[⬆ Back to Top](#quantech)
 
 </div>
