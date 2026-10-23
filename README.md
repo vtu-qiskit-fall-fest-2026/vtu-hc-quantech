@@ -167,7 +167,8 @@ Quantech enforces a 6-stage progressive mastery loop:
 | **Verification & Testing** | Pytest, Node Test Suites, Oxlint | 119 automated tests (44 Pytest + 75 JS), 19 deterministic physics benchmarks |
 
 ---
-
+## YOUTUBE DEMO LINK
+https://youtu.be/fHh8XDecRiY
 ## 📁 Project Structure
 
 ```text
