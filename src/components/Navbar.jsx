@@ -107,6 +107,11 @@ export default function Navbar({ onToggleSidebar }) {
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#FBFAF7] dark:bg-[#0C0F17] border border-[#ECE8E1] dark:border-[#232A3D] text-[#4A5168] dark:text-[#94A3B8]">
               <span className="w-2 h-2 rounded-full bg-[#16A34A] dark:bg-[#4ADE80] animate-pulse" />
               <span className="font-semibold text-[#1F2433] dark:text-[#F1F5F9]">Curriculum Tutor</span>
+              {health?.classifier_loaded && (
+                <span className="text-[10px] text-[#7C3AED] dark:text-[#A78BFA] font-mono font-medium border-l border-[#ECE8E1] dark:border-[#232A3D] pl-2">
+                  PyTorch
+                </span>
+              )}
               {health?.ollama_connected ? (
                 <span className="text-[10px] text-[#4F46E5] dark:text-[#818CF8] font-mono font-medium border-l border-[#ECE8E1] dark:border-[#232A3D] pl-2">
                   Ollama

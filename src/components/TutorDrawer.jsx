@@ -154,6 +154,7 @@ export default function TutorDrawer({
         based_on_simulation: response.based_on_simulation,
         sources: response.sources || [],
         validation: response.validation,
+        classification: response.classification,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages(prev => [...prev, tutorMessage]);
@@ -224,6 +225,12 @@ export default function TutorDrawer({
               <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#16A34A]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-pulse" />
                 <span>Curriculum-Grounded Tutor</span>
+                {health?.classifier_loaded && (
+                  <span className="text-[10px] text-[#7C3AED] bg-[#F5F3FF] px-1.5 py-0.5 rounded border border-[#DDD6FE] font-mono font-medium hidden sm:inline-flex items-center gap-1">
+                    <Cpu className="w-2.5 h-2.5 text-[#7C3AED]" />
+                    PyTorch Classifier Active
+                  </span>
+                )}
                 {health?.ollama_connected && (
                   <span className="text-[10px] text-[#717A8C] font-normal hidden sm:inline">
                     · Ollama Local LLM
@@ -441,6 +448,32 @@ export default function TutorDrawer({
                           )}
                         </button>
                       </div>
+
+                      {/* PyTorch Neural Pedagogy Classifier Telemetry */}
+                      {msg.classification && (
+                        <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[10px] border-t border-[#ECE8E1]/60">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#F5F3FF] text-[#6D28D9] font-medium border border-[#DDD6FE]">
+                            <Cpu className="w-3 h-3 text-[#7C3AED]" />
+                            <span>
+                              PyTorch: {msg.classification.predicted_category?.replace(/^[A-F]_/, '').replace(/_/g, ' ')} ({Math.round((msg.classification.category_confidence || 0) * 100)}%)
+                            </span>
+                          </span>
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#F9FAFB] text-[#4B5563] font-mono border border-[#E5E7EB]">
+                            Topic {msg.classification.predicted_topic} ({Math.round((msg.classification.topic_confidence || 0) * 100)}%)
+                          </span>
+                          {msg.classification.is_misconception ? (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#FEF2F2] text-[#DC2626] font-semibold border border-[#FECACA]">
+                              <AlertCircle className="w-3 h-3 text-[#DC2626]" />
+                              <span>Misconception Intercepted</span>
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[#059669] bg-[#ECFDF5] border border-[#A7F3D0]">
+                              <CheckCircle className="w-2.5 h-2.5 text-[#059669]" />
+                              <span>Valid Query</span>
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
