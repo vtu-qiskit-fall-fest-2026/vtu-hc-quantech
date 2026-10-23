@@ -159,11 +159,11 @@ Quantech enforces a 6-stage progressive mastery loop:
 | **Styling & Icons** | Tailwind CSS + Lucide React | Modern dark-mode UI with sleek glassmorphic aesthetics |
 | **Quantum Visualization** | Three.js (WebGL) | Real-time 3D Bloch Sphere with orbital camera controls |
 | **Math Typography** | KaTeX + Remark GFM | LaTeX-grade mathematical formulas ($|\psi\rangle, \frac{1}{\sqrt{2}}$) |
-| **Backend API** | FastAPI + Uvicorn | Asynchronous REST microservice with OpenAPI/Swagger docs |
+| **Backend API** | FastAPI + Uvicorn + Pydantic | Asynchronous REST microservice with OpenAPI/Swagger docs |
 | **Quantum SDK** | Qiskit `>=1.0`, Qiskit Aer | Industry-standard quantum circuit model and export target |
 | **Simulator Core** | Python 3.11+, NumPy, SciPy | Deterministic statevector simulation and density matrix purity |
 | **AI / Retrieval** | BM25 Topic Retriever + Pydantic | Sublinear lexical-semantic ranking with quantum synonym expansion |
-| **LLM Engine** | Pretrained LLMs + Socratic Fallback | Pluggable Ollama (`llama3`), Gemini, OpenAI, and local deterministic fallback |
+| **LLM Engine** | Custom-Trained Quantum AI Model · PyTorch · Jupyter Notebook|  PyTorch · Jupyter Notebook	Domain-specific quantum tutoring with curriculum-grounded responses and misconception handling|
 | **Verification & Testing** | Pytest, Node Test Suites, Oxlint | 119 automated tests (44 Pytest + 75 JS), 19 deterministic physics benchmarks |
 
 ---
