@@ -1,18 +1,6 @@
-<div align="center">
 
-# ⚛️ Quantech
-
-### An Interactive, Simulation-Grounded Quantum Learning Platform
 
 **Team ID:** `VTU-QFF-HC-0014` &nbsp;|&nbsp; Tier: **Online** &nbsp;|&nbsp; Track: **Track 1 (Education & Learning)**
-
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Qiskit 1.0+](https://img.shields.io/badge/Qiskit-1.x-6929C4.svg)](https://docs.quantum.ibm.com/)
-[![React 19](https://img.shields.io/badge/React-19.x-61DAFB.svg)](https://react.dev/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg)](https://fastapi.tiangolo.com/)
-[![Tests Passing](https://img.shields.io/badge/tests-119%20passed-brightgreen.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
 </div>
 
 ---
