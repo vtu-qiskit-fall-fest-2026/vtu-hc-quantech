@@ -52,7 +52,7 @@ Quantum computing education suffers from a profound accessibility and pedagogica
 With quantum computing rapidly progressing through the NISQ era toward fault-tolerant architectures, cultivating an inclusive, multidisciplinary quantum-literate workforce is urgent. Learners need an intuitive, interactive environment that bridges abstract quantum mechanics with real quantum circuit execution, validating concepts through dynamic statevector calculation, 3D visualization, and verified code generation.
 
 **Track / Category:**  
-Online Tier · Track 1: Quantum Education, Learning & Workforce Development · Domain: Quantum Computing & Qiskit SDK
+Online Tier · Track 1: Quantum + AI/ML · Domain: Quantum Computing & Qiskit SDK
 
 ---
 
