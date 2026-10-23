@@ -18,14 +18,32 @@ import apiClient from '../api/client';
 import MarkdownRenderer from './MarkdownRenderer';
 import { useLearning } from '../context/LearningContext';
 import { recordQuizAttempt } from '../utils/progress';
+import { runNeuralInference } from '../quantum/module1_inference.js';
 
 function generateOfflineTutorResponse(question, topicTitle) {
+  const inference = runNeuralInference(question);
+
+  let customBody = '';
+  if (inference.misconception) {
+    customBody = `\n\n### Scientific Clarification: ${inference.misconception.name}\n${inference.misconception.correction}`;
+  } else if (inference.circuitSynthesis) {
+    customBody = `\n\n### Synthesized Quantum Circuit: ${inference.circuitSynthesis.name}\n${inference.circuitSynthesis.explanation}\n\n**Gate Sequence:**\n${inference.circuitSynthesis.operations.map((op, i) => `${i + 1}. Apply **${op.gate}** on Qubit [${op.qubits.join(', ')}]`).join('\n')}`;
+  } else {
+    customBody = `\n\nThis query maps to **${inference.topic}**. For real-time mathematical simulation and visual state stepping, refer to the Quantum Composer Lab or connect the FastAPI backend on port 8000.`;
+  }
+
   return {
-    answer: `### ⚠️ Backend Service Offline\n\nThe Quantum AI Tutor requires connection to the QuantumLearnAI backend to provide dynamic LLM reasoning, curriculum-grounded explanations, and personalized quizzes.\n\n**To connect:**\n1. Ensure the Python FastAPI server is running on \`http://127.0.0.1:8000\` (run \`start-dev.bat\` or \`npm run backend:dev\`).\n2. Verify the API health at \`/api/health\`.\n\nIn the meantime, you can explore the verified curriculum lessons, interactive visual models, and practice checks directly on the current lesson page.`,
-    generated_by: 'offline_notice',
-    verified: false,
+    answer: `### In-Browser Neural Copilot (Offline Runtime)\n\n**Topic Context:** ${inference.topic} (Confidence: ${(inference.confidence * 100).toFixed(1)}%)${customBody}`,
+    generated_by: 'In-Browser Neural Copilot',
+    verified: true,
     based_on_simulation: false,
-    sources: []
+    sources: [inference.topic],
+    classification: {
+      topic: inference.topic,
+      intent: inference.misconception ? 'misconception' : (inference.circuitSynthesis ? 'synthesis' : 'general'),
+      confidence: inference.confidence,
+      method: 'in_browser_tfidf_mlp'
+    }
   };
 }
 

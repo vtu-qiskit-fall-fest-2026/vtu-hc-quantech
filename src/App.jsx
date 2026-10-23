@@ -9,6 +9,12 @@ import Learn from './pages/Learn';
 import Lab from './pages/Lab';
 import Practice from './pages/Practice';
 import NotFound from './pages/NotFound';
+import QMLStudio from './components/QMLStudio';
+import CodeStudio from './components/CodeStudio';
+import CompilerStudio from './components/CompilerStudio';
+import NISQDigitalTwin from './components/NISQDigitalTwin';
+import BusinessDossier from './components/BusinessDossier';
+import LegalModals from './components/LegalModals';
 
 import { LearningProvider, useLearning } from './context/LearningContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -16,6 +22,7 @@ import { ToastProvider } from './context/ToastContext';
 
 function AppContent() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [legalModal, setLegalModal] = useState(null); // 'privacy' | 'terms' | null
   const { tutorState, openTutor, closeTutor, contextState } = useLearning();
 
   return (
@@ -31,6 +38,7 @@ function AppContent() {
         <Sidebar
           mobileOpen={mobileSidebarOpen}
           setMobileOpen={setMobileSidebarOpen}
+          onOpenLegal={(type) => setLegalModal(type)}
         />
 
         {/* Core Content Area */}
@@ -42,6 +50,12 @@ function AppContent() {
             <Route path="/learn/:topicId/:conceptId" element={<Learn onOpenTutor={openTutor} isTutorOpen={tutorState.isOpen} />} />
             <Route path="/lab" element={<Lab onOpenTutor={openTutor} isTutorOpen={tutorState.isOpen} />} />
             <Route path="/practice" element={<Practice onOpenTutor={openTutor} isTutorOpen={tutorState.isOpen} />} />
+            {/* Quantum + AI Convergence Studios */}
+            <Route path="/qml" element={<QMLStudio />} />
+            <Route path="/code" element={<CodeStudio />} />
+            <Route path="/compiler" element={<CompilerStudio />} />
+            <Route path="/digital-twin" element={<NISQDigitalTwin />} />
+            <Route path="/dossier" element={<BusinessDossier />} />
             {/* Backward compatibility redirects */}
             <Route path="/tutor" element={<Navigate to="/learn" replace />} />
             <Route path="/results" element={<Navigate to="/lab" replace />} />
@@ -77,6 +91,9 @@ function AppContent() {
 
       {/* Persistent Floating Entry Point */}
       {!tutorState.isOpen && <FloatingTutorButton onClick={() => openTutor()} />}
+
+      {/* Legal Compliance Modals */}
+      <LegalModals activeModal={legalModal} onClose={() => setLegalModal(null)} />
     </div>
   );
 }

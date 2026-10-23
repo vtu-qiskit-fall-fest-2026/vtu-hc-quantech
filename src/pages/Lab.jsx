@@ -18,6 +18,7 @@ import {
   Check,
   ArrowRight,
   BarChart2,
+  BarChart3,
   Compass,
   Layers,
   Cpu
@@ -26,6 +27,8 @@ import apiClient from '../api/client';
 import JourneyBar from '../components/JourneyBar';
 import ProbabilityBars from '../visuals/ProbabilityBars';
 import BlochSphere3D from '../components/BlochSphere3D';
+import MeasurementVisualizer from '../components/MeasurementVisualizer';
+import { simulateCircuit as clientSimulateCircuit } from '../quantum/simulator.js';
 import { incrementCircuitRun, recordAssessmentAnswer } from '../utils/progress';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -196,7 +199,13 @@ export default function Lab({ onOpenTutor }) {
     setSimulationError(null);
     try {
       const circuit = { num_qubits: numQubits, operations };
-      const result = await apiClient.simulateCircuit(circuit, 1000);
+      let result;
+      try {
+        result = await apiClient.simulateCircuit(circuit, 1000);
+      } catch (backendErr) {
+        // Fallback to pure client-side JavaScript simulator
+        result = clientSimulateCircuit(numQubits, operations);
+      }
       setTelemetry(result);
       incrementCircuitRun();
 
@@ -359,7 +368,7 @@ export default function Lab({ onOpenTutor }) {
               aria-label="Load quantum preset circuit"
               className="px-2.5 py-1.5 rounded-xl bg-[#E3F6F5] hover:bg-[#CCF0EE] text-[#0E9F9B] border border-[#0E9F9B]/30 text-xs font-bold transition-all cursor-pointer shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0E9F9B]"
             >
-              <option value="" disabled>⚡ Load Preset Circuit...</option>
+              <option value="" disabled>Load Preset Circuit...</option>
               <option value="bell">Bell State (|00⟩+|11⟩)/√2</option>
               <option value="superposition">Superposition |+⟩ (H|0⟩)</option>
               <option value="pauli_x">Pauli-X Bit Flip (X|0⟩ = |1⟩)</option>
@@ -909,6 +918,19 @@ export default function Lab({ onOpenTutor }) {
                     <BarChart2 className="w-3.5 h-3.5" />
                     <span>Probabilities</span>
                   </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setResultVisualMode('sampler')}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      resultVisualMode === 'sampler'
+                        ? 'bg-[#4F46E5] text-white shadow-xs'
+                        : 'text-[#4A5168] hover:text-[#1F2433] hover:bg-[#FBFAF7]'
+                    }`}
+                  >
+                    <BarChart3 className="w-3.5 h-3.5" />
+                    <span>1024-Shot Sampler</span>
+                  </button>
                 </div>
               </div>
 
@@ -990,6 +1012,15 @@ export default function Lab({ onOpenTutor }) {
                     altText="Simulation probabilities distribution"
                     explanation="Each bar represents a possible measurement outcome in the computational basis. In a Bell state, outcomes |00⟩ and |11⟩ each have a 50% chance, while |01⟩ and |10⟩ never occur."
                     isSimulatorDerived={true}
+                  />
+                </div>
+              )}
+
+              {/* Visual 3: Monte Carlo 1024-Shot Measurement Sampler */}
+              {resultVisualMode === 'sampler' && (
+                <div className="space-y-3">
+                  <MeasurementVisualizer
+                    probabilities={telemetry.probabilities}
                   />
                 </div>
               )}

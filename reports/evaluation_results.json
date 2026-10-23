@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-23 05:29:12 UTC",
+  "timestamp": "2026-10-23 07:05:37 UTC",
   "system_status": {
     "overall_passed": true,
     "ai_provider": "ollama",
@@ -10,7 +10,7 @@
     "total_cases": 10,
     "passed_validation": 10,
     "pass_rate_pct": 100.0,
-    "avg_latency_ms": 25.39,
+    "avg_latency_ms": 35.63,
     "cases": [
       {
         "test_id": 1,
@@ -23,46 +23,46 @@
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 25.04
+        "latency_ms": 46.11
       },
       {
         "test_id": 2,
         "query": "Write the general state of a single qubit.",
         "reference_answer": "|ψ⟩ = α|0⟩ + β|1⟩ with |α|² + |β|² = 1.",
-        "generated_answer": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** A qubit is described by probability amplitudes α and β for |0⟩ and |1⟩. Measurement yields only one definite bit: 0 or 1.\n\n**Why this is misunderstood:** A qubit state is described by continuous amplitudes, but a computational-basis measurement can only ever yield a single classical bit (0 or 1).\n\nQuantum computing relies on quantum interference where probability amplitudes are manipulated so that useful outcomes can be amplified while incorrect states cancel out. Superposition is not brute-force readout; interference is essential, and measurement extracts limited classical information. H creates a superposition state of basis states, not two readable classical values, and measurement gives one outcome.\n\n**Key Takeaway (Classical Bit):** A classical bit has a definite value of either 0 or 1 at all times.\n\nInformation is encoded into two distinguishable macroscopic voltage states representing binary elements {0, 1}.\n\n*Quick Check:* Can you explain in your own words why this misconception does not hold?",
-        "validated_answer": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** A qubit is described by probability amplitudes α and β for |0⟩ and |1⟩. Measurement yields only one definite bit: 0 or 1.\n\n**Why this is misunderstood:** A qubit state is described by continuous amplitudes, but a computational-basis measurement can only ever yield a single classical bit (0 or 1).\n\nQuantum computing relies on quantum interference where probability amplitudes are manipulated so that useful outcomes can be amplified while incorrect states cancel out. Superposition is not brute-force readout; interference is essential, and measurement extracts limited classical information. H creates a superposition state of basis states, not two readable classical values, and measurement gives one outcome.\n\n**Key Takeaway (Classical Bit):** A classical bit has a definite value of either 0 or 1 at all times.\n\nInformation is encoded into two distinguishable macroscopic voltage states representing binary elements {0, 1}.\n\n*Quick Check:* Can you explain in your own words why this misconception does not hold?",
+        "generated_answer": "### Qubit\n\nA qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1.\n\n**Visual Intuition:** Unlike a switch stuck on 0 or 1, picture a point on the surface of a three-dimensional sphere (the Bloch sphere) where the poles represent |0⟩ and |1⟩.\n\n**Example:** An electron spin (spin-up |0⟩ or spin-down |1⟩) or a superconducting artificial atom.\n\n<details><summary>Technical Explanation</summary>\nA two-level quantum system represented as a unit vector in a 2D complex vector space (C²). Measurement in the computational basis collapses it to |0⟩ or |1⟩.\n</details>\n\n*Quick Check:* How does qubit differ from its classical counterpart?",
+        "validated_answer": "### Qubit\n\nA qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1.\n\n**Visual Intuition:** Unlike a switch stuck on 0 or 1, picture a point on the surface of a three-dimensional sphere (the Bloch sphere) where the poles represent |0⟩ and |1⟩.\n\n**Example:** An electron spin (spin-up |0⟩ or spin-down |1⟩) or a superconducting artificial atom.\n\n<details><summary>Technical Explanation</summary>\nA two-level quantum system represented as a unit vector in a 2D complex vector space (C²). Measurement in the computational basis collapses it to |0⟩ or |1⟩.\n</details>\n\n*Quick Check:* How does qubit differ from its classical counterpart?",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 28.39
+        "latency_ms": 35.42
       },
       {
         "test_id": 3,
         "query": "Why is the statement 'entanglement is instant messaging' incorrect?",
         "reference_answer": "Entanglement gives correlations, but usable information cannot be transmitted faster than light; the results must be compared through ordinary communication.",
-        "generated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
-        "validated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+        "generated_answer": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** Entanglement produces quantum correlations between measurement outcomes, but cannot transmit usable information faster than light (the No-Communication Theorem).\n\n**Why this is misunderstood:** Measurement outcomes on each entangled qubit appear completely random locally. To reveal correlations, outcomes must be compared through classical communication.\n\nQuantum computing relies on quantum interference where probability amplitudes are manipulated so that useful outcomes can be amplified while incorrect states cancel out. Superposition is not brute-force readout; interference is essential, and measurement extracts limited classical information. Quantum computers provide advantages only for specialized problem classes (such as factoring via Shor's algorithm, search via Grover, or quantum simulation) and are not universally faster for every computational task.\n\n**Key Takeaway (Entanglement):** Entanglement creates quantum correlations between multiple qubits such that their states cannot be described independently.\n\n\n*Quick Check:* Can you explain in your own words why quantum computers cannot simply solve every difficult problem instantly?",
+        "validated_answer": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** Entanglement produces quantum correlations between measurement outcomes, but cannot transmit usable information faster than light (the No-Communication Theorem).\n\n**Why this is misunderstood:** Measurement outcomes on each entangled qubit appear completely random locally. To reveal correlations, outcomes must be compared through classical communication.\n\nQuantum computing relies on quantum interference where probability amplitudes are manipulated so that useful outcomes can be amplified while incorrect states cancel out. Superposition is not brute-force readout; interference is essential, and measurement extracts limited classical information. Quantum computers provide advantages only for specialized problem classes (such as factoring via Shor's algorithm, search via Grover, or quantum simulation) and are not universally faster for every computational task.\n\n**Key Takeaway (Entanglement):** Entanglement creates quantum correlations between multiple qubits such that their states cannot be described independently.\n\n\n*Quick Check:* Can you explain in your own words why quantum computers cannot simply solve every difficult problem instantly?",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 24.73
+        "latency_ms": 35.84
       },
       {
         "test_id": 4,
         "query": "What phenomenon is illustrated by H applied twice to |0⟩?",
         "reference_answer": "Interference; the circuit returns to |0⟩ because amplitudes cancel and reinforce.",
-        "generated_answer": "### Verified Assessment Answer\n\n**Question:** What is the result when a Hadamard gate (H) is applied twice consecutively to the initial state |0⟩?\n\n**Answer:** The state returns deterministically to |0⟩\n\n**Explanation:** Because H is its own inverse (H² = I), applying H twice results in destructive interference of the |1⟩ amplitude and constructive interference of the |0⟩ amplitude, returning deterministically to |0⟩.",
-        "validated_answer": "### Verified Assessment Answer\n\n**Question:** What is the result when a Hadamard gate (H) is applied twice consecutively to the initial state |0⟩?\n\n**Answer:** The state returns deterministically to |0⟩\n\n**Explanation:** Because H is its own inverse (H² = I), applying H twice results in destructive interference of the |1⟩ amplitude and constructive interference of the |0⟩ amplitude, returning deterministically to |0⟩.",
+        "generated_answer": "### Interference\n\nQuantum amplitudes can add constructively (reinforcing each other) or destructively (canceling each other out).\n\n**Visual Intuition:** Like two ripples on water colliding: crest meets crest to make a higher wave, while crest meets trough to produce flat water.\n\n**Example:** Applying H twice to |0⟩ returns deterministically to |0⟩ because the |1⟩ path cancels out and the |0⟩ path reinforces.\n\n<details><summary>Technical Explanation</summary>\nBecause amplitudes are complex numbers, phase differences cause constructive interference (amplitudes add) or destructive interference (amplitudes cancel).\n</details>\n\n*Quick Check:* How does interference differ from its classical counterpart?",
+        "validated_answer": "### Interference\n\nQuantum amplitudes can add constructively (reinforcing each other) or destructively (canceling each other out).\n\n**Visual Intuition:** Like two ripples on water colliding: crest meets crest to make a higher wave, while crest meets trough to produce flat water.\n\n**Example:** Applying H twice to |0⟩ returns deterministically to |0⟩ because the |1⟩ path cancels out and the |0⟩ path reinforces.\n\n<details><summary>Technical Explanation</summary>\nBecause amplitudes are complex numbers, phase differences cause constructive interference (amplitudes add) or destructive interference (amplitudes cancel).\n</details>\n\n*Quick Check:* How does interference differ from its classical counterpart?",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 28.08
+        "latency_ms": 37.82
       },
       {
         "test_id": 5,
@@ -75,46 +75,46 @@
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 26.5
+        "latency_ms": 34.5
       },
       {
         "test_id": 6,
         "query": "What does NISQ stand for?",
         "reference_answer": "Noisy Intermediate-Scale Quantum.",
-        "generated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
-        "validated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+        "generated_answer": "### NISQ\n\nNISQ stands for Noisy Intermediate-Scale Quantum, describing today's era of 50 to hundreds of noisy, imperfect qubits without full error correction.\n\n**Visual Intuition:** The early vacuum-tube era of computing, before reliable silicon microchips made error-free calculation trivial.\n\n**Example:** Running hybrid algorithms like VQE on a 100-qubit processor where circuit depth is limited by noise.\n\n<details><summary>Technical Explanation</summary>\nCurrent era of quantum devices featuring 50-1000 qubits lacking fault-tolerant quantum error correction (FTQC), requiring noise mitigation.\n</details>\n\n*Quick Check:* How does nisq differ from its classical counterpart?",
+        "validated_answer": "### NISQ\n\nNISQ stands for Noisy Intermediate-Scale Quantum, describing today's era of 50 to hundreds of noisy, imperfect qubits without full error correction.\n\n**Visual Intuition:** The early vacuum-tube era of computing, before reliable silicon microchips made error-free calculation trivial.\n\n**Example:** Running hybrid algorithms like VQE on a 100-qubit processor where circuit depth is limited by noise.\n\n<details><summary>Technical Explanation</summary>\nCurrent era of quantum devices featuring 50-1000 qubits lacking fault-tolerant quantum error correction (FTQC), requiring noise mitigation.\n</details>\n\n*Quick Check:* How does nisq differ from its classical counterpart?",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 21.26
+        "latency_ms": 30.87
       },
       {
         "test_id": 7,
         "query": "Why should we not say a qubit is simply two stored bits?",
         "reference_answer": "Because a qubit is a quantum state described by amplitudes; a computational-basis measurement yields a single 0 or 1.",
-        "generated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
-        "validated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+        "generated_answer": "### Qubit\n\nA qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1.\n\n**Visual Intuition:** Unlike a switch stuck on 0 or 1, picture a point on the surface of a three-dimensional sphere (the Bloch sphere) where the poles represent |0⟩ and |1⟩.\n\n**Example:** An electron spin (spin-up |0⟩ or spin-down |1⟩) or a superconducting artificial atom.\n\n<details><summary>Technical Explanation</summary>\nA two-level quantum system represented as a unit vector in a 2D complex vector space (C²). Measurement in the computational basis collapses it to |0⟩ or |1⟩.\n</details>\n\n*Quick Check:* How does qubit differ from its classical counterpart?",
+        "validated_answer": "### Qubit\n\nA qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1.\n\n**Visual Intuition:** Unlike a switch stuck on 0 or 1, picture a point on the surface of a three-dimensional sphere (the Bloch sphere) where the poles represent |0⟩ and |1⟩.\n\n**Example:** An electron spin (spin-up |0⟩ or spin-down |1⟩) or a superconducting artificial atom.\n\n<details><summary>Technical Explanation</summary>\nA two-level quantum system represented as a unit vector in a 2D complex vector space (C²). Measurement in the computational basis collapses it to |0⟩ or |1⟩.\n</details>\n\n*Quick Check:* How does qubit differ from its classical counterpart?",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 24.77
+        "latency_ms": 35.46
       },
       {
         "test_id": 8,
         "query": "For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur?",
         "reference_answer": "00 and 11, each with probability 1/2.",
-        "generated_answer": "### Verified Assessment Answer\n\n**Question:** For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur in the computational basis?\n\n**Answer:** 00 and 11\n\n**Explanation:** The state has nonzero amplitudes only for 00 and 11. Computational basis measurement yields outcomes 00 and 11 each with 50% (1/2) probability.",
-        "validated_answer": "### Verified Assessment Answer\n\n**Question:** For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur in the computational basis?\n\n**Answer:** 00 and 11\n\n**Explanation:** The state has nonzero amplitudes only for 00 and 11. Computational basis measurement yields outcomes 00 and 11 each with 50% (1/2) probability.",
+        "generated_answer": "### Ideal Bell State Outcomes\n\nFor the maximally entangled Bell state:\n\n$$|\\Phi^+\\rangle = \\frac{|00\\rangle + |11\\rangle}{\\sqrt{2}}$$\n\n**Measurement Outcomes in Computational Basis:**\nMeasurement yields only outcomes **00** and **11**, each with probability **1/2 (50%)**.\n\n**Answer:** 00 and 11, each with probability 1/2 (50%).",
+        "validated_answer": "### Ideal Bell State Outcomes\n\nFor the maximally entangled Bell state:\n\n$$|\\Phi^+\\rangle = \\frac{|00\\rangle + |11\\rangle}{\\sqrt{2}}$$\n\n**Measurement Outcomes in Computational Basis:**\nMeasurement yields only outcomes **00** and **11**, each with probability **1/2 (50%)**.\n\n**Answer:** 00 and 11, each with probability 1/2 (50%).",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 25.8
+        "latency_ms": 34.92
       },
       {
         "test_id": 9,
@@ -127,20 +127,20 @@
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 20.79
+        "latency_ms": 30.25
       },
       {
         "test_id": 10,
         "query": "Are quantum computers expected to speed up every problem?",
         "reference_answer": "No. The source states that quantum speedups are problem-specific and quantum computers are specialized rather than general replacements.",
-        "generated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
-        "validated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+        "generated_answer": "### Problem-Specific Speedup\n\nQuantum computers provide substantial advantages only for specific mathematical problems; they are not universally faster for all computing tasks.\n\n**Visual Intuition:** A graphics card (GPU) is vastly faster for 3D rendering than a CPU, but you would not use a GPU to run an entire operating system.\n\n**Example:** Simulating quantum chemistry or integer factorization with Shor's algorithm, versus ordinary tasks like browsing the web or word processing.\n\n<details><summary>Technical Explanation</summary>\nSpeedups depend on algorithmic structures (such as the quantum Fourier transform or amplitude amplification) exploiting quantum interference.\n</details>\n\n*Quick Check:* How does problem-specific speedup differ from its classical counterpart?",
+        "validated_answer": "### Problem-Specific Speedup\n\nQuantum computers provide substantial advantages only for specific mathematical problems; they are not universally faster for all computing tasks.\n\n**Visual Intuition:** A graphics card (GPU) is vastly faster for 3D rendering than a CPU, but you would not use a GPU to run an entire operating system.\n\n**Example:** Simulating quantum chemistry or integer factorization with Shor's algorithm, versus ordinary tasks like browsing the web or word processing.\n\n<details><summary>Technical Explanation</summary>\nSpeedups depend on algorithmic structures (such as the quantum Fourier transform or amplitude amplification) exploiting quantum interference.\n</details>\n\n*Quick Check:* How does problem-specific speedup differ from its classical counterpart?",
         "generated_by": "fallback",
         "model": null,
         "confidence": 1.0,
         "passed_validation": true,
         "alerts": [],
-        "latency_ms": 28.53
+        "latency_ms": 35.12
       }
     ]
   },

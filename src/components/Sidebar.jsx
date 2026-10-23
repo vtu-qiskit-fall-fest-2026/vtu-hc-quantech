@@ -9,7 +9,13 @@ import {
   X,
   ShieldCheck,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  BrainCircuit,
+  Code2,
+  Cpu,
+  Activity,
+  Briefcase,
+  FileText
 } from 'lucide-react';
 import apiClient from '../api/client';
 import { getStoredProgress } from '../utils/progress';
@@ -25,7 +31,7 @@ const MODULE_DEFINITIONS = [
   }
 ];
 
-export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {} }) {
+export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {}, onOpenLegal = () => {} }) {
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expandedModules, setExpandedModules] = useState({ 'module-1': true });
@@ -98,6 +104,14 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {} }
     { to: '/practice', label: 'Practice', icon: Award }
   ];
 
+  const convergenceNavItems = [
+    { to: '/qml', label: 'QSVM Studio', icon: BrainCircuit, badge: 'Pillar A' },
+    { to: '/code', label: 'Code & Transpiler', icon: Code2, badge: 'Pillar B' },
+    { to: '/compiler', label: 'Compiler & QAS', icon: Cpu, badge: 'Pillar C/D' },
+    { to: '/digital-twin', label: 'NISQ Digital Twin', icon: Activity, badge: 'Pillar E' },
+    { to: '/dossier', label: 'Business Dossier', icon: Briefcase, badge: 'SIH 2026' }
+  ];
+
   const sidebarBody = (
     <aside className="w-64 h-full bg-white dark:bg-[#151926] border-r border-[#ECE8E1] dark:border-[#232A3D] p-4 flex flex-col justify-between select-none transition-colors">
       <div className="space-y-6 overflow-y-auto">
@@ -138,6 +152,40 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {} }
               >
                 <Icon className={`w-4 h-4 ${isActive ? 'text-[#4F46E5] dark:text-[#818CF8]' : 'text-[#4A5168] dark:text-[#94A3B8]'}`} />
                 <span>{item.label}</span>
+              </NavLink>
+            );
+          })}
+        </div>
+
+        {/* Quantum + AI Convergence Studios */}
+        <div className="space-y-1 pt-2 border-t border-[#ECE8E1] dark:border-[#232A3D]">
+          <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-[#4A5168] dark:text-[#94A3B8] mb-1.5 flex items-center justify-between">
+            <span>Quantum + AI</span>
+            <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+              Convergence
+            </span>
+          </div>
+          {convergenceNavItems.map(item => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.to;
+            return (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                  isActive
+                    ? 'bg-[#EEF0FF] dark:bg-[#1E1B4B] text-[#4F46E5] dark:text-[#818CF8] font-bold'
+                    : 'text-[#4A5168] dark:text-[#94A3B8] hover:bg-[#FBFAF7] dark:hover:bg-[#0C0F17] hover:text-[#1F2433] dark:hover:text-[#F1F5F9]'
+                }`}
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-[#4F46E5] dark:text-[#818CF8]' : 'text-[#4A5168] dark:text-[#94A3B8]'}`} />
+                  <span className="truncate">{item.label}</span>
+                </div>
+                <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-500 shrink-0">
+                  {item.badge}
+                </span>
               </NavLink>
             );
           })}
@@ -265,8 +313,8 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {} }
         </div>
       </div>
 
-      {/* Bottom Section: Engine Status */}
-      <div className="pt-4 border-t border-[#ECE8E1] dark:border-[#232A3D]">
+      {/* Bottom Section: Engine Status & Compliance Footer */}
+      <div className="pt-3 border-t border-[#ECE8E1] dark:border-[#232A3D] space-y-2">
         <div className="p-2.5 rounded-xl bg-[#FBFAF7] dark:bg-[#0C0F17] border border-[#ECE8E1] dark:border-[#232A3D] text-[10px] text-[#4A5168] dark:text-[#94A3B8] space-y-1">
           <div className="flex items-center gap-1.5 font-semibold text-[#1F2433] dark:text-[#F1F5F9]">
             <ShieldCheck className="w-3.5 h-3.5 text-[#16A34A] dark:text-[#4ADE80]" />
@@ -275,6 +323,25 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {} }
           <div className="text-[10px] text-[#4A5168] dark:text-[#94A3B8]">
             Statevector mathematical authority active.
           </div>
+        </div>
+
+        {/* Legal Compliance Links */}
+        <div className="flex items-center justify-between px-1 text-[10px] text-slate-400 dark:text-slate-500">
+          <button
+            type="button"
+            onClick={() => onOpenLegal('privacy')}
+            className="hover:text-slate-700 dark:hover:text-slate-300 hover:underline cursor-pointer"
+          >
+            Privacy Policy
+          </button>
+          <span>•</span>
+          <button
+            type="button"
+            onClick={() => onOpenLegal('terms')}
+            className="hover:text-slate-700 dark:hover:text-slate-300 hover:underline cursor-pointer"
+          >
+            Terms of Service
+          </button>
         </div>
       </div>
     </aside>
