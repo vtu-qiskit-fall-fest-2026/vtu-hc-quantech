@@ -12,7 +12,7 @@
 | **Team Name** | Quantech |
 | **Team ID** | VTU-QFF-HC-0014 |
 | **Tier** | Online |
-| **Track** | Track 1 — Quantum Education, Tools & Workforce Development |
+| **Track** | Quantum+AI/ML |
 | **Repository** | [vtu-hc-quantech](https://github.com/vtu-qiskit-fall-fest-2026/vtu-hc-quantech.git) |
 | **Organisation** | [vtu-qiskit-fall-fest-2026](https://github.com/vtu-qiskit-fall-fest-2026) |
 | **Event** | VTU-QFF Hackathon — VTU-Qiskit Fall Fest 2026 |
