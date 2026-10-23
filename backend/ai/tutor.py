@@ -8,6 +8,7 @@ Integrates:
 - Honest labeling: 'generated_by': 'llm' or 'fallback'.
 """
 import os
+import re
 import time
 import logging
 from typing import Dict, Any, Optional, List
@@ -46,6 +47,7 @@ _load_env_file()
 
 
 from backend.ai.providers import get_llm_provider
+from backend.ai.classifier import PedagogyClassifierService
 
 
 class AITutorService:
@@ -58,6 +60,7 @@ class AITutorService:
         self.fallback_tutor = DeterministicFallbackTutor()
         self.quiz_engine = QuizEngine(self.registry)
         self.llm_provider = get_llm_provider()
+        self.classifier = PedagogyClassifierService()
 
     def check_llm_status(self) -> Dict[str, Any]:
         """Check status of active LLM provider."""
@@ -106,8 +109,52 @@ class AITutorService:
 
         visible_visual = learning_context.get("visible_visual") if learning_context else None
 
+        # 0. Neural Pedagogy Classifier inference (CPU singleton)
+        classification = self.classifier.classify(question) if (self.classifier and self.classifier.is_available) else None
+
+        q_lower = question.lower()
         if not topic_id:
-            topic_id = self.registry.loaded_topic_ids[0] if self.registry.loaded_topic_ids else None
+            # Dynamic topic matching from registry manifests (topic-agnostic, zero hardcoded topics)
+            best_topic_id = None
+            best_topic_score = -1.0
+            q_clean_words = set(re.findall(r"\w+", q_lower)) - {"what", "is", "a", "an", "the", "in", "of", "to", "and", "or", "difference", "between", "tell", "me", "explain", "it"}
+            for t_id in self.registry.loaded_topic_ids:
+                pack = self.registry.get_topic(t_id)
+                if not pack:
+                    continue
+                score = 0.0
+                title_lower = pack.manifest.title.lower().replace("versus", "vs")
+                # Exact phrase match in query
+                clean_title = title_lower.replace("?", "").strip()
+                if clean_title in q_lower:
+                    score += 50.0
+
+                title_words = set(w.rstrip("s") for w in re.findall(r"\w+", title_lower) if w not in {"what", "is", "vs", "versus"})
+                q_stems = set(w.rstrip("s") for w in q_clean_words)
+                if title_words:
+                    matched_words = len(q_stems & title_words)
+                    overlap_ratio = matched_words / len(title_words)
+                    score += matched_words * 15.0 + overlap_ratio * 25.0
+
+                # Specific unique curriculum domain terms from concepts
+                for c in pack.concepts_file.concepts:
+                    c_title = c.title.lower()
+                    if c_title in q_lower and c_title not in ["quantum computing", "quantum", "computing", "classical"]:
+                        score += 20.0
+                    c_terms = set(re.findall(r"\w+", c_title)) - {"quantum", "computing", "classical"}
+                    if c_terms and (q_clean_words & c_terms):
+                        score += len(q_clean_words & c_terms) * 5.0
+
+                if score > best_topic_score:
+                    best_topic_score = score
+                    best_topic_id = t_id
+
+            if best_topic_id and best_topic_score >= 10.0:
+                topic_id = best_topic_id
+            elif classification and classification.get("predicted_topic") and classification.get("topic_confidence", 0.0) >= 0.35:
+                topic_id = classification["predicted_topic"]
+            else:
+                topic_id = self.registry.loaded_topic_ids[0] if self.registry.loaded_topic_ids else None
 
         llm_status = self.check_llm_status()
         gen_by = "llm" if llm_status["available"] else "fallback"
@@ -137,7 +184,8 @@ class AITutorService:
                     "passed": val_result.passed,
                     "checks": val_result.checks
                 },
-                "quiz_state": new_quiz_state
+                "quiz_state": new_quiz_state,
+                "classification": classification
             }
 
         # Handle QUIZ_ANSWER intent when quiz is active (e.g. user answered "B", "The answer is B", etc.)
@@ -156,7 +204,8 @@ class AITutorService:
                     "passed": val_result.passed,
                     "checks": val_result.checks
                 },
-                "quiz_state": new_quiz_state
+                "quiz_state": new_quiz_state,
+                "classification": classification
             }
 
         # Handle QUIZ_EXPLANATION intent ("Why is B correct?")
@@ -183,7 +232,8 @@ class AITutorService:
                     "passed": val_result.passed,
                     "checks": val_result.checks
                 },
-                "quiz_state": quiz_state
+                "quiz_state": quiz_state,
+                "classification": classification
             }
 
         # 1. Server-side circuit re-simulation (Mathematical Authority)
@@ -198,13 +248,15 @@ class AITutorService:
                 logger.warning(f"Server-side simulation encountered error: {e}")
 
         # 2. Scoped semantic retrieval
+        is_misc_pred = bool(classification and (classification.get("is_misconception") or classification.get("predicted_category") == "D_Misconceptions"))
         retrieval: RetrievalResult = self.retriever.retrieve(
             query=question,
             current_topic_id=topic_id,
             concept_id=concept_id,
             visible_visual=visible_visual,
             has_circuit=bool(server_telemetry),
-            learning_context=learning_context
+            learning_context=learning_context,
+            is_misconception_predicted=is_misc_pred
         )
 
         all_forbidden = self.registry.get_all_forbidden_phrases()
@@ -265,7 +317,18 @@ class AITutorService:
 
         # 6. Fallback if LLM unavailable or failed validation
         if not answer:
-            answer = self.fallback_tutor.generate_response(question, retrieval, server_telemetry, conversation_history)
+            is_socratic_req = bool(
+                intent == "socratic" or
+                "socratic" in q_lower or
+                (classification and classification.get("predicted_category") == "E_Socratic_Conversations")
+            )
+            answer = self.fallback_tutor.generate_response(
+                question,
+                retrieval,
+                server_telemetry,
+                conversation_history,
+                is_socratic=is_socratic_req
+            )
             generated_by = "fallback"
             model_used = None
 
@@ -289,7 +352,8 @@ class AITutorService:
                 "passed": val_final.passed,
                 "checks": val_final.checks
             },
-            "quiz_state": quiz_state
+            "quiz_state": quiz_state,
+            "classification": classification
         }
 
 

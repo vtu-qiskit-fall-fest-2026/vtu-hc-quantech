@@ -72,3 +72,4 @@ class TutorAskResponse(BaseModel):
     sources: List[TutorSource] = Field(default_factory=list)
     validation: ValidationReport
     quiz_state: Optional[Dict[str, Any]] = Field(default=None, description="Updated structured quiz state")
+    classification: Optional[Dict[str, Any]] = Field(default=None, description="Neural pedagogy classification from QuantumPedagogyModel")

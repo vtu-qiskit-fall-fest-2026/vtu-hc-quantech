@@ -8,33 +8,33 @@ import Home from './pages/Home';
 import Learn from './pages/Learn';
 import Lab from './pages/Lab';
 import Practice from './pages/Practice';
+import NotFound from './pages/NotFound';
 
 import { LearningProvider, useLearning } from './context/LearningContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { ToastProvider } from './context/ToastContext';
 
 function AppContent() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const { tutorState, openTutor, closeTutor, contextState } = useLearning();
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#FBFAF7] text-[#1F2433] font-sans antialiased">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#FBFAF7] dark:bg-[#0C0F17] text-[#1F2433] dark:text-[#F1F5F9] font-sans antialiased transition-colors">
       {/* Top Navbar */}
       <Navbar
         onToggleSidebar={() => setMobileSidebarOpen(prev => !prev)}
-        onOpenTutor={() => openTutor()}
-        isTutorOpen={tutorState.isOpen}
       />
 
       {/* Persistent App Shell Body */}
       <div className="flex flex-1 min-h-0 overflow-hidden relative">
         {/* Left Sidebar */}
         <Sidebar
-          onOpenTutor={() => openTutor()}
           mobileOpen={mobileSidebarOpen}
           setMobileOpen={setMobileSidebarOpen}
         />
 
         {/* Core Content Area */}
-        <div className="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#FBFAF7]">
+        <div className="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#FBFAF7] dark:bg-[#0C0F17]">
           <Routes>
             <Route path="/" element={<Home onOpenTutor={openTutor} />} />
             <Route path="/learn" element={<Learn onOpenTutor={openTutor} isTutorOpen={tutorState.isOpen} />} />
@@ -45,7 +45,9 @@ function AppContent() {
             {/* Backward compatibility redirects */}
             <Route path="/tutor" element={<Navigate to="/learn" replace />} />
             <Route path="/results" element={<Navigate to="/lab" replace />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Dedicated 404 handler */}
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
 
@@ -82,9 +84,13 @@ function AppContent() {
 export default function App() {
   return (
     <BrowserRouter>
-      <LearningProvider>
-        <AppContent />
-      </LearningProvider>
+      <ThemeProvider>
+        <ToastProvider>
+          <LearningProvider>
+            <AppContent />
+          </LearningProvider>
+        </ToastProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
@@ -95,19 +101,18 @@ export default function App() {
  */
 function FloatingTutorButton({ onClick }) {
   const location = useLocation();
-  const liftAboveNav = location.pathname === '/learn';
+  const liftAboveNav = location.pathname.startsWith('/learn');
 
   return (
     <button
-      id="floating-ask-tutor"
       type="button"
       onClick={onClick}
-      className={`fixed ${liftAboveNav ? 'bottom-24' : 'bottom-6'} right-6 z-30 flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-bold shadow-lg shadow-[#7C3AED]/30 hover:shadow-xl hover:shadow-[#7C3AED]/40 transition-all hover:scale-105 active:scale-95 cursor-pointer select-none group border border-white/20`}
-      aria-label="Open AI Q-Tutor"
-      title="Open AI Q-Tutor"
+      className={`fixed right-6 z-30 flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] text-white shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95 cursor-pointer font-bold text-xs ${
+        liftAboveNav ? 'bottom-20' : 'bottom-6'
+      }`}
+      aria-label="Ask Quantum AI Tutor"
     >
-      <span className="w-2 h-2 rounded-full bg-[#34D399] animate-pulse" />
-      <Sparkles className="w-4 h-4 transition-transform group-hover:rotate-12" />
+      <Sparkles className="w-4 h-4 text-[#FFF4DB]" />
       <span>Ask AI Tutor</span>
     </button>
   );

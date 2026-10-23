@@ -36,29 +36,36 @@ class QuizEngine:
         q_lower = query.lower()
 
         # Check if the student explicitly asked to switch to another topic/concept
-        explicit_match = re.search(r'(?:quiz me on|test me on|question on|quiz on|about)\s+([a-zA-Z0-9_\-\s]+)', q_lower)
+        explicit_match = re.search(r'(?:quiz me on|test me on|question on|quiz on|short quiz on|quiz in|about)\s+([a-zA-Z0-9_\-\s]+)', q_lower)
         target_subject = explicit_match.group(1).strip() if explicit_match else None
 
         if target_subject and target_subject not in ["this", "this concept", "this topic", "it"]:
+            target_norm = target_subject.replace("versus", "vs")
+            subj_words = set(re.findall(r"\w+", target_norm)) - {"on", "a", "an", "the", "in", "short", "quiz", "give", "me"}
             scores = {}
             for t_id in self.registry.loaded_topic_ids:
                 pack = self.registry.get_topic(t_id)
                 if not pack:
                     continue
                 score = 0
-                if target_subject in pack.manifest.title.lower():
-                    score += 10
-                if target_subject in pack.manifest.summary.lower():
+                title_lower = pack.manifest.title.lower()
+                if target_norm in title_lower or target_subject in title_lower:
+                    score += 20
+                title_words = set(re.findall(r"\w+", title_lower))
+                overlap = len(subj_words & title_words)
+                if overlap >= 2:
+                    score += overlap * 6
+                if target_subject in pack.manifest.summary.lower() or target_norm in pack.manifest.summary.lower():
                     score += 8
                 objectives = getattr(pack.manifest, 'learning_objectives', None) or (pack.manifest.model_extra.get('learning_objectives') if pack.manifest.model_extra else [])
                 for obj in (objectives or []):
-                    if target_subject in str(obj).lower():
+                    if target_subject in str(obj).lower() or target_norm in str(obj).lower():
                         score += 6
                 for c in pack.concepts_file.concepts:
-                    if target_subject == c.title.lower():
-                        score += 8
-                    elif target_subject in c.title.lower():
-                        score += 4
+                    if target_subject == c.title.lower() or target_norm == c.title.lower():
+                        score += 10
+                    elif target_subject in c.title.lower() or target_norm in c.title.lower():
+                        score += 5
                 scores[t_id] = score
 
             if scores:

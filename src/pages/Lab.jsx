@@ -32,10 +32,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useLearning } from '../context/LearningContext';
 
 export default function Lab({ onOpenTutor }) {
-  let learningCtx = null;
-  try {
-    learningCtx = useLearning();
-  } catch {}
+  const learningCtx = useLearning();
 
   const location = useLocation();
 
@@ -329,21 +326,62 @@ export default function Lab({ onOpenTutor }) {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {/* 6.4 Bell State Preset Button */}
+            {/* Quantum Preset Circuits Dropdown */}
+            <select
+              onChange={(e) => {
+                const val = e.target.value;
+                if (!val) return;
+                if (val === 'bell') {
+                  setNumQubits(2);
+                  setOperations([{ gate: 'H', qubits: [0] }, { gate: 'CNOT', qubits: [0, 1] }]);
+                } else if (val === 'superposition') {
+                  setNumQubits(1);
+                  setOperations([{ gate: 'H', qubits: [0] }]);
+                } else if (val === 'pauli_x') {
+                  setNumQubits(1);
+                  setOperations([{ gate: 'X', qubits: [0] }]);
+                } else if (val === 'interference') {
+                  setNumQubits(1);
+                  setOperations([{ gate: 'H', qubits: [0] }, { gate: 'H', qubits: [0] }]);
+                } else if (val === 'ghz') {
+                  setNumQubits(3);
+                  setOperations([
+                    { gate: 'H', qubits: [0] },
+                    { gate: 'CNOT', qubits: [0, 1] },
+                    { gate: 'CNOT', qubits: [1, 2] }
+                  ]);
+                }
+                setCnotControl(null);
+                setTelemetry(null);
+                e.target.value = '';
+              }}
+              defaultValue=""
+              aria-label="Load quantum preset circuit"
+              className="px-2.5 py-1.5 rounded-xl bg-[#E3F6F5] hover:bg-[#CCF0EE] text-[#0E9F9B] border border-[#0E9F9B]/30 text-xs font-bold transition-all cursor-pointer shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0E9F9B]"
+            >
+              <option value="" disabled>⚡ Load Preset Circuit...</option>
+              <option value="bell">Bell State (|00⟩+|11⟩)/√2</option>
+              <option value="superposition">Superposition |+⟩ (H|0⟩)</option>
+              <option value="pauli_x">Pauli-X Bit Flip (X|0⟩ = |1⟩)</option>
+              <option value="interference">Interference (H·H = I)</option>
+              <option value="ghz">3-Qubit GHZ (|000⟩+|111⟩)/√2</option>
+            </select>
+
+            {/* Quick Bell State Action */}
             <button
               type="button"
               onClick={handleLoadBellState}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#E3F6F5] hover:bg-[#CCF0EE] text-[#0E9F9B] border border-[#0E9F9B]/30 text-xs font-bold transition-all cursor-pointer shadow-2xs"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#EEF0FF] hover:bg-[#E0E7FF] text-[#4F46E5] border border-[#4F46E5]/30 text-xs font-bold transition-all cursor-pointer shadow-2xs"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Try the Bell-state example</span>
+              <span>Bell State</span>
             </button>
 
             {/* View Qiskit Code Toggle */}
             <button
               type="button"
               onClick={() => setShowQiskitCode(prev => !prev)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#FBFAF7] text-[#1F2433] border border-[#ECE8E1] text-xs font-semibold transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#FBFAF7] text-[#1F2433] border border-[#ECE8E1] text-xs font-semibold transition-all cursor-pointer shadow-2xs"
             >
               <Code2 className="w-3.5 h-3.5 text-[#4F46E5]" />
               <span>{showQiskitCode ? 'Hide Code' : 'Qiskit Python'}</span>

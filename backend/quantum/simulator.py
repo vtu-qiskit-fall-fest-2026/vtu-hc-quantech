@@ -12,6 +12,11 @@ from typing import Dict, Any, List, Optional, Tuple
 import numpy as np
 
 from backend.quantum.gates import get_gate, X_MATRIX
+from backend.quantum.validation import (
+    validate_state_normalization,
+    validate_born_rule_probabilities,
+    validate_unitary_matrix
+)
 from backend.quantum.statevector import (
     create_initial_state,
     apply_single_qubit_gate,
@@ -41,6 +46,10 @@ def simulate_circuit(
     operations = circuit.get("operations", [])
     
     state = create_initial_state(num_qubits)
+    init_norm = validate_state_normalization(state)
+    if not init_norm["is_valid"]:
+        raise ValueError(f"Initial quantum state normalization failed: {init_norm['error']}")
+
     applied_gates = []
     
     for op in operations:
@@ -51,6 +60,10 @@ def simulate_circuit(
         if not gate_obj:
             raise ValueError(f"Unknown gate '{gate_symbol}' in circuit operations.")
             
+        u_val = validate_unitary_matrix(gate_obj.matrix)
+        if not u_val["is_unitary"]:
+            raise ValueError(f"Gate '{gate_symbol}' violates operator unitarity: {u_val['error']}")
+
         if gate_obj.num_qubits == 1:
             if len(target_qubits) != 1:
                 raise ValueError(f"Gate {gate_symbol} requires exactly 1 qubit, got {target_qubits}")
@@ -70,6 +83,10 @@ def simulate_circuit(
             applied_gates.append({"gate": gate_symbol, "qubits": [ctrl, tgt]})
         else:
             raise ValueError(f"Gates with {gate_obj.num_qubits} qubits are not supported.")
+            
+        step_norm = validate_state_normalization(state)
+        if not step_norm["is_valid"]:
+            raise ValueError(f"State normalization violated after applying gate {gate_symbol}: {step_norm['error']}")
             
     # Calculate probabilities
     probabilities_dict = {}
@@ -93,7 +110,8 @@ def simulate_circuit(
             "probability": round(prob, 6)
         })
         
-    normalized = bool(abs(total_prob - 1.0) < 1e-5)
+    born_check = validate_born_rule_probabilities(state, probabilities_dict, tolerance=1e-5)
+    normalized = bool(born_check["is_valid"])
     
     # Compute per-qubit Bloch vectors and entanglement
     qubit_telemetry = {}
@@ -143,6 +161,7 @@ def simulate_circuit(
         "ordering_convention": "q0 is the left-most bit in |q0 q1 ... q_{n-1}⟩",
         "cross_checked_with_aer": cross_checked,
         "aer_agreement": aer_agrees,
+        "born_rule_check": born_check,
         "verified_by_simulator": True
     }
     

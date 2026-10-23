@@ -31,7 +31,8 @@ GLOBAL_INTENTS = {
     "compare": ["difference between", "compare", "vs", "versus", "how does it differ"],
     "simplify": ["explain this in simpler terms", "explain in simpler terms", "simpler terms", "explain simply", "simple explanation", "eli5", "in plain english", "beginner"],
     "explain_simply": ["explain like i'm a beginner", "explain simply", "simple explanation", "eli5", "in plain english", "beginner", "in simpler terms"],
-    "define": ["what is", "define", "meaning of", "what does", "stand for"]
+    "define": ["what is", "define", "meaning of", "what does", "stand for"],
+    "socratic": ["socratic", "socratic questions", "teach me using socratic", "ask me questions", "guiding question", "guide me", "socratic method"]
 }
 
 STOPWORDS = {
@@ -172,7 +173,7 @@ class TopicRetriever:
         # Check global intent patterns
         for intent, patterns in GLOBAL_INTENTS.items():
             for pat in patterns:
-                if pat in q_lower:
+                if re.search(r'\b' + re.escape(pat) + r'\b', q_lower):
                     is_telem = (intent == "explain_result")
                     return intent, is_telem
                     
@@ -298,7 +299,8 @@ class TopicRetriever:
         visible_visual: Optional[Dict[str, Any]] = None,
         completed_topic_ids: Optional[List[str]] = None,
         has_circuit: bool = False,
-        learning_context: Optional[Dict[str, Any]] = None
+        learning_context: Optional[Dict[str, Any]] = None,
+        is_misconception_predicted: bool = False
     ) -> RetrievalResult:
         """Retrieve scoped educational content with topic/concept grounding and boundary enforcement."""
         if learning_context:
@@ -426,6 +428,12 @@ class TopicRetriever:
             if "bell state" in q_lower and ("bell state" in c_text_lower or "|00⟩" in chunk["text"]):
                 score += 4.0
 
+            # Boost concept whose full title matches a phrase in the query (within active topic)
+            if chunk["type"] == "concept" and is_same_topic:
+                c_title_low = chunk["title"].lower()
+                if c_title_low in q_lower and len(c_title_low) > 4:
+                    score += 25.0
+
             # Topic boundary affinity
             if current_topic_id:
                 if is_same_topic:
@@ -526,7 +534,10 @@ class TopicRetriever:
             elif c_type == "misconception" and not matched_misconception:
                 m_obj: Misconception = chunk["obj"]
                 triggers = [t.lower() for t in m_obj.trigger_keywords]
-                if any(t in q_lower for t in triggers if len(t) > 2) or score >= 15.0:
+                misc_text_lower = (m_obj.misconception + " " + m_obj.correction + " " + getattr(m_obj, 'why_wrong', '')).lower()
+                is_direct_match = any(t in q_lower for t in triggers if len(t) > 2)
+                is_hype_query = any(w in q_lower for w in ["instantly", "solve every", "all problems", "faster at everything", "exponentially faster at everything", "try every answer", "break all"])
+                if is_direct_match or (is_misconception_predicted and score >= 3.0) or (is_hype_query and ("faster" in misc_text_lower or "every" in misc_text_lower or "np" in misc_text_lower or "problem" in misc_text_lower)):
                     matched_misconception = m_obj
                     sources.append({"type": "misconception", "id": c_id, "topic_id": topic_id})
                     chunk_str = f"Misconception Alert: {m_obj.misconception}\n- Why Wrong: {m_obj.why_wrong}\n- Scientific Correction: {m_obj.correction}"

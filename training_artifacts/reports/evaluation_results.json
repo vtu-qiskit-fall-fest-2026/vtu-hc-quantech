@@ -1,0 +1,309 @@
+{
+  "timestamp": "2026-10-23T06:33:05Z",
+  "physics_benchmarks": {
+    "suite": "Deterministic Quantum Physics Suite",
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "cases": [
+      {
+        "name": "Norm: basis |0>",
+        "passed": true
+      },
+      {
+        "name": "Norm: equal superposition |+>",
+        "passed": true
+      },
+      {
+        "name": "Norm: complex phase |i>",
+        "passed": true
+      },
+      {
+        "name": "Norm: unnormalized [1,1] rejected",
+        "passed": true
+      },
+      {
+        "name": "Norm: zero vector rejected",
+        "passed": true
+      },
+      {
+        "name": "Norm: non-2^n dimension rejected",
+        "passed": true
+      },
+      {
+        "name": "Born: exact matching {P(0)=0.36, P(1)=0.64}",
+        "passed": true
+      },
+      {
+        "name": "Born: sum 1.06 rejected",
+        "passed": true
+      },
+      {
+        "name": "Born: negative probability rejected",
+        "passed": true
+      },
+      {
+        "name": "Born: Example 1 {P(0)=0.75, P(1)=0.25}",
+        "passed": true
+      },
+      {
+        "name": "Unitary: Hadamard gate matrix",
+        "passed": true
+      },
+      {
+        "name": "Unitary: Pauli-X gate matrix",
+        "passed": true
+      },
+      {
+        "name": "Unitary: CNOT 4x4 gate matrix",
+        "passed": true
+      },
+      {
+        "name": "Unitary: non-unitary projector rejected",
+        "passed": true
+      },
+      {
+        "name": "Projectors: {P0, P1} completeness & idempotency",
+        "passed": true
+      },
+      {
+        "name": "Projectors: incomplete {P0} rejected",
+        "passed": true
+      },
+      {
+        "name": "Gate Involution: H^2 = I interference",
+        "passed": true
+      },
+      {
+        "name": "Bell state: strictly |00> & |11> outcomes",
+        "passed": true
+      }
+    ]
+  },
+  "held_out_benchmark": {
+    "suite": "Held-Out Benchmark (topic_1_1/eval.jsonl)",
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "average_latency_ms": 30.01,
+    "results": [
+      {
+        "case_id": 1,
+        "query": "A qubit has P(0)=0.36. What is P(1)?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 68.0,
+        "generated_by": "fallback",
+        "answer_snippet": "### Deterministic Born Rule Calculation\n\nAccording to the Born rule and probability conservation in a two-level quantum ..."
+      },
+      {
+        "case_id": 2,
+        "query": "Write the general state of a single qubit.",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 34.15,
+        "generated_by": "fallback",
+        "answer_snippet": "### Qubit\n\nA qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1..."
+      },
+      {
+        "case_id": 3,
+        "query": "Why is the statement 'entanglement is instant messaging' incorrect?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 25.0,
+        "generated_by": "fallback",
+        "answer_snippet": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** E..."
+      },
+      {
+        "case_id": 4,
+        "query": "What phenomenon is illustrated by H applied twice to |0⟩?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 25.25,
+        "generated_by": "fallback",
+        "answer_snippet": "### Interference\n\nQuantum amplitudes can add constructively (reinforcing each other) or destructively (canceling each ot..."
+      },
+      {
+        "case_id": 5,
+        "query": "For (1/√2)|0⟩+(i/√2)|1⟩, what are the computational-basis probabilities?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 26.29,
+        "generated_by": "fallback",
+        "answer_snippet": "### Verified Assessment Answer\n\n**Question:** For a qubit in the state |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, what is the probabili..."
+      },
+      {
+        "case_id": 6,
+        "query": "What does NISQ stand for?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 22.45,
+        "generated_by": "fallback",
+        "answer_snippet": "### NISQ\n\nNISQ stands for Noisy Intermediate-Scale Quantum, describing today's era of 50 to hundreds of noisy, imperfect..."
+      },
+      {
+        "case_id": 7,
+        "query": "Why should we not say a qubit is simply two stored bits?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 25.69,
+        "generated_by": "fallback",
+        "answer_snippet": "### Qubit\n\nA qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1..."
+      },
+      {
+        "case_id": 8,
+        "query": "For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 25.88,
+        "generated_by": "fallback",
+        "answer_snippet": "### Ideal Bell State Outcomes\n\nFor the maximally entangled Bell state:\n\n$$|\\Phi^+\\rangle = \\frac{|00\\rangle + |11\\rangle..."
+      },
+      {
+        "case_id": 9,
+        "query": "What is decoherence?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 21.97,
+        "generated_by": "fallback",
+        "answer_snippet": "### Decoherence\n\nThe loss of quantum coherence caused by unwanted physical interactions between the quantum processor an..."
+      },
+      {
+        "case_id": 10,
+        "query": "Are quantum computers expected to speed up every problem?",
+        "passed": true,
+        "validator_passed": true,
+        "math_check_passed": true,
+        "latency_ms": 25.39,
+        "generated_by": "fallback",
+        "answer_snippet": "### Problem-Specific Speedup\n\nQuantum computers provide substantial advantages only for specific mathematical problems; ..."
+      }
+    ]
+  },
+  "neural_router_benchmark": {
+    "test_count": 30,
+    "baseline": {
+      "category_accuracy": 16.67,
+      "topic_accuracy": 33.33,
+      "misconception_interception": 0.0
+    },
+    "trained_model": {
+      "category_accuracy": 86.67,
+      "topic_accuracy": 56.67,
+      "misconception_interception": 96.67
+    },
+    "sample_test_results": [
+      {
+        "id": "ASSESS_1.3_Q04",
+        "query": "Question: Calculate the approximate number of Grover iterati",
+        "true_category": "F_Assessments",
+        "pred_category": "F_Assessments",
+        "cat_match": true,
+        "true_topic": "1.3",
+        "pred_topic": "1.4",
+        "top_match": false
+      },
+      {
+        "id": "EX_1.1_EX02",
+        "query": "Walk me through the mathematical solution for: Complex ampli",
+        "true_category": "B_Worked_Examples",
+        "pred_category": "B_Worked_Examples",
+        "cat_match": true,
+        "true_topic": "1.1",
+        "pred_topic": "1.2",
+        "top_match": false
+      },
+      {
+        "id": "QA_1.2_SUGG_11",
+        "query": "Why doesn't a quantum computer just try every answer?",
+        "true_category": "C_Student_QA",
+        "pred_category": "E_Socratic_Conversations",
+        "cat_match": false,
+        "true_topic": "1.2",
+        "pred_topic": "1.1",
+        "top_match": false
+      },
+      {
+        "id": "EX_1.2_E01",
+        "query": "Walk me through the mathematical solution for: Hadamard on |",
+        "true_category": "B_Worked_Examples",
+        "pred_category": "B_Worked_Examples",
+        "cat_match": true,
+        "true_topic": "1.2",
+        "pred_topic": "1.1",
+        "top_match": false
+      },
+      {
+        "id": "MISC_1.2_M01",
+        "query": "Is it true that A qubit is both 0 and 1, so it stores two va",
+        "true_category": "D_Misconceptions",
+        "pred_category": "D_Misconceptions",
+        "cat_match": true,
+        "true_topic": "1.2",
+        "pred_topic": "1.2",
+        "top_match": true
+      },
+      {
+        "id": "MISC_1.3_M04",
+        "query": "Is it true that \"Quantum computers will solve optimization p",
+        "true_category": "D_Misconceptions",
+        "pred_category": "D_Misconceptions",
+        "cat_match": true,
+        "true_topic": "1.3",
+        "pred_topic": "1.3",
+        "top_match": true
+      },
+      {
+        "id": "QA_1.1_TRAIN_04",
+        "query": "What is the difference between a bit and a qubit?",
+        "true_category": "C_Student_QA",
+        "pred_category": "C_Student_QA",
+        "cat_match": true,
+        "true_topic": "1.1",
+        "pred_topic": "1.2",
+        "top_match": false
+      },
+      {
+        "id": "ASSESS_1.2_Q03",
+        "query": "Question: How many amplitudes describe a general 3-qubit sta",
+        "true_category": "F_Assessments",
+        "pred_category": "F_Assessments",
+        "cat_match": true,
+        "true_topic": "1.2",
+        "pred_topic": "1.2",
+        "top_match": true
+      },
+      {
+        "id": "MISC_1.4_M07",
+        "query": "Is it true that \"Any circuit with entanglement is hard for c",
+        "true_category": "D_Misconceptions",
+        "pred_category": "D_Misconceptions",
+        "cat_match": true,
+        "true_topic": "1.4",
+        "pred_topic": "1.4",
+        "top_match": true
+      },
+      {
+        "id": "KNOW_1.3_C04",
+        "query": "Explain the quantum computing concept 'Simulating Quantum Sy",
+        "true_category": "A_Knowledge",
+        "pred_category": "A_Knowledge",
+        "cat_match": true,
+        "true_topic": "1.3",
+        "pred_topic": "1.3",
+        "top_match": true
+      }
+    ]
+  }
+}

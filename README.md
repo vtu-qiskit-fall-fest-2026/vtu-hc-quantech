@@ -10,7 +10,7 @@
 [![Qiskit 1.0+](https://img.shields.io/badge/Qiskit-1.x-6929C4.svg)](https://docs.quantum.ibm.com/)
 [![React 19](https://img.shields.io/badge/React-19.x-61DAFB.svg)](https://react.dev/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg)](https://fastapi.tiangolo.com/)
-[![Tests Passing](https://img.shields.io/badge/tests-25%20passed-brightgreen.svg)]()
+[![Tests Passing](https://img.shields.io/badge/tests-119%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 </div>
@@ -112,8 +112,8 @@ flowchart TD
     subgraph AIEngine ["Pedagogical AI & Guardrail Pipeline"]
         D1[BM25 Semantic Curriculum Retriever]
         D2[Topic-Agnostic Content Packs: 1.1 - 1.4]
-        D3[Misconception & Anti-Hype Validator]
-        D4[In-House Trained Quantum Domain Models]
+        D3[Deterministic Physics & Anti-Hype Validator]
+        D4[Pluggable Pretrained LLMs + Socratic Fallback]
     end
 
     UI --> API
@@ -174,9 +174,9 @@ Quantech enforces a 6-stage progressive mastery loop:
 | **Backend API** | FastAPI + Uvicorn | Asynchronous REST microservice with OpenAPI/Swagger docs |
 | **Quantum SDK** | Qiskit `>=1.0`, Qiskit Aer | Industry-standard quantum circuit model and export target |
 | **Simulator Core** | Python 3.11+, NumPy, SciPy | Deterministic statevector simulation and density matrix purity |
-| **AI / Retrieval** | BM25 Topic Retriever + Pydantic | Fast semantic curriculum retrieval without vector DB overhead |
-| **LLM Engine** | In-House Trained Quantum Models | Custom-trained educational domain models with misconception validation |
-| **Verification & Testing** | Pytest, Unittest, Oxlint | 25 automated unit/integration tests and zero-regression suites |
+| **AI / Retrieval** | BM25 Topic Retriever + Pydantic | Sublinear lexical-semantic ranking with quantum synonym expansion |
+| **LLM Engine** | Pretrained LLMs + Socratic Fallback | Pluggable Ollama (`llama3`), Gemini, OpenAI, and local deterministic fallback |
+| **Verification & Testing** | Pytest, Node Test Suites, Oxlint | 119 automated tests (44 Pytest + 75 JS), 19 deterministic physics benchmarks |
 
 ---
 
@@ -185,50 +185,69 @@ Quantech enforces a 6-stage progressive mastery loop:
 ```text
 vtu-hc-quantech/
 ├── README.md                          # Project documentation and submission report
+├── MODEL_STATUS.md                    # Detailed model status & SFT vs inference documentation
+├── DATASET_AUDIT.md                   # Complete dataset integrity, duplicate & leakage audit
+├── EVALUATION_REPORT.md               # Reproducible benchmark results & verification report
 ├── requirements.txt                   # Python dependencies (Qiskit, FastAPI, NumPy, etc.)
 ├── package.json                       # Node.js dependencies (React, Vite, Three.js, etc.)
 ├── pytest.ini                         # Pytest configuration and testpaths
 ├── vite.config.js                     # Vite build and dev server configuration
 ├── start-dev.bat                      # One-click startup script (Windows)
 │
+├── topic_1_1/                         # Supervised Fine-Tuning & Evaluation Datasets
+│   ├── train.jsonl                    # 25 SFT chat instruction examples (zero exact leakage)
+│   └── eval.jsonl                     # 10 held-out evaluation pairs
+│
+├── notebooks/                         # Educational & Training Notebooks
+│   ├── quantum_model_training.ipynb   # LoRA fine-tuning walkthrough & convergence evaluation
+│   ├── quantum computing note.docx    # Quantum computing note word document
+│   └── quantum computing note.md      # Markdown companion note
+│
 ├── backend/                           # FastAPI backend and Quantum Engine
 │   ├── main.py                        # FastAPI entry point & CORS configuration
 │   ├── quantum/                       # Quantum simulation & code export
+│   │   ├── validation.py              # Axiomatic quantum physics validation engine
 │   │   ├── simulator.py               # Statevector simulator & telemetry provider
 │   │   ├── statevector.py             # Pure NumPy statevector operations
-│   │   ├── gates.py                   # Quantum gate registry & matrices
+│   │   ├── gates.py                   # Quantum gate registry & unitary matrices
 │   │   └── export.py                  # Qiskit 1.x code synthesis
 │   ├── ai/                            # Pedagogical AI tutor & guardrails
 │   │   ├── tutor.py                   # AITutorService orchestrator
-│   │   ├── validator.py               # Anti-hype & misconception guardrails
+│   │   ├── response_validator.py      # Response validator & mathematical law verification
+│   │   ├── fallback.py                # Deterministic pedagogical Socratic fallback
 │   │   ├── quiz_engine.py             # Interactive quiz evaluator
-│   │   └── providers/                 # In-house trained quantum model provider integration
+│   │   └── providers/                 # Pluggable LLM provider integration (Ollama, Gemini, API)
 │   ├── knowledge/                     # Topic-agnostic curriculum system
 │   │   ├── loader.py                  # Validates topic packs against Pydantic schema
 │   │   ├── registry.py                # In-memory topic pack registry
 │   │   ├── retriever.py               # BM25 curriculum retriever
 │   │   └── topics/                    # Modular JSON topic packs (1.1, 1.2, 1.3, 1.4)
 │   ├── api/                           # REST API routes (topics, circuits, tutor, assessment)
-│   └── tests/                         # Backend test suite (simulator, api, pack system)
+│   └── tests/                         # Pytest test suite (physics validation, simulator, api)
 │
 ├── src/                               # React 19 Frontend application
 │   ├── main.jsx                       # React entry point
-│   ├── App.jsx                        # Routing and global layout
-│   ├── pages/                         # Core routes: Home, Learn, Lab, Practice
-│   ├── components/                    # CircuitBuilder, TutorDrawer, Navbar, Footer
+│   ├── App.jsx                        # ThemeProvider, ToastProvider, and routing
+│   ├── pages/                         # Core routes: Home, Learn, Lab, Practice, NotFound
+│   ├── components/                    # CircuitBuilder, TutorDrawer, AuthModal, SettingsModal, Navbar
 │   ├── visuals/                       # 3D BlochSphere, BitVsQubit, StateStepper
-│   ├── context/                       # Context for active topic, concept, and visual state
+│   ├── context/                       # ThemeContext, ToastContext, LearningContext
+│   ├── services/                      # AuthService (SHA-256), StorageService (Per-user & Guest)
 │   └── utils/                         # Progress tracking & API client
 │
 ├── tests/                             # Top-level unit tests
 │   ├── __init__.py
 │   └── test_circuit.py                # Quantum circuit & Qiskit export test suite
 │
-├── notebooks/                         # Jupyter exploration notebooks
-│   └── exploration.ipynb              # Hands-on circuit simulation & Qiskit export demo
-│
 ├── docs/                              # Additional documentation
-│   └── ADDING_A_TOPIC.md              # Guide for authoring new topic packs
+│   ├── ADDING_A_TOPIC.md              # Guide for authoring new topic packs
+│   └── quantum computing note.docx    # Quantum computing note word document
+│
+└── scripts/                           # Reproducible audit and verification scripts
+    ├── audit_datasets.py              # Cross-dataset syntax, duplicate & leakage auditor
+    ├── run_reproducible_evaluation.py # Reproducible benchmark runner for eval.jsonl & physics
+    ├── test_auth_storage.mjs          # 16 automated authentication and storage unit tests
+    └── test_part1_levels_onboarding.mjs # 59 automated diagnostic placement and level tests
 │
 ├── run_complete_verification_suite.py # 12-scenario architectural verification runner
 ├── test_backend.py                    # End-to-end backend pipeline test
@@ -319,27 +338,29 @@ jupyter lab notebooks/exploration.ipynb
 
 ## 🧪 Verification & Testing
 
-The project maintains comprehensive test coverage across quantum mechanics, API contracts, content packs, and guardrails:
+The project maintains comprehensive test coverage across quantum mechanics, API contracts, content packs, and guardrails (119 automated tests total):
 
 ```bash
-# 1. Run full test suite with pytest (25 tests):
-pytest -q
+# 1. Run Python backend & physics test suite (44 tests):
+pytest
 
-# 2. Run quantum circuit unit tests:
-python -m unittest tests/test_circuit.py
+# 2. Run dataset integrity and leakage audit:
+python scripts/audit_datasets.py
 
-# 3. Run backend unit tests:
-python -m unittest discover -s backend/tests -p "test_*.py"
+# 3. Run reproducible evaluation pipeline (eval.jsonl & physics benchmarks):
+python scripts/run_reproducible_evaluation.py
 
-# 4. Run the 12-scenario architecture verification suite:
-python run_complete_verification_suite.py
+# 4. Run authentication & per-user storage test suite (16 tests):
+node scripts/test_auth_storage.mjs
 
-# 5. Validate topic pack schemas:
-python backend/scripts/validate_pack.py 1.1
+# 5. Run adaptive diagnostic placement quiz test suite (59 tests):
+node scripts/test_part1_levels_onboarding.mjs
 
 # 6. Verify frontend production build:
 npm run build
 ```
+
+See [EVALUATION_REPORT.md](file:///C:/Users/SHIVASHANKAR%20B%20S/Desktop/vtu-hc-quantech/EVALUATION_REPORT.md), [DATASET_AUDIT.md](file:///C:/Users/SHIVASHANKAR%20B%20S/Desktop/vtu-hc-quantech/DATASET_AUDIT.md), and [MODEL_STATUS.md](file:///C:/Users/SHIVASHANKAR%20B%20S/Desktop/vtu-hc-quantech/MODEL_STATUS.md) for full audit reports and verification metrics.
 
 ---
 

@@ -1,0 +1,38 @@
+{
+  "seed": 42,
+  "audit": {
+    "total_raw": 192,
+    "exact_duplicates_removed": 0,
+    "near_duplicates_flagged": 1,
+    "empty_or_malformed_rejected": 0,
+    "manual_verification_required": 0,
+    "retained_clean": 191
+  },
+  "counts": {
+    "by_category": {
+      "A_Knowledge": 37,
+      "B_Worked_Examples": 17,
+      "C_Student_QA": 37,
+      "D_Misconceptions": 32,
+      "E_Socratic_Conversations": 10,
+      "F_Assessments": 58
+    },
+    "by_topic": {
+      "1.1": 59,
+      "1.2": 52,
+      "1.3": 40,
+      "1.4": 40
+    }
+  },
+  "splits": {
+    "train": 128,
+    "val": 33,
+    "test": 30
+  },
+  "topics": {
+    "1.1": "What Is Quantum Computing?",
+    "1.2": "Classical vs Quantum Computing",
+    "1.3": "Quantum Computing Applications",
+    "1.4": "Quantum Computers vs Quantum Simulators"
+  }
+}

@@ -65,6 +65,7 @@ async def health_check():
         "topic_ids": registry.loaded_topic_ids,
         "ollama_connected": ollama_status["available"],
         "active_llm_model": ollama_status["model"],
+        "classifier_loaded": tutor_service.classifier.is_available if tutor_service.classifier else False,
         "fallback_tutor_ready": True,
         "qiskit_aer_available": qiskit_aer_available
     }

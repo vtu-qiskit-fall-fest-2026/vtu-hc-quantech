@@ -28,10 +28,7 @@ import { useLearning } from '../context/LearningContext';
  * Each page = concept lesson + practice questions linked to that concept + Prev/Next.
  */
 export default function Learn({ onOpenTutor }) {
-  let learningCtx = null;
-  try {
-    learningCtx = useLearning();
-  } catch {}
+  const learningCtx = useLearning();
 
   const setTopicContext = learningCtx?.setTopicContext;
   const setConceptContext = learningCtx?.setConceptContext;

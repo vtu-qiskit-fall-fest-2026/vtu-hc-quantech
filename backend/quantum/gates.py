@@ -6,6 +6,7 @@ New gates can be added simply by registering them in GATE_REGISTRY.
 """
 from typing import Dict, Any, List, Optional
 import numpy as np
+from backend.quantum.validation import validate_unitary_matrix
 
 
 class Gate:
@@ -28,6 +29,11 @@ class Gate:
         self.description = description
         self.before_after = before_after
         self.category = category
+
+        # Rigorous Unitarity Verification (U† U = I)
+        u_val = validate_unitary_matrix(self.matrix)
+        if not u_val["is_unitary"]:
+            raise ValueError(f"Cannot initialize quantum gate '{symbol}': matrix is not unitary: {u_val['error']}")
 
     def to_dict(self) -> Dict[str, Any]:
         """Serialize gate metadata for the API palette."""

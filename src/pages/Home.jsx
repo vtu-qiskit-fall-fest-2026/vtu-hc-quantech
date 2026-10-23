@@ -46,7 +46,7 @@ export default function Home({ onOpenTutor }) {
           }
         }
       } catch (err) {
-        setError('Could not connect to the quantum backend. Please ensure the backend is running.');
+        setError('Could not connect to the quantum backend. Please ensure the backend is running with start-dev.bat.');
       } finally {
         setLoading(false);
       }
@@ -201,26 +201,6 @@ export default function Home({ onOpenTutor }) {
     );
   }
 
-  if (error) {
-    return (
-      <div className="flex-1 p-8 max-w-xl mx-auto">
-        <div className="p-6 rounded-2xl bg-[#FDECEC] border border-[#DC2626]/20 text-[#1F2433] space-y-3">
-          <h2 className="font-heading font-bold text-base text-[#DC2626]">
-            Unable to Connect to Quantum Backend
-          </h2>
-          <p className="text-xs text-[#4A5168]">{error}</p>
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-[#DC2626] text-white rounded-xl text-xs font-bold hover:bg-[#B91C1C] transition-colors cursor-pointer"
-          >
-            Retry Connection
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
       {/* Top Persistent Journey Bar */}
@@ -232,6 +212,23 @@ export default function Home({ onOpenTutor }) {
       />
 
       <main className="max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        {/* Offline / Connection Notice Banner */}
+        {error && (
+          <div className="p-4 rounded-2xl bg-[#FFF4DB] border border-[#F59E0B]/30 flex flex-wrap items-center justify-between gap-3 text-xs text-[#1F2433] animate-in fade-in duration-200 shadow-2xs">
+            <div className="flex items-center gap-2 max-w-xl">
+              <AlertTriangle className="w-4 h-4 text-[#F59E0B] shrink-0" />
+              <span>{error}</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="px-3.5 py-1.5 bg-[#F59E0B] hover:bg-[#D97706] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-2xs"
+            >
+              Retry Connection
+            </button>
+          </div>
+        )}
+
         {/* 1. Welcoming Learning Header & Compact Progress Dashboard */}
         <section className="space-y-4">
           <div className="space-y-1.5">

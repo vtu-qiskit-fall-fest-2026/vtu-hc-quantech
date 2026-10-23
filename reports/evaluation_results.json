@@ -1,0 +1,291 @@
+{
+  "timestamp": "2026-10-23 05:29:12 UTC",
+  "system_status": {
+    "overall_passed": true,
+    "ai_provider": "ollama",
+    "llm_available": false,
+    "model_name": null
+  },
+  "held_out_dataset_evaluation": {
+    "total_cases": 10,
+    "passed_validation": 10,
+    "pass_rate_pct": 100.0,
+    "avg_latency_ms": 25.39,
+    "cases": [
+      {
+        "test_id": 1,
+        "query": "A qubit has P(0)=0.36. What is P(1)?",
+        "reference_answer": "0.64",
+        "generated_answer": "### Deterministic Born Rule Calculation\n\nAccording to the Born rule and probability conservation in a two-level quantum system (qubit):\n\n$$P(0) + P(1) = 1$$\n\nGiven $P(0) = 0.36$:\n$$P(1) = 1 - P(0) = 1 - 0.36 = 0.64$$\n\n**Answer:** 0.64 (64.0%)",
+        "validated_answer": "### Deterministic Born Rule Calculation\n\nAccording to the Born rule and probability conservation in a two-level quantum system (qubit):\n\n$$P(0) + P(1) = 1$$\n\nGiven $P(0) = 0.36$:\n$$P(1) = 1 - P(0) = 1 - 0.36 = 0.64$$\n\n**Answer:** 0.64 (64.0%)",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 25.04
+      },
+      {
+        "test_id": 2,
+        "query": "Write the general state of a single qubit.",
+        "reference_answer": "|ψ⟩ = α|0⟩ + β|1⟩ with |α|² + |β|² = 1.",
+        "generated_answer": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** A qubit is described by probability amplitudes α and β for |0⟩ and |1⟩. Measurement yields only one definite bit: 0 or 1.\n\n**Why this is misunderstood:** A qubit state is described by continuous amplitudes, but a computational-basis measurement can only ever yield a single classical bit (0 or 1).\n\nQuantum computing relies on quantum interference where probability amplitudes are manipulated so that useful outcomes can be amplified while incorrect states cancel out. Superposition is not brute-force readout; interference is essential, and measurement extracts limited classical information. H creates a superposition state of basis states, not two readable classical values, and measurement gives one outcome.\n\n**Key Takeaway (Classical Bit):** A classical bit has a definite value of either 0 or 1 at all times.\n\nInformation is encoded into two distinguishable macroscopic voltage states representing binary elements {0, 1}.\n\n*Quick Check:* Can you explain in your own words why this misconception does not hold?",
+        "validated_answer": "### Addressing the Misconception\n\n**Clarification:** This idea is a common misconception.\n\n**The Scientific Reality:** A qubit is described by probability amplitudes α and β for |0⟩ and |1⟩. Measurement yields only one definite bit: 0 or 1.\n\n**Why this is misunderstood:** A qubit state is described by continuous amplitudes, but a computational-basis measurement can only ever yield a single classical bit (0 or 1).\n\nQuantum computing relies on quantum interference where probability amplitudes are manipulated so that useful outcomes can be amplified while incorrect states cancel out. Superposition is not brute-force readout; interference is essential, and measurement extracts limited classical information. H creates a superposition state of basis states, not two readable classical values, and measurement gives one outcome.\n\n**Key Takeaway (Classical Bit):** A classical bit has a definite value of either 0 or 1 at all times.\n\nInformation is encoded into two distinguishable macroscopic voltage states representing binary elements {0, 1}.\n\n*Quick Check:* Can you explain in your own words why this misconception does not hold?",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 28.39
+      },
+      {
+        "test_id": 3,
+        "query": "Why is the statement 'entanglement is instant messaging' incorrect?",
+        "reference_answer": "Entanglement gives correlations, but usable information cannot be transmitted faster than light; the results must be compared through ordinary communication.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 24.73
+      },
+      {
+        "test_id": 4,
+        "query": "What phenomenon is illustrated by H applied twice to |0⟩?",
+        "reference_answer": "Interference; the circuit returns to |0⟩ because amplitudes cancel and reinforce.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** What is the result when a Hadamard gate (H) is applied twice consecutively to the initial state |0⟩?\n\n**Answer:** The state returns deterministically to |0⟩\n\n**Explanation:** Because H is its own inverse (H² = I), applying H twice results in destructive interference of the |1⟩ amplitude and constructive interference of the |0⟩ amplitude, returning deterministically to |0⟩.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** What is the result when a Hadamard gate (H) is applied twice consecutively to the initial state |0⟩?\n\n**Answer:** The state returns deterministically to |0⟩\n\n**Explanation:** Because H is its own inverse (H² = I), applying H twice results in destructive interference of the |1⟩ amplitude and constructive interference of the |0⟩ amplitude, returning deterministically to |0⟩.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 28.08
+      },
+      {
+        "test_id": 5,
+        "query": "For (1/√2)|0⟩+(i/√2)|1⟩, what are the computational-basis probabilities?",
+        "reference_answer": "50% for 0 and 50% for 1.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** For a qubit in the state |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, what is the probability of measuring 0 in the computational basis?\n\n**Answer:** 75% (3/4)\n\n**Explanation:** According to the Born rule, the probability of measuring 0 is the squared magnitude of its amplitude: P(0) = |√3/2|² = 3/4 = 75%.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** For a qubit in the state |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, what is the probability of measuring 0 in the computational basis?\n\n**Answer:** 75% (3/4)\n\n**Explanation:** According to the Born rule, the probability of measuring 0 is the squared magnitude of its amplitude: P(0) = |√3/2|² = 3/4 = 75%.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 26.5
+      },
+      {
+        "test_id": 6,
+        "query": "What does NISQ stand for?",
+        "reference_answer": "Noisy Intermediate-Scale Quantum.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 21.26
+      },
+      {
+        "test_id": 7,
+        "query": "Why should we not say a qubit is simply two stored bits?",
+        "reference_answer": "Because a qubit is a quantum state described by amplitudes; a computational-basis measurement yields a single 0 or 1.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** What does the abbreviation NISQ refer to in modern quantum computing?\n\n**Answer:** Noisy Intermediate-Scale Quantum\n\n**Explanation:** NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 24.77
+      },
+      {
+        "test_id": 8,
+        "query": "For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur?",
+        "reference_answer": "00 and 11, each with probability 1/2.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur in the computational basis?\n\n**Answer:** 00 and 11\n\n**Explanation:** The state has nonzero amplitudes only for 00 and 11. Computational basis measurement yields outcomes 00 and 11 each with 50% (1/2) probability.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur in the computational basis?\n\n**Answer:** 00 and 11\n\n**Explanation:** The state has nonzero amplitudes only for 00 and 11. Computational basis measurement yields outcomes 00 and 11 each with 50% (1/2) probability.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 25.8
+      },
+      {
+        "test_id": 9,
+        "query": "What is decoherence?",
+        "reference_answer": "Loss of quantum coherence due to interaction with the environment.",
+        "generated_answer": "### Decoherence\n\nThe loss of quantum coherence caused by unwanted physical interactions between the quantum processor and its surrounding environment.\n\n**Visual Intuition:** Like trying to keep a quiet whisper intact inside a noisy concert hall; environmental noise scrambles the delicate quantum phase.\n\n**Example:** Thermal heat in a dilution refrigerator causing a superconducting qubit to randomly flip or lose its phase.\n\n<details><summary>Technical Explanation</summary>\nNon-unitary decay of off-diagonal elements in the quantum density matrix due to environmental coupling (thermal fluctuations, magnetic fields, stray radiation).\n</details>\n\n*Quick Check:* How does decoherence differ from its classical counterpart?",
+        "validated_answer": "### Decoherence\n\nThe loss of quantum coherence caused by unwanted physical interactions between the quantum processor and its surrounding environment.\n\n**Visual Intuition:** Like trying to keep a quiet whisper intact inside a noisy concert hall; environmental noise scrambles the delicate quantum phase.\n\n**Example:** Thermal heat in a dilution refrigerator causing a superconducting qubit to randomly flip or lose its phase.\n\n<details><summary>Technical Explanation</summary>\nNon-unitary decay of off-diagonal elements in the quantum density matrix due to environmental coupling (thermal fluctuations, magnetic fields, stray radiation).\n</details>\n\n*Quick Check:* How does decoherence differ from its classical counterpart?",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 20.79
+      },
+      {
+        "test_id": 10,
+        "query": "Are quantum computers expected to speed up every problem?",
+        "reference_answer": "No. The source states that quantum speedups are problem-specific and quantum computers are specialized rather than general replacements.",
+        "generated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+        "validated_answer": "### Verified Assessment Answer\n\n**Question:** Can quantum entanglement be utilized to send communication or messages faster than light?\n\n**Answer:** No; measurement outcomes appear random locally and require classical communication to compare\n\n**Explanation:** Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+        "generated_by": "fallback",
+        "model": null,
+        "confidence": 1.0,
+        "passed_validation": true,
+        "alerts": [],
+        "latency_ms": 28.53
+      }
+    ]
+  },
+  "physics_validation_benchmarks": {
+    "total_tests": 19,
+    "passed_tests": 19,
+    "pass_rate_pct": 100.0,
+    "tests": [
+      {
+        "category": "State Normalization",
+        "description": "Basis state |0> has norm 1.0",
+        "passed": true
+      },
+      {
+        "category": "State Normalization",
+        "description": "Superposition (|+>) has norm 1.0",
+        "passed": true
+      },
+      {
+        "category": "State Normalization",
+        "description": "Complex state (|0> + i|1>)/sqrt(2) has norm 1.0",
+        "passed": true
+      },
+      {
+        "category": "State Normalization",
+        "description": "Unnormalized state [1, 1] is rejected (not silently scaled)",
+        "passed": true
+      },
+      {
+        "category": "State Normalization",
+        "description": "Zero vector [0, 0] is rejected",
+        "passed": true
+      },
+      {
+        "category": "State Normalization",
+        "description": "Dimension 3 rejected (qubit system requires 2^n)",
+        "passed": true
+      },
+      {
+        "category": "Born Rule",
+        "description": "P(0)=0.36, P(1)=0.64 matches amplitudes and sums to 1.0",
+        "passed": true
+      },
+      {
+        "category": "Born Rule",
+        "description": "Probabilities summing to 1.06 rejected",
+        "passed": true
+      },
+      {
+        "category": "Born Rule",
+        "description": "Negative probability (-0.2) rejected",
+        "passed": true
+      },
+      {
+        "category": "Born Rule",
+        "description": "Amplitudes [sqrt(3)/2, 1/2] yield exact P(0)=0.75, P(1)=0.25",
+        "passed": true
+      },
+      {
+        "category": "Unitary Operator",
+        "description": "Hadamard gate matrix is unitary (H^dagger H = I)",
+        "passed": true
+      },
+      {
+        "category": "Unitary Operator",
+        "description": "Pauli X, Y, Z gates are unitary",
+        "passed": true
+      },
+      {
+        "category": "Unitary Operator",
+        "description": "CNOT 4x4 2-qubit gate is unitary",
+        "passed": true
+      },
+      {
+        "category": "Unitary Operator",
+        "description": "Non-unitary projection matrix |0><0| rejected",
+        "passed": true
+      },
+      {
+        "category": "Unitary Operator",
+        "description": "Non-square rectangular matrix rejected",
+        "passed": true
+      },
+      {
+        "category": "Projective Measurement",
+        "description": "Standard basis projectors satisfy P0 + P1 = I and P_i^2 = P_i",
+        "passed": true
+      },
+      {
+        "category": "Projective Measurement",
+        "description": "Incomplete projector set ([P0] alone) rejected",
+        "passed": true
+      },
+      {
+        "category": "Mathematical Laws",
+        "description": "Hadamard involution H^2 = I deterministically verified",
+        "passed": true
+      },
+      {
+        "category": "Mathematical Laws",
+        "description": "Bell state (|00>+|11>)/sqrt(2) outcomes strictly 00 (50%) and 11 (50%)",
+        "passed": true
+      }
+    ]
+  },
+  "curriculum_integrity": {
+    "loaded_topics_count": 4,
+    "all_valid": true,
+    "topics": [
+      {
+        "topic_id": "1.1",
+        "title": "What Is Quantum Computing?",
+        "order": 1,
+        "concepts_count": 14,
+        "misconceptions_count": 8,
+        "examples_count": 5,
+        "assessments_count": 4
+      },
+      {
+        "topic_id": "1.2",
+        "title": "Classical vs Quantum Computing",
+        "order": 1.2,
+        "concepts_count": 8,
+        "misconceptions_count": 8,
+        "examples_count": 4,
+        "assessments_count": 18
+      },
+      {
+        "topic_id": "1.3",
+        "title": "Quantum Computing Applications",
+        "order": 3,
+        "concepts_count": 8,
+        "misconceptions_count": 8,
+        "examples_count": 4,
+        "assessments_count": 18
+      },
+      {
+        "topic_id": "1.4",
+        "title": "Quantum Computers vs Quantum Simulators",
+        "order": 4,
+        "concepts_count": 8,
+        "misconceptions_count": 8,
+        "examples_count": 4,
+        "assessments_count": 18
+      }
+    ]
+  }
+}

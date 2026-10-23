@@ -30,12 +30,45 @@
     --journey-practice: #F2705A;
   }
 
+  .dark {
+    --color-page: #0C0F17;
+    --color-card: #151926;
+    --color-border: #232A3D;
+    --color-text-primary: #F1F5F9;
+    --color-text-secondary: #94A3B8;
+    --color-primary: #6366F1;
+    --color-primary-hover: #818CF8;
+    --color-primary-tint: #1E1B4B;
+    --color-teal: #14B8A6;
+    --color-teal-tint: #134E4A;
+    --color-amber: #FBBF24;
+    --color-amber-tint: #78350F;
+    --color-green: #22C55E;
+    --color-green-tint: #14532D;
+    --color-coral: #FB7185;
+    --color-coral-tint: #881337;
+    --color-error: #F87171;
+    --color-error-tint: #7F1D1D;
+
+    /* Dark Journey Accents */
+    --journey-learn: #818CF8;
+    --journey-ask: #A78BFA;
+    --journey-build: #2DD4BF;
+    --journey-run: #FBBF24;
+    --journey-understand: #4ADE80;
+    --journey-practice: #FB7185;
+  }
+
   * {
     box-sizing: border-box;
   }
   
   html {
     color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
@@ -48,6 +81,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   h1, h2, h3, h4, h5, h6, .font-heading {
@@ -59,6 +93,90 @@
 
   code, pre, kbd, samp, .font-mono {
     font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  }
+}
+
+/* Dark Mode Cohesive Overrides for All Screens & Components */
+.dark {
+  .bg-white {
+    background-color: #151926 !important;
+  }
+  .bg-\[\#FBFAF7\],
+  .bg-\[\#FAF8F5\],
+  .bg-\[\#FDFDFD\] {
+    background-color: #0C0F17 !important;
+  }
+  .bg-\[\#F6F4EE\],
+  .bg-\[\#F8F7F4\] {
+    background-color: #191E2E !important;
+  }
+  .bg-\[\#F0EDE6\],
+  .bg-\[\#EAE6DC\] {
+    background-color: #232A3D !important;
+  }
+
+  .border-\[\#ECE8E1\],
+  .border-\[\#E5E0D8\],
+  .border-\[\#E2DDD4\] {
+    border-color: #232A3D !important;
+  }
+  .divide-\[\#ECE8E1\] > * + * {
+    border-color: #232A3D !important;
+  }
+
+  .text-\[\#1F2433\] {
+    color: #F1F5F9 !important;
+  }
+  .text-\[\#4A5168\] {
+    color: #94A3B8 !important;
+  }
+  .text-\[\#6B7280\],
+  .text-\[\#858C9E\] {
+    color: #64748B !important;
+  }
+
+  .bg-\[\#EEF0FF\] {
+    background-color: #1E1B4B !important;
+  }
+  .text-\[\#4F46E5\] {
+    color: #818CF8 !important;
+  }
+  .border-\[\#4F46E5\]\/20,
+  .border-\[\#4F46E5\]\/30 {
+    border-color: rgba(129, 140, 248, 0.25) !important;
+  }
+  .bg-\[\#E3F6F5\] {
+    background-color: #134E4A !important;
+  }
+  .text-\[\#0E9F9B\] {
+    color: #2DD4BF !important;
+  }
+  .bg-\[\#FFF4DB\] {
+    background-color: #451A03 !important;
+  }
+  .text-\[\#F59E0B\] {
+    color: #FBBF24 !important;
+  }
+  .bg-\[\#E4F6EA\] {
+    background-color: #064E3B !important;
+  }
+  .text-\[\#16A34A\] {
+    color: #4ADE80 !important;
+  }
+  .bg-\[\#FDEBE7\] {
+    background-color: #4C0519 !important;
+  }
+  .text-\[\#F2705A\] {
+    color: #FB7185 !important;
+  }
+
+  input, select, textarea {
+    background-color: #151926;
+    color: #F1F5F9;
+    border-color: #232A3D;
+  }
+  input::placeholder, textarea::placeholder {
+    color: #64748B;
   }
 }
 
@@ -78,14 +196,20 @@
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #FBFAF7;
+  background: var(--color-page);
 }
 ::-webkit-scrollbar-thumb {
   background: #D9D3C7;
   border-radius: 9999px;
 }
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
 ::-webkit-scrollbar-thumb:hover {
   background: #B5ADA0;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
 
 /* KaTeX equations in lesson body */
