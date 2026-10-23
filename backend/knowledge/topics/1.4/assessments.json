@@ -1,0 +1,377 @@
+{
+  "topic_id": "1.4",
+  "quick_understanding_checks": [
+    {
+      "raw_source": [
+        "CHECK ID: QC01",
+        "QUESTION: What kind of computer does a quantum circuit simulator run on?",
+        "TYPE: MCQ",
+        "OPTIONS: A. A quantum computer  B. A classical computer  C. A photonic chip only  D. A cloud-only quantum processor",
+        "CORRECT ANSWER: B",
+        "EXPLANATION: A circuit simulator is classical software.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. A simulator does not need quantum hardware.",
+        "C. Not required.",
+        "D. Cloud access is a deployment choice, not a requirement."
+      ],
+      "check_id": "QC01",
+      "question": "What kind of computer does a quantum circuit simulator run on?",
+      "type": "MCQ",
+      "options": "A. A quantum computer  B. A classical computer  C. A photonic chip only  D. A cloud-only quantum processor",
+      "correct_answer": "B",
+      "explanation": "A circuit simulator is classical software.",
+      "why_other_answers_are_wrong": "A. A simulator does not need quantum hardware. C. Not required. D. Cloud access is a deployment choice, not a requirement."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC02",
+        "QUESTION: True or False: A state-vector simulator can show you every amplitude of the state.",
+        "TYPE: True-False",
+        "CORRECT ANSWER: True",
+        "EXPLANATION: It stores them in memory, which is why it is useful for learning."
+      ],
+      "check_id": "QC02",
+      "question": "True or False: A state-vector simulator can show you every amplitude of the state.",
+      "type": "True-False",
+      "correct_answer": "True",
+      "explanation": "It stores them in memory, which is why it is useful for learning."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC03",
+        "QUESTION: How many amplitudes does a general 5-qubit state vector contain?",
+        "TYPE: Numerical",
+        "CORRECT ANSWER: 32",
+        "EXPLANATION: 2⁵ = 32."
+      ],
+      "check_id": "QC03",
+      "question": "How many amplitudes does a general 5-qubit state vector contain?",
+      "type": "Numerical",
+      "correct_answer": "32",
+      "explanation": "2⁵ = 32."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC04",
+        "QUESTION: Roughly how much memory does a 30-qubit state vector need at 16 bytes per amplitude?",
+        "TYPE: MCQ",
+        "OPTIONS: A. 16 MiB  B. 1 GiB  C. 16 GiB  D. 16 TiB",
+        "CORRECT ANSWER: C",
+        "EXPLANATION: 2³⁰ × 16 bytes = 2³⁴ bytes = 16 GiB.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. That is about 20 qubits.",
+        "B. Too small by a factor of 16.",
+        "D. That is about 40 qubits."
+      ],
+      "check_id": "QC04",
+      "question": "Roughly how much memory does a 30-qubit state vector need at 16 bytes per amplitude?",
+      "type": "MCQ",
+      "options": "A. 16 MiB  B. 1 GiB  C. 16 GiB  D. 16 TiB",
+      "correct_answer": "C",
+      "explanation": "2³⁰ × 16 bytes = 2³⁴ bytes = 16 GiB.",
+      "why_other_answers_are_wrong": "A. That is about 20 qubits. B. Too small by a factor of 16. D. That is about 40 qubits."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC05",
+        "QUESTION: In 1000 shots of an ideal 50/50 outcome you observe 488 and 512. Is the circuit wrong?",
+        "TYPE: Short Answer",
+        "CORRECT ANSWER: No. The standard error is about 16 counts, so deviations of this size are expected.",
+        "EXPLANATION: See E03."
+      ],
+      "check_id": "QC05",
+      "question": "In 1000 shots of an ideal 50/50 outcome you observe 488 and 512. Is the circuit wrong?",
+      "type": "Short Answer",
+      "correct_answer": "No. The standard error is about 16 counts, so deviations of this size are expected.",
+      "explanation": "See E03."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC06",
+        "QUESTION: Which is a likely reason a Bell-state circuit on hardware gives some 01 and 10 outcomes?",
+        "TYPE: MCQ",
+        "OPTIONS: A. Entanglement failed to exist in principle  B. Gate, readout and decoherence errors  C. The simulator was too slow  D. Measurement never gives 0",
+        "CORRECT ANSWER: B",
+        "EXPLANATION: Hardware noise moves some probability into otherwise forbidden outcomes.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. Entanglement is not ruled out by a few errors.",
+        "C. Speed is irrelevant.",
+        "D. False."
+      ],
+      "check_id": "QC06",
+      "question": "Which is a likely reason a Bell-state circuit on hardware gives some 01 and 10 outcomes?",
+      "type": "MCQ",
+      "options": "A. Entanglement failed to exist in principle  B. Gate, readout and decoherence errors  C. The simulator was too slow  D. Measurement never gives 0",
+      "correct_answer": "B",
+      "explanation": "Hardware noise moves some probability into otherwise forbidden outcomes.",
+      "why_other_answers_are_wrong": "A. Entanglement is not ruled out by a few errors. C. Speed is irrelevant. D. False."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC07",
+        "QUESTION: True or False: Any circuit that creates entanglement is hard for a classical computer to simulate.",
+        "TYPE: True-False",
+        "CORRECT ANSWER: False",
+        "EXPLANATION: Clifford circuits (e.g. Bell and GHZ circuits) create entanglement but are efficiently simulable."
+      ],
+      "check_id": "QC07",
+      "question": "True or False: Any circuit that creates entanglement is hard for a classical computer to simulate.",
+      "type": "True-False",
+      "correct_answer": "False",
+      "explanation": "Clifford circuits (e.g. Bell and GHZ circuits) create entanglement but are efficiently simulable."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC08",
+        "QUESTION: Which simulator type is best for a 100-qubit circuit using only H, S and CNOT gates?",
+        "TYPE: MCQ",
+        "OPTIONS: A. State-vector  B. Density-matrix  C. Stabilizer  D. None; it is impossible",
+        "CORRECT ANSWER: C",
+        "EXPLANATION: Clifford-only circuits are efficiently simulable by stabilizer methods.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. Needs 2¹⁰⁰ amplitudes.",
+        "B. Even larger.",
+        "D. It is possible."
+      ],
+      "check_id": "QC08",
+      "question": "Which simulator type is best for a 100-qubit circuit using only H, S and CNOT gates?",
+      "type": "MCQ",
+      "options": "A. State-vector  B. Density-matrix  C. Stabilizer  D. None; it is impossible",
+      "correct_answer": "C",
+      "explanation": "Clifford-only circuits are efficiently simulable by stabilizer methods.",
+      "why_other_answers_are_wrong": "A. Needs 2¹⁰⁰ amplitudes. B. Even larger. D. It is possible."
+    }
+  ],
+  "assessments": [
+    {
+      "id": "Q01",
+      "assessment_id": "Q01",
+      "difficulty": "Easy",
+      "question": "Which statement is correct?",
+      "options": [
+        "A circuit simulator is a classical program.",
+        "A circuit simulator contains physical qubits.",
+        "A circuit simulator is a type of quantum computer.",
+        "A circuit simulator needs cryogenic cooling."
+      ],
+      "correct_option_index": 0,
+      "explanation": "It runs on classical hardware.",
+      "option_feedback": [
+        "Correct! A circuit simulator is ordinary software running on classical CPUs or GPUs.",
+        "Incorrect. Circuit simulators track numerical matrices mathematically without physical qubits.",
+        "Incorrect. A simulator models quantum mechanics classically rather than performing physical quantum processing.",
+        "Incorrect. Classical computers running simulators operate at room temperature."
+      ],
+      "concept_links": [
+        "C02"
+      ]
+    },
+    {
+      "id": "Q02",
+      "assessment_id": "Q02",
+      "difficulty": "Easy",
+      "question": "How many amplitudes does a state-vector simulator store for 10 qubits?",
+      "options": [
+        "10",
+        "20",
+        "1,024",
+        "1,000,000"
+      ],
+      "correct_option_index": 2,
+      "explanation": "2¹⁰ = 1,024.",
+      "option_feedback": [
+        "Incorrect. 10 is the number of qubits, not the state dimension.",
+        "Incorrect. The state space scales exponentially as 2ⁿ, not 2n.",
+        "Correct! 2¹⁰ = 1,024 complex amplitudes represent the complete statevector.",
+        "Incorrect. 1,024 is the exact dimension for 10 qubits; one million would be ~20 qubits."
+      ],
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "Q03",
+      "assessment_id": "Q03",
+      "difficulty": "Easy",
+      "question": "True or False: On real quantum hardware you can read the full state vector directly.",
+      "options": [
+        "True",
+        "False",
+        "True, but only if the circuit has fewer than 10 qubits",
+        "True, by measuring all qubits simultaneously in one shot"
+      ],
+      "correct_option_index": 1,
+      "explanation": "Hardware only returns measurement outcomes.",
+      "option_feedback": [
+        "Incorrect. Real quantum hardware collapses the state upon measurement and returns only classical bitstrings.",
+        "Correct! Hardware only yields measurement sample counts; determining the full statevector requires expensive quantum state tomography.",
+        "Incorrect. Even for a single qubit, physical measurement yields only a single bit (0 or 1).",
+        "Incorrect. Measuring in one shot returns one bitstring, destroying the superposition."
+      ],
+      "concept_links": [
+        "C05"
+      ]
+    },
+    {
+      "id": "Q04",
+      "assessment_id": "Q04",
+      "difficulty": "Medium",
+      "question": "How much memory does a 32-qubit state vector need at 16 bytes per amplitude?",
+      "options": [
+        "512 MiB",
+        "1 TiB",
+        "16 GiB",
+        "64 GiB (2³² × 16 bytes = 2³⁶ bytes)"
+      ],
+      "correct_option_index": 3,
+      "explanation": "2³² × 16 = 2³⁶ bytes = 64 GiB.",
+      "option_feedback": [
+        "Incorrect. 512 MiB is sufficient for only about 25 qubits.",
+        "Incorrect. 1 TiB would store 2³⁶ complex numbers (36 qubits at 16 bytes/amplitude).",
+        "Incorrect. 16 GiB holds 2³⁰ amplitudes (30 qubits at 16 bytes/amplitude).",
+        "Correct! 2³² amplitudes × 16 bytes = 2³⁶ bytes = 64 GiB."
+      ],
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "Q05",
+      "assessment_id": "Q05",
+      "difficulty": "Medium",
+      "question": "Starting in |00⟩, apply H to q0 then CNOT (control q0, target q1). Give the exact probabilities and the standard error of the estimated P(00) from 1,000 shots.",
+      "options": [
+        "P(00) = P(01) = P(10) = P(11) = 0.25; standard error = 0.",
+        "P(00) = P(11) = 0.5, P(01) = P(10) = 0; standard error ≈ 0.0158 (about 1.6%).",
+        "P(00) = 1.0, others 0; standard error ≈ 0.05.",
+        "P(00) = P(11) = 0.5; standard error = 0 (exact on hardware)."
+      ],
+      "correct_option_index": 1,
+      "explanation": "P(00) = P(11) = 0.5, P(01) = P(10) = 0; standard error ≈ 0.0158 (about 1.6%, i.e. ±16 counts).",
+      "option_feedback": [
+        "Incorrect. The Bell state has zero probability for |01⟩ and |10⟩.",
+        "Correct! Ideal probabilities are 0.5 each for 00 and 11, with binomial standard error √(p(1-p)/N) = √(0.25/1000) ≈ 0.0158.",
+        "Incorrect. The state is an entangled superposition, not a deterministic state.",
+        "Incorrect. Finite shot sampling on hardware always introduces statistical shot noise."
+      ],
+      "concept_links": [
+        "C04"
+      ]
+    },
+    {
+      "id": "Q06",
+      "assessment_id": "Q06",
+      "difficulty": "Medium",
+      "question": "Name three reasons why hardware results can differ from an ideal simulation.",
+      "options": [
+        "Gate errors, decoherence, and finite measurement shot noise.",
+        "Classical CPU cache misses, compiler syntax warnings, and monitor resolution.",
+        "Internet latency, operating system updates, and keyboard response time.",
+        "Gravitational lensing, planetary orbits, and solar flares."
+      ],
+      "correct_option_index": 0,
+      "explanation": "Hardware differs due to gate errors, readout errors, decoherence, crosstalk, and finite shots.",
+      "option_feedback": [
+        "Correct! Physical qubits experience environmental decoherence, imperfect gate fidelities, and statistical shot noise.",
+        "Incorrect. These are standard classical computing concerns that do not cause quantum execution errors.",
+        "Incorrect. Network and OS latency affect queueing time, not quantum gate fidelity.",
+        "Incorrect. Everyday terrestrial quantum computing is governed by local thermal noise and microwave control precision."
+      ],
+      "concept_links": [
+        "C06"
+      ]
+    },
+    {
+      "id": "Q07",
+      "assessment_id": "Q07",
+      "difficulty": "Medium",
+      "question": "A student wants to simulate a 50-qubit circuit made only of H, S and CNOT gates, starting from |0…0⟩, and measure all qubits. Which simulator type would you recommend and why?",
+      "options": [
+        "A state-vector simulator, because 50 qubits only require 50 floating-point numbers.",
+        "An analog quantum simulator, because Clifford gates cannot be represented digitally.",
+        "A stabilizer simulator, because Clifford-only circuits can be simulated in polynomial time by the Gottesman–Knill theorem.",
+        "Simulation is completely impossible; 50 qubits can only ever be run on physical hardware."
+      ],
+      "correct_option_index": 2,
+      "explanation": "A stabilizer simulator, because the circuit is Clifford-only and therefore efficiently simulable (Gottesman–Knill); a state-vector simulator would need 2⁵⁰ × 16 bytes = 16 PiB.",
+      "option_feedback": [
+        "Incorrect. A general statevector for 50 qubits requires 2⁵⁰ amplitudes (16 PiB of RAM).",
+        "Incorrect. Clifford gates are standard discrete digital quantum gates.",
+        "Correct! The Gottesman–Knill theorem proves that circuits consisting purely of Clifford operations (H, S, CNOT) can be simulated efficiently on classical computers.",
+        "Incorrect. Special circuit classes like stabilizer circuits scale to thousands of qubits on classical laptops."
+      ],
+      "concept_links": [
+        "C07"
+      ]
+    },
+    {
+      "id": "Q08",
+      "assessment_id": "Q08",
+      "difficulty": "Medium",
+      "question": "Explain why adding one qubit doubles the memory of a state-vector simulator.",
+      "options": [
+        "Each qubit requires adding a second classical motherboard.",
+        "Each added qubit doubles the Hilbert space dimension from 2ⁿ to 2ⁿ⁺¹ = 2 × 2ⁿ.",
+        "Quantum simulator software has a licensing rule that doubles RAM allocation.",
+        "Adding a qubit doubles the physical temperature inside the computer."
+      ],
+      "correct_option_index": 1,
+      "explanation": "n qubits need 2ⁿ amplitudes; n+1 qubits need 2ⁿ⁺¹ = 2 × 2ⁿ amplitudes, so memory doubles.",
+      "option_feedback": [
+        "Incorrect. Simulators run on normal computers; hardware motherboards do not scale with simulated qubits.",
+        "Correct! The state space of n qubits has dimension 2ⁿ; adding one qubit increases the dimension to 2ⁿ⁺¹ = 2 × 2ⁿ.",
+        "Incorrect. The exponential scaling is a fundamental mathematical property of tensor products, not a software license.",
+        "Incorrect. Simulated qubits exist only as numbers in software memory and do not affect physical computer temperature."
+      ],
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "Q09",
+      "assessment_id": "Q09",
+      "difficulty": "Hard",
+      "question": "A student says \"My laptop can simulate 25 qubits, so a 50-qubit quantum computer is only twice as powerful.\" Evaluate this claim.",
+      "options": [
+        "The claim is true because 50 is exactly 2 times 25.",
+        "The claim is false because laptops can simulate up to 1,000 qubits without difficulty.",
+        "The claim is true because each qubit can only store one bit of power.",
+        "The claim is false: the state space grows exponentially as 2ⁿ, meaning 50 qubits represents 2²⁵ (over 33 million) times more amplitudes than 25 qubits."
+      ],
+      "correct_option_index": 3,
+      "explanation": "The claim is wrong. The state space grows as 2ⁿ, so 50 qubits have 2⁵⁰/2²⁵ = 2²⁵ = 33,554,432 times more amplitudes than 25 qubits.",
+      "option_feedback": [
+        "Incorrect. Computational state capacity grows exponentially (2ⁿ), not linearly.",
+        "Incorrect. Simulating 1,000 general qubits classically would require 2¹⁰⁰⁰ amplitudes, exceeding all storage in the universe.",
+        "Incorrect. Qubit state capacity is not measured in classical bit units.",
+        "Correct! 2⁵⁰ / 2²⁵ = 2²⁵ ≈ 3.35 × 10⁷ times larger state space, requiring petabytes of memory to simulate."
+      ],
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "Q10",
+      "assessment_id": "Q10",
+      "difficulty": "Hard",
+      "question": "Why must a quantum-advantage claim be compared with the best classical simulation methods, and why can't a state-vector simulator alone settle the matter?",
+      "options": [
+        "State-vector simulation is only one classical method; specialized classical algorithms like tensor networks can simulate structured quantum circuits.",
+        "State-vector simulators always crash when quantum advantage is reached.",
+        "Classical simulation cannot run on computers connected to the Internet.",
+        "Quantum computers are not allowed to be compared to classical algorithms by law."
+      ],
+      "correct_option_index": 0,
+      "explanation": "A claim of advantage says no classical method can match the quantum device. State-vector simulation is only one classical method; other methods (tensor networks, stabilizer methods) can handle special circuits.",
+      "option_feedback": [
+        "Correct! Advanced classical algorithms (tensor networks, stabilizer methods) often outperform brute-force statevector simulation.",
+        "Incorrect. Simulators fail only due to memory or time exhaustion, not an intrinsic crash triggered by advantage.",
+        "Incorrect. Network connectivity has no effect on classical simulation algorithms.",
+        "Incorrect. Scientific benchmarks strictly require rigorous comparisons with state-of-the-art classical baselines."
+      ],
+      "concept_links": [
+        "C07"
+      ]
+    }
+  ]
+}

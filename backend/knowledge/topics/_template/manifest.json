@@ -1,0 +1,16 @@
+{
+  "id": "_template",
+  "title": "Topic Template",
+  "order": 999,
+  "prerequisites": [],
+  "summary": "Demonstration template for creating new topic packs with zero code changes.",
+  "estimated_minutes": 20,
+  "status": "coming_soon",
+  "gates_used": ["H"],
+  "suggested_questions": [
+    "Explain this like I'm a beginner",
+    "Quiz me",
+    "What is the core idea?"
+  ],
+  "completion_threshold": 0.75
+}

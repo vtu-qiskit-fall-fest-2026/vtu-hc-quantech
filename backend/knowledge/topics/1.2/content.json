@@ -1,0 +1,360 @@
+{
+  "topic_id": "1.2",
+  "source_basis": "Quantum Computing(1).docx — Topic 1.2, Classical vs Quantum Computing",
+  "scope_note": "This file preserves source-level material that does not map cleanly into the seven runtime pack files. It is intended for the full-fidelity authoring/content layer.",
+  "prerequisite_recap": [
+    "Topic 1.1 introduced qubits and basic quantum ideas.",
+    "Learners should be comfortable with binary 0/1 and basic percentages/fractions.",
+    "Measurement probabilities come from squared amplitude magnitudes.",
+    "Quantum gates are reversible/unitary transformations.",
+    "Quantum speedups are problem-specific."
+  ],
+  "mathematical_foundations": [
+    "|ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1.",
+    "P(0)=|α|² and P(1)=|β|².",
+    "H=(1/√2)[[1,1],[1,-1]].",
+    "X=[[0,1],[1,0]].",
+    "U†U=I for an ideal quantum gate.",
+    "For n qubits, |Ψ⟩=Σ_x c_x|x⟩ and Σ|c_x|²=1.",
+    "Bell state |Φ+⟩=(|00⟩+|11⟩)/√2.",
+    "Number of amplitudes for n qubits = 2^n."
+  ],
+  "definitions": [
+    "Bit — classical binary unit with state 0 or 1.",
+    "Qubit — two-level quantum system represented as a linear combination of |0⟩ and |1⟩.",
+    "Amplitude — complex coefficient of a basis state; squared magnitude gives measurement probability.",
+    "Superposition — linear combination of basis states.",
+    "Measurement — process that produces a classical outcome according to the state's probabilities.",
+    "Quantum gate — unitary/reversible transformation of a quantum state.",
+    "Interference — reinforcement or cancellation of amplitudes.",
+    "Entanglement — a joint quantum state that is not separable into independent subsystem states.",
+    "Unitary/Reversible — a transformation U satisfying U†U=I.",
+    "Quantum advantage — a demonstrated or expected computational advantage for a particular problem/algorithm relative to relevant classical methods.",
+    "Decoherence/Noise — unwanted interactions and errors that disturb quantum states."
+  ],
+  "comparison_tables": [
+    {
+      "title": "Classical vs Quantum",
+      "rows": [
+        [
+          "Basic unit",
+          "bit",
+          "qubit"
+        ],
+        [
+          "State description",
+          "one of 0/1",
+          "superposition of basis states"
+        ],
+        [
+          "Operations",
+          "Boolean logic gates",
+          "unitary quantum gates"
+        ],
+        [
+          "Measurement",
+          "classical value",
+          "classical outcome; state is changed by measurement"
+        ],
+        [
+          "Multiple units",
+          "N bits have 2^N basis strings",
+          "n qubits have 2^n amplitudes"
+        ],
+        [
+          "Readout",
+          "classical bits",
+          "measurement yields a classical outcome string"
+        ],
+        [
+          "Special resources",
+          "logic and memory",
+          "superposition, interference, entanglement"
+        ],
+        [
+          "Best at",
+          "general-purpose computing",
+          "particular problem classes with suitable algorithms"
+        ]
+      ]
+    },
+    {
+      "title": "Random classical bit vs |+⟩",
+      "rows": [
+        [
+          "Measurement probabilities",
+          "50/50",
+          "50/50"
+        ],
+        [
+          "State type",
+          "classical probability distribution",
+          "coherent quantum state"
+        ],
+        [
+          "Interference",
+          "not applicable in the quantum-amplitude sense",
+          "possible"
+        ],
+        [
+          "H followed by H",
+          "not analogous to quantum H-H identity",
+          "returns |0⟩ from |0⟩"
+        ]
+      ]
+    },
+    {
+      "title": "Superposition vs Entanglement",
+      "rows": [
+        [
+          "Superposition",
+          "one system can be a linear combination of basis states",
+          "does not by itself imply entanglement"
+        ],
+        [
+          "Entanglement",
+          "joint multi-system state that is non-separable",
+          "requires at least two subsystems"
+        ]
+      ]
+    },
+    {
+      "title": "Problem types and expected benefit",
+      "rows": [
+        [
+          "Factoring",
+          "Shor gives a polynomial-time quantum algorithm on an ideal fault-tolerant QC",
+          "specific algorithmic advantage; not a universal speedup"
+        ],
+        [
+          "Unstructured search",
+          "Grover gives roughly √N query scaling",
+          "quadratic query improvement"
+        ],
+        [
+          "Quantum simulation",
+          "quantum systems are natural targets for quantum simulation",
+          "expected/natural advantage class"
+        ],
+        [
+          "NP-complete",
+          "no efficient quantum algorithm is known",
+          "do not claim a general efficient quantum solution"
+        ],
+        [
+          "Everyday tasks",
+          "no general quantum speedup established",
+          "classical systems remain appropriate"
+        ]
+      ]
+    }
+  ],
+  "visuals": [
+    {
+      "id": "V01",
+      "concepts": [
+        "C01"
+      ],
+      "title": "Bit vs Qubit",
+      "interaction": "toggle classical bit between 0/1 and inspect a qubit superposition representation; measurement produces one classical outcome",
+      "expected_observation": "The bit has a definite classical state; the qubit can have amplitudes for both basis states before measurement.",
+      "caption": "A classical bit has two classical states; a qubit can be in a quantum superposition before measurement.",
+      "alt_text": "Side-by-side classical bit switch and qubit state representation.",
+      "component": "BitVsQubit"
+    },
+    {
+      "id": "V02",
+      "concepts": [
+        "C02",
+        "C03"
+      ],
+      "title": "Probability Bars and Shots",
+      "interaction": "change the number of shots for H|0⟩ and observe sampled counts approach 50/50",
+      "expected_observation": "Small shot counts fluctuate; larger shot counts approach the underlying probabilities.",
+      "caption": "Measurement probabilities are estimated by repeated shots.",
+      "alt_text": "Probability bars for zero and one with a shots histogram.",
+      "component": "ProbabilityBars"
+    },
+    {
+      "id": "V03",
+      "concepts": [
+        "C04"
+      ],
+      "title": "Classical AND vs Quantum H",
+      "interaction": "compare a Boolean truth table with the reversible action of H",
+      "expected_observation": "Classical AND is a many-to-one Boolean operation; H is a reversible unitary transformation.",
+      "caption": "Classical logic and quantum gates follow different mathematical rules.",
+      "alt_text": "Classical AND truth table beside a Hadamard gate transformation.",
+      "component": "FlowDiagram"
+    },
+    {
+      "id": "V04",
+      "concepts": [
+        "C05"
+      ],
+      "title": "Interference: H then H",
+      "interaction": "step through H then H and inspect state after each gate",
+      "expected_observation": "The intermediate state has equal probabilities; after the second H, the state returns to |0⟩.",
+      "caption": "Interference can recombine amplitudes to recover a definite state.",
+      "alt_text": "Two-step Hadamard circuit showing the intermediate and final state.",
+      "component": "StateStepper"
+    },
+    {
+      "id": "V05",
+      "concepts": [
+        "C06"
+      ],
+      "title": "2^n State-Space Growth",
+      "interaction": "increase n and show 2^n numerically and estimated memory",
+      "expected_observation": "Each additional qubit doubles the number of amplitudes.",
+      "caption": "The state-space dimension doubles with every added qubit.",
+      "alt_text": "Exponential growth chart for the number of quantum-state amplitudes.",
+      "component": "FlowDiagram"
+    },
+    {
+      "id": "V06",
+      "concepts": [
+        "C07"
+      ],
+      "title": "Bell State",
+      "interaction": "run H(q0)+CNOT(q0,q1) and inspect probabilities",
+      "expected_observation": "Ideal outcomes concentrate on 00 and 11 at approximately 50% each.",
+      "caption": "The Bell-state circuit produces correlated outcomes.",
+      "alt_text": "Two-qubit Bell-state circuit with 00 and 11 probability bars.",
+      "component": "CircuitDiagram"
+    },
+    {
+      "id": "V07",
+      "concepts": [
+        "C07"
+      ],
+      "title": "Correlation vs Entanglement",
+      "interaction": "compare a classically correlated mixture with the coherent Bell state",
+      "expected_observation": "Both can share measurement correlations, but the Bell state contains coherent quantum structure.",
+      "caption": "Classical correlation and quantum entanglement are not the same concept.",
+      "alt_text": "Comparison of classical correlation and an entangled Bell state.",
+      "component": "FlowDiagram"
+    },
+    {
+      "id": "V08",
+      "concepts": [
+        "C08"
+      ],
+      "title": "Where Quantum Computing May Help",
+      "interaction": "select a problem type and reveal the source-supported reason for possible benefit or lack of known benefit",
+      "expected_observation": "Benefits are problem- and algorithm-specific rather than universal.",
+      "caption": "Quantum advantage depends on the problem and algorithm.",
+      "alt_text": "Problem-type comparison for factoring, search, simulation, NP-complete problems, and everyday tasks.",
+      "component": "FlowDiagram"
+    }
+  ],
+  "activities": [
+    {
+      "id": "A01",
+      "title": "Flip a Bit, Rotate a Qubit",
+      "steps": [
+        "Set classical bit=0 and qubit=|0⟩.",
+        "Flip the bit and apply X to the qubit.",
+        "Apply H to the qubit.",
+        "Measure 20 times.",
+        "Compare the results."
+      ],
+      "expected_observation": "X flips the basis state; H produces a 50/50 measurement distribution."
+    },
+    {
+      "id": "A02",
+      "title": "H-H and H-Z-H",
+      "steps": [
+        "Start at |0⟩.",
+        "Run H,H.",
+        "Run H,Z,H.",
+        "Optionally run H,X,H."
+      ],
+      "expected_observation": "H-H returns |0⟩; H-Z-H returns |1⟩ under the stated convention; H-X-H returns |0⟩."
+    },
+    {
+      "id": "A03",
+      "title": "Bell State",
+      "steps": [
+        "Start at |00⟩.",
+        "Apply H to q0.",
+        "Apply CNOT(q0,q1).",
+        "Run 1000 shots.",
+        "Remove H and compare."
+      ],
+      "expected_observation": "With H present, ideal outcomes are 00 and 11 around half each; without H, |00⟩ remains 100%."
+    },
+    {
+      "id": "A04",
+      "title": "How Many Amplitudes?",
+      "steps": [
+        "Increase n.",
+        "Predict the amplitude count for n=30.",
+        "Estimate memory at 16 bytes per amplitude.",
+        "Compare with a 16 GB budget."
+      ],
+      "expected_observation": "30 qubits require 2^30 amplitudes; under the simplifying 16-byte estimate, 16 GB can hold at most about 30 qubits of dense statevector data, with unit/boundary details depending on convention."
+    }
+  ],
+  "ai_tutor_adaptation": [
+    "Diagnose learner level with a simple bit/qubit question.",
+    "Scaffold from everyday binary intuition to quantum amplitudes and Dirac notation.",
+    "Use interactive checks such as: If I have 3 qubits, how many amplitudes describe the state?",
+    "Reinforce with side-by-side bit/qubit diagrams, interference demonstrations, and Bell-state circuits.",
+    "Address misconceptions explicitly using the M01–M08 records.",
+    "Use the source's 'tools for different jobs' framing: classical computers remain important while quantum computers target particular problems."
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Nielsen & Chuang",
+      "type": "textbook"
+    },
+    {
+      "id": "S02",
+      "title": "Mermin",
+      "type": "textbook"
+    },
+    {
+      "id": "S03",
+      "title": "Aaronson",
+      "type": "book/source cited by the topic"
+    },
+    {
+      "id": "S04",
+      "title": "Shor 1997",
+      "type": "published paper"
+    },
+    {
+      "id": "S05",
+      "title": "Grover 1996",
+      "type": "published paper"
+    },
+    {
+      "id": "S06",
+      "title": "Bennett et al. 1997",
+      "type": "published paper"
+    },
+    {
+      "id": "S07",
+      "title": "Preskill 2018",
+      "type": "published course/notes source"
+    },
+    {
+      "id": "S08",
+      "title": "IBM Quantum Learning",
+      "type": "educational source"
+    }
+  ],
+  "summary": "Topic 1.2 closes the comparison between classical and quantum computation: bits versus qubits, superposition and measurement, quantum gates, interference, exponential state-space growth, entanglement, and problem-specific quantum advantage. The learner should leave understanding both the power and the limits of quantum computation.",
+  "scope_and_out_of_scope": [
+    "Full Bloch-sphere mathematics is outside this topic.",
+    "Tensor-product formalism beyond what is needed for CNOT is outside this topic.",
+    "Detailed S/T/rotation/universal gate sets are outside this topic.",
+    "Detailed quantum algorithms are outside this topic.",
+    "Detailed quantum error correction is outside this topic.",
+    "Vendor-specific hardware counts and rapidly changing hardware claims are outside this topic.",
+    "Formal computational-complexity theory is outside this topic.",
+    "Bell inequalities, teleportation, mixed states/density matrices, post-quantum cryptography, and SDK programming beyond the simulator are outside this topic."
+  ]
+}

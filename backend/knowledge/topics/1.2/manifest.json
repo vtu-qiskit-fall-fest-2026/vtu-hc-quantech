@@ -1,0 +1,44 @@
+{
+  "id": "1.2",
+  "title": "Classical vs Quantum Computing",
+  "order": 1.2,
+  "category": "Quantum Computing Fundamentals",
+  "difficulty": "beginner",
+  "estimated_minutes": "35–45",
+  "prerequisites": [
+    "Topic 1.1 (introduction to quantum computing and the idea of a qubit)",
+    "Basic comfort with binary numbers (0 and 1)",
+    "Basic probability (percentages / fractions)"
+  ],
+  "summary": "This topic compares how classical computers and quantum computers represent information, process it, and give answers. Learners meet the bit and the qubit, superposition, measurement, quantum gates, entanglement, exponential state-space growth, and why quantum computers are not simply faster computers.",
+  "status": "draft_pending_verification",
+  "gates_used": [
+    "H",
+    "X",
+    "Z",
+    "CNOT"
+  ],
+  "learning_objectives": [
+    "Distinguish a classical bit from a qubit by describing what each can represent and what a measurement returns.",
+    "Calculate the probability of measuring 0 or 1 from the amplitudes of a single-qubit state.",
+    "Explain how a quantum gate changes a qubit's state, and why it differs from a classical logic gate.",
+    "Explain, with an example, why superposition is different from a classical random bit (interference).",
+    "State how many amplitudes describe an n-qubit state and why this makes classical simulation hard for large n.",
+    "Describe entanglement and explain why it does not allow faster-than-light communication.",
+    "Identify at least two kinds of problems where quantum computers are expected to help and explain why they are not faster for everything."
+  ],
+  "suggested_questions": [
+    "What's the difference between a bit and a qubit?",
+    "Why does measurement only give 0 or 1?",
+    "Why does applying H twice return the original state?",
+    "How is superposition different from a random classical bit?",
+    "What is interference?",
+    "What does 2^n amplitudes mean?",
+    "Why can't I read all 2^50 amplitudes?",
+    "What's the difference between superposition and entanglement?",
+    "Show me the Hadamard math.",
+    "Why does the Bell state give only 00 and 11?",
+    "Why doesn't a quantum computer just try every answer?",
+    "Will quantum computers replace my laptop?"
+  ]
+}

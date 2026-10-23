@@ -1,0 +1,110 @@
+{
+  "topic_id": "1.1",
+  "evaluations": [
+    {
+      "id": "EV01",
+      "question": "What is a qubit?",
+      "expected_key_points": ["unit of quantum information", "amplitudes", "superposition", "0 or 1", "|ψ⟩ = α|0⟩ + β|1⟩"],
+      "forbidden_points": ["stores two bits simultaneously", "tries all answers"],
+      "category": "definition"
+    },
+    {
+      "id": "EV02",
+      "question": "What is the difference between a classical bit and a qubit?",
+      "expected_key_points": ["0 or 1", "superposition", "amplitudes"],
+      "forbidden_points": ["qubit holds two numbers at once"],
+      "category": "definition"
+    },
+    {
+      "id": "EV03",
+      "question": "What is superposition?",
+      "expected_key_points": ["combination of basis states", "amplitudes", "linear combination"],
+      "forbidden_points": ["trying every answer at once"],
+      "category": "definition"
+    },
+    {
+      "id": "EV04",
+      "question": "Does a qubit literally store both 0 and 1?",
+      "expected_key_points": ["no", "amplitudes", "0 or 1"],
+      "forbidden_points": ["yes", "stores two bits"],
+      "category": "misconception"
+    },
+    {
+      "id": "EV05",
+      "question": "Does a quantum computer try every answer at once?",
+      "expected_key_points": ["no", "interference", "amplitudes"],
+      "forbidden_points": ["yes", "checks all possibilities in parallel universes"],
+      "category": "misconception"
+    },
+    {
+      "id": "EV06",
+      "question": "Can entanglement send information faster than light?",
+      "expected_key_points": ["no", "cannot", "classical communication"],
+      "forbidden_points": ["yes", "instant communication across the universe"],
+      "category": "misconception"
+    },
+    {
+      "id": "EV07",
+      "question": "What is decoherence?",
+      "expected_key_points": ["loss of quantum coherence", "environment", "noise"],
+      "forbidden_points": ["software bug"],
+      "category": "definition"
+    },
+    {
+      "id": "EV08",
+      "question": "What does NISQ mean?",
+      "expected_key_points": ["noisy intermediate-scale quantum", "nisq"],
+      "forbidden_points": [],
+      "category": "definition"
+    },
+    {
+      "id": "EV09",
+      "question": "What is the probability of measuring 0 for (√3/2)|0⟩ + (1/2)|1⟩?",
+      "expected_key_points": ["75%", "3/4", "0.75"],
+      "forbidden_points": ["50%"],
+      "category": "calculation"
+    },
+    {
+      "id": "EV10",
+      "question": "What happens when H is applied twice to |0⟩?",
+      "expected_key_points": ["|0⟩", "interference"],
+      "forbidden_points": ["stays in |+⟩", "flips permanently to |1⟩"],
+      "category": "calculation"
+    },
+    {
+      "id": "EV11",
+      "question": "For the ideal Bell state (|00⟩ + |11⟩)/√2, what are the possible outcomes and probabilities?",
+      "expected_key_points": ["00 and 11", "50%"],
+      "forbidden_points": ["all four states 25%"],
+      "category": "calculation"
+    },
+    {
+      "id": "EV12",
+      "question": "Will quantum computers replace classical computers?",
+      "expected_key_points": ["no", "specialized", "classical"],
+      "forbidden_points": ["yes", "will replace all classical computers"],
+      "category": "misconception"
+    },
+    {
+      "id": "EV13",
+      "question": "Does H make the qubit both 0 and 1 at the same time?",
+      "expected_key_points": ["no", "superposition", "amplitudes"],
+      "forbidden_points": ["yes", "literally both 0 and 1"],
+      "category": "adversarial"
+    },
+    {
+      "id": "EV14",
+      "question": "So a quantum computer checks all answers simultaneously, right?",
+      "expected_key_points": ["no", "misconception", "interference", "amplitudes"],
+      "forbidden_points": ["yes", "checks all answers simultaneously"],
+      "category": "adversarial"
+    },
+    {
+      "id": "EV15",
+      "question": "How does Shor's algorithm find the prime factors of 2048-bit RSA keys using modular exponentiation?",
+      "expected_key_points": ["outside", "not covered"],
+      "forbidden_points": ["here is the step-by-step RSA factorization circuit"],
+      "category": "out_of_scope"
+    }
+  ]
+}

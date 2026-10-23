@@ -1,0 +1,156 @@
+{
+  "topic_id": "1.2",
+  "verification_status": "draft_pending_simulator_verification",
+  "qubit_ordering": "q0 is the left-most bit in |q0 q1 …⟩. Qiskit-style tools may print q1 q0; the tutor must state which convention it uses.",
+  "facts": [
+    {
+      "id": "GT01",
+      "statement": "A single-qubit state has the form |ψ⟩=α|0⟩+β|1⟩ with |α|²+|β|²=1.",
+      "type": "definition",
+      "related_concept": "C01",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S08"
+      ],
+      "verification": "standard definition; confirm implementation where numerical outputs are used"
+    },
+    {
+      "id": "GT02",
+      "statement": "For |ψ⟩=α|0⟩+β|1⟩, P(0)=|α|² and P(1)=|β|².",
+      "type": "rule",
+      "related_concept": "C03",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "verification": "Born-rule calculation"
+    },
+    {
+      "id": "GT03",
+      "statement": "H|0⟩=(|0⟩+|1⟩)/√2, so ideal measurement probabilities are 50% and 50%.",
+      "type": "circuit_result",
+      "related_concept": "C02",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "verification": "re-run in project simulator before release"
+    },
+    {
+      "id": "GT04",
+      "statement": "H followed by H returns |0⟩: H·H=I.",
+      "type": "circuit_result",
+      "related_concept": "C05",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "verification": "re-run in project simulator before release"
+    },
+    {
+      "id": "GT05",
+      "statement": "H-Z-H applied to |0⟩ produces |1⟩ up to the standard matrix convention used in the source.",
+      "type": "circuit_result",
+      "related_concept": "C05",
+      "source_ids": [
+        "S01"
+      ],
+      "verification": "re-run in project simulator before release"
+    },
+    {
+      "id": "GT06",
+      "statement": "The Bell circuit H(q0) followed by CNOT(q0,q1) from |00⟩ produces (|00⟩+|11⟩)/√2, with ideal probabilities 50% for 00 and 11 and 0% for 01 and 10.",
+      "type": "circuit_result",
+      "related_concept": "C07",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "verification": "re-run in project simulator before release"
+    },
+    {
+      "id": "GT07",
+      "statement": "An n-qubit pure state is described by 2^n complex amplitudes.",
+      "type": "scaling",
+      "related_concept": "C06",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "verification": "mathematical identity"
+    },
+    {
+      "id": "GT08",
+      "statement": "2^50 = 1,125,899,906,842,624. At 16 bytes per amplitude, a dense 50-qubit statevector needs about 16 PiB under the stated simplifying assumption.",
+      "type": "numeric",
+      "related_concept": "C06",
+      "source_ids": [
+        "S01"
+      ],
+      "verification": "calculator check"
+    },
+    {
+      "id": "GT09",
+      "statement": "Ideal quantum gates are unitary/reversible; measurement is not a unitary gate.",
+      "type": "definition",
+      "related_concept": "C04",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "verification": "standard definition"
+    },
+    {
+      "id": "GT10",
+      "statement": "Grover's algorithm gives approximately √N query scaling for unstructured search in the standard query model.",
+      "type": "algorithmic_result",
+      "related_concept": "C08",
+      "source_ids": [
+        "S05"
+      ],
+      "verification": "published result"
+    },
+    {
+      "id": "GT11",
+      "statement": "Shor's algorithm factors integers in polynomial time on an ideal fault-tolerant quantum computer; no polynomial-time classical factoring algorithm is known.",
+      "type": "algorithmic_result",
+      "related_concept": "C08",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "verification": "published result"
+    },
+    {
+      "id": "GT12",
+      "statement": "No efficient quantum algorithm for NP-complete problems is known; this topic does not assert a general quantum solution to NP-complete problems.",
+      "type": "scope_fact",
+      "related_concept": "C08",
+      "source_ids": [
+        "S03"
+      ],
+      "verification": "source-framed statement"
+    },
+    {
+      "id": "GT13",
+      "statement": "Current quantum devices are noisy/limited and fault-tolerant computation requires error correction.",
+      "type": "context",
+      "related_concept": "C08",
+      "source_ids": [
+        "S07"
+      ],
+      "verification": "source-framed context; avoid time-sensitive hardware claims"
+    },
+    {
+      "id": "GT14",
+      "statement": "Unknown quantum states cannot in general be copied perfectly (no-cloning).",
+      "type": "principle",
+      "related_concept": "C07",
+      "source_ids": [
+        "S06"
+      ],
+      "verification": "published result"
+    }
+  ]
+}

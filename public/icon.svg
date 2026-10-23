@@ -1,0 +1,59 @@
+<svg width="128" height="128" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Ring Gradient: Electric Blue -> Violet -->
+    <linearGradient id="ql-ring-grad" x1="10" y1="10" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+
+    <!-- Arrow Gradient: Mint Green -->
+    <linearGradient id="ql-arrow-grad" x1="45" y1="65" x2="90" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Q Ring -->
+  <circle
+    cx="44"
+    cy="44"
+    r="30"
+    stroke="url(#ql-ring-grad)"
+    stroke-width="9"
+    stroke-linecap="round"
+  />
+
+  <!-- Neural Network Connections -->
+  <g stroke="#0B1F3A" stroke-width="1.8" opacity="0.8">
+    <line x1="33" y1="34" x2="52" y2="30" />
+    <line x1="33" y1="34" x2="36" y2="54" />
+    <line x1="33" y1="34" x2="55" y2="50" />
+    <line x1="52" y1="30" x2="36" y2="54" />
+    <line x1="52" y1="30" x2="55" y2="50" />
+    <line x1="36" y1="54" x2="55" y2="50" />
+  </g>
+  
+  <!-- Neural Network Nodes -->
+  <g fill="#0B1F3A">
+    <circle cx="33" cy="34" r="4.2" />
+    <circle cx="52" cy="30" r="3.6" />
+    <circle cx="36" cy="54" r="3.8" />
+    <circle cx="55" cy="50" r="4.4" />
+  </g>
+  <!-- Active Synapse Center Accent -->
+  <circle cx="43" cy="42" r="2.2" fill="#2563EB" />
+
+  <!-- Q Tail: Upward-rising Growth Arrow -->
+  <path
+    d="M 52 64 L 66 74 L 86 46"
+    stroke="url(#ql-arrow-grad)"
+    stroke-width="8.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <polygon
+    points="86,40 73,47 84,58"
+    fill="#10B981"
+  />
+</svg>

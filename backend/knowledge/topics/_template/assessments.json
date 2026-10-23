@@ -1,0 +1,13 @@
+{
+  "topic_id": "_template",
+  "assessments": [
+    {
+      "id": "TA01",
+      "question": "What is the template check?",
+      "options": ["Option A", "Option B", "Option C"],
+      "correct_option_index": 0,
+      "explanation": "Option A is the template answer.",
+      "option_feedback": ["Correct!", "Incorrect", "Incorrect"]
+    }
+  ]
+}

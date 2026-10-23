@@ -1,0 +1,11 @@
+{
+  "topic_id": "_template",
+  "rules": [
+    {
+      "id": "TGT01",
+      "input": "H|0⟩",
+      "expected": {"0": 0.5, "1": 0.5},
+      "type": "probabilities"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "topic_id": "1.1",
+  "assessments": [
+    {
+      "id": "A01",
+      "question": "For a qubit in the state |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, what is the probability of measuring 0 in the computational basis?",
+      "options": [
+        "25% (1/4)",
+        "75% (3/4)",
+        "50% (1/2)",
+        "100%"
+      ],
+      "correct_option_index": 1,
+      "explanation": "According to the Born rule, the probability of measuring 0 is the squared magnitude of its amplitude: P(0) = |√3/2|² = 3/4 = 75%.",
+      "option_feedback": [
+        "Incorrect. 25% is P(1) = |1/2|² = 1/4.",
+        "Correct! |√3/2|² = 3/4 = 75%.",
+        "Incorrect. P(0) is the squared magnitude of α, which is (√3/2)² = 3/4.",
+        "Incorrect. The state is in a superposition, so it is not a deterministic 100%."
+      ],
+      "concept_links": ["C06"]
+    },
+    {
+      "id": "A02",
+      "question": "What is the result when a Hadamard gate (H) is applied twice consecutively to the initial state |0⟩?",
+      "options": [
+        "The state remains in an equal superposition |+⟩",
+        "The state flips permanently to |1⟩",
+        "The state collapses randomly to 0 or 1",
+        "The state returns deterministically to |0⟩"
+      ],
+      "correct_option_index": 3,
+      "explanation": "Because H is its own inverse (H² = I), applying H twice results in destructive interference of the |1⟩ amplitude and constructive interference of the |0⟩ amplitude, returning deterministically to |0⟩.",
+      "option_feedback": [
+        "Incorrect. The second H gate interferes the superposition back to basis state |0⟩.",
+        "Incorrect. The Pauli-X gate flips |0⟩ to |1⟩, but H² acts as the identity.",
+        "Incorrect. Gate operations are strictly deterministic unitaries; only measurement causes collapse.",
+        "Correct! Quantum interference causes the |1⟩ amplitudes to cancel and |0⟩ amplitudes to reinforce."
+      ],
+      "concept_links": ["C07"]
+    },
+    {
+      "id": "A03",
+      "question": "Can quantum entanglement be utilized to send communication or messages faster than light?",
+      "options": [
+        "No; measurement outcomes appear random locally and require classical communication to compare",
+        "Yes; measuring one entangled qubit instantly changes the message received by the other",
+        "Yes, but only over microscopic distances inside a dilution refrigerator",
+        "No, but only because current quantum hardware is too noisy"
+      ],
+      "correct_option_index": 0,
+      "explanation": "Under the No-Communication Theorem, local measurements on an entangled state produce completely random outcomes. Observers must communicate classically (at or below the speed of light) to observe the correlations.",
+      "option_feedback": [
+        "Correct! Entanglement creates strong quantum correlations, but cannot transmit usable data faster than light.",
+        "Incorrect. This is a common sci-fi misconception. Local measurements look entirely random.",
+        "Incorrect. The speed-of-light limit applies across any distance in physics.",
+        "Incorrect. The limitation is a fundamental law of physics, not a hardware engineering issue."
+      ],
+      "concept_links": ["C08"]
+    },
+    {
+      "id": "A04",
+      "question": "What does the abbreviation NISQ refer to in modern quantum computing?",
+      "options": [
+        "Non-Interfering Superposition Qubits",
+        "New Integrated Standard Quantum",
+        "Noisy Intermediate-Scale Quantum",
+        "Networked Interconnected Superconducting Qubits"
+      ],
+      "correct_option_index": 2,
+      "explanation": "NISQ was coined by John Preskill to describe the current era of quantum processors that feature 50-1000 imperfect, noisy qubits without fault-tolerant error correction.",
+      "option_feedback": [
+        "Incorrect. Superposition qubits still interfere in NISQ devices.",
+        "Incorrect. NISQ is not an industry standardization term.",
+        "Correct! NISQ describes today's 50-1000 qubit era with noise and without full error correction.",
+        "Incorrect. NISQ applies across multiple physical architectures, not just superconducting circuits."
+      ],
+      "concept_links": ["C11"]
+    }
+  ]
+}

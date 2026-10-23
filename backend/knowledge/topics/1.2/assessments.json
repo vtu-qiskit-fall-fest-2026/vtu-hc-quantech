@@ -1,0 +1,401 @@
+{
+  "topic_id": "1.2",
+  "quick_checks": [
+    {
+      "id": "QC01",
+      "question": "When you measure a single qubit in the computational basis, what can you get?",
+      "options": {
+        "A": "Any real number",
+        "B": "0 or 1",
+        "C": "Both 0 and 1 at once",
+        "D": "The full statevector"
+      },
+      "correct_answer": "B",
+      "difficulty": "easy",
+      "explanation": "A computational-basis measurement returns a classical 0 or 1.",
+      "per_option_feedback": {
+        "A": "Measurement returns a discrete basis outcome, not any real number.",
+        "B": "Correct.",
+        "C": "The state can be a superposition before measurement, but the measurement outcome is one classical value.",
+        "D": "Measurement does not expose the full statevector."
+      },
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "QC02",
+      "question": "True or False: A qubit in |+⟩ is just the same thing as a classical random bit that is 0 or 1 with equal probability.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct_answer": "B",
+      "difficulty": "easy",
+      "explanation": "|+⟩ is a coherent quantum superposition whose amplitudes can later interfere.",
+      "per_option_feedback": {
+        "A": "Not quite: equal measurement probabilities do not make the states physically equivalent.",
+        "B": "Correct."
+      },
+      "concept_links": [
+        "C02",
+        "C05"
+      ]
+    },
+    {
+      "id": "QC03",
+      "question": "If |ψ⟩=(1/2)|0⟩+(√3/2)|1⟩, what is P(1)?",
+      "options": {
+        "A": "1/4",
+        "B": "1/2",
+        "C": "3/4",
+        "D": "√3/2"
+      },
+      "correct_answer": "C",
+      "difficulty": "easy",
+      "explanation": "Square the magnitude of the |1⟩ amplitude: |√3/2|²=3/4.",
+      "per_option_feedback": {
+        "A": "That is P(0).",
+        "B": "Not the squared magnitude of β.",
+        "C": "Correct.",
+        "D": "Amplitude magnitude is not probability."
+      },
+      "concept_links": [
+        "C01",
+        "C03"
+      ]
+    },
+    {
+      "id": "QC04",
+      "question": "How many complex amplitudes describe a general 4-qubit pure state?",
+      "options": {
+        "A": "4",
+        "B": "8",
+        "C": "16",
+        "D": "32"
+      },
+      "correct_answer": "C",
+      "difficulty": "medium",
+      "explanation": "The state dimension is 2^n, so 2^4=16.",
+      "per_option_feedback": {
+        "A": "That is the qubit count, not the state dimension.",
+        "B": "That is 2^3.",
+        "C": "Correct.",
+        "D": "That is 2^5."
+      },
+      "concept_links": [
+        "C06"
+      ]
+    },
+    {
+      "id": "QC05",
+      "question": "Why are ideal quantum gates described as reversible?",
+      "options": {
+        "A": "They are always faster",
+        "B": "They are unitary transformations with an inverse",
+        "C": "They always create superposition",
+        "D": "They are classical truth tables"
+      },
+      "correct_answer": "B",
+      "difficulty": "medium",
+      "explanation": "Unitary gates satisfy U†U=I and therefore have an inverse.",
+      "per_option_feedback": {
+        "A": "Speed is not the definition of reversibility.",
+        "B": "Correct.",
+        "C": "Not every gate creates superposition.",
+        "D": "Quantum gates operate on quantum states, not ordinary Boolean truth tables."
+      },
+      "concept_links": [
+        "C04"
+      ]
+    },
+    {
+      "id": "QC06",
+      "question": "For the ideal Bell state (|00⟩+|11⟩)/√2, which outcomes can occur in the computational basis?",
+      "options": {
+        "A": "00 and 01",
+        "B": "00 and 11",
+        "C": "01 and 10",
+        "D": "All four equally"
+      },
+      "correct_answer": "B",
+      "difficulty": "medium",
+      "explanation": "The state has nonzero amplitudes only for 00 and 11.",
+      "per_option_feedback": {
+        "A": "01 has zero amplitude in this Bell state.",
+        "B": "Correct.",
+        "C": "Neither 01 nor 10 has amplitude.",
+        "D": "The state is not uniform over all four basis states."
+      },
+      "concept_links": [
+        "C07"
+      ]
+    },
+    {
+      "id": "QC07",
+      "question": "Is a quantum computer expected to be automatically faster for ordinary web browsing?",
+      "options": {
+        "A": "Yes",
+        "B": "No"
+      },
+      "correct_answer": "B",
+      "difficulty": "medium",
+      "explanation": "Quantum speedups are problem- and algorithm-specific.",
+      "per_option_feedback": {
+        "A": "The source does not support a universal speedup.",
+        "B": "Correct."
+      },
+      "concept_links": [
+        "C08"
+      ]
+    },
+    {
+      "id": "QC08",
+      "question": "Which quantum gate is the closest analogue of a classical NOT operation on a computational-basis qubit?",
+      "options": {
+        "A": "H",
+        "B": "X",
+        "C": "Z",
+        "D": "CNOT"
+      },
+      "correct_answer": "B",
+      "difficulty": "medium",
+      "explanation": "X maps |0⟩↔|1⟩.",
+      "per_option_feedback": {
+        "A": "H creates a particular superposition from a basis state.",
+        "B": "Correct.",
+        "C": "Z changes phase on |1⟩.",
+        "D": "CNOT is a two-qubit controlled operation."
+      },
+      "concept_links": [
+        "C04"
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "id": "Q01",
+      "difficulty": "easy",
+      "question": "What does measurement of a single qubit return?",
+      "options": [
+        "Both 0 and 1 simultaneously",
+        "0 or 1",
+        "The complete continuous statevector",
+        "Any real number between 0 and 1"
+      ],
+      "correct_option_index": 1,
+      "explanation": "A computational-basis measurement returns a classical 0 or 1.",
+      "option_feedback": [
+        "Incorrect. Measurement collapses the state and only ever yields one discrete classical bit.",
+        "Correct! Measurement in the computational basis returns either classical 0 or classical 1.",
+        "Incorrect. The statevector cannot be read out directly from a single measurement.",
+        "Incorrect. A qubit measurement produces a discrete binary outcome, not an arbitrary real number."
+      ],
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "Q02",
+      "difficulty": "easy",
+      "question": "What feature distinguishes a coherent quantum superposition from a classical random bit?",
+      "options": [
+        "A superposition allows extracting both outcomes at the same time upon measurement",
+        "A classical random bit can never take the value 0 or 1",
+        "Interference is possible because amplitudes retain phase/coherence.",
+        "A superposition stores exponentially more classical bits simultaneously"
+      ],
+      "correct_option_index": 2,
+      "explanation": "Interference is possible because amplitudes retain phase/coherence.",
+      "option_feedback": [
+        "Incorrect. Measurement always yields only a single classical outcome, not both at once.",
+        "Incorrect. Classical random bits routinely take binary values 0 or 1.",
+        "Correct! Quantum amplitudes are complex numbers with phase, enabling constructive and destructive interference.",
+        "Incorrect. Superposition does not increase the amount of classical data extracted from measurement."
+      ],
+      "concept_links": [
+        "C02",
+        "C05"
+      ]
+    },
+    {
+      "id": "Q03",
+      "difficulty": "easy",
+      "question": "How many amplitudes describe a general 3-qubit state?",
+      "options": [
+        "8",
+        "3",
+        "6",
+        "16"
+      ],
+      "correct_option_index": 0,
+      "explanation": "The state dimension is 2^n, so 2^3 = 8.",
+      "option_feedback": [
+        "Correct! An n-qubit quantum state requires 2ⁿ complex amplitudes, so 2³ = 8.",
+        "Incorrect. 3 is the number of qubits, not the dimensionality of the state space.",
+        "Incorrect. State space dimensions scale exponentially as 2ⁿ, not linearly as 2n.",
+        "Incorrect. 16 is 2⁴, which corresponds to a 4-qubit state."
+      ],
+      "concept_links": [
+        "C06"
+      ]
+    },
+    {
+      "id": "Q04",
+      "difficulty": "medium",
+      "question": "For (√3/2)|0⟩+(1/2)|1⟩, what are the measurement probabilities?",
+      "options": [
+        "50% for 0 and 50% for 1",
+        "25% for 0 and 75% for 1",
+        "√3/2 for 0 and 1/2 for 1",
+        "75% for 0 and 25% for 1"
+      ],
+      "correct_option_index": 3,
+      "explanation": "By the Born rule, P(0) = |√3/2|² = 75% and P(1) = |1/2|² = 25%.",
+      "option_feedback": [
+        "Incorrect. The amplitudes are unequal, so measurement probabilities are not 50/50.",
+        "Incorrect. You swapped the amplitudes; P(0) corresponds to α = √3/2.",
+        "Incorrect. Probabilities are squared magnitudes of amplitudes, not the amplitudes themselves.",
+        "Correct! By the Born rule, P(0) = |√3/2|² = 75% and P(1) = |1/2|² = 25%."
+      ],
+      "concept_links": [
+        "C01",
+        "C03"
+      ]
+    },
+    {
+      "id": "Q05",
+      "difficulty": "medium",
+      "question": "What happens when H is applied twice to |0⟩?",
+      "options": [
+        "The state remains in an equal superposition |+⟩",
+        "The state returns to |0⟩.",
+        "The state flips permanently to |1⟩",
+        "The state collapses randomly to 0 or 1"
+      ],
+      "correct_option_index": 1,
+      "explanation": "Because H is its own inverse (H² = I), applying H twice results in destructive interference of the |1⟩ amplitude and constructive interference of the |0⟩ amplitude, returning to |0⟩.",
+      "option_feedback": [
+        "Incorrect. The second Hadamard causes interference that takes the superposition back to |0⟩.",
+        "Correct! The Hadamard gate is self-inverse (H² = I), so H(H|0⟩) = |0⟩.",
+        "Incorrect. A single X gate flips |0⟩ to |1⟩, but H² acts as the identity.",
+        "Incorrect. Unitary gate transformations are completely deterministic; only measurement collapses states."
+      ],
+      "concept_links": [
+        "C05"
+      ]
+    },
+    {
+      "id": "Q06",
+      "difficulty": "medium",
+      "question": "What property makes ideal quantum gates reversible?",
+      "options": [
+        "They always create equal superpositions",
+        "They are classical Boolean logic operations",
+        "They are unitary transformations.",
+        "They operate faster than classical clock cycles"
+      ],
+      "correct_option_index": 2,
+      "explanation": "Unitary gates satisfy U†U=I and therefore have an inverse.",
+      "option_feedback": [
+        "Incorrect. Many gates (like Pauli gates or phase gates) do not generate superposition.",
+        "Incorrect. Quantum gates operate on statevectors via complex matrices, not irreversible classical truth tables.",
+        "Correct! Unitary matrices satisfy U†U = I, ensuring probability conservation and mathematical invertibility.",
+        "Incorrect. Execution speed has no bearing on the mathematical reversibility of an operation."
+      ],
+      "concept_links": [
+        "C04"
+      ]
+    },
+    {
+      "id": "Q07",
+      "difficulty": "medium",
+      "question": "What state is produced by H on q0 followed by CNOT(q0,q1) from |00⟩?",
+      "options": [
+        "The Bell state (|00⟩+|11⟩)/√2.",
+        "The product state (|00⟩+|01⟩)/√2",
+        "The separable state (|01⟩+|10⟩)/√2",
+        "An equal superposition of all four computational basis states"
+      ],
+      "correct_option_index": 0,
+      "explanation": "H creates (|0⟩+|1⟩)/√2 on q0, and CNOT flips q1 when q0 is |1⟩, producing the Bell state (|00⟩+|11⟩)/√2.",
+      "option_feedback": [
+        "Correct! H creates (|0⟩+|1⟩)/√2 on q0, and CNOT flips q1 when q0 is |1⟩, yielding (|00⟩+|11⟩)/√2.",
+        "Incorrect. CNOT targets q1 conditional on q0, so |10⟩ becomes |11⟩, not |01⟩.",
+        "Incorrect. That is a different entangled state requiring an X gate on q1 prior to entangling.",
+        "Incorrect. Generating a 4-state superposition requires applying Hadamard to both qubits."
+      ],
+      "concept_links": [
+        "C07"
+      ]
+    },
+    {
+      "id": "Q08",
+      "difficulty": "medium",
+      "question": "Why can't a learner simply read all 2^50 amplitudes from a 50-qubit quantum computer?",
+      "options": [
+        "Quantum hardware can only store at most 32 amplitudes in physical memory",
+        "The amplitudes are encrypted by the quantum operating system",
+        "A 50-qubit state has only 50 amplitudes in total",
+        "Measurement returns classical outcomes, not the full statevector."
+      ],
+      "correct_option_index": 3,
+      "explanation": "Measurement returns classical outcomes, not the full statevector.",
+      "option_feedback": [
+        "Incorrect. Physical qubits hold quantum states naturally; memory limits apply to classical simulators.",
+        "Incorrect. The restriction is a fundamental postulate of quantum mechanics, not software encryption.",
+        "Incorrect. A 50-qubit state contains 2⁵⁰ amplitudes, but measurement yields only one 50-bit string.",
+        "Correct! Quantum measurement projects the state, outputting a single classical string per shot rather than state amplitudes."
+      ],
+      "concept_links": [
+        "C03",
+        "C06"
+      ]
+    },
+    {
+      "id": "Q09",
+      "difficulty": "hard",
+      "question": "What does H-Z-H do to |0⟩?",
+      "options": [
+        "It leaves the state unchanged at |0⟩",
+        "It produces |1⟩ under the source's gate convention.",
+        "It places the qubit into the equal superposition |+⟩",
+        "It produces the phase state |-⟩"
+      ],
+      "correct_option_index": 1,
+      "explanation": "H transforms |0⟩ to |+⟩, Z flips the relative phase to |-⟩, and the final H transforms |-⟩ to |1⟩ (equivalent to Pauli-X).",
+      "option_feedback": [
+        "Incorrect. H-Z-H is equivalent to the Pauli-X gate, which flips |0⟩.",
+        "Correct! H transforms |0⟩ to |+⟩, Z flips the relative phase to |-⟩, and the final H transforms |-⟩ to |1⟩.",
+        "Incorrect. The first H produces |+⟩, but subsequent Z and H gates complete an X rotation to |1⟩.",
+        "Incorrect. The middle state is |-⟩, but the final H gate maps it to computational basis state |1⟩."
+      ],
+      "concept_links": [
+        "C05"
+      ]
+    },
+    {
+      "id": "Q10",
+      "difficulty": "hard",
+      "question": "Identify two errors in the statement: 'A quantum computer tries every answer and solves NP-complete problems instantly.'",
+      "options": [
+        "Quantum computers cannot create superpositions, and NP-complete problems have already been solved classically",
+        "It assumes quantum computers use qubits, when NP problems require continuous variables",
+        "It confuses superposition with brute-force readout, and no efficient quantum algorithm for NP-complete problems is known.",
+        "It forgets that quantum computers replace all classical computers, and NP problems are easy"
+      ],
+      "correct_option_index": 2,
+      "explanation": "It confuses superposition with brute-force readout, and no efficient quantum algorithm for NP-complete problems is known.",
+      "option_feedback": [
+        "Incorrect. Quantum computers do create superposition, and NP-complete problems remain classically hard.",
+        "Incorrect. Standard discrete-qubit architectures are the primary model for quantum algorithms.",
+        "Correct! Superposition does not allow parallel readout of all solutions, and no polynomial-time quantum algorithm is known for NP-complete problems.",
+        "Incorrect. Quantum computers will not replace all classical computers, nor are NP problems easy."
+      ],
+      "concept_links": [
+        "C05",
+        "C08"
+      ]
+    }
+  ]
+}

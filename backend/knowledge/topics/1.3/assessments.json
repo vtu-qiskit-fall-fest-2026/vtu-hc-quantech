@@ -1,0 +1,381 @@
+{
+  "topic_id": "1.3",
+  "quick_understanding_checks": [
+    {
+      "raw_source": [
+        "CHECK ID: QC01",
+        "QUESTION: Which algorithm threatens RSA encryption?",
+        "TYPE: MCQ",
+        "OPTIONS: A. Grover's  B. Shor's  C. Hadamard  D. BB84",
+        "CORRECT ANSWER: B",
+        "EXPLANATION: Shor's algorithm factors integers efficiently on a large fault-tolerant quantum computer.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. Grover gives only a quadratic speedup for search.",
+        "C. Hadamard is a gate, not an algorithm against RSA.",
+        "D. BB84 is a key-distribution protocol."
+      ],
+      "check_id": "QC01",
+      "question": "Which algorithm threatens RSA encryption?",
+      "type": "MCQ",
+      "options": "A. Grover's  B. Shor's  C. Hadamard  D. BB84",
+      "correct_answer": "B",
+      "explanation": "Shor's algorithm factors integers efficiently on a large fault-tolerant quantum computer.",
+      "why_other_answers_are_wrong": "A. Grover gives only a quadratic speedup for search. C. Hadamard is a gate, not an algorithm against RSA. D. BB84 is a key-distribution protocol."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC02",
+        "QUESTION: True or False: A quantum computer capable of breaking RSA-2048 exists today.",
+        "TYPE: True-False",
+        "CORRECT ANSWER: False",
+        "EXPLANATION: Published estimates require on the order of a million noisy physical qubits running for days; no such machine exists."
+      ],
+      "check_id": "QC02",
+      "question": "True or False: A quantum computer capable of breaking RSA-2048 exists today.",
+      "type": "True-False",
+      "correct_answer": "False",
+      "explanation": "Published estimates require on the order of a million noisy physical qubits running for days; no such machine exists."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC03",
+        "QUESTION: With Grover's algorithm, roughly how many steps are needed to search 1,000,000 items for one marked item?",
+        "TYPE: Numerical",
+        "CORRECT ANSWER: About 785",
+        "EXPLANATION: (π/4)·√1,000,000 ≈ 785."
+      ],
+      "check_id": "QC03",
+      "question": "With Grover's algorithm, roughly how many steps are needed to search 1,000,000 items for one marked item?",
+      "type": "Numerical",
+      "correct_answer": "About 785",
+      "explanation": "(π/4)·√1,000,000 ≈ 785."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC04",
+        "QUESTION: Effective Grover-attack strength of AES-256 (idealised)?",
+        "TYPE: MCQ",
+        "OPTIONS: A. 2²⁵⁶  B. 2¹²⁸  C. 2⁶⁴  D. 2⁸",
+        "CORRECT ANSWER: B",
+        "EXPLANATION: Grover halves the exponent: 256 → 128.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. That is the classical brute-force cost.",
+        "C. That is AES-128 under Grover.",
+        "D. Far too small."
+      ],
+      "check_id": "QC04",
+      "question": "Effective Grover-attack strength of AES-256 (idealised)?",
+      "type": "MCQ",
+      "options": "A. 2²⁵⁶  B. 2¹²⁸  C. 2⁶⁴  D. 2⁸",
+      "correct_answer": "B",
+      "explanation": "Grover halves the exponent: 256 → 128.",
+      "why_other_answers_are_wrong": "A. That is the classical brute-force cost. C. That is AES-128 under Grover. D. Far too small."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC05",
+        "QUESTION: Does post-quantum cryptography require a quantum computer to use?",
+        "TYPE: Short Answer",
+        "CORRECT ANSWER: No. PQC algorithms run on ordinary classical computers; they are designed to resist quantum attacks.",
+        "EXPLANATION: See C03."
+      ],
+      "check_id": "QC05",
+      "question": "Does post-quantum cryptography require a quantum computer to use?",
+      "type": "Short Answer",
+      "correct_answer": "No. PQC algorithms run on ordinary classical computers; they are designed to resist quantum attacks.",
+      "explanation": "See C03."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC06",
+        "QUESTION: Why is chemistry considered a natural application?",
+        "TYPE: MCQ",
+        "OPTIONS:",
+        "A. Molecules are small, so they are easy to compute.",
+        "B. A molecule's quantum state needs 2ⁿ amplitudes classically, but about n qubits on a quantum computer.",
+        "C. Chemistry problems are NP-complete.",
+        "D. Quantum computers store chemical data more compactly.",
+        "CORRECT ANSWER: B",
+        "EXPLANATION: Quantum systems are naturally represented by quantum states; the state-space growth is what makes classical simulation hard.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. Larger molecules are hard to simulate.",
+        "C. This is not the reason, and NP-completeness is not established for this setting.",
+        "D. The advantage is about simulation, not data storage."
+      ],
+      "check_id": "QC06",
+      "question": "Why is chemistry considered a natural application?",
+      "type": "MCQ",
+      "options": "A. Molecules are small, so they are easy to compute. B. A molecule's quantum state needs 2ⁿ amplitudes classically, but about n qubits on a quantum computer. C. Chemistry problems are NP-complete. D. Quantum computers store chemical data more compactly.",
+      "correct_answer": "B",
+      "explanation": "Quantum systems are naturally represented by quantum states; the state-space growth is what makes classical simulation hard.",
+      "why_other_answers_are_wrong": "A. Larger molecules are hard to simulate. C. This is not the reason, and NP-completeness is not established for this setting. D. The advantage is about simulation, not data storage."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC07",
+        "QUESTION: True or False: Quantum machine learning is proven to train neural networks exponentially faster.",
+        "TYPE: True-False",
+        "CORRECT ANSWER: False",
+        "EXPLANATION: Claimed speedups depend on assumptions (e.g. cheap data loading), and advantages for mainstream machine learning are not established."
+      ],
+      "check_id": "QC07",
+      "question": "True or False: Quantum machine learning is proven to train neural networks exponentially faster.",
+      "type": "True-False",
+      "correct_answer": "False",
+      "explanation": "Claimed speedups depend on assumptions (e.g. cheap data loading), and advantages for mainstream machine learning are not established."
+    },
+    {
+      "raw_source": [
+        "CHECK ID: QC08",
+        "QUESTION: In a hybrid variational algorithm, which part adjusts the circuit parameters?",
+        "TYPE: MCQ",
+        "OPTIONS: A. The quantum processor  B. A classical optimiser  C. The measurement  D. The oracle",
+        "CORRECT ANSWER: B",
+        "EXPLANATION: The classical optimiser updates θ based on measured energies.",
+        "WHY OTHER ANSWERS ARE WRONG:",
+        "A. It prepares states and measures.",
+        "C. Measurement only returns outcomes.",
+        "D. Oracles belong to search algorithms."
+      ],
+      "check_id": "QC08",
+      "question": "In a hybrid variational algorithm, which part adjusts the circuit parameters?",
+      "type": "MCQ",
+      "options": "A. The quantum processor  B. A classical optimiser  C. The measurement  D. The oracle",
+      "correct_answer": "B",
+      "explanation": "The classical optimiser updates θ based on measured energies.",
+      "why_other_answers_are_wrong": "A. It prepares states and measures. C. Measurement only returns outcomes. D. Oracles belong to search algorithms."
+    }
+  ],
+  "assessments": [
+    {
+      "id": "Q01",
+      "assessment_id": "Q01",
+      "difficulty": "Easy",
+      "question": "Which of these is threatened by Shor's algorithm?",
+      "options": [
+        "AES-256",
+        "RSA",
+        "SHA-256 hashing",
+        "One-time pad"
+      ],
+      "correct_option_index": 1,
+      "explanation": "RSA relies on factoring, which Shor's algorithm solves efficiently.",
+      "option_feedback": [
+        "Incorrect. Symmetric ciphers like AES-256 face Grover's quadratic speedup, leaving 128 bits of security.",
+        "Correct! Shor's algorithm solves integer factoring in polynomial time, breaking RSA public-key encryption.",
+        "Incorrect. Cryptographic hash functions like SHA-256 are symmetric primitives resistant to Shor's algorithm.",
+        "Incorrect. The one-time pad is mathematically unbreakable regardless of computing power."
+      ],
+      "concept_links": [
+        "C02"
+      ]
+    },
+    {
+      "id": "Q02",
+      "assessment_id": "Q02",
+      "difficulty": "Easy",
+      "question": "What does PQC stand for, and does it run on classical computers?",
+      "options": [
+        "Post-quantum cryptography; yes, it runs on classical computers and is designed to resist quantum attacks.",
+        "Public Quantum Channel; no, it requires specialized cryogenic quantum hardware.",
+        "Photon Quantum Communication; yes, it runs only over optical quantum fiber links.",
+        "Post-Quantum Computing; no, it is a proprietary operating system for quantum processors."
+      ],
+      "correct_option_index": 0,
+      "explanation": "Post-quantum cryptography refers to classical mathematical algorithms engineered to withstand attacks by future quantum computers.",
+      "option_feedback": [
+        "Correct! PQC refers to classical mathematical algorithms engineered to withstand attacks by future quantum computers.",
+        "Incorrect. PQC algorithms are purely software-based and deploy on existing standard classical hardware.",
+        "Incorrect. Quantum key distribution (QKD) uses photon links, but PQC is ordinary classical mathematics.",
+        "Incorrect. PQC is cryptographic software, not a quantum operating system."
+      ],
+      "concept_links": [
+        "C03"
+      ]
+    },
+    {
+      "id": "Q03",
+      "assessment_id": "Q03",
+      "difficulty": "Easy",
+      "question": "Which application area is considered the most natural fit for quantum computers?",
+      "options": [
+        "Everyday web browsing and database queries",
+        "High-frame-rate 3D video rendering",
+        "Simulating quantum systems such as molecules",
+        "General office spreadsheet calculations"
+      ],
+      "correct_option_index": 2,
+      "explanation": "Quantum systems have 2ⁿ-sized state spaces that quantum computers can hold natively.",
+      "option_feedback": [
+        "Incorrect. Classical computers are far superior and more cost-effective for general web tasks.",
+        "Incorrect. Classical GPUs are purpose-built for graphics processing, where quantum offers no benefit.",
+        "Correct! Quantum systems naturally possess exponentially large state spaces that map directly onto qubits.",
+        "Incorrect. Routine arithmetic and business logic are best handled by classical processors."
+      ],
+      "concept_links": [
+        "C04"
+      ]
+    },
+    {
+      "id": "Q04",
+      "assessment_id": "Q04",
+      "difficulty": "Medium",
+      "question": "Calculate the approximate number of Grover iterations for N = 10,000 (one marked item).",
+      "options": [
+        "About 5,000 iterations (half of N)",
+        "About 10,000 iterations (full search)",
+        "About 10 iterations (log2(N))",
+        "About 79 iterations (since (π/4)×√10,000 ≈ 78.5)"
+      ],
+      "correct_option_index": 3,
+      "explanation": "Iterations ≈ (π/4)√N.",
+      "option_feedback": [
+        "Incorrect. 5,000 is the average number of steps for a classical linear search.",
+        "Incorrect. 10,000 is worst-case classical brute-force checking.",
+        "Incorrect. Grover's algorithm provides a quadratic speedup (√N), not an exponential one (log N).",
+        "Correct! Grover's algorithm requires approximately (π/4)√N steps, which for N=10,000 evaluates to ≈ 78.5."
+      ],
+      "concept_links": [
+        "C05"
+      ]
+    },
+    {
+      "id": "Q05",
+      "assessment_id": "Q05",
+      "difficulty": "Medium",
+      "question": "Explain why AES-256 is considered to remain secure against a large quantum computer while RSA-2048 is not.",
+      "options": [
+        "AES-256 uses quantum entanglement keys that self-destruct when intercepted.",
+        "RSA relies on factoring which Shor solves in polynomial time, while AES faces only Grover's quadratic speedup leaving 128 bits of security.",
+        "Shor's algorithm can break AES-256 instantly, but RSA keys are too long to fit into memory.",
+        "Neither cipher is secure; modern quantum processors can break both in seconds."
+      ],
+      "correct_option_index": 1,
+      "explanation": "RSA relies on factoring, which Shor's algorithm solves in polynomial time. AES-256 can only be attacked by Grover's brute-force search, which reduces its effective strength to about 128 bits — still very large.",
+      "option_feedback": [
+        "Incorrect. AES is a standard classical symmetric block cipher that does not use entanglement.",
+        "Correct! Shor's algorithm provides an exponential speedup against RSA, but Grover only halves AES key length.",
+        "Incorrect. Shor's algorithm targets factoring and discrete logs, having no effect on symmetric ciphers like AES.",
+        "Incorrect. Existing quantum computers are far too small and noisy to break either cipher today."
+      ],
+      "concept_links": [
+        "C02"
+      ]
+    },
+    {
+      "id": "Q06",
+      "assessment_id": "Q06",
+      "difficulty": "Medium",
+      "question": "A molecule model needs 40 orbitals. How much memory does storing the full state vector need at 16 bytes per amplitude, and how many qubits would a quantum computer need (roughly one per orbital)?",
+      "options": [
+        "16 TiB (2⁴⁴ bytes) and about 40 qubits",
+        "640 bytes and about 40 qubits",
+        "16 GiB (2³⁴ bytes) and about 80 qubits",
+        "16 PiB (2⁵⁴ bytes) and about 400 qubits"
+      ],
+      "correct_option_index": 0,
+      "explanation": "Amplitudes grow as 2ⁿ; qubits grow linearly. 2⁴⁰ × 16 bytes = 2⁴⁴ bytes = 16 TiB; about 40 qubits.",
+      "option_feedback": [
+        "Correct! 2⁴⁰ amplitudes × 16 bytes = 2⁴⁴ bytes = 16 TiB, requiring roughly 40 physical or logical qubits.",
+        "Incorrect. Statevector memory scales exponentially with the number of orbitals as 2ⁿ, not linearly (40 × 16).",
+        "Incorrect. 2⁴⁴ bytes corresponds to 16 TiB, not 16 GiB, and 40 orbitals map to ~40 qubits.",
+        "Incorrect. 16 PiB would correspond to 50 qubits rather than 40."
+      ],
+      "concept_links": [
+        "C04"
+      ]
+    },
+    {
+      "id": "Q07",
+      "assessment_id": "Q07",
+      "difficulty": "Medium",
+      "question": "For the toy VQE problem with H = Z and |ψ(θ)⟩ = cos(θ/2)|0⟩ + sin(θ/2)|1⟩, what is E(π/2)?",
+      "options": [
+        "1",
+        "-1",
+        "0",
+        "1/2"
+      ],
+      "correct_option_index": 2,
+      "explanation": "E(θ) = cos θ, so E(π/2) = 0. Equivalently P(0) = P(1) = 1/2, so E = 0.5 − 0.5 = 0.",
+      "option_feedback": [
+        "Incorrect. E(0) = 1, which represents the ground state of the Hamiltonian.",
+        "Incorrect. E(π) = -1, which is the maximum energy eigenstate.",
+        "Correct! E(θ) = cos(θ), so E(π/2) = cos(π/2) = 0 (equal probabilities of measuring +1 and -1).",
+        "Incorrect. E(π/3) = 0.5, but at θ = π/2 the expectation value is exactly 0."
+      ],
+      "concept_links": [
+        "C04"
+      ]
+    },
+    {
+      "id": "Q08",
+      "assessment_id": "Q08",
+      "difficulty": "Medium",
+      "question": "A company claims \"our quantum algorithm trains machine-learning models exponentially faster.\" List three questions you would ask before believing this.",
+      "options": [
+        "How is classical data loaded, how is readout performed, and what classical baseline was used?",
+        "Which color is the quantum computer, how cold is the room, and how many fans does it have?",
+        "Can it run without electricity, does it predict lottery numbers, and is it patented?",
+        "Does it prove P=NP, can it travel back in time, and will it replace all human programmers?"
+      ],
+      "correct_option_index": 0,
+      "explanation": "Key questions include data input overhead, output sampling cost, and classical dequantized baselines.",
+      "option_feedback": [
+        "Correct! Data input overhead, output sampling limits, and dequantized classical baselines often eliminate claimed QML speedups.",
+        "Incorrect. Physical casing color and fan count are irrelevant to computational complexity claims.",
+        "Incorrect. These questions do not address algorithmic validity, input encoding, or benchmark rigor.",
+        "Incorrect. These are sensationalized sci-fi concepts unrelated to evaluating quantum machine learning benchmarks."
+      ],
+      "concept_links": [
+        "C06"
+      ]
+    },
+    {
+      "id": "Q09",
+      "assessment_id": "Q09",
+      "difficulty": "Hard",
+      "question": "A quantum-advantage experiment is announced. What two further pieces of evidence would make the claim more convincing, and why can such claims later weaken?",
+      "options": [
+        "Proof that qubits reached absolute zero and ran without code; claims weaken when hardware warms up.",
+        "Independent output verification and testing against the best classical baselines; claims weaken as classical algorithms improve.",
+        "Demonstration of faster-than-light signaling and time reversal; claims weaken due to cosmic radiation.",
+        "Confirmation that no classical computers were used in the facility; claims weaken when classical electricity is measured."
+      ],
+      "correct_option_index": 1,
+      "explanation": "Verification that quantum output is correct, and comparison against best available classical methods. Claims can weaken because classical algorithms improve.",
+      "option_feedback": [
+        "Incorrect. Absolute zero is physically unattainable, and quantum circuits always require software control.",
+        "Correct! Advantage claims require verified sampling results and must withstand classical tensor-network optimizations.",
+        "Incorrect. Faster-than-light signaling is impossible under physical law and is never part of an advantage claim.",
+        "Incorrect. Hybrid quantum-classical computing is standard; classical computers control all quantum processors."
+      ],
+      "concept_links": [
+        "C08"
+      ]
+    },
+    {
+      "id": "Q10",
+      "assessment_id": "Q10",
+      "difficulty": "Hard",
+      "question": "A student argues: \"Grover lets quantum computers solve NP-complete problems, so logistics optimization will be exponentially faster.\" Identify the errors and give a correct statement.",
+      "options": [
+        "Grover only works on classical bits, so logistics optimization cannot be modeled on quantum computers.",
+        "NP-complete problems can already be solved in zero seconds by any quantum circuit.",
+        "Grover provides an exponential speedup, but logistics problems do not have search spaces.",
+        "Grover gives only a quadratic speedup leaving exponential time for NP-complete search, and practical heuristics already outperform unstructured search."
+      ],
+      "correct_option_index": 3,
+      "explanation": "Grover gives only a quadratic speedup, which still leaves exponential time for exponentially large search spaces; no efficient quantum algorithm for NP-complete problems is known.",
+      "option_feedback": [
+        "Incorrect. Grover's algorithm is a quantum algorithm utilizing superposition and amplitude amplification.",
+        "Incorrect. No quantum algorithm is known that can solve NP-complete problems in polynomial time.",
+        "Incorrect. Grover provides a quadratic speedup (√N), not an exponential one.",
+        "Correct! A quadratic speedup reduces 2ⁿ to 2^(n/2), which remains exponential, and does not beat domain-specific classical heuristics."
+      ],
+      "concept_links": [
+        "C05"
+      ]
+    }
+  ]
+}

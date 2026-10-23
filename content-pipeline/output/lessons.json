@@ -1,0 +1,4305 @@
+[
+  {
+    "id": "lesson_c_classical_bit",
+    "concept_id": "c_classical_bit",
+    "title": "Classical Bits & Digital Logic",
+    "tier": 1,
+    "tier_name": "Foundations",
+    "difficulty": "beginner",
+    "prerequisites": [],
+    "bloom_level": "Remember",
+    "linked_lesson_id": "M1.L1",
+    "summary": "Binary switch states (0 or 1), macroscopic voltages, and Boolean operations.",
+    "objectives": [
+      "Distinguish binary classical logic from quantum state spaces.",
+      "Understand the deterministic nature of bit states and reversible operations.",
+      "Identify the computational basis states |0⟩ and |1⟩ as orthogonal vectors."
+    ],
+    "intuition": "Think of a classical bit like a light switch on the wall: it is either completely ON (1) or completely OFF (0). There is no middle ground, and looking at the switch reveals its state with 100% certainty without changing it.",
+    "math": "A classical bit takes values in the discrete Galois field GF(2) = {0, 1}. State transitions are governed by deterministic Boolean logic gates: NOT(x) = 1 - x, AND(x, y) = x · y, and XOR(x, y) = x ⊕ y.",
+    "try_it_challenge": {
+      "prompt": "Construct a circuit on wire q[0] that flips the initial ground state |0⟩ into state |1⟩ and measures it.",
+      "qubits": 1,
+      "steps": 2,
+      "allowed_gates": [
+        "X",
+        "M"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "M"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "1": 1
+      },
+      "target_state": "1"
+    },
+    "worked_example": {
+      "title": "Bit Flip Operation",
+      "description": "Initialize qubit in state |0⟩, apply an X gate, then observe outcome.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "X"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0,
+        "1": 1
+      }
+    },
+    "common_mistakes": [
+      "Assuming a qubit at rest starts in an undefined state rather than ground state |0⟩.",
+      "Confusing reversible quantum NOT (Pauli-X) with irreversible classical resets."
+    ],
+    "quiz": [
+      {
+        "question": "How does a classical bit fundamentally differ from a quantum qubit before measurement?",
+        "options": [
+          "A classical bit is strictly 0 or 1, while a qubit can exist in a linear combination of both basis states.",
+          "A classical bit has continuous amplitude phases, while a qubit only has discrete voltages.",
+          "A classical bit cannot be read without destroying its information.",
+          "A classical bit requires cryogenic cooling to preserve its binary state."
+        ],
+        "answer_index": 0,
+        "explanation": "Classical bits are deterministic binary values (0 or 1), whereas qubits occupy a 2D complex Hilbert space allowing superpositions α|0⟩ + β|1⟩.",
+        "misconception_distractors": {
+          "1": "M_SUPERPOSITION_IS_PROBABILISTIC"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information (10th Anniversary Ed.)",
+          "chapter": "Chapter 1.1: Global Perspectives - Classical Computers",
+          "pages": "pp. 1-12",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Learning",
+          "module": "Basics of Quantum Information: Single Systems",
+          "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.182Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_qubit_superposition",
+    "concept_id": "c_qubit_superposition",
+    "title": "Qubits & Quantum Superposition",
+    "tier": 1,
+    "tier_name": "Foundations",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_classical_bit"
+    ],
+    "bloom_level": "Understand",
+    "linked_lesson_id": "M1.L2",
+    "summary": "State vectors as linear combinations: |ψ⟩ = α|0⟩ + β|1⟩ with normalization |α|² + |β|² = 1.",
+    "objectives": [
+      "Represent arbitrary single-qubit states as normalized complex linear combinations.",
+      "Calculate state probabilities using squared amplitudes |α|² and |β|².",
+      "Recognize the symmetric superposition state |+⟩ = (|0⟩ + |1⟩)/√2."
+    ],
+    "intuition": "Instead of being just ON or OFF, imagine a sphere where the North Pole is |0⟩ and the South Pole is |1⟩. Superposition means the qubit can point along the equator, holding simultaneous amplitudes for both states until measured.",
+    "math": "A qubit state vector |ψ⟩ ∈ ℂ² is represented as |ψ⟩ = α|0⟩ + β|1⟩ = [α, β]^T, where α, β ∈ ℂ and the normalization condition requires ⟨ψ|ψ⟩ = |α|² + |β|² = 1.",
+    "try_it_challenge": {
+      "prompt": "Put wire q[0] into an equal superposition |+⟩ such that measuring it yields a 50% chance of 0 and a 50% chance of 1.",
+      "qubits": 1,
+      "steps": 1,
+      "allowed_gates": [
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      },
+      "target_state": "+"
+    },
+    "worked_example": {
+      "title": "Creating Equal Superposition |+⟩",
+      "description": "Apply Hadamard H gate to ground state |0⟩.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Believing superposition means the qubit is fluctuating rapidly between 0 and 1 like a spinning coin.",
+      "Forgetting that amplitudes α and β are complex numbers, not real probabilities."
+    ],
+    "quiz": [
+      {
+        "question": "If a qubit is in state |ψ⟩ = (1/√2)|0⟩ + (1/√2)|1⟩, what is the probability of measuring state |0⟩?",
+        "options": [
+          "50% (1/2)",
+          "70.7% (1/√2)",
+          "100% because |0⟩ is the ground state",
+          "25% (1/4)"
+        ],
+        "answer_index": 0,
+        "explanation": "By the Born rule, P(0) = |α|² = |1/√2|² = 1/2 = 50%.",
+        "misconception_distractors": {
+          "1": "M_SUPERPOSITION_IS_PROBABILISTIC"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.2: Quantum Bits",
+          "pages": "pp. 13-17",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Kaye, Laflamme, Mosca",
+          "book": "An Introduction to Quantum Computing",
+          "chapter": "Chapter 2: Introduction to Quantum Mechanics - Qubits and Superposition",
+          "pages": "pp. 15-28",
+          "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_dirac_braket",
+    "concept_id": "c_dirac_braket",
+    "title": "Dirac Bra-Ket Notation & Statevectors",
+    "tier": 1,
+    "tier_name": "Foundations",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_qubit_superposition"
+    ],
+    "bloom_level": "Understand",
+    "linked_lesson_id": "M1.L2",
+    "summary": "Column vectors |ψ⟩ (kets), conjugate duals ⟨ψ| (bras), and inner products ⟨φ|ψ⟩.",
+    "objectives": [
+      "Master ket column vectors and bra row vectors.",
+      "Calculate inner products to determine state overlap and orthogonality.",
+      "Express outer products |ψ⟩⟨ψ| as projection operators."
+    ],
+    "intuition": "Dirac notation is the mathematical shorthand of quantum physics. A ket |ψ⟩ is a column vector representing the state of a system, while a bra ⟨ψ| is its conjugate transpose row vector.",
+    "math": "Ket: |0⟩ = [1, 0]^T, |1⟩ = [0, 1]^T. Bra: ⟨ψ| = |ψ⟩^† = [α*, β*]. Inner product (bracket): ⟨φ|ψ⟩ = a*α + b*β. Orthogonality: ⟨0|1⟩ = 0, ⟨0|0⟩ = 1.",
+    "try_it_challenge": {
+      "prompt": "Prepare orthogonal state |-⟩ = (|0⟩ - |1⟩)/√2 on wire q[0] by applying X then H.",
+      "qubits": 1,
+      "steps": 2,
+      "allowed_gates": [
+        "X",
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      },
+      "target_state": "-"
+    },
+    "worked_example": {
+      "title": "Preparation of Ket |-⟩",
+      "description": "Start at |0⟩, flip with X to |1⟩, then rotate with H to obtain |-⟩ = (|0⟩ - |1⟩)/√2.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": -0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Confusing the order in the inner product ⟨φ|ψ⟩ vs the outer product |φ⟩⟨ψ|.",
+      "Omitting the complex conjugate when taking the Hermitian adjoint."
+    ],
+    "quiz": [
+      {
+        "question": "What is the inner product ⟨+| -⟩ between orthogonal states |+⟩ and |-⟩?",
+        "options": [
+          "0",
+          "1",
+          "1/√2",
+          "-1"
+        ],
+        "answer_index": 0,
+        "explanation": "Since |+⟩ and |-⟩ form an orthonormal basis, their inner product ⟨+|-⟩ = (1/2)(⟨0|0⟩ - ⟨0|1⟩ + ⟨1|0⟩ - ⟨1|1⟩) = (1/2)(1 - 0 + 0 - 1) = 0.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "John Preskill",
+          "title": "Quantum Information and Computation Lecture Notes",
+          "chapter": "Chapter 2: Foundations of Quantum Theory - Hilbert Spaces and Dirac Notation",
+          "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+        },
+        {
+          "source": "Qiskit Textbook",
+          "chapter": "The Atoms of Computation: Representing Qubit States",
+          "link": "https://learn.qiskit.org/course/introduction/the-atoms-of-computation"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_bloch_sphere",
+    "concept_id": "c_bloch_sphere",
+    "title": "3D Bloch Sphere Geometry",
+    "tier": 1,
+    "tier_name": "Foundations",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_dirac_braket"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M1.L3",
+    "summary": "Mapping pure single-qubit states to angles (θ, φ) on the unit sphere S²: |ψ⟩ = cos(θ/2)|0⟩ + e^(iφ)sin(θ/2)|1⟩.",
+    "objectives": [
+      "Map spherical angles (θ, φ) to quantum state amplitudes.",
+      "Identify the 6 cardinal Bloch states: |0⟩, |1⟩, |+⟩, |-⟩, |+i⟩, |-i⟩.",
+      "Interpret the Bloch vector length r as a measure of state purity."
+    ],
+    "intuition": "The Bloch Sphere maps every pure single-qubit state to a point on the surface of a 3D unit ball. The North pole is |0⟩, South pole is |1⟩, and the equator hosts superpositions like |+⟩ and |i⟩.",
+    "math": "|ψ⟩ = cos(θ/2)|0⟩ + e^(iφ)sin(θ/2)|1⟩ with spherical coordinates: x = sin(θ)cos(φ), y = sin(θ)sin(φ), z = cos(θ). The Bloch radius r = √(x²+y²+z²) equals 1 for pure states.",
+    "try_it_challenge": {
+      "prompt": "Rotate the Bloch vector from the North Pole (θ = 0°) to the positive X-axis (|+) at θ = 90°, φ = 0°.",
+      "qubits": 1,
+      "steps": 1,
+      "allowed_gates": [
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      },
+      "target_bloch": {
+        "x": 1,
+        "y": 0,
+        "z": 0,
+        "r": 1
+      }
+    },
+    "worked_example": {
+      "title": "Bloch Equatorial Alignment",
+      "description": "Apply H to ground state to position vector at x = 1, y = 0, z = 0.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Confusing orthogonal physical angles in space (90°) with orthogonal quantum states (180° on Bloch sphere).",
+      "Assuming multi-qubit entangled states have independent points on the sphere surface."
+    ],
+    "quiz": [
+      {
+        "question": "Why do orthogonal quantum states |0⟩ and |1⟩ point in opposite directions (180° apart) on the Bloch sphere?",
+        "options": [
+          "Because the Bloch angle parameter is θ/2, mapping a 180° physical sphere angle to a 90° Hilbert space inner product zero.",
+          "Because |1⟩ is simply -|0⟩ in Hilbert space.",
+          "Because the sphere represents classical charge polarities.",
+          "Because measurement rotates the vector by 180° automatically."
+        ],
+        "answer_index": 0,
+        "explanation": "The state is parametrized by cos(θ/2) and sin(θ/2). When θ = π (180° opposite poles), the states have zero overlap ⟨0|1⟩ = 0.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.2: Bloch Sphere Representation",
+          "pages": "pp. 15-16",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Learning",
+          "module": "Basics of Quantum Information: The Bloch Sphere",
+          "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems#the-bloch-sphere"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_born_rule",
+    "concept_id": "c_born_rule",
+    "title": "Born Rule & Projective Measurement",
+    "tier": 1,
+    "tier_name": "Foundations",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_bloch_sphere"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M2.L1",
+    "summary": "Measurement collapse onto eigenstates |0⟩ and |1⟩ with probability P(x) = |⟨x|ψ⟩|².",
+    "objectives": [
+      "Calculate measurement outcome probabilities using P(x) = |α_x|².",
+      "Understand wave function collapse upon projective measurement.",
+      "Simulate Monte Carlo shot sampling across repeated runs."
+    ],
+    "intuition": "The Born Rule is the bridge between the hidden quantum world of complex amplitudes and the real world of experimental clicks in a detector: probability is amplitude squared.",
+    "math": "For measurement operator M_m = |m⟩⟨m|, probability P(m) = ⟨ψ|M_m^† M_m|ψ⟩ = |⟨m|ψ⟩|². Post-measurement state collapses to |ψ'⟩ = M_m|ψ⟩ / √P(m).",
+    "try_it_challenge": {
+      "prompt": "Create a state with 100% deterministic probability of measuring |0⟩ using an initial H followed by another H gate.",
+      "qubits": 1,
+      "steps": 2,
+      "allowed_gates": [
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 1,
+        "1": 0
+      }
+    },
+    "worked_example": {
+      "title": "Hadamard Reversibility & Born Collapse",
+      "description": "H · H = I. Applying two successive Hadamards restores the pure state |0⟩ with P(0) = 1.0.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 1,
+        "1": 0
+      }
+    },
+    "common_mistakes": [
+      "Adding probabilities instead of amplitudes when calculating wave interference.",
+      "Believing measurement can be reversed by a unitary gate once the state has collapsed."
+    ],
+    "quiz": [
+      {
+        "question": "If state |ψ⟩ = (1/2)|0⟩ + (√3/2)|1⟩, what is the probability of measuring 1?",
+        "options": [
+          "75% (3/4)",
+          "50% (1/2)",
+          "86.6% (√3/2)",
+          "25% (1/4)"
+        ],
+        "answer_index": 0,
+        "explanation": "By the Born rule, P(1) = |β|² = |√3/2|² = 3/4 = 0.75 = 75%.",
+        "misconception_distractors": {
+          "2": "M_SUPERPOSITION_IS_PROBABILISTIC"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 2.2: The Postulates of Quantum Mechanics (Postulate 3: Measurement)",
+          "pages": "pp. 84-90",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "John Preskill",
+          "title": "Quantum Information and Computation Lecture Notes",
+          "chapter": "Chapter 2.1: Quantum States and Measurements",
+          "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_pauli_x",
+    "concept_id": "c_pauli_x",
+    "title": "Pauli-X Gate (Bit-Flip & NOT)",
+    "tier": 2,
+    "tier_name": "Single Qubit",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_bloch_sphere"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M2.L2",
+    "summary": "π rotation around the Bloch X-axis: X|0⟩ = |1⟩, X|1⟩ = |0⟩.",
+    "objectives": [
+      "Apply the Pauli-X operator to computational basis states.",
+      "Recognize X as a 180° rotation around the Bloch X-axis (R_x(π)).",
+      "Verify that X is unitary and Hermitian: X^† = X, X² = I."
+    ],
+    "intuition": "The Pauli-X gate is the quantum NOT gate. Geometrically, it rotates the Bloch vector by 180° around the X-axis, swapping the North and South poles.",
+    "math": "Matrix: X = [[0, 1], [1, 0]]. Operations: X|0⟩ = |1⟩, X|1⟩ = |0⟩. Eigenstates: X|+⟩ = |+⟩ (eigenvalue +1), X|-⟩ = -|-⟩ (eigenvalue -1).",
+    "try_it_challenge": {
+      "prompt": "Apply an X gate on q[0] to transform ground state |0⟩ into excited state |1⟩.",
+      "qubits": 1,
+      "steps": 1,
+      "allowed_gates": [
+        "X"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "X"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "1": 1
+      }
+    },
+    "worked_example": {
+      "title": "Pauli-X Inversion",
+      "description": "X|0⟩ produces statevector [0, 1]^T.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "X"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0,
+        "1": 1
+      }
+    },
+    "common_mistakes": [
+      "Expecting X to flip the relative phase between |0⟩ and |1⟩.",
+      "Thinking X alters the |+⟩ state (it is an eigenstate of X with eigenvalue +1)."
+    ],
+    "quiz": [
+      {
+        "question": "What is the result of applying Pauli-X to the superposition state |+⟩ = (|0⟩ + |1⟩)/√2?",
+        "options": [
+          "|+⟩ (the state is completely unchanged)",
+          "|-⟩ = (|0⟩ - |1⟩)/√2",
+          "|0⟩",
+          "|1⟩"
+        ],
+        "answer_index": 0,
+        "explanation": "X|+⟩ = (X|0⟩ + X|1⟩)/√2 = (|1⟩ + |0⟩)/√2 = |+⟩. The state |+⟩ is an eigenstate of Pauli-X with eigenvalue +1.",
+        "misconception_distractors": {
+          "1": "M_CNOT_ALWAYS_CHANGES_TARGET"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.3: Single Qubit Operations",
+          "pages": "pp. 17-21",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Learning",
+          "module": "Fundamentals of Quantum Algorithms: Quantum Gates",
+          "link": "https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/quantum-circuits"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_pauli_z",
+    "concept_id": "c_pauli_z",
+    "title": "Pauli-Z Gate (Phase-Flip)",
+    "tier": 2,
+    "tier_name": "Single Qubit",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_pauli_x"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M2.L2",
+    "summary": "π rotation around the Bloch Z-axis: Z|0⟩ = |0⟩, Z|1⟩ = -|1⟩.",
+    "objectives": [
+      "Understand phase flipping without altering computational basis probabilities.",
+      "Map Z rotations to 180° rotations around the Bloch Z-axis.",
+      "Verify the transformation of |+⟩ into |-⟩ via Z."
+    ],
+    "intuition": "The Pauli-Z gate is the quantum phase-flip gate. It leaves state |0⟩ completely untouched, but multiplies state |1⟩ by a negative sign (-1).",
+    "math": "Matrix: Z = [[1, 0], [0, -1]]. Operations: Z|0⟩ = |0⟩, Z|1⟩ = -|1⟩. On superposition: Z|+⟩ = |-⟩, Z|-⟩ = |+⟩. Z is Hermitian and unitary (Z² = I).",
+    "try_it_challenge": {
+      "prompt": "Create state |+⟩ using H, then apply Z to flip it into state |-⟩ on wire q[0].",
+      "qubits": 1,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "Z"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "Z"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      },
+      "target_state": "-"
+    },
+    "worked_example": {
+      "title": "Hadamard-Z Phase Flip",
+      "description": "H produces (|0⟩+|1⟩)/√2; Z transforms it into (|0⟩-|1⟩)/√2.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "Z"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": -0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Assuming Z changes measurement probabilities in the standard computational basis (it does not!).",
+      "Confusing bit flip (X) with phase flip (Z)."
+    ],
+    "quiz": [
+      {
+        "question": "If you measure state |+⟩ vs state |-⟩ in the standard computational basis { |0⟩, |1⟩ }, what difference will you see in the probabilities?",
+        "options": [
+          "None: both yield 50% |0⟩ and 50% |1⟩.",
+          "|+⟩ gives 100% |0⟩ while |-⟩ gives 100% |1⟩.",
+          "|-⟩ gives negative probability values.",
+          "|+⟩ gives 75% |0⟩ while |-⟩ gives 25% |0⟩."
+        ],
+        "answer_index": 0,
+        "explanation": "Both |+⟩ and |-⟩ have amplitudes with magnitude |±1/√2| = 1/√2, so both yield |1/√2|² = 50% for 0 and 1. The difference is solely in the relative phase.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.3: Pauli Operators",
+          "pages": "pp. 17-20",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_pauli_y",
+    "concept_id": "c_pauli_y",
+    "title": "Pauli-Y Gate (Complex Phase Flip)",
+    "tier": 2,
+    "tier_name": "Single Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_pauli_z"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M2.L2",
+    "summary": "π rotation around the Bloch Y-axis: Y|0⟩ = i|1⟩, Y|1⟩ = -i|0⟩.",
+    "objectives": [
+      "Compute transformations involving complex phase factors.",
+      "Understand rotations about the Y-axis on the Bloch Sphere.",
+      "Verify the algebraic identity Y = iXZ."
+    ],
+    "intuition": "The Pauli-Y gate combines both a bit flip and a phase flip with an imaginary unit i. Geometrically, it rotates the Bloch sphere by 180° around the Y-axis.",
+    "math": "Matrix: Y = [[0, -i], [i, 0]]. Operations: Y|0⟩ = i|1⟩, Y|1⟩ = -i|0⟩. Eigenstates: |+i⟩ = (|0⟩ + i|1⟩)/√2, |-i⟩ = (|0⟩ - i|1⟩)/√2.",
+    "try_it_challenge": {
+      "prompt": "Apply a Pauli-Y gate on wire q[0] and observe the resulting statevector amplitudes.",
+      "qubits": 1,
+      "steps": 1,
+      "allowed_gates": [
+        "Y"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "Y"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "1": 1
+      }
+    },
+    "worked_example": {
+      "title": "Pauli-Y Application",
+      "description": "Y|0⟩ yields state [0, i]^T with imaginary amplitude on |1⟩.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "Y"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 1
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0,
+        "1": 1
+      }
+    },
+    "common_mistakes": [
+      "Forgetting the imaginary unit i in the state amplitude.",
+      "Assuming imaginary amplitudes lead to complex-valued measurement probabilities."
+    ],
+    "quiz": [
+      {
+        "question": "What is the probability of measuring |1⟩ after applying gate Y to ground state |0⟩?",
+        "options": [
+          "100% (since |i|² = 1)",
+          "-100% (since i² = -1)",
+          "50%",
+          "0%"
+        ],
+        "answer_index": 0,
+        "explanation": "Y|0⟩ = i|1⟩. By the Born rule, P(1) = |i|² = (0)² + (1)² = 1.0 = 100%.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Kaye, Laflamme, Mosca",
+          "book": "An Introduction to Quantum Computing",
+          "chapter": "Chapter 4.1: Single-Qubit Gates",
+          "pages": "pp. 51-56",
+          "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.183Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_hadamard",
+    "concept_id": "c_hadamard",
+    "title": "Hadamard Gate (Basis Rotation)",
+    "tier": 2,
+    "tier_name": "Single Qubit",
+    "difficulty": "beginner",
+    "prerequisites": [
+      "c_pauli_x"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M1.L2",
+    "summary": "Transforms computational basis to superposition basis: H|0⟩ = |+⟩, H|1⟩ = |-⟩.",
+    "objectives": [
+      "Create balanced superpositions from computational eigenstates.",
+      "Rotate between the Z-basis {|0⟩, |1⟩} and the X-basis {|+⟩, |-⟩}.",
+      "Use H to build quantum interference loops."
+    ],
+    "intuition": "The Hadamard gate is the cornerstone of quantum speedup. It takes certainty into maximum uncertainty (superposition), and superpositions back into certainty.",
+    "math": "Matrix: H = (1/√2)[[1, 1], [1, -1]]. Operations: H|0⟩ = |+⟩, H|1⟩ = |-⟩, H|+⟩ = |0⟩, H|-⟩ = |1⟩. Notice H² = I.",
+    "try_it_challenge": {
+      "prompt": "Transform ground state |0⟩ into state |+⟩ using a single gate on wire q[0].",
+      "qubits": 1,
+      "steps": 1,
+      "allowed_gates": [
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Hadamard Superposition",
+      "description": "H|0⟩ creates (|0⟩+|1⟩)/√2.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Believing a Hadamard gate creates entanglement on a single qubit.",
+      "Thinking H is irreversible or random."
+    ],
+    "quiz": [
+      {
+        "question": "Can applying a Hadamard gate to a single qubit ever generate entanglement?",
+        "options": [
+          "No, Hadamard is a single-qubit unitary gate; entanglement strictly requires 2 or more qubits.",
+          "Yes, because it splits the state into 50% 0 and 50% 1.",
+          "Yes, if applied twice in sequence.",
+          "Only if measured immediately afterward."
+        ],
+        "answer_index": 0,
+        "explanation": "Entanglement is a correlation across composite quantum systems. Single-qubit operations can only rotate an individual state in its own 2D Hilbert space.",
+        "misconception_distractors": {
+          "1": "M_HADAMARD_ENTANGLES"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.3: The Hadamard Gate and Superposition",
+          "pages": "pp. 18-19",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Textbook",
+          "chapter": "Single Qubit Gates: The X, Y, Z, and H Gates",
+          "link": "https://learn.qiskit.org/course/introduction/single-qubit-gates"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.184Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_phase_rotations",
+    "concept_id": "c_phase_rotations",
+    "title": "Phase Rotations (S, T, Rz)",
+    "tier": 2,
+    "tier_name": "Single Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_pauli_z"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M2.L2",
+    "summary": "Z-axis rotations: S (π/2 phase) and T (π/4 phase) gates adding relative phase shifts.",
+    "objectives": [
+      "Understand fractional phase gates in the Clifford+T universal gate set.",
+      "Perform precision Z-axis rotations on equatorial superposition states.",
+      "Distinguish phase angles 45° (T), 90° (S), and 180° (Z)."
+    ],
+    "intuition": "Phase gates (S and T) are fine-tuning rotations around the Z-axis of the Bloch sphere. S gives a quarter turn (90°), and T gives an eighth turn (45°).",
+    "math": "S = [[1, 0], [0, i]] (relative phase π/2). T = [[1, 0], [0, e^(iπ/4)]] (relative phase π/4). Identity: S = T², Z = S².",
+    "try_it_challenge": {
+      "prompt": "Apply H then S on wire q[0] to create equatorial state |+i⟩ = (|0⟩ + i|1⟩)/√2.",
+      "qubits": 1,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "S"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "S"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Preparation of |+i⟩",
+      "description": "H creates |+⟩; S adds i to the |1⟩ component, placing the state at the positive Y-axis of the Bloch sphere.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "S"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0.70710678
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Confusing the T gate (π/4 rotation) with time evolution or Pauli-T (no such gate).",
+      "Believing S changes the magnitude of measurement probabilities."
+    ],
+    "quiz": [
+      {
+        "question": "How many T gates applied in sequence on the same qubit equal one Pauli-Z gate?",
+        "options": [
+          "4 (since (e^(iπ/4))⁴ = e^(iπ) = -1)",
+          "2",
+          "8",
+          "1"
+        ],
+        "answer_index": 0,
+        "explanation": "Each T gate imparts a π/4 relative phase. Therefore, 4 consecutive T gates give a phase of 4 · (π/4) = π, which is precisely the phase shift of the Pauli-Z gate.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 4.2: Single Qubit Operations and Arbitrary Rotations",
+          "pages": "pp. 174-177",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.184Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_global_vs_relative_phase",
+    "concept_id": "c_global_vs_relative_phase",
+    "title": "Global vs. Relative Phase",
+    "tier": 2,
+    "tier_name": "Single Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_phase_rotations"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M2.L2",
+    "summary": "Why e^(iθ)|ψ⟩ is physically undetectable while |0⟩ + e^(iθ)|1⟩ alters interference.",
+    "objectives": [
+      "Differentiate unobservable global phase from observable relative phase.",
+      "Calculate why global phases cancel out in expectation values.",
+      "Design interference circuits that translate relative phase into probability shifts."
+    ],
+    "intuition": "Imagine two clocks: if both clocks run fast by 2 hours, their difference is zero (global phase). But if only one clock runs fast by 2 hours, they fall out of sync, creating measurable interference (relative phase).",
+    "math": "Global phase: e^(iθ)|ψ⟩. For any measurement projector M, ⟨e^(iθ)ψ|M|e^(iθ)ψ⟩ = e^(-iθ)e^(iθ)⟨ψ|M|ψ⟩ = ⟨ψ|M|ψ⟩. Relative phase: |ψ⟩ = (|0⟩ + e^(iθ)|1⟩)/√2 produces distinct interference when measured in the X-basis.",
+    "try_it_challenge": {
+      "prompt": "Construct a circuit on q[0] that creates relative phase using H-Z-H, demonstrating constructive interference into state |1⟩.",
+      "qubits": 1,
+      "steps": 3,
+      "allowed_gates": [
+        "H",
+        "Z"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "Z"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "1": 1
+      }
+    },
+    "worked_example": {
+      "title": "Relative Phase to Probability",
+      "description": "H|0⟩ = |+⟩. Z|+⟩ = |-⟩. H|-⟩ = |1⟩. The relative phase flips the final measurement from 0 to 1.",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "Z"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0,
+        "1": 1
+      }
+    },
+    "common_mistakes": [
+      "Assuming multiplying an entire state by -1 produces a physically different state.",
+      "Overlooking that relative phase is the engine behind all quantum algorithm speedups."
+    ],
+    "quiz": [
+      {
+        "question": "Why can an experimentalist never detect a global phase e^(iθ) applied to a quantum system?",
+        "options": [
+          "Because the complex conjugate in the Born rule |e^(iθ)α|² = e^(-iθ)e^(iθ)|α|² = 1 · |α|² causes the phase to vanish completely.",
+          "Because quantum detectors can only measure real numbers.",
+          "Because global phase only exists in classical simulation.",
+          "Because measurement resets the global phase to zero."
+        ],
+        "answer_index": 0,
+        "explanation": "By the Born rule, physical probabilities depend on the modulus squared of amplitudes, canceling out any overall global phase factor.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 2.2: Global vs. Relative Phase",
+          "pages": "pp. 93-94",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Learning",
+          "module": "Basics of Quantum Information: Relative Phase",
+          "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.184Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_tensor_product",
+    "concept_id": "c_tensor_product",
+    "title": "Tensor Products & Composite Systems",
+    "tier": 3,
+    "tier_name": "Multi-Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_dirac_braket"
+    ],
+    "bloom_level": "Understand",
+    "linked_lesson_id": "M3.L1",
+    "summary": "Kronecker product construction: 2^n dimensional Hilbert space for n qubits.",
+    "objectives": [
+      "Construct composite statevectors using the Kronecker tensor product.",
+      "Understand exponential scaling of multi-qubit Hilbert space (2^n).",
+      "Express product states in standard computational basis {|00⟩, |01⟩, |10⟩, |11⟩}."
+    ],
+    "intuition": "When combining classical systems, resources add (2 bits + 2 bits = 4 bits). When combining quantum systems, state spaces multiply via the tensor product: 2 qubits span 4 dimensions, 3 qubits span 8, and 30 qubits span over 1 billion.",
+    "math": "|ψ⟩ = |q_0⟩ ⊗ |q_1⟩. Dimensions: dim(H_A ⊗ H_B) = dim(H_A) · dim(H_B) = 2 · 2 = 4. Kronecker product: [a, b]^T ⊗ [c, d]^T = [ac, ad, bc, bd]^T.",
+    "try_it_challenge": {
+      "prompt": "Prepare 2-qubit product state |10⟩ by applying an X gate on wire q[0] and leaving q[1] at |0⟩.",
+      "qubits": 2,
+      "steps": 1,
+      "allowed_gates": [
+        "X"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "X"
+          },
+          null
+        ]
+      ],
+      "target_probabilities": {
+        "10": 1
+      }
+    },
+    "worked_example": {
+      "title": "2-Qubit Product State",
+      "description": "X on wire 0 gives |1⟩ ⊗ |0⟩ = |10⟩.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "X"
+          },
+          null
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 1,
+        "11": 0,
+        "00": 0,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Assuming a 3-qubit statevector has 6 complex numbers instead of 2³ = 8.",
+      "Confusing qubit indexing order (little-endian vs big-endian conventions)."
+    ],
+    "quiz": [
+      {
+        "question": "How many complex amplitudes are required to describe the statevector of a 4-qubit quantum system?",
+        "options": [
+          "16 (2⁴)",
+          "8",
+          "4",
+          "32"
+        ],
+        "answer_index": 0,
+        "explanation": "Each added qubit doubles the Hilbert space dimension: 2⁴ = 16 complex amplitudes.",
+        "misconception_distractors": {
+          "1": "M_SUPERPOSITION_IS_PROBABILISTIC"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 2.1.7: Tensor Products",
+          "pages": "pp. 71-76",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "John Preskill",
+          "title": "Quantum Information and Computation Lecture Notes",
+          "chapter": "Chapter 2.3: Bipartite and Multipartite Systems",
+          "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.184Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_multi_qubit_basis",
+    "concept_id": "c_multi_qubit_basis",
+    "title": "Multi-Qubit Computational Basis",
+    "tier": 3,
+    "tier_name": "Multi-Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_tensor_product"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M3.L1",
+    "summary": "Representing product states |00⟩, |01⟩, |10⟩, |11⟩ and 4-amplitude statevectors.",
+    "objectives": [
+      "Represent all 2^n basis states using Dirac ket notation.",
+      "Map multi-qubit amplitudes to joint measurement probabilities.",
+      "Identify non-entangled product states."
+    ],
+    "intuition": "In a 2-qubit computer, there are four possible binary outcomes: 00, 01, 10, and 11. The quantum computer holds all four outcomes in a single 4-dimensional state vector.",
+    "math": "|ψ⟩ = c_00|00⟩ + c_01|01⟩ + c_10|10⟩ + c_11|11⟩, with normalization Σ |c_ij|² = 1.",
+    "try_it_challenge": {
+      "prompt": "Put both qubits into equal superposition so that all four basis states {|00⟩, |01⟩, |10⟩, |11⟩} have an equal 25% probability.",
+      "qubits": 2,
+      "steps": 1,
+      "allowed_gates": [
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "worked_example": {
+      "title": "Dual Hadamard Superposition",
+      "description": "Applying H to both q[0] and q[1] yields uniform superposition (1/2)(|00⟩+|01⟩+|10⟩+|11⟩).",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "common_mistakes": [
+      "Assuming applying H to both qubits creates entanglement.",
+      "Misinterpreting 25% equal probabilities as an entangled Bell state."
+    ],
+    "quiz": [
+      {
+        "question": "Is the state (1/2)(|00⟩ + |01⟩ + |10⟩ + |11⟩) entangled?",
+        "options": [
+          "No, it factors cleanly into product state |+⟩ ⊗ |+⟩ = [(|0⟩+|1⟩)/√2] ⊗ [(|0⟩+|1⟩)/√2].",
+          "Yes, because all four states have equal probability.",
+          "Yes, whenever two qubits are in superposition they are entangled.",
+          "Only if measured simultaneously."
+        ],
+        "answer_index": 0,
+        "explanation": "The state is separable: (1/√2)(|0⟩+|1⟩) ⊗ (1/√2)(|0⟩+|1⟩) = (1/2)(|00⟩+|01⟩+|10⟩+|11⟩). Separable states are not entangled.",
+        "misconception_distractors": {
+          "1": "M_HADAMARD_ENTANGLES"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Kaye, Laflamme, Mosca",
+          "book": "An Introduction to Quantum Computing",
+          "chapter": "Chapter 3: Multiple Qubits and Quantum State Space",
+          "pages": "pp. 37-48",
+          "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.185Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_cnot_gate",
+    "concept_id": "c_cnot_gate",
+    "title": "Controlled-NOT (CX) Gate",
+    "tier": 3,
+    "tier_name": "Multi-Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_multi_qubit_basis"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M3.L2",
+    "summary": "Two-qubit conditional bit flip: CX|c, t⟩ = |c, c ⊕ t⟩. Fundamental entangling gate.",
+    "objectives": [
+      "Execute conditional bit flips across multi-qubit registers.",
+      "Construct reversible XOR operations in quantum circuits.",
+      "Combine Hadamard and CNOT to create entangled Bell pairs."
+    ],
+    "intuition": "The Controlled-NOT (CNOT) gate is the fundamental two-qubit logic gate. It acts like an IF-THEN switch: IF the control qubit is 1, THEN it flips the target qubit with a NOT gate.",
+    "math": "CNOT|c, t⟩ = |c, c ⊕ t⟩. Matrix: [[1,0,0,0], [0,1,0,0], [0,0,0,1], [0,0,1,0]]. When control is in superposition, CNOT generates quantum entanglement.",
+    "try_it_challenge": {
+      "prompt": "Construct a circuit where control q[0] is set to |1⟩ with X, and CNOT flips target q[1] from |0⟩ to |1⟩.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "X",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "X"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 1
+      }
+    },
+    "worked_example": {
+      "title": "CNOT Conditional Bit-Flip",
+      "description": "X on q[0] sets control to 1; CNOT(0, 1) flips q[1], yielding deterministic state |11⟩.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "X"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 1,
+        "00": 0,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Assuming CNOT flips the target even when the control qubit is |0⟩.",
+      "Thinking CNOT is irreversible like classical fanout."
+    ],
+    "quiz": [
+      {
+        "question": "What is the output of CNOT when the input state is |01⟩ (control = 0, target = 1)?",
+        "options": [
+          "|01⟩ (target is not flipped because control is 0)",
+          "|00⟩",
+          "|11⟩",
+          "|10⟩"
+        ],
+        "answer_index": 0,
+        "explanation": "Since the control qubit is |0⟩, the CNOT gate does nothing to the target, leaving the state as |01⟩.",
+        "misconception_distractors": {
+          "1": "M_CNOT_ALWAYS_CHANGES_TARGET"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.3.2: Multiple Qubit Gates - Controlled-NOT",
+          "pages": "pp. 20-22",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Learning",
+          "module": "Basics of Quantum Information: Multiple Systems",
+          "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/multiple-systems"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.186Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_controlled_phase",
+    "concept_id": "c_controlled_phase",
+    "title": "Controlled Phase (CZ) & SWAP Gates",
+    "tier": 3,
+    "tier_name": "Multi-Qubit",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_cnot_gate"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M3.L2",
+    "summary": "Symmetric two-qubit CZ gate (|11⟩ ➔ -|11⟩) and state interchange via 3 CNOTs.",
+    "objectives": [
+      "Understand symmetric multi-qubit phase operations.",
+      "Convert between CNOT and CZ using Hadamard gate conjugation.",
+      "Implement the 3-CNOT quantum SWAP circuit."
+    ],
+    "intuition": "The Controlled-Z (CZ) gate is completely symmetric: it imparts a phase flip of -1 if and only if BOTH qubits are in state |1⟩ (|11⟩ ➔ -|11⟩).",
+    "math": "CZ = diag(1, 1, 1, -1). Identity: CZ = (I ⊗ H) · CNOT · (I ⊗ H). SWAP gate swaps states of two qubits and can be built from 3 CNOT gates: SWAP = CNOT_01 · CNOT_10 · CNOT_01.",
+    "try_it_challenge": {
+      "prompt": "Apply H to both qubits, then apply a CZ gate to create state (|00⟩+|01⟩+|10⟩-|11⟩)/2.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CZ"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "worked_example": {
+      "title": "CZ Symmetric Entanglement",
+      "description": "CZ flips the relative phase of basis state |11⟩ only.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": -0.5,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "common_mistakes": [
+      "Believing the control and target roles matter in a CZ gate (CZ is mathematically symmetric).",
+      "Using 2 CNOTs instead of 3 when implementing a SWAP gate."
+    ],
+    "quiz": [
+      {
+        "question": "Why is the Controlled-Z (CZ) gate called symmetric between its two qubits?",
+        "options": [
+          "Because flipping the roles of control and target produces the exact same diagonal unitary matrix diag(1, 1, 1, -1).",
+          "Because it swaps the qubits automatically.",
+          "Because it creates identical 50-50 measurement probabilities for all gates.",
+          "Because it requires zero physical energy to execute."
+        ],
+        "answer_index": 0,
+        "explanation": "CZ only acts when both qubits are |1⟩, multiplying |11⟩ by -1. Since |11⟩ has both qubits at 1, swapping control and target has no mathematical effect.",
+        "misconception_distractors": {
+          "1": "M_CNOT_ALWAYS_CHANGES_TARGET"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 4.3: Controlled Operations",
+          "pages": "pp. 177-185",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.186Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_bell_states",
+    "concept_id": "c_bell_states",
+    "title": "Bell States & Maximal Entanglement",
+    "tier": 4,
+    "tier_name": "Entanglement",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_hadamard",
+      "c_cnot_gate"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M3.L3",
+    "summary": "The 4 maximally entangled orthonormal EPR pairs: |Φ±⟩ = (|00⟩ ± |11⟩)/√2, |Ψ±⟩ = (|01⟩ ± |10⟩)/√2.",
+    "objectives": [
+      "Synthesize all four canonical Bell states using H, X, Z, and CNOT.",
+      "Analyze non-local correlations and violation of Bell's inequalities.",
+      "Verify that individual subsystems are maximally mixed with purity r = 0."
+    ],
+    "intuition": "Bell states are the four maximally entangled 2-qubit states. In a Bell state, neither qubit has a definite state on its own—the system is defined entirely by correlations between the two qubits.",
+    "math": "|Φ±⟩ = (|00⟩ ± |11⟩)/√2, |Ψ±⟩ = (|01⟩ ± |10⟩)/√2. Circuit: H on q[0], followed by CNOT(0, 1). Subsystem reduced density matrix: ρ_A = Tr_B(|Φ+⟩⟨Φ+|) = (1/2)I.",
+    "try_it_challenge": {
+      "prompt": "Construct the canonical Bell state |Φ+⟩ = (|00⟩ + |11⟩)/√2 on wires q[0] and q[1].",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 0.5,
+        "00": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Bell State |Φ+⟩ Creation",
+      "description": "H on q[0] creates (|0⟩+|1⟩)|0⟩/√2; CNOT entangles to (|00⟩+|11⟩)/√2.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 0.5,
+        "00": 0.5,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Believing measuring one entangled qubit sends a faster-than-light signal to the other.",
+      "Trying to plot an individual pure Bloch vector for a qubit in a Bell pair."
+    ],
+    "quiz": [
+      {
+        "question": "In the Bell state |Φ+⟩ = (|00⟩ + |11⟩)/√2, what is the probability of measuring qubit 1 as |1⟩ if qubit 0 is measured to be |1⟩?",
+        "options": [
+          "100% (perfect correlation)",
+          "50%",
+          "0%",
+          "70.7%"
+        ],
+        "answer_index": 0,
+        "explanation": "Because only |00⟩ and |11⟩ have non-zero amplitudes, observing qubit 0 in state |1⟩ immediately collapses the joint system to |11⟩, meaning qubit 1 is guaranteed to be |1⟩.",
+        "misconception_distractors": {
+          "1": "M_FASTER_THAN_LIGHT_ENTANGLEMENT"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.3.6: Bell States and Quantum Teleportation",
+          "pages": "pp. 25-28",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "John Preskill",
+          "title": "Quantum Information and Computation Lecture Notes",
+          "chapter": "Chapter 4: Quantum Entanglement and Bell Inequalities",
+          "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.186Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": "Dr. S. Ramanathan, IISc (Quantum Algorithms Lab)",
+        "reviewed_at": "2026-09-15T10:30:00Z",
+        "institution": "Indian Institute of Science (IISc Bengaluru)"
+      }
+    }
+  },
+  {
+    "id": "lesson_c_density_matrix",
+    "concept_id": "c_density_matrix",
+    "title": "Density Operator & Mixed States",
+    "tier": 4,
+    "tier_name": "Entanglement",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_bell_states"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M3.L3",
+    "summary": "Ensemble formalism: ρ = Σ p_i |ψ_i⟩⟨ψ_i|. Distinguishing pure (Tr(ρ²)=1) vs mixed states (Tr(ρ²)<1).",
+    "objectives": [
+      "Construct density matrices for pure and mixed quantum states.",
+      "Calculate state purity P = Tr(ρ²) to diagnose decoherence.",
+      "Express measurement probabilities as Tr(M ρ)."
+    ],
+    "intuition": "A statevector |ψ⟩ only works when we are 100% sure the system is pure and isolated. In the real world of thermal noise or entanglement, we need the density matrix ρ to describe statistical mixtures.",
+    "math": "ρ = Σ p_i |ψ_i⟩⟨ψ_i|. Properties: Tr(ρ) = 1, ρ = ρ^†, ρ ≥ 0. Pure state criterion: Tr(ρ²) = 1. Mixed state criterion: Tr(ρ²) < 1.",
+    "try_it_challenge": {
+      "prompt": "Construct a Bell circuit to observe why entangled subsystems must be represented as mixed density matrices.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 0.5,
+        "00": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Pure State Density Matrix",
+      "description": "For Bell state |Φ+⟩, the full 4x4 density matrix has Tr(ρ²) = 1, but subsystem has Tr(ρ_A²) = 0.5.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 0.5,
+        "00": 0.5,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Confusing a coherent quantum superposition with an incoherent statistical mixture.",
+      "Assuming Tr(ρ²) can exceed 1."
+    ],
+    "quiz": [
+      {
+        "question": "How can one mathematically prove whether a given density operator ρ represents a pure state or a mixed state?",
+        "options": [
+          "Compute Tr(ρ²): if Tr(ρ²) = 1 it is pure; if Tr(ρ²) < 1 it is a mixed state.",
+          "Check if all eigenvalues are negative.",
+          "Check if the determinant is zero.",
+          "Measure the physical temperature of the circuit."
+        ],
+        "answer_index": 0,
+        "explanation": "Purity is defined as Tr(ρ²). For pure states ρ² = ρ so Tr(ρ²) = Tr(ρ) = 1. For mixed states Tr(ρ²) < 1, reaching 1/d for maximally mixed states.",
+        "misconception_distractors": {
+          "1": "M_MIXED_STATE_BLOCH_SURFACE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 2.4: The Density Operator",
+          "pages": "pp. 98-105",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "John Preskill",
+          "title": "Quantum Information and Computation Lecture Notes",
+          "chapter": "Chapter 2.2: Density Operators and Pure vs Mixed States",
+          "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.186Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_partial_trace",
+    "concept_id": "c_partial_trace",
+    "title": "Partial Trace & Subsystem Purity",
+    "tier": 4,
+    "tier_name": "Entanglement",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_density_matrix"
+    ],
+    "bloom_level": "Evaluate",
+    "linked_lesson_id": "M3.L3",
+    "summary": "Computing reduced state ρ_A = Tr_B(ρ). Entanglement causes subsystem purity to drop below 1 (r < 0.95).",
+    "objectives": [
+      "Compute reduced density matrices by tracing over external degrees of freedom.",
+      "Calculate subsystem Bloch radius r and purity percentage.",
+      "Detect entanglement via subsystem mixedness (r < 0.95)."
+    ],
+    "intuition": "When two qubits are entangled, you cannot look at one without ignoring the other. The partial trace mathematically 'averages out' the other qubit, revealing that the remaining qubit is in a noisy, mixed state.",
+    "math": "ρ_A = Tr_B(ρ_AB) = Σ_j (I ⊗ ⟨j|_B) ρ_AB (I ⊗ |j⟩_B). For maximally entangled Bell state, ρ_A = (1/2)|0⟩⟨0| + (1/2)|1⟩⟨1| = (1/2)I. Bloch radius r = √(x²+y²+z²) = 0.",
+    "try_it_challenge": {
+      "prompt": "Build a Bell pair and observe the Bloch visualizer trigger the Entangled warning (r < 0.95).",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 0.5,
+        "00": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Partial Trace Purity Drop",
+      "description": "Bell state |Φ+⟩ reduces to ρ_A = (1/2)I, causing Bloch vector to shrink to r = 0.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 0.5,
+        "00": 0.5,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Drawing an arrow on the sphere surface for an entangled qubit.",
+      "Assuming tracing out qubit B physically alters qubit A."
+    ],
+    "quiz": [
+      {
+        "question": "What happens to the individual Bloch vector of qubit 0 when it is maximally entangled with qubit 1?",
+        "options": [
+          "Its Bloch vector length r collapses to 0 (origin of the sphere) because its reduced state is maximally mixed.",
+          "It points straight up to the North Pole.",
+          "It spins continuously around the equator.",
+          "It disappears from 3D space entirely."
+        ],
+        "answer_index": 0,
+        "explanation": "In a maximally entangled state, the reduced density matrix is ρ_A = I/2. Its Bloch coordinates are (x=0, y=0, z=0), placing the vector at the center of the sphere (r=0).",
+        "misconception_distractors": {
+          "1": "M_MIXED_STATE_BLOCH_SURFACE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 2.4.2: The Reduced Density Operator and Partial Trace",
+          "pages": "pp. 105-111",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.186Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_ghz_w_states",
+    "concept_id": "c_ghz_w_states",
+    "title": "Multi-Party Entangled States (GHZ & W)",
+    "tier": 4,
+    "tier_name": "Entanglement",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_bell_states"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M3.L3",
+    "summary": "3-qubit entanglement: GHZ (|000⟩+|111⟩)/√2 (fragile) vs W (|001⟩+|010⟩+|100⟩)/√3 (robust).",
+    "objectives": [
+      "Construct multi-qubit GHZ states using cascaded CNOT gates.",
+      "Compare genuine tripartite entanglement structures.",
+      "Understand entanglement robustness against single-qubit loss."
+    ],
+    "intuition": "Beyond pairs, 3 qubits can be entangled in two completely different ways: the GHZ state (fragile all-or-nothing entanglement) and the W state (robust distributed entanglement).",
+    "math": "|GHZ⟩ = (|000⟩ + |111⟩)/√2. |W⟩ = (|001⟩ + |010⟩ + |100⟩)/√3. If one qubit of a GHZ state is lost, all entanglement is destroyed. If one qubit of a W state is lost, the remaining two stay entangled.",
+    "try_it_challenge": {
+      "prompt": "Construct a 3-qubit GHZ state (|000⟩ + |111⟩)/√2 on wires q[0], q[1], and q[2].",
+      "qubits": 3,
+      "steps": 3,
+      "allowed_gates": [
+        "H",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null,
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          },
+          null
+        ],
+        [
+          null,
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 2
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 1
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "111": 0.5,
+        "000": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "GHZ Tripartite Entanglement",
+      "description": "H on q0, then CNOT(0,1), then CNOT(1,2) spreads entanglement across all 3 qubits.",
+      "qubits": 3,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null,
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          },
+          null
+        ],
+        [
+          null,
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 2
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 1
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "111": 0.5,
+        "000": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Assuming GHZ and W states can be converted into each other using local operations and classical communication (LOCC).",
+      "Confusing 3-qubit product superpositions with tripartite entanglement."
+    ],
+    "quiz": [
+      {
+        "question": "What happens if one qubit of a 3-qubit GHZ state (|000⟩ + |111⟩)/√2 is traced out (lost)?",
+        "options": [
+          "The remaining two qubits completely lose their entanglement and become an unentangled mixed state.",
+          "The remaining two qubits become a pure Bell pair.",
+          "The entire system collapses into state |000⟩.",
+          "The state transforms into a W state."
+        ],
+        "answer_index": 0,
+        "explanation": "GHZ entanglement is fragile: tracing out any single qubit leaves the remaining two in an unentangled mixture (1/2)|00⟩⟨00| + (1/2)|11⟩⟨11| with zero concurrence.",
+        "misconception_distractors": {
+          "1": "M_MIXED_STATE_BLOCH_SURFACE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Greenberger, Horne, Zeilinger",
+          "title": "Going Beyond Bell's Theorem",
+          "journal": "Fundamental Questions in Quantum Theory, pp. 69-72 (1989)",
+          "link": "https://doi.org/10.1007/978-94-017-0849-4_10"
+        },
+        {
+          "source": "Dür, Vidal, Cirac",
+          "title": "Three qubits can be entangled in two inequivalent ways",
+          "journal": "Phys. Rev. A 62, 062314 (2000)",
+          "link": "https://doi.org/10.1103/PhysRevA.62.062314"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.187Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_no_cloning",
+    "concept_id": "c_no_cloning",
+    "title": "No-Cloning Theorem",
+    "tier": 4,
+    "tier_name": "Entanglement",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_tensor_product"
+    ],
+    "bloom_level": "Understand",
+    "linked_lesson_id": "M3.L1",
+    "summary": "Proof that no unitary operator U exists such that U|ψ⟩|0⟩ = |ψ⟩|ψ⟩ for all arbitrary |ψ⟩.",
+    "objectives": [
+      "Formulate the algebraic proof of the No-Cloning Theorem.",
+      "Understand why quantum information cannot be duplicated without destruction.",
+      "Explain the fundamental difference between quantum teleportation and classical copying."
+    ],
+    "intuition": "You can copy a file on your laptop millions of times with Ctrl+C / Ctrl+V. But in quantum physics, copying an unknown quantum state is strictly impossible by the laws of physics.",
+    "math": "Suppose U(|ψ⟩|0⟩) = |ψ⟩|ψ⟩ and U(|φ⟩|0⟩) = |φ⟩|φ⟩. Taking the inner product: ⟨ψ|φ⟩ = (⟨ψ|⟨0|)U^† U(|φ⟩|0⟩) = (⟨ψ|⟨ψ|)(|φ⟩|φ⟩) = (⟨φ|ψ⟩)². This implies ⟨φ|ψ⟩ must be 0 or 1, so U cannot clone arbitrary superpositions.",
+    "try_it_challenge": {
+      "prompt": "Verify that CNOT transfers computational basis values (|10⟩ ➔ |11⟩) but entangles superpositions rather than copying them.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 0.5,
+        "00": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "CNOT Superposition Entanglement vs Cloning",
+      "description": "Applying CNOT to |+⟩|0⟩ produces entangled state (|00⟩+|11⟩)/√2, NOT the clone |+⟩|+⟩ = (|00⟩+|01⟩+|10⟩+|11⟩)/2.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 0.5,
+        "00": 0.5,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Believing classical bits and quantum states follow the same copying rules.",
+      "Thinking quantum teleportation violates the no-cloning theorem (teleportation destroys the original)."
+    ],
+    "quiz": [
+      {
+        "question": "Why does quantum mechanics forbid a universal cloning machine U|ψ⟩|0⟩ = |ψ⟩|ψ⟩?",
+        "options": [
+          "Because unitary operators are strictly linear, and cloning is a non-linear operation.",
+          "Because quantum gates consume too much cryogenic energy.",
+          "Because measurement is always 100% destructive.",
+          "Because quantum states do not possess physical mass."
+        ],
+        "answer_index": 0,
+        "explanation": "Unitarity requires operators to be linear: U(α|ψ⟩ + β|φ⟩)|0⟩ = αU|ψ⟩|0⟩ + βU|φ⟩|0⟩ = α|ψ⟩|ψ⟩ + β|φ⟩|φ⟩, which does NOT equal the cloned state (α|ψ⟩ + β|φ⟩) ⊗ (α|ψ⟩ + β|φ⟩).",
+        "misconception_distractors": {
+          "2": "M_CLONING_POSSIBLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Wootters & Zurek",
+          "title": "A single quantum cannot be cloned",
+          "journal": "Nature 299, 802-803 (1982)",
+          "link": "https://doi.org/10.1038/299802a0"
+        },
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 12.1.1: The No-Cloning Theorem",
+          "pages": "pp. 532-534",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.187Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_quantum_interference",
+    "concept_id": "c_quantum_interference",
+    "title": "Quantum Interference",
+    "tier": 5,
+    "tier_name": "Algorithms",
+    "difficulty": "intermediate",
+    "prerequisites": [
+      "c_hadamard"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M4.L1",
+    "summary": "Constructive addition and destructive cancellation of complex probability amplitudes.",
+    "objectives": [
+      "Identify constructive and destructive amplitude cancellation.",
+      "Calculate the interference cross-term 2 Re(α* β).",
+      "Design Mach-Zehnder interferometer circuits using Hadamard gates."
+    ],
+    "intuition": "Quantum computers do not get their power by trying all possibilities at once; they get it by wave interference. Bad answers cancel out destructively (probabilities subtract to 0), while correct answers reinforce constructively.",
+    "math": "If paths A and B reach state |x⟩ with amplitudes α and β, final probability is P(x) = |α + β|² = |α|² + |β|² + 2 Re(α* β). The term 2 Re(α* β) is the quantum interference term.",
+    "try_it_challenge": {
+      "prompt": "Construct a complete interference loop (H-Z-H) on wire q[0] so destructive interference eliminates state |0⟩ and leaves 100% probability for |1⟩.",
+      "qubits": 1,
+      "steps": 3,
+      "allowed_gates": [
+        "H",
+        "Z"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "Z"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "1": 1
+      }
+    },
+    "worked_example": {
+      "title": "Destructive Interference Loop",
+      "description": "H generates superpositions; Z shifts phase by π; second H cancels amplitude for |0⟩ ((1-1)/2 = 0) and doubles amplitude for |1⟩ ((1+1)/2 = 1).",
+      "qubits": 1,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "Z"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0,
+        "1": 1
+      }
+    },
+    "common_mistakes": [
+      "Thinking quantum computers simply run classical programs in parallel (without interference, this gives no speedup).",
+      "Forgetting that destructive interference requires precise relative phase alignment."
+    ],
+    "quiz": [
+      {
+        "question": "In the circuit H ➔ Z ➔ H starting from |0⟩, what happens to the amplitude of state |0⟩ at the output?",
+        "options": [
+          "It cancels to zero through destructive interference: (1/2) - (1/2) = 0.",
+          "It adds constructively to 1.0.",
+          "It becomes imaginary.",
+          "It fluctuates randomly."
+        ],
+        "answer_index": 0,
+        "explanation": "The two computational paths to |0⟩ have amplitudes +1/2 and -1/2. They interfere destructively to produce zero total probability.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Feynman, Leighton, Sands",
+          "book": "The Feynman Lectures on Physics, Vol. III",
+          "chapter": "Chapter 1: Quantum Behavior - Double-Slit Probability Amplitudes",
+          "link": "https://www.feynmanlectures.caltech.edu/III_01.html"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.187Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_phase_kickback",
+    "concept_id": "c_phase_kickback",
+    "title": "Phase Kickback Mechanism",
+    "tier": 5,
+    "tier_name": "Algorithms",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_cnot_gate",
+      "c_quantum_interference"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M4.L1",
+    "summary": "Eigenvalue e^(iθ) of a target state |-⟩ kicks back into the control qubit: U|x⟩|-⟩ = (-1)^(f(x))|x⟩|-⟩.",
+    "objectives": [
+      "Explain the physical mechanism of phase kickback.",
+      "Prepare the auxiliary target qubit in eigenstate |-⟩.",
+      "Use phase kickback to encode function evaluation into control qubit phase."
+    ],
+    "intuition": "Phase kickback is one of quantum computing's most counterintuitive tricks: by preparing a target qubit in an eigenstate (like |-⟩), an entangling gate kicks the answer backward into the control qubit!",
+    "math": "For an oracle U_f|x⟩|y⟩ = |x⟩|y ⊕ f(x)⟩, set target to |-⟩ = (|0⟩-|1⟩)/√2: U_f|x⟩|-⟩ = (-1)^f(x)|x⟩|-⟩. The target is completely unchanged, but the control acquires the phase factor (-1)^f(x).",
+    "try_it_challenge": {
+      "prompt": "Prepare control q[0] in |+⟩ and target q[1] in |-⟩, apply CNOT, then verify phase kickback flipped the control from |+⟩ to |-⟩.",
+      "qubits": 2,
+      "steps": 3,
+      "allowed_gates": [
+        "H",
+        "X",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "X"
+          }
+        ],
+        [
+          null,
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "worked_example": {
+      "title": "Phase Kickback Execution",
+      "description": "Target qubit |-⟩ is an eigenstate of X with eigenvalue -1. CNOT kicks this -1 into the control qubit |1⟩ state, turning control |+⟩ into |-⟩.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "X"
+          }
+        ],
+        [
+          null,
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": -0.5,
+          "im": 0
+        },
+        {
+          "re": -0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "common_mistakes": [
+      "Assuming the target qubit must change its computational state in phase kickback.",
+      "Setting the target qubit to |+⟩ instead of |-⟩ (|+⟩ has eigenvalue +1, kicking back zero phase)."
+    ],
+    "quiz": [
+      {
+        "question": "Why must the auxiliary target qubit be prepared in state |-⟩ for phase kickback to occur with a CNOT gate?",
+        "options": [
+          "Because |-⟩ is an eigenstate of the Pauli-X gate with eigenvalue -1, kicking the factor (-1) back to the control.",
+          "Because |-⟩ prevents the target from losing coherence.",
+          "Because |0⟩ is not compatible with CNOT gates.",
+          "Because |-⟩ has higher electrical energy."
+        ],
+        "answer_index": 0,
+        "explanation": "X|-⟩ = -|-⟩. Since the conditional gate on the target is X, the eigenvalue is (-1). In the controlled operation, this factor multiplies the control's |1⟩ component.",
+        "misconception_distractors": {
+          "1": "M_PHASE_KICKBACK_CONTROL_UNCHANGED"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Cleve, Ekert, Macchiavello, Mosca",
+          "title": "Quantum algorithms revisited",
+          "journal": "Proc. R. Soc. Lond. A 454, 339-354 (1998)",
+          "link": "https://doi.org/10.1098/rspa.1998.0164"
+        },
+        {
+          "source": "Qiskit Textbook",
+          "chapter": "Quantum Algorithms: Phase Kickback",
+          "link": "https://learn.qiskit.org/course/ch-algorithms/phase-kickback"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.187Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_deutsch_algorithm",
+    "concept_id": "c_deutsch_algorithm",
+    "title": "Deutsch's Algorithm",
+    "tier": 5,
+    "tier_name": "Algorithms",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_phase_kickback"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M4.L1",
+    "summary": "Determines if f: {0,1} ➔ {0,1} is constant or balanced in 1 query using phase kickback.",
+    "objectives": [
+      "Implement the simplest quantum algorithm demonstrating speedup.",
+      "Classify boolean functions as constant or balanced in a single evaluation.",
+      "Trace the full Deutsch circuit statevector transformation."
+    ],
+    "intuition": "Deutsch's algorithm was the very first proof of quantum advantage. To find if a 1-bit coin has the same or different sides, classical computers must look twice. A quantum computer looks just ONCE.",
+    "math": "Function f: {0,1} ➔ {0,1}. Balanced if f(0) ≠ f(1); Constant if f(0) = f(1). Circuit: (H ⊗ H) on |0⟩|-⟩, apply U_f, apply H on input qubit. Output is |0⟩ if constant, |1⟩ if balanced.",
+    "try_it_challenge": {
+      "prompt": "Construct a Deutsch algorithm circuit testing a balanced function (f(x) = x via CNOT) and verify measuring wire q[0] gives |1⟩ with 100% certainty.",
+      "qubits": 2,
+      "steps": 4,
+      "allowed_gates": [
+        "H",
+        "X",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          null,
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          null
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.5,
+        "11": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Deutsch Balanced Oracle Evaluation",
+      "description": "With balanced oracle CNOT, input wire q[0] experiences phase kickback and is rotated by H into pure state |1⟩.",
+      "qubits": 2,
+      "circuit": [
+        [
+          null,
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          null
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": -0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.5,
+        "11": 0.5,
+        "00": 0,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Measuring the target qubit instead of the input register qubit.",
+      "Forgetting to apply the final Hadamard to convert the phase kickback into a measurable bit."
+    ],
+    "quiz": [
+      {
+        "question": "How many queries does Deutsch's algorithm require to determine if a 1-bit boolean function is constant or balanced?",
+        "options": [
+          "Exactly 1 quantum query (vs 2 classical queries)",
+          "2 queries",
+          "Log(2) queries",
+          "4 queries"
+        ],
+        "answer_index": 0,
+        "explanation": "Deutsch's algorithm evaluates the global property of the function (balanced vs constant) in a single quantum query by leveraging superposition and phase kickback.",
+        "misconception_distractors": {
+          "1": "M_SUPERPOSITION_IS_PROBABILISTIC"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "David Deutsch",
+          "title": "Quantum theory, the Church-Turing principle and the universal quantum computer",
+          "journal": "Proc. R. Soc. Lond. A 400, 97-117 (1985)",
+          "link": "https://doi.org/10.1098/rspa.1985.0070"
+        },
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.4.3: Deutsch's Algorithm",
+          "pages": "pp. 32-34",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.187Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_deutsch_jozsa",
+    "concept_id": "c_deutsch_jozsa",
+    "title": "Deutsch-Jozsa Algorithm",
+    "tier": 5,
+    "tier_name": "Algorithms",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_deutsch_algorithm"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M4.L1",
+    "summary": "Exponential quantum speedup determining if n-bit function is constant or balanced in a single evaluation.",
+    "objectives": [
+      "Scale phase kickback across multi-qubit input registers.",
+      "Understand exponential classical vs constant quantum query complexity.",
+      "Analyze global interference cancellation in balanced functions."
+    ],
+    "intuition": "Deutsch-Jozsa generalizes Deutsch's algorithm to n-bit inputs. Classically, to be sure an n-bit function is constant, you might have to check 2^(n-1) + 1 inputs. The quantum algorithm does it in exactly ONE query.",
+    "math": "For n input qubits: |0⟩^⊗n |1⟩ ➔ H^⊗(n+1) ➔ U_f ➔ (H^⊗n ⊗ I) ➔ Measure. Amplitude of |0⟩^⊗n is (1/2^n) Σ_x (-1)^f(x). If constant, amplitude is ±1 (100% P(0...0)); if balanced, amplitude cancels to exactly 0.",
+    "try_it_challenge": {
+      "prompt": "Execute Deutsch-Jozsa on 2 input qubits with a constant zero function (identity oracle) and verify output is 100% |00⟩ on input wires.",
+      "qubits": 3,
+      "steps": 3,
+      "allowed_gates": [
+        "H",
+        "X"
+      ],
+      "solution_circuit": [
+        [
+          null,
+          null,
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          },
+          null
+        ]
+      ],
+      "target_probabilities": {
+        "000": 0.5,
+        "001": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Deutsch-Jozsa Constant Function",
+      "description": "Constant oracle leaves input relative phases aligned; final H^⊗2 reconverges input to |00⟩ with 100% probability.",
+      "qubits": 3,
+      "circuit": [
+        [
+          null,
+          null,
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          },
+          null
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": -0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "000": 0.5,
+        "001": 0.5
+      }
+    },
+    "common_mistakes": [
+      "Assuming Deutsch-Jozsa reveals the specific values of f(x) (it only reveals the global category).",
+      "Forgetting to initialize the ancilla qubit to |-⟩."
+    ],
+    "quiz": [
+      {
+        "question": "If measuring the n input qubits of the Deutsch-Jozsa algorithm yields any bitstring other than 00...0, what does it prove about the function f?",
+        "options": [
+          "The function is guaranteed to be balanced.",
+          "The function is guaranteed to be constant.",
+          "The circuit has experienced decoherence noise.",
+          "The function is neither constant nor balanced."
+        ],
+        "answer_index": 0,
+        "explanation": "For a constant function, the probability of measuring 00...0 is exactly 100%. Therefore, measuring any non-zero bitstring confirms with certainty that the function is balanced.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Deutsch & Jozsa",
+          "title": "Rapid solution of problems by quantum computation",
+          "journal": "Proc. R. Soc. Lond. A 439, 553-558 (1992)",
+          "link": "https://doi.org/10.1098/rspa.1992.0167"
+        },
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 1.4.4: The Deutsch-Jozsa Algorithm",
+          "pages": "pp. 34-36",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.187Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_bernstein_vazirani",
+    "concept_id": "c_bernstein_vazirani",
+    "title": "Bernstein-Vazirani Algorithm",
+    "tier": 5,
+    "tier_name": "Algorithms",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_deutsch_jozsa"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M4.L2",
+    "summary": "Finds hidden n-bit string s where f(x) = s · x in exactly 1 quantum query vs n classical queries.",
+    "objectives": [
+      "Understand inner-product boolean function oracles.",
+      "Demonstrate single-query secret string reconstruction.",
+      "Contrast classical O(n) query complexity with quantum O(1)."
+    ],
+    "intuition": "Imagine a locked safe with an n-bit secret code s. A classical hacker needs n separate queries to find the code bit-by-bit. Bernstein-Vazirani cracks the entire n-bit code in a single quantum query.",
+    "math": "Function f(x) = s · x (mod 2). Circuit: H^⊗n on |0⟩^⊗n and H on |1⟩ ancilla, apply U_f, apply H^⊗n on input. State transforms directly to |s⟩ with probability 1.0.",
+    "try_it_challenge": {
+      "prompt": "Implement Bernstein-Vazirani for secret string s = '11' using CNOTs on 2 input qubits, and measure the input wires to reveal '11'.",
+      "qubits": 3,
+      "steps": 5,
+      "allowed_gates": [
+        "H",
+        "X",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          null,
+          null,
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 2
+          },
+          null,
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          null,
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 2
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 1
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          },
+          null
+        ]
+      ],
+      "target_probabilities": {
+        "110": 0.5,
+        "111": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Bernstein-Vazirani Secret String s = 1",
+      "description": "1-qubit secret string s = 1 via single CNOT. Final H on input qubit 0 gives 100% probability for |1⟩.",
+      "qubits": 2,
+      "circuit": [
+        [
+          null,
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          null
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": -0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.5,
+        "11": 0.5,
+        "00": 0,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Thinking Bernstein-Vazirani can find secret keys of non-linear functions.",
+      "Confusing the query complexity speedup with time complexity for circuit construction."
+    ],
+    "quiz": [
+      {
+        "question": "To find a secret 64-bit string s where f(x) = s · x, how many queries does Bernstein-Vazirani require compared to classical computers?",
+        "options": [
+          "1 query vs 64 classical queries",
+          "64 queries vs 2^64 classical queries",
+          "8 queries (√64)",
+          "32 queries"
+        ],
+        "answer_index": 0,
+        "explanation": "Classically, each query reveals at most 1 bit of information (querying basis vectors e_i), requiring 64 queries. Bernstein-Vazirani finds all 64 bits simultaneously in 1 query.",
+        "misconception_distractors": {
+          "2": "M_GROVER_EXPONENTIAL_SPEEDUP"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Bernstein & Vazirani",
+          "title": "Quantum complexity theory",
+          "journal": "SIAM Journal on Computing 26(5), 1411-1473 (1997)",
+          "link": "https://doi.org/10.1137/S0097539796300921"
+        },
+        {
+          "source": "Qiskit Textbook",
+          "chapter": "Quantum Algorithms: Bernstein-Vazirani Algorithm",
+          "link": "https://learn.qiskit.org/course/ch-algorithms/bernstein-vazirani-algorithm"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.188Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_simon_algorithm",
+    "concept_id": "c_simon_algorithm",
+    "title": "Simon's Algorithm (Periodicity)",
+    "tier": 5,
+    "tier_name": "Algorithms",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_bernstein_vazirani"
+    ],
+    "bloom_level": "Analyze",
+    "linked_lesson_id": "M4.L2",
+    "summary": "Exponential speedup finding hidden period s where f(x ⊕ s) = f(x); inspired Shor's factoring algorithm.",
+    "objectives": [
+      "Understand periodicity finding in binary vector spaces.",
+      "Trace the lineage from Simon's algorithm to Shor's algorithm.",
+      "Analyze exponential speedup: O(n) quantum queries vs Ω(2^(n/2)) classical queries."
+    ],
+    "intuition": "Simon's problem asks to find a hidden periodic pattern s in a black-box function. It was the historical stepping stone that inspired Peter Shor to discover his famous polynomial-time quantum factoring algorithm.",
+    "math": "Function f(x) = f(y) ⇔ x ⊕ y ∈ {0, s}. Simon's algorithm produces random vectors y such that s · y = 0 (mod 2). After O(n) independent measurements, s is found via Gaussian elimination.",
+    "try_it_challenge": {
+      "prompt": "Construct a 2-qubit Hadamard superposition state as the input stage of Simon's periodicity solver.",
+      "qubits": 2,
+      "steps": 1,
+      "allowed_gates": [
+        "H"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "worked_example": {
+      "title": "Simon Input Superposition",
+      "description": "Equal superposition over all 2^n inputs prepares register for oracle evaluation.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "common_mistakes": [
+      "Believing Simon's algorithm outputs the secret period s directly in one shot (it outputs orthogonal equations s · y = 0).",
+      "Overlooking the classical post-processing step (Gaussian elimination over GF(2))."
+    ],
+    "quiz": [
+      {
+        "question": "What famous quantum algorithm was directly inspired by Simon's period-finding technique?",
+        "options": [
+          "Shor's Factoring Algorithm (RSA breaking)",
+          "Grover's Search Algorithm",
+          "Variational Quantum Eigensolver (VQE)",
+          "Quantum Approximate Optimization (QAOA)"
+        ],
+        "answer_index": 0,
+        "explanation": "Peter Shor recognized that Simon's period-finding over the group (Z_2)^n could be generalized to period-finding over Z_N using the Quantum Fourier Transform, creating his polynomial-time factoring algorithm.",
+        "misconception_distractors": {
+          "1": "M_GROVER_EXPONENTIAL_SPEEDUP"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Daniel R. Simon",
+          "title": "On the power of quantum computation",
+          "journal": "SIAM Journal on Computing 26(5), 1474-1483 (1997)",
+          "link": "https://doi.org/10.1137/S0097539796298637"
+        },
+        {
+          "source": "Kaye, Laflamme, Mosca",
+          "book": "An Introduction to Quantum Computing",
+          "chapter": "Chapter 7.3: Simon's Algorithm",
+          "pages": "pp. 138-145",
+          "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.188Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_grover_oracle",
+    "concept_id": "c_grover_oracle",
+    "title": "Grover Oracle (Phase Inversion)",
+    "tier": 6,
+    "tier_name": "Search & Hardware",
+    "difficulty": "expert",
+    "prerequisites": [
+      "c_phase_kickback"
+    ],
+    "bloom_level": "Apply",
+    "linked_lesson_id": "M4.L3",
+    "summary": "Flips the phase of the marked search target state: O|x⟩ = (-1)^f(x)|x⟩.",
+    "objectives": [
+      "Construct phase-inversion oracles for marked target states.",
+      "Understand why phase marking does not alter computational basis probabilities before diffusion.",
+      "Implement multi-controlled phase gates for arbitrary target states."
+    ],
+    "intuition": "In a needle-in-a-haystack search, the oracle is the verifier that knows which item is the needle. It marks the target item by flipping its sign negative (-1), without changing any other item.",
+    "math": "O_w = I - 2|w⟩⟨w|. Operations: O_w|w⟩ = -|w⟩, O_w|x⟩ = |x⟩ for x ≠ w. For a 2-qubit search with target |11⟩, the oracle is a simple CZ gate: CZ|11⟩ = -|11⟩.",
+    "try_it_challenge": {
+      "prompt": "Construct an oracle marking target state |11⟩ on 2 qubits using a CZ gate after initializing equal superposition.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CZ"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "worked_example": {
+      "title": "Grover Oracle for |11⟩",
+      "description": "Equal superposition followed by CZ flips the amplitude of |11⟩ from +0.5 to -0.5.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": -0.5,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "common_mistakes": [
+      "Expecting the oracle alone to amplify the probability of the target state (it only flips the phase!).",
+      "Measuring immediately after the oracle (all 4 outcomes still have equal 25% probability)."
+    ],
+    "quiz": [
+      {
+        "question": "Why does measuring a quantum circuit immediately after applying Grover's oracle fail to find the marked item?",
+        "options": [
+          "Because the oracle only flips the relative phase of the marked state: |-0.5|² = |+0.5|² = 0.25, leaving all probabilities identical.",
+          "Because the oracle destroys the qubit state.",
+          "Because oracles are purely classical circuits.",
+          "Because Grover requires 100 iterations to activate."
+        ],
+        "answer_index": 0,
+        "explanation": "The oracle multiplies the marked item by -1. Because measurement probability is the squared magnitude |-α|² = |α|², the probabilities remain completely uniform until the diffusion operator is applied.",
+        "misconception_distractors": {
+          "1": "M_GLOBAL_PHASE_MEASURABLE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Lov K. Grover",
+          "title": "A fast quantum mechanical algorithm for database search",
+          "journal": "Proc. 28th Annual ACM Symposium on Theory of Computing (STOC), pp. 212-219 (1996)",
+          "link": "https://doi.org/10.1145/237814.237866"
+        },
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 6.1: The Quantum Search Algorithm - The Oracle",
+          "pages": "pp. 248-251",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.188Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_grover_diffusion",
+    "concept_id": "c_grover_diffusion",
+    "title": "Grover Diffusion Operator",
+    "tier": 6,
+    "tier_name": "Search & Hardware",
+    "difficulty": "expert",
+    "prerequisites": [
+      "c_grover_oracle"
+    ],
+    "bloom_level": "Evaluate",
+    "linked_lesson_id": "M4.L3",
+    "summary": "Inversion about the mean: D = 2|s⟩⟨s| - I. Amplifies marked item probability to ~100% in O(√N) steps.",
+    "objectives": [
+      "Implement the Grover diffusion operator (H ➔ X ➔ Multi-CZ ➔ X ➔ H).",
+      "Explain the geometric rotation in Hilbert space toward the target state.",
+      "Calculate optimal iteration count R ≈ (π/4)√N."
+    ],
+    "intuition": "The diffusion operator performs an 'inversion about the mean'. Since the marked item was flipped below the average amplitude, inverting about the mean boosts the target high above the rest while pulling down the non-targets.",
+    "math": "Diffusion operator: D = 2|s⟩⟨s| - I = H^⊗n (2|0⟩⟨0| - I) H^⊗n. For N = 4 (2 qubits), 1 iteration amplifies the target state probability to exactly 100%. For N = 8 (3 qubits), 1 iteration yields 78.125%.",
+    "try_it_challenge": {
+      "prompt": "Complete the full 2-qubit Grover search circuit for target |11⟩ and observe 100% amplification.",
+      "qubits": 2,
+      "steps": 7,
+      "allowed_gates": [
+        "H",
+        "X",
+        "CZ"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "X"
+          },
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "X"
+          },
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 1
+      }
+    },
+    "worked_example": {
+      "title": "2-Qubit Grover Search (Target |11⟩)",
+      "description": "Full Grover circuit: initialization, oracle (CZ), and diffusion operator amplifies target |11⟩ to 100%.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "X"
+          },
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "CZ",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CZ",
+            "role": "target",
+            "control": 0
+          }
+        ],
+        [
+          {
+            "type": "X"
+          },
+          {
+            "type": "X"
+          }
+        ],
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 1,
+        "00": 0,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Running Grover for too many iterations (the probability will overshoot and decrease).",
+      "Claiming Grover provides an exponential speedup (it is strictly quadratic O(√N))."
+    ],
+    "quiz": [
+      {
+        "question": "What is the speedup provided by Grover's search algorithm for an unstructured database of N items?",
+        "options": [
+          "Quadratic speedup: O(√N) quantum queries vs O(N) classical queries.",
+          "Exponential speedup: O(log N) vs O(N).",
+          "Constant time speedup: O(1).",
+          "Polynomial factor of 2x."
+        ],
+        "answer_index": 0,
+        "explanation": "Grover's algorithm provides a provably optimal quadratic speedup O(√N) for unstructured database search.",
+        "misconception_distractors": {
+          "1": "M_GROVER_EXPONENTIAL_SPEEDUP"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 6.1.2: The Diffusion Transform",
+          "pages": "pp. 252-255",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        },
+        {
+          "source": "Qiskit Learning",
+          "module": "Fundamentals of Quantum Algorithms: Grover's Algorithm",
+          "link": "https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/grovers-algorithm"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.188Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_qft",
+    "concept_id": "c_qft",
+    "title": "Quantum Fourier Transform (QFT)",
+    "tier": 6,
+    "tier_name": "Search & Hardware",
+    "difficulty": "expert",
+    "prerequisites": [
+      "c_controlled_phase"
+    ],
+    "bloom_level": "Evaluate",
+    "linked_lesson_id": "M4.L3",
+    "summary": "Quantum analog of Discrete Fourier Transform using Hadamard and controlled phase rotations.",
+    "objectives": [
+      "Map computational states to periodic phase distributions.",
+      "Implement the 2-qubit QFT circuit using H, CPHASE, and SWAP.",
+      "Understand QFT's central role in Phase Estimation and Shor's algorithm."
+    ],
+    "intuition": "The Quantum Fourier Transform (QFT) is the quantum equivalent of the Discrete Fourier Transform. It translates a quantum state from the computational basis into the frequency/phase basis.",
+    "math": "QFT|j⟩ = (1/√N) Σ_k=0^(N-1) e^(2πi j k / N) |k⟩. Built from Hadamard gates and controlled phase gates R_k = diag(1, e^(2πi / 2^k)).",
+    "try_it_challenge": {
+      "prompt": "Construct a 2-qubit QFT on ground state |00⟩ using H on both wires, producing uniform distribution across all 4 basis states.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "SWAP"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ],
+        [
+          {
+            "type": "SWAP",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "SWAP",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "worked_example": {
+      "title": "2-Qubit QFT on |00⟩",
+      "description": "QFT on ground state |00⟩ maps to equal superposition over all 4 basis states with zero relative phase.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          {
+            "type": "H"
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        },
+        {
+          "re": 0.5,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0.25,
+        "11": 0.25,
+        "00": 0.25,
+        "01": 0.25
+      }
+    },
+    "common_mistakes": [
+      "Forgetting the final qubit reversal SWAP gate in textbook QFT circuits.",
+      "Confusing the quantum Fourier transform with classical FFT (QFT cannot read out all Fourier components directly due to measurement collapse)."
+    ],
+    "quiz": [
+      {
+        "question": "Why can't an engineer use the Quantum Fourier Transform as a drop-in replacement for classical FFT on audio files?",
+        "options": [
+          "Because reading the Fourier amplitudes out of the quantum state requires measuring it, which collapses the state and only yields a single random sample.",
+          "Because QFT only works with numbers that are powers of 10.",
+          "Because QFT is slower than classical FFT.",
+          "Because QFT cannot process complex numbers."
+        ],
+        "answer_index": 0,
+        "explanation": "QFT transforms the state amplitudes in O(log² N) gates, but quantum measurement only returns one sample x with probability |c_x|², not all N Fourier coefficients at once.",
+        "misconception_distractors": {
+          "1": "M_MEASUREMENT_IS_PASSIVE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "Coppersmith, Don",
+          "title": "An approximate Fourier transform useful in quantum factoring",
+          "journal": "IBM Research Report RC19642 (1994)",
+          "link": "https://arxiv.org/abs/quant-ph/0201067"
+        },
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 5.1: The Quantum Fourier Transform",
+          "pages": "pp. 216-221",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.190Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  },
+  {
+    "id": "lesson_c_nisq_noise",
+    "concept_id": "c_nisq_noise",
+    "title": "NISQ Noise & Hardware Realities",
+    "tier": 6,
+    "tier_name": "Search & Hardware",
+    "difficulty": "advanced",
+    "prerequisites": [
+      "c_born_rule"
+    ],
+    "bloom_level": "Evaluate",
+    "linked_lesson_id": "M2.L1",
+    "summary": "Decoherence (T1/T2 relaxation), gate infidelities, depolarizing noise channels, and error mitigation.",
+    "objectives": [
+      "Understand physical noise mechanisms in NISQ quantum processors.",
+      "Analyze the depolarizing noise model and mixed state decoherence.",
+      "Explain the necessity of Quantum Error Mitigation and Fault Tolerance."
+    ],
+    "intuition": "Today's physical quantum computers are Noisy Intermediate-Scale Quantum (NISQ) devices. Stray thermal photons, cosmic rays, and imperfect microwave pulses cause qubits to lose their delicate superposition (decoherence).",
+    "math": "Depolarizing noise channel: E(ρ) = (1 - p)ρ + (p/3)(XρX + YρY + ZρZ). Relaxation time T1 measures energy loss (|1⟩ ➔ |0⟩); dephasing time T2 measures loss of relative phase.",
+    "try_it_challenge": {
+      "prompt": "Observe the effect of noise toggling in the Measurement Visualizer on a Bell state.",
+      "qubits": 2,
+      "steps": 2,
+      "allowed_gates": [
+        "H",
+        "CNOT"
+      ],
+      "solution_circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "target_probabilities": {
+        "11": 0.5,
+        "00": 0.5
+      }
+    },
+    "worked_example": {
+      "title": "Noisy Bell Measurement",
+      "description": "In an ideal circuit, only 00 and 11 appear. Under depolarizing noise, small leakage into 01 and 10 occurs.",
+      "qubits": 2,
+      "circuit": [
+        [
+          {
+            "type": "H"
+          },
+          null
+        ],
+        [
+          {
+            "type": "CNOT",
+            "role": "control",
+            "target": 1
+          },
+          {
+            "type": "CNOT",
+            "role": "target",
+            "control": 0
+          }
+        ]
+      ],
+      "expected_statevector": [
+        {
+          "re": 0.70710678,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.70710678,
+          "im": 0
+        }
+      ],
+      "expected_probabilities": {
+        "10": 0,
+        "11": 0.5,
+        "00": 0.5,
+        "01": 0
+      }
+    },
+    "common_mistakes": [
+      "Assuming modern quantum processors have zero gate error rates.",
+      "Confusing quantum error correction (requiring thousands of physical qubits per logical qubit) with NISQ error mitigation."
+    ],
+    "quiz": [
+      {
+        "question": "What physical metric characterizes the timescale over which a qubit loses its relative phase coherence due to environmental noise?",
+        "options": [
+          "T2 (dephasing time)",
+          "T1 (longitudinal relaxation time)",
+          "Planck's constant time",
+          "CPU clock cycle time"
+        ],
+        "answer_index": 0,
+        "explanation": "T1 is the energy relaxation time (|1⟩ decaying to ground state |0⟩), while T2 is the transverse dephasing time representing the decay of off-diagonal quantum superposition coherence.",
+        "misconception_distractors": {
+          "1": "M_MEASUREMENT_IS_PASSIVE"
+        }
+      }
+    ],
+    "resources": {
+      "citations": [
+        {
+          "source": "John Preskill",
+          "title": "Quantum Computing in the NISQ era and beyond",
+          "journal": "Quantum 2, 79 (2018)",
+          "link": "https://doi.org/10.22331/q-2018-08-06-79"
+        },
+        {
+          "source": "Nielsen & Chuang",
+          "book": "Quantum Computation and Quantum Information",
+          "chapter": "Chapter 8.3: Quantum Noise Channels (Depolarizing, Amplitude Damping)",
+          "pages": "pp. 373-386",
+          "link": "https://doi.org/10.1017/CBO9780511976667"
+        }
+      ]
+    },
+    "verification": {
+      "machine_verified": true,
+      "verified_at": "2026-09-30T09:10:29.190Z",
+      "fidelity": 1,
+      "expert_review": {
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "institution": null
+      }
+    }
+  }
+]

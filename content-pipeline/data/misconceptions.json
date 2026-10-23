@@ -1,0 +1,82 @@
+[
+  {
+    "id": "M_SUPERPOSITION_IS_PROBABILISTIC",
+    "title": "Superposition as Classical Hidden Variable / Coin in Flight",
+    "concept_id": "c_qubit_superposition",
+    "false_belief": "A qubit in superposition is already in state 0 or 1, we just don't know which until we look.",
+    "refutation": "A qubit in superposition has no definite classical value prior to measurement. The state |ψ⟩ = α|0⟩ + β|1⟩ is a linear combination of physical statevectors with measurable interference effects.",
+    "distractor_hint": "Remember: superposition is not incomplete information. The quantum state exhibits wave interference, which a classical coin with a hidden side cannot do."
+  },
+  {
+    "id": "M_HADAMARD_ENTANGLES",
+    "title": "Hadamard Creates Entanglement Alone",
+    "concept_id": "c_hadamard",
+    "false_belief": "Applying a Hadamard gate on a qubit creates entanglement.",
+    "refutation": "The Hadamard gate is a single-qubit unitary rotation. Entanglement is a multi-qubit property that strictly requires two-qubit entangling gates (like CNOT, CZ, or SWAP) acting across non-separable Hilbert spaces.",
+    "distractor_hint": "Single-qubit gates can never create entanglement! H on |0⟩ creates |+⟩ = (|0⟩+|1⟩)/√2, which is a pure single-qubit superposition, not entangled."
+  },
+  {
+    "id": "M_GLOBAL_PHASE_MEASURABLE",
+    "title": "Global Phase Has Observable Measurement Differences",
+    "concept_id": "c_global_vs_relative_phase",
+    "false_belief": "State -|0⟩ will yield different measurement probabilities than |0⟩.",
+    "refutation": "Global phase e^(iθ) drops out of Born rule calculations: |e^(iθ)α|² = |e^(iθ)|²·|α|² = 1·|α|² = |α|². Only relative phase between basis states (|0⟩ + e^(iθ)|1⟩) alters interference and observable probabilities.",
+    "distractor_hint": "Check the Born rule: P(x) = |⟨x|e^(iθ)ψ⟩|² = |e^(iθ)|²·|⟨x|ψ⟩|² = |⟨x|ψ⟩|². Global phases are physically undetectable."
+  },
+  {
+    "id": "M_MEASUREMENT_IS_PASSIVE",
+    "title": "Measurement Is Non-Invasive Observation",
+    "concept_id": "c_born_rule",
+    "false_belief": "Measuring a qubit reads its state without altering the underlying wave function.",
+    "refutation": "Quantum measurement is a non-unitary projection. It irretrievably collapses the statevector into an eigenstate of the measurement operator, erasing prior superposition.",
+    "distractor_hint": "Measurement in quantum mechanics is active and destructive: it collapses the superposition into a single eigenstate with probability given by the Born rule."
+  },
+  {
+    "id": "M_MIXED_STATE_BLOCH_SURFACE",
+    "title": "Entangled Qubits Have Surface Bloch Vectors",
+    "concept_id": "c_partial_trace",
+    "false_belief": "Every qubit in an entangled pair has an arrow pointing to the surface of its individual Bloch sphere.",
+    "refutation": "The state of a single qubit in an entangled system is described by a reduced density matrix with purity Tr(ρ²) < 1. In a maximally entangled Bell state, the individual subsystem is maximally mixed (ρ = I/2), and its Bloch vector shrinks to the origin (r = 0).",
+    "distractor_hint": "When qubits are entangled, individual statevectors do not exist. Tracing out the other qubit yields a mixed state inside the Bloch sphere with radius r < 1."
+  },
+  {
+    "id": "M_CLONING_POSSIBLE",
+    "title": "Quantum States Can Be Copied Like Digital Files",
+    "concept_id": "c_no_cloning",
+    "false_belief": "A quantum circuit can copy an unknown quantum state |ψ⟩ onto another qubit.",
+    "refutation": "The No-Cloning Theorem proves that linearity and unitarity of quantum mechanics forbid any universal copying operator U such that U|ψ⟩|0⟩ = |ψ⟩|ψ⟩ for arbitrary |ψ⟩.",
+    "distractor_hint": "By the No-Cloning Theorem, unknown quantum states cannot be duplicated. You can only transfer state via quantum teleportation, which destroys the original."
+  },
+  {
+    "id": "M_CNOT_ALWAYS_CHANGES_TARGET",
+    "title": "CNOT Always Flips the Target Qubit",
+    "concept_id": "c_cnot_gate",
+    "false_belief": "A CNOT gate always changes the state of the target qubit.",
+    "refutation": "The CNOT gate acts conditionally: it applies an X gate to the target qubit if and only if the control qubit is in state |1⟩. If the control is |0⟩, the target is unchanged.",
+    "distractor_hint": "Check the control qubit: CNOT only flips the target when the control state has amplitude on |1⟩."
+  },
+  {
+    "id": "M_PHASE_KICKBACK_CONTROL_UNCHANGED",
+    "title": "Control Qubit Never Experiences Phase Shifts in Controlled Gates",
+    "concept_id": "c_phase_kickback",
+    "false_belief": "In a controlled gate, the control qubit only directs the target and is never modified itself.",
+    "refutation": "In Phase Kickback, when the target qubit is in an eigenstate of the conditional gate (e.g. |-⟩ for X), the eigenvalue (-1) is kicked back to modulate the relative phase of the control qubit.",
+    "distractor_hint": "Remember Phase Kickback: if the target is |-⟩ = (|0⟩ - |1⟩)/√2, applying CX kicks a -1 phase factor into the control qubit (|1⟩ ➔ -|1⟩)."
+  },
+  {
+    "id": "M_GROVER_EXPONENTIAL_SPEEDUP",
+    "title": "Grover's Algorithm Provides Exponential Speedup",
+    "concept_id": "c_grover_diffusion",
+    "false_belief": "Grover's search algorithm solves unstructured search in logarithmic time O(log N).",
+    "refutation": "Grover's algorithm provides a quadratic speedup O(√N) compared to classical O(N). Shor's algorithm provides exponential speedup for factoring, but Grover is strictly polynomial/quadratic.",
+    "distractor_hint": "Grover's algorithm provides a quadratic speedup (O(√N)), not an exponential one. It is optimal for unstructured search in Hilbert space."
+  },
+  {
+    "id": "M_FASTER_THAN_LIGHT_ENTANGLEMENT",
+    "title": "Entanglement Enables Superluminal Communication",
+    "concept_id": "c_bell_states",
+    "false_belief": "Measuring one half of an entangled pair instantly transmits a message faster than light to the other party.",
+    "refutation": "Although measurement outcomes are correlated across spacelike separations, each observer's local measurement results are completely random (50% 0, 50% 1). Information can only be decoded when measurement bases are compared using a classical channel (bounded by speed of light c).",
+    "distractor_hint": "The No-Communication Theorem guarantees that entanglement cannot transmit classical bits faster than light. Local reduced density matrices remain unchanged by distant measurements."
+  }
+]

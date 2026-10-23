@@ -1,0 +1,33 @@
+{
+  "id": "1.3",
+  "title": "Quantum Computing Applications",
+  "order": 3,
+  "category": "Quantum Computing Fundamentals",
+  "level": 1,
+  "difficulty": "Beginner",
+  "estimated_minutes": "35–45 minutes",
+  "prerequisites": [
+    "Topic 1.1",
+    "Topic 1.2 (qubits, superposition, interference, 2ⁿ amplitudes, \"speedups are problem-specific\")",
+    "Basic familiarity with the idea of encryption (keys, \"secure\" vs \"breakable\")"
+  ],
+  "summary": "This topic surveys what quantum computers are expected to be used for: breaking certain kinds of encryption, simulating quantum systems such as molecules and materials, speeding up some kinds of search and sampling, and (more speculatively) optimization and machine learning. For each area it explains why a quantum approach might help, what the evidence is, and how far today's hardware is from delivering. It also introduces post-quantum cryptography, the classical response to the cryptographic threat.",
+  "status": "draft_pending_verification",
+  "gates_used": [],
+  "learning_objectives": [
+    "Name four major application areas of quantum computing and explain, for each, which quantum property or algorithm is the reason a speedup is expected.",
+    "Explain why Shor's algorithm threatens RSA and elliptic-curve cryptography, and why Grover's algorithm is a much smaller threat to symmetric encryption.",
+    "Calculate how Grover's √N scaling changes the effective strength of a symmetric key and the number of steps for a given search size.",
+    "Explain why simulating molecules and materials is considered the most natural application of quantum computers.",
+    "Distinguish post-quantum cryptography from quantum key distribution.",
+    "Classify a proposed application as \"strong theoretical case\", \"heuristic / unproven\", or \"unlikely to benefit\", and justify the classification.",
+    "Describe the difference between today's noisy devices and the fault-tolerant machines that most large-scale applications need, and explain why \"quantum advantage\" claims must be read carefully."
+  ],
+  "source_document": "Quantum Computing(2).docx",
+  "verification_note": "Numerical/circuit results are source-derived and must be confirmed in the project simulator/calculator before release.",
+  "time_sensitivity": "1.3 contains time-sensitive standards, hardware/status and quantum-advantage claims; present them with an 'as of' date and re-verify before release.",
+  "conventions": {
+    "multi_qubit_order": "q0 is leftmost in |q0 q1 ...>.",
+    "qiskit_display": "Qiskit-style tools may print the reverse order (q1 q0); tutor should state the ordering used."
+  }
+}

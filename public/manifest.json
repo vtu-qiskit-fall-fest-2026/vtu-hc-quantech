@@ -1,0 +1,18 @@
+{
+  "short_name": "QuantaLearn",
+  "name": "QuantaLearn AI — Quantum Algorithm Learning Platform",
+  "description": "AI-Based Interactive Quantum Algorithm Learning Platform with client-side Float64 statevector simulation.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#4f46e5",
+  "background_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

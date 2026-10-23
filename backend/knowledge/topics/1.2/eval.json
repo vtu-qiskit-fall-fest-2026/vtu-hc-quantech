@@ -1,0 +1,201 @@
+{
+  "topic_id": "1.2",
+  "evaluation_only": true,
+  "items": [
+    {
+      "id": "EV01",
+      "question": "Explain the difference between a classical bit and a qubit.",
+      "expected_key_points": [
+        "bit is 0 or 1",
+        "qubit state can be a superposition",
+        "measurement returns a classical outcome"
+      ],
+      "forbidden_points": [
+        "qubit literally stores two classical bits"
+      ],
+      "rubric": "2/3 key points minimum; no forbidden misconception",
+      "concept": "C01"
+    },
+    {
+      "id": "EV02",
+      "question": "Why is |+⟩ not merely a classical 50/50 random bit?",
+      "expected_key_points": [
+        "coherent amplitudes",
+        "relative phase/coherence can interfere",
+        "same measurement probabilities do not imply same state"
+      ],
+      "forbidden_points": [
+        "|+⟩ is exactly a random classical bit"
+      ],
+      "rubric": "2/3 key points minimum",
+      "concept": "C02"
+    },
+    {
+      "id": "EV03",
+      "question": "What happens to |0⟩ under H then H?",
+      "expected_key_points": [
+        "H-H=I",
+        "final state |0⟩",
+        "interference"
+      ],
+      "forbidden_points": [],
+      "rubric": "All three points",
+      "concept": "C05"
+    },
+    {
+      "id": "EV04",
+      "question": "How many amplitudes describe 10 qubits?",
+      "expected_key_points": [
+        "2^10",
+        "1024"
+      ],
+      "forbidden_points": [],
+      "rubric": "Both",
+      "concept": "C06"
+    },
+    {
+      "id": "EV05",
+      "question": "What is the Bell-state circuit and what outcomes does it produce ideally?",
+      "expected_key_points": [
+        "H(q0) then CNOT(q0,q1)",
+        "(|00⟩+|11⟩)/√2",
+        "50% 00 and 50% 11"
+      ],
+      "forbidden_points": [
+        "CNOT copies an arbitrary qubit"
+      ],
+      "rubric": "All three key points",
+      "concept": "C07"
+    },
+    {
+      "id": "EV06",
+      "question": "Can entanglement send usable information faster than light?",
+      "expected_key_points": [
+        "No",
+        "correlations do not provide FTL communication"
+      ],
+      "forbidden_points": [
+        "yes"
+      ],
+      "rubric": "Both",
+      "concept": "C07"
+    },
+    {
+      "id": "EV07",
+      "question": "Why are quantum gates reversible?",
+      "expected_key_points": [
+        "unitary",
+        "U†U=I",
+        "inverse exists"
+      ],
+      "forbidden_points": [],
+      "rubric": "At least two points",
+      "concept": "C04"
+    },
+    {
+      "id": "EV08",
+      "question": "Why does classical simulation become difficult as qubit count increases?",
+      "expected_key_points": [
+        "2^n amplitudes",
+        "each added qubit doubles state dimension",
+        "memory/computation grow exponentially"
+      ],
+      "forbidden_points": [
+        "measurement gives 2^n classical values"
+      ],
+      "rubric": "All three key points",
+      "concept": "C06"
+    },
+    {
+      "id": "EV09",
+      "question": "Are quantum computers faster for every problem?",
+      "expected_key_points": [
+        "No",
+        "speedup is problem/algorithm specific",
+        "examples such as factoring/search/simulation"
+      ],
+      "forbidden_points": [
+        "faster at everything"
+      ],
+      "rubric": "All three",
+      "concept": "C08"
+    },
+    {
+      "id": "EV10",
+      "question": "Does every quantum gate create superposition?",
+      "expected_key_points": [
+        "No",
+        "gates are unitary transformations",
+        "examples X or Z need not create superposition from basis inputs"
+      ],
+      "forbidden_points": [
+        "every gate creates superposition"
+      ],
+      "rubric": "At least two points",
+      "concept": "C04"
+    },
+    {
+      "id": "EV11",
+      "question": "For the ideal Bell state, what are the measurement probabilities?",
+      "expected_key_points": [
+        "50% 00",
+        "50% 11",
+        "01 and 10 zero"
+      ],
+      "forbidden_points": [],
+      "rubric": "All",
+      "concept": "C07"
+    },
+    {
+      "id": "EV12",
+      "question": "Will quantum computers replace classical computers?",
+      "expected_key_points": [
+        "not as a universal replacement",
+        "different tools for different problems",
+        "classical computing remains important"
+      ],
+      "forbidden_points": [
+        "quantum replaces classical universally"
+      ],
+      "rubric": "All",
+      "concept": "C08"
+    },
+    {
+      "id": "EV13",
+      "question": "Does H make the qubit both 0 and 1 at the same time in the ordinary classical sense?",
+      "expected_key_points": [
+        "H creates a superposition state",
+        "not two readable classical values",
+        "measurement gives one outcome"
+      ],
+      "forbidden_points": [
+        "stores two classical values"
+      ],
+      "rubric": "All",
+      "concept": "C02"
+    },
+    {
+      "id": "EV14",
+      "question": "So a quantum computer checks all answers simultaneously, right?",
+      "expected_key_points": [
+        "superposition is not brute-force readout",
+        "interference is essential",
+        "measurement extracts limited classical information"
+      ],
+      "forbidden_points": [
+        "checks all answers and reads them all"
+      ],
+      "rubric": "All",
+      "concept": "C05"
+    },
+    {
+      "id": "EV15",
+      "question": "How does Shor's algorithm factor a 2048-bit RSA modulus step by step?",
+      "expected_key_points": [],
+      "forbidden_points": [],
+      "rubric": "Must identify as outside the scope of Topic 1.2 and redirect to the topic's high-level statement about factoring.",
+      "concept": "C08",
+      "out_of_scope": true
+    }
+  ]
+}

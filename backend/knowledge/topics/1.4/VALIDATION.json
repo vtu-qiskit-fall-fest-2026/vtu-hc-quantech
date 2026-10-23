@@ -1,0 +1,40 @@
+{
+  "topic_id": "1.4",
+  "concept_count": 8,
+  "concept_ids": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08"
+  ],
+  "empty_concept_titles": [],
+  "empty_core_fields": {
+    "C01": [],
+    "C02": [],
+    "C03": [],
+    "C04": [],
+    "C05": [],
+    "C06": [],
+    "C07": [],
+    "C08": []
+  },
+  "table_count": 4,
+  "table_row_counts": [
+    10,
+    9,
+    9,
+    5
+  ],
+  "empty_calculations": [],
+  "bad_fact_ids": [],
+  "time_sensitive_ids": [],
+  "eval_count": 17,
+  "has_misconception_probe": true,
+  "has_out_of_scope_probe": true,
+  "contamination_detected": false,
+  "pass": true
+}

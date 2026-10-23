@@ -1,0 +1,151 @@
+{
+  "topic_id": "1.3",
+  "examples": [
+    {
+      "id": "E01",
+      "title": "Grover versus classical search for one million items",
+      "related_concept": "C05",
+      "goal": "Quantify the quadratic speedup.",
+      "given": "N = 1,000,000 unsorted items, exactly one marked item.",
+      "steps": [
+        "Classical random search: on average it checks about N/2 items; worst case N.",
+        "Grover: about (π/4)·√N iterations.",
+        "Compute √N and the iteration count."
+      ],
+      "calculation": "√1,000,000 = 1,000\nGrover iterations ≈ (π/4) × 1,000 ≈ 785\nClassical expected checks ≈ 1,000,000 / 2 = 500,000",
+      "result": "≈ 785 Grover iterations vs ≈ 500,000 expected classical checks.",
+      "interpretation": "A big reduction in the number of steps, but the comparison ignores how expensive each fault-tolerant quantum step is, and the cost of building the oracle.",
+      "common_mistake": "Saying Grover needs \"1 step\" or \"log N steps\"; it needs about √N.",
+      "try_yourself": "For N = 100, how many Grover iterations? (Answer: (π/4)×10 ≈ 7.85, i.e. about 8.)",
+      "raw_source": [
+        "EXAMPLE ID: E01",
+        "TITLE: Grover versus classical search for one million items",
+        "RELATED CONCEPT: C05",
+        "GOAL: Quantify the quadratic speedup.",
+        "GIVEN: N = 1,000,000 unsorted items, exactly one marked item.",
+        "STEP 1: Classical random search: on average it checks about N/2 items; worst case N.",
+        "STEP 2: Grover: about (π/4)·√N iterations.",
+        "STEP 3: Compute √N and the iteration count.",
+        "CALCULATION:",
+        "√1,000,000 = 1,000",
+        "Grover iterations ≈ (π/4) × 1,000 ≈ 785",
+        "Classical expected checks ≈ 1,000,000 / 2 = 500,000",
+        "RESULT: ≈ 785 Grover iterations vs ≈ 500,000 expected classical checks.",
+        "INTERPRETATION: A big reduction in the number of steps, but the comparison ignores how expensive each fault-tolerant quantum step is, and the cost of building the oracle.",
+        "COMMON MISTAKE: Saying Grover needs \"1 step\" or \"log N steps\"; it needs about √N.",
+        "TRY YOURSELF: For N = 100, how many Grover iterations? (Answer: (π/4)×10 ≈ 7.85, i.e. about 8.)"
+      ]
+    },
+    {
+      "id": "E02",
+      "title": "Which cryptography is affected, and how?",
+      "related_concept": "C02, C03",
+      "goal": "Apply Shor and Grover correctly to real schemes.",
+      "given": "RSA-2048, elliptic-curve cryptography, AES-128, AES-256.",
+      "steps": [
+        "Identify the hard problem each scheme relies on.",
+        "Decide whether Shor applies (factoring / discrete logarithms) or only Grover (brute-force key search).",
+        "For Grover cases, halve the exponent of the key space."
+      ],
+      "calculation": "RSA-2048: factoring → Shor applies → broken by a large fault-tolerant quantum computer.\nECC: elliptic-curve discrete logarithm → Shor-type algorithm applies → broken by such a machine.\nAES-128: key space 2¹²⁸ → Grover ≈ 2⁶⁴ steps (idealised).\nAES-256: key space 2²⁵⁶ → Grover ≈ 2¹²⁸ steps (idealised).\n(2⁶⁴ = 18,446,744,073,709,551,616 ≈ 1.8 × 10¹⁹.)",
+      "result": "Public-key schemes are broken in principle; AES-256 retains about 128-bit quantum strength.",
+      "interpretation": "The fix for symmetric encryption is larger keys; the fix for public-key encryption is new algorithms (PQC).",
+      "common_mistake": "Saying AES is \"broken\" by quantum computers, or that Grover makes AES-256 weaker than classical AES-128 (it does not).",
+      "try_yourself": "What is the Grover-equivalent strength of a 192-bit symmetric key? (Answer: about 96 bits.)",
+      "raw_source": [
+        "EXAMPLE ID: E02",
+        "TITLE: Which cryptography is affected, and how?",
+        "RELATED CONCEPT: C02, C03",
+        "GOAL: Apply Shor and Grover correctly to real schemes.",
+        "GIVEN: RSA-2048, elliptic-curve cryptography, AES-128, AES-256.",
+        "STEP 1: Identify the hard problem each scheme relies on.",
+        "STEP 2: Decide whether Shor applies (factoring / discrete logarithms) or only Grover (brute-force key search).",
+        "STEP 3: For Grover cases, halve the exponent of the key space.",
+        "CALCULATION:",
+        "RSA-2048: factoring → Shor applies → broken by a large fault-tolerant quantum computer.",
+        "ECC: elliptic-curve discrete logarithm → Shor-type algorithm applies → broken by such a machine.",
+        "AES-128: key space 2¹²⁸ → Grover ≈ 2⁶⁴ steps (idealised).",
+        "AES-256: key space 2²⁵⁶ → Grover ≈ 2¹²⁸ steps (idealised).",
+        "(2⁶⁴ = 18,446,744,073,709,551,616 ≈ 1.8 × 10¹⁹.)",
+        "RESULT: Public-key schemes are broken in principle; AES-256 retains about 128-bit quantum strength.",
+        "INTERPRETATION: The fix for symmetric encryption is larger keys; the fix for public-key encryption is new algorithms (PQC).",
+        "COMMON MISTAKE: Saying AES is \"broken\" by quantum computers, or that Grover makes AES-256 weaker than classical AES-128 (it does not).",
+        "TRY YOURSELF: What is the Grover-equivalent strength of a 192-bit symmetric key? (Answer: about 96 bits.)"
+      ]
+    },
+    {
+      "id": "E03",
+      "title": "Why molecules are hard to simulate classically",
+      "related_concept": "C04",
+      "goal": "Connect molecule size to state-space growth.",
+      "given": "A molecular model with n electronic orbital states, using roughly one qubit per orbital state (illustrative standard encoding).",
+      "steps": [
+        "Number of qubits ≈ n.",
+        "Classical full-state description needs 2ⁿ amplitudes.",
+        "At 16 bytes per amplitude, estimate memory."
+      ],
+      "calculation": "n = 30 → 2³⁰ = 1,073,741,824 amplitudes → ×16 bytes = 2³⁴ bytes = 16 GiB\nn = 50 → 2⁵⁰ = 1,125,899,906,842,624 amplitudes → ×16 bytes = 2⁵⁴ bytes = 16 PiB",
+      "result": "A 30-orbital model fits in a large workstation's memory; a 50-orbital model does not fit on any ordinary machine if stored as a full state vector.",
+      "interpretation": "This is why brute-force classical simulation of larger molecules fails, and why clever classical approximations (and, in the future, quantum computers) are used.",
+      "common_mistake": "Concluding that classical computers can never simulate such systems. Classical approximation methods work very well for many molecules; the open question is the hard cases.",
+      "try_yourself": "How much memory does n = 40 need at 16 bytes per amplitude? (Answer: 2⁴⁴ bytes = 16 TiB.)",
+      "raw_source": [
+        "EXAMPLE ID: E03",
+        "TITLE: Why molecules are hard to simulate classically",
+        "RELATED CONCEPT: C04",
+        "GOAL: Connect molecule size to state-space growth.",
+        "GIVEN: A molecular model with n electronic orbital states, using roughly one qubit per orbital state (illustrative standard encoding).",
+        "STEP 1: Number of qubits ≈ n.",
+        "STEP 2: Classical full-state description needs 2ⁿ amplitudes.",
+        "STEP 3: At 16 bytes per amplitude, estimate memory.",
+        "CALCULATION:",
+        "n = 30 → 2³⁰ = 1,073,741,824 amplitudes → ×16 bytes = 2³⁴ bytes = 16 GiB",
+        "n = 50 → 2⁵⁰ = 1,125,899,906,842,624 amplitudes → ×16 bytes = 2⁵⁴ bytes = 16 PiB",
+        "RESULT: A 30-orbital model fits in a large workstation's memory; a 50-orbital model does not fit on any ordinary machine if stored as a full state vector.",
+        "INTERPRETATION: This is why brute-force classical simulation of larger molecules fails, and why clever classical approximations (and, in the future, quantum computers) are used.",
+        "COMMON MISTAKE: Concluding that classical computers can never simulate such systems. Classical approximation methods work very well for many molecules; the open question is the hard cases.",
+        "TRY YOURSELF: How much memory does n = 40 need at 16 bytes per amplitude? (Answer: 2⁴⁴ bytes = 16 TiB.)"
+      ]
+    },
+    {
+      "id": "E04",
+      "title": "A one-qubit variational loop (toy VQE)",
+      "related_concept": "C04, C07",
+      "goal": "Show the variational idea with a checkable calculation.",
+      "given": "Hamiltonian H = Z (eigenvalues +1 for |0⟩ and −1 for |1⟩; so the true ground-state energy is E₀ = −1). Trial state |ψ(θ)⟩ = cos(θ/2)|0⟩ + sin(θ/2)|1⟩.",
+      "steps": [
+        "Write the energy E(θ) = ⟨ψ|Z|ψ⟩ = P(0)·(+1) + P(1)·(−1).",
+        "Insert P(0) = cos²(θ/2), P(1) = sin²(θ/2).",
+        "Simplify and find the minimum over θ."
+      ],
+      "calculation": "E(θ) = cos²(θ/2) − sin²(θ/2) = cos θ\nθ = 0 → E = 1;  θ = π/2 → E = 0;  θ = π → E = −1",
+      "result": "The minimum is E = −1 at θ = π, where |ψ⟩ = |1⟩; this equals E₀.",
+      "interpretation": "The \"quantum\" part is estimating E(θ) from measurement shots; the \"classical\" part is choosing θ to lower the energy. Real VQE does the same with many qubits and parameters.",
+      "common_mistake": "Believing the optimiser \"knows\" the answer; it only sees estimated energies and nudges θ.",
+      "try_yourself": "With 1000 shots at θ = π/2, what is the expected estimate of E? (Answer: about 0, with statistical spread of roughly ±0.03.)",
+      "raw_source": [
+        "EXAMPLE ID: E04",
+        "TITLE: A one-qubit variational loop (toy VQE)",
+        "RELATED CONCEPT: C04, C07",
+        "GOAL: Show the variational idea with a checkable calculation.",
+        "GIVEN: Hamiltonian H = Z (eigenvalues +1 for |0⟩ and −1 for |1⟩; so the true ground-state energy is E₀ = −1). Trial state |ψ(θ)⟩ = cos(θ/2)|0⟩ + sin(θ/2)|1⟩.",
+        "STEP 1: Write the energy E(θ) = ⟨ψ|Z|ψ⟩ = P(0)·(+1) + P(1)·(−1).",
+        "STEP 2: Insert P(0) = cos²(θ/2), P(1) = sin²(θ/2).",
+        "STEP 3: Simplify and find the minimum over θ.",
+        "CALCULATION:",
+        "E(θ) = cos²(θ/2) − sin²(θ/2) = cos θ",
+        "θ = 0 → E = 1;  θ = π/2 → E = 0;  θ = π → E = −1",
+        "RESULT: The minimum is E = −1 at θ = π, where |ψ⟩ = |1⟩; this equals E₀.",
+        "INTERPRETATION: The \"quantum\" part is estimating E(θ) from measurement shots; the \"classical\" part is choosing θ to lower the energy. Real VQE does the same with many qubits and parameters.",
+        "COMMON MISTAKE: Believing the optimiser \"knows\" the answer; it only sees estimated energies and nudges θ.",
+        "TRY YOURSELF: With 1000 shots at θ = π/2, what is the expected estimate of E? (Answer: about 0, with statistical spread of roughly ±0.03.)",
+        "NUMBER OF QUBITS: 1",
+        "INITIAL STATE: |0⟩ (rotated to |ψ(θ)⟩ by a Y-rotation of angle θ)",
+        "EXPECTED RESULT:",
+        "θ = 0 → P(0)=100%, E = +1",
+        "θ = π/2 → P(0)=50%, P(1)=50%, E = 0",
+        "θ = π → P(1)=100%, E = −1"
+      ]
+    }
+  ]
+}

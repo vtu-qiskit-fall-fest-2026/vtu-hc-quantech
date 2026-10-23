@@ -1,0 +1,149 @@
+{
+  "topic_id": "1.1",
+  "concepts": [
+    {
+      "id": "C01",
+      "title": "Quantum Computing",
+      "simple_explanation": "A model of computation in which information is held in quantum systems (qubits) and processed by controlled quantum operations (gates), followed by measurement.",
+      "visual_explanation": "Picture a standard computer processing electrical currents through silicon transistors, compared to a quantum processor steering the delicate physical states of microscopic particles.",
+      "technical_explanation": "Quantum computers execute unitary transformations on statevectors in a complex Hilbert space, followed by projection onto computational basis states.",
+      "example": "Simulating complex molecular interactions in chemistry that require an astronomical amount of classical memory.",
+      "keywords": ["quantum computing", "quantum", "computation", "qubits", "gates", "measurement", "model"],
+      "related_concepts": ["C02", "C03", "C09"]
+    },
+    {
+      "id": "C02",
+      "title": "Classical Bit",
+      "simple_explanation": "A classical bit has a definite value of either 0 or 1 at all times.",
+      "visual_explanation": "A classical bit can be pictured as a light switch that is either off (0) or on (1).",
+      "technical_explanation": "Information is encoded into two distinguishable macroscopic voltage states representing binary elements {0, 1}.",
+      "example": "A single transistor holding charge in a modern CPU or a bit in computer memory.",
+      "keywords": ["classical bit", "bit", "binary", "0 or 1", "switch", "classical"],
+      "related_concepts": ["C01", "C03"]
+    },
+    {
+      "id": "C03",
+      "title": "Qubit",
+      "simple_explanation": "A qubit is the basic unit of quantum information described by a state |ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1.",
+      "visual_explanation": "Unlike a switch stuck on 0 or 1, picture a point on the surface of a three-dimensional sphere (the Bloch sphere) where the poles represent |0⟩ and |1⟩.",
+      "technical_explanation": "A two-level quantum system represented as a unit vector in a 2D complex vector space (C²). Measurement in the computational basis collapses it to |0⟩ or |1⟩.",
+      "example": "An electron spin (spin-up |0⟩ or spin-down |1⟩) or a superconducting artificial atom.",
+      "keywords": ["qubit", "quantum bit", "amplitudes", "superposition", "0 or 1", "|ψ⟩ = α|0⟩ + β|1⟩", "unit"],
+      "related_concepts": ["C02", "C04", "C05", "C06"],
+      "circuit_example": {
+        "num_qubits": 1,
+        "operations": [{"gate": "H", "qubits": [0]}]
+      }
+    },
+    {
+      "id": "C04",
+      "title": "Superposition",
+      "simple_explanation": "A quantum state can exist in a linear combination of basis states rather than being restricted to one definite classical value.",
+      "visual_explanation": "Superposition is not a coin spinning or a hidden secret value; it is a wave-like physical state described by complex probability amplitudes.",
+      "technical_explanation": "For basis states {|0⟩, |1⟩}, any linear combination |ψ⟩ = α|0⟩ + β|1⟩ is a valid state if |α|² + |β|² = 1.",
+      "example": "Applying a Hadamard gate (H) to |0⟩ yields (|0⟩ + |1⟩)/√2, giving an equal 50% chance of measuring 0 or 1.",
+      "keywords": ["superposition", "linear combination", "basis states", "combination", "amplitudes"],
+      "related_concepts": ["C03", "C06", "C07"]
+    },
+    {
+      "id": "C05",
+      "title": "Measurement",
+      "simple_explanation": "Measurement in the computational basis yields 0 or 1 with probabilities determined by the squared magnitudes of the amplitudes, causing the state to collapse.",
+      "visual_explanation": "When you measure a qubit, the delicate quantum superposition instantly resolves into a definite classical outcome (0 or 1).",
+      "technical_explanation": "A projective measurement described by projection operators P0 = |0⟩⟨0| and P1 = |1⟩⟨1|. Outcome probability is P(m) = ⟨ψ|Pm|ψ⟩.",
+      "example": "Measuring (|0⟩ + |1⟩)/√2 yields either '0' with 50% probability or '1' with 50% probability.",
+      "keywords": ["measurement", "measure", "collapse", "observe", "computational basis", "outcome"],
+      "related_concepts": ["C03", "C04", "C06"]
+    },
+    {
+      "id": "C06",
+      "title": "Probability Amplitudes",
+      "simple_explanation": "For |ψ⟩ = α|0⟩ + β|1⟩, α and β are complex numbers whose squared magnitudes give measurement probabilities: P(0) = |α|² and P(1) = |β|².",
+      "visual_explanation": "Amplitudes have both size and direction (phase), like waves that can peak, trough, or cancel each other out.",
+      "technical_explanation": "Coefficients in the expansion |ψ⟩ = Σ c_i |i⟩, satisfying the normalization condition Σ |c_i|² = 1.",
+      "example": "For state (√3/2)|0⟩ + (1/2)|1⟩, P(0) = (√3/2)² = 75% and P(1) = (1/2)² = 25%.",
+      "keywords": ["probability amplitudes", "amplitudes", "probability", "|α|²", "|β|²", "normalization", "coefficients"],
+      "related_concepts": ["C03", "C04", "C05"]
+    },
+    {
+      "id": "C07",
+      "title": "Interference",
+      "simple_explanation": "Quantum amplitudes can add constructively (reinforcing each other) or destructively (canceling each other out).",
+      "visual_explanation": "Like two ripples on water colliding: crest meets crest to make a higher wave, while crest meets trough to produce flat water.",
+      "technical_explanation": "Because amplitudes are complex numbers, phase differences cause constructive interference (amplitudes add) or destructive interference (amplitudes cancel).",
+      "example": "Applying H twice to |0⟩ returns deterministically to |0⟩ because the |1⟩ path cancels out and the |0⟩ path reinforces.",
+      "keywords": ["interference", "constructive", "destructive", "amplitudes", "cancel", "reinforce", "phase"],
+      "related_concepts": ["C04", "C06"]
+    },
+    {
+      "id": "C08",
+      "title": "Entanglement",
+      "simple_explanation": "Entanglement creates quantum correlations between multiple qubits such that their states cannot be described independently.",
+      "visual_explanation": "Two qubits become linked like synchronized pairs of dice; measuring one immediately correlates with the measurement of the other, no matter the distance.",
+      "technical_explanation": "A composite quantum state |Ψ⟩ in H_A ⊗ H_B that cannot be factored as a product state |ψ_A⟩ ⊗ |ψ_B⟩. Reduced density matrices have purity < 1. Does not allow faster-than-light communication.",
+      "example": "The Bell state (|00⟩ + |11⟩)/√2 gives either 00 or 11 with 50% probability each; outcomes 01 and 10 never occur.",
+      "keywords": ["entanglement", "entangled", "bell state", "correlations", "faster than light", "independent states"],
+      "related_concepts": ["C03", "C09"]
+    },
+    {
+      "id": "C09",
+      "title": "Quantum Circuit",
+      "simple_explanation": "A sequence of quantum operations (gates) applied to qubits over discrete time steps, followed by measurement.",
+      "visual_explanation": "Like musical notation where each wire represents a qubit track over time, and musical notes are quantum gates transforming the state.",
+      "technical_explanation": "A directed acyclic network of unitary gates acting on designated qubit registers, culminating in projective measurement.",
+      "example": "A 2-qubit circuit with an H gate on wire 0 and a CNOT gate connecting wire 0 to wire 1.",
+      "keywords": ["quantum circuit", "circuit", "gates", "wires", "operations", "sequence"],
+      "related_concepts": ["C01", "C03", "C08"]
+    },
+    {
+      "id": "C10",
+      "title": "Decoherence",
+      "simple_explanation": "The loss of quantum coherence caused by unwanted physical interactions between the quantum processor and its surrounding environment.",
+      "visual_explanation": "Like trying to keep a quiet whisper intact inside a noisy concert hall; environmental noise scrambles the delicate quantum phase.",
+      "technical_explanation": "Non-unitary decay of off-diagonal elements in the quantum density matrix due to environmental coupling (thermal fluctuations, magnetic fields, stray radiation).",
+      "example": "Thermal heat in a dilution refrigerator causing a superconducting qubit to randomly flip or lose its phase.",
+      "keywords": ["decoherence", "environment", "loss of coherence", "noise", "physical", "interaction"],
+      "related_concepts": ["C03", "C11"]
+    },
+    {
+      "id": "C11",
+      "title": "NISQ",
+      "simple_explanation": "NISQ stands for Noisy Intermediate-Scale Quantum, describing today's era of 50 to hundreds of noisy, imperfect qubits without full error correction.",
+      "visual_explanation": "The early vacuum-tube era of computing, before reliable silicon microchips made error-free calculation trivial.",
+      "technical_explanation": "Current era of quantum devices featuring 50-1000 qubits lacking fault-tolerant quantum error correction (FTQC), requiring noise mitigation.",
+      "example": "Running hybrid algorithms like VQE on a 100-qubit processor where circuit depth is limited by noise.",
+      "keywords": ["nisq", "noisy intermediate-scale quantum", "intermediate-scale", "noisy", "error correction"],
+      "related_concepts": ["C10", "C12", "C13"]
+    },
+    {
+      "id": "C12",
+      "title": "Problem-Specific Speedup",
+      "simple_explanation": "Quantum computers provide substantial advantages only for specific mathematical problems; they are not universally faster for all computing tasks.",
+      "visual_explanation": "A graphics card (GPU) is vastly faster for 3D rendering than a CPU, but you would not use a GPU to run an entire operating system.",
+      "technical_explanation": "Speedups depend on algorithmic structures (such as the quantum Fourier transform or amplitude amplification) exploiting quantum interference.",
+      "example": "Simulating quantum chemistry or integer factorization with Shor's algorithm, versus ordinary tasks like browsing the web or word processing.",
+      "keywords": ["problem-specific speedup", "speedup", "specialized", "advantage", "not general", "universal"],
+      "related_concepts": ["C01", "C13"]
+    },
+    {
+      "id": "C13",
+      "title": "Hybrid Quantum-Classical Computing",
+      "simple_explanation": "A practical workflow in which classical and quantum processors divide tasks, using classical computers for logic and quantum processors for hard quantum subroutines.",
+      "visual_explanation": "A classical conductor leading an orchestra, calling in a specialized soloist (the quantum chip) for the most intricate solo passages.",
+      "technical_explanation": "Variational architectures where a classical optimizer updates parameter angles for a parameterized quantum circuit in an iterative loop.",
+      "example": "Variational Quantum Eigensolver (VQE) or Quantum Approximate Optimization Algorithm (QAOA).",
+      "keywords": ["hybrid quantum-classical computing", "hybrid", "classical", "optimizer", "workflow"],
+      "related_concepts": ["C01", "C11", "C12"]
+    },
+    {
+      "id": "C14",
+      "title": "Qubit Technologies",
+      "simple_explanation": "Physical hardware approaches used to build qubits, including superconducting circuits, trapped ions, neutral atoms, and photonics.",
+      "visual_explanation": "Like different automotive engine designs (gasoline, electric, rotary) that each attempt to achieve transportation using different physical mechanisms.",
+      "technical_explanation": "Different physical realizations with trade-offs in gate fidelity, coherence time (T1, T2), connectivity, and scalability.",
+      "example": "Transmon qubits cooled to millikelvin temperatures versus laser-trapped ytterbium ions in high vacuum.",
+      "keywords": ["qubit technologies", "superconducting", "trapped ions", "hardware", "photons", "quantum dots"],
+      "related_concepts": ["C03", "C10"]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "topic_id": "1.2",
+  "concepts": [
+    {
+      "id": "C01",
+      "title": "Bits and Qubits",
+      "simple_explanation": "A classical bit is either 0 or 1. A qubit is a two-level quantum system whose state can be a superposition of |0⟩ and |1⟩.",
+      "visual_explanation": "Show a classical two-position switch beside a qubit representation; after measurement the qubit produces a classical 0 or 1.",
+      "technical_explanation": "|ψ⟩ = α|0⟩ + β|1⟩, with |α|² + |β|² = 1. The amplitudes α and β determine measurement probabilities.",
+      "example": "For |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, P(0)=3/4 and P(1)=1/4.",
+      "why_it_matters": "This is the basic information-representation difference between classical and quantum computing.",
+      "how_it_works": "The qubit is manipulated by quantum gates and eventually measured. Measurement produces a classical result.",
+      "common_mistake": "Calling a qubit a number between 0 and 1, or saying it literally stores two classical values.",
+      "connection": "Builds directly on Topic 1.1's introduction to qubits and measurement.",
+      "try_it": "Prepare |0⟩, apply H, and measure repeatedly.",
+      "key_takeaway": "A qubit has a quantum state described by amplitudes; measurement gives a classical 0 or 1.",
+      "keywords": [
+        "bit",
+        "qubit",
+        "amplitude",
+        "measurement",
+        "probability"
+      ],
+      "related_concepts": [
+        "C02",
+        "C03",
+        "C06"
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "Superposition",
+      "simple_explanation": "Superposition means a quantum state can be a linear combination of basis states.",
+      "visual_explanation": "Display |0⟩ and |1⟩ as basis states and a vector/state that has components along both.",
+      "technical_explanation": "H|0⟩ = (|0⟩ + |1⟩)/√2 and H|1⟩ = (|0⟩ − |1⟩)/√2.",
+      "example": "Starting from |0⟩, applying H produces equal amplitudes for |0⟩ and |1⟩, giving 50% probability for each on measurement.",
+      "why_it_matters": "Superposition is one of the resources quantum algorithms manipulate, but it is not by itself a useful brute-force readout of all answers.",
+      "how_it_works": "A quantum gate changes amplitudes coherently; later gates and measurement determine how those amplitudes interfere and what can be observed.",
+      "common_mistake": "Saying a qubit simply stores both 0 and 1 as two readable classical values.",
+      "connection": "Connects to measurement and interference.",
+      "try_it": "Apply H to |0⟩, then measure 20 times.",
+      "key_takeaway": "Superposition is a quantum state description, not two ordinary bits stored in one place.",
+      "keywords": [
+        "superposition",
+        "Hadamard",
+        "H",
+        "amplitude"
+      ],
+      "related_concepts": [
+        "C01",
+        "C03",
+        "C05"
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "Measurement",
+      "simple_explanation": "Measuring a single qubit returns a classical 0 or 1.",
+      "visual_explanation": "Use probability bars for P(0) and P(1), then show one sampled outcome per shot.",
+      "technical_explanation": "For |ψ⟩ = α|0⟩ + β|1⟩, P(0)=|α|² and P(1)=|β|². Measurement changes the state to the observed basis state in the ideal projective-measurement picture.",
+      "example": "For α=√3/2 and β=1/2, repeated shots approach 75% 0 and 25% 1.",
+      "why_it_matters": "It explains why quantum computation cannot simply expose every amplitude as readable classical data.",
+      "how_it_works": "Each shot produces one classical outcome; repeating the experiment estimates the underlying distribution.",
+      "common_mistake": "Thinking one measurement returns the full statevector.",
+      "connection": "Links superposition to observable probabilities and to the 2^n state-space discussion.",
+      "try_it": "Run 1, 10, 100, and 1000 shots for H|0⟩ and compare the histogram.",
+      "key_takeaway": "Quantum states can contain many amplitudes, but measurement gives a classical outcome.",
+      "keywords": [
+        "measurement",
+        "Born rule",
+        "shots",
+        "probability"
+      ],
+      "related_concepts": [
+        "C01",
+        "C02",
+        "C06"
+      ]
+    },
+    {
+      "id": "C04",
+      "title": "Logic Gates vs Quantum Gates",
+      "simple_explanation": "Classical logic gates such as AND, OR, and NOT process classical bits. Quantum gates such as X, H, Z, and CNOT transform quantum states.",
+      "visual_explanation": "Compare a classical AND truth table with a reversible quantum gate such as H.",
+      "technical_explanation": "Ideal quantum gates are unitary transformations satisfying U†U=I, so they are reversible. H·H=I.",
+      "example": "X flips |0⟩ to |1⟩ and |1⟩ to |0⟩. H creates equal superposition from |0⟩.",
+      "why_it_matters": "It explains why quantum circuits are built differently from ordinary Boolean logic circuits.",
+      "how_it_works": "A quantum gate acts linearly on amplitudes and preserves normalization.",
+      "common_mistake": "Assuming every quantum gate creates superposition.",
+      "connection": "Connects gates to interference and circuit evolution.",
+      "try_it": "Compare X|0⟩, H|0⟩, and Z|0⟩ in the simulator.",
+      "key_takeaway": "Quantum gates are reversible/unitary state transformations; they are not just quantum versions of AND/OR.",
+      "keywords": [
+        "quantum gate",
+        "unitary",
+        "reversible",
+        "H",
+        "X",
+        "Z",
+        "CNOT"
+      ],
+      "related_concepts": [
+        "C02",
+        "C05",
+        "C07"
+      ]
+    },
+    {
+      "id": "C05",
+      "title": "Interference",
+      "simple_explanation": "Quantum amplitudes can reinforce or cancel one another. This is interference.",
+      "visual_explanation": "Contrast a classical random 50/50 bit with H→H on |0⟩, where the final probability becomes 100% for 0.",
+      "technical_explanation": "H|0⟩=(|0⟩+|1⟩)/√2 and applying H again gives |0⟩. The relative signs/phases of amplitudes allow constructive and destructive interference.",
+      "example": "H followed by H returns |0⟩, whereas a classical random bit that is independently sampled does not become deterministic merely because you 'flip' it twice.",
+      "why_it_matters": "Interference is central to how quantum algorithms amplify useful outcomes and suppress others.",
+      "how_it_works": "Later gates combine amplitude contributions; signs and phases determine whether they add or cancel.",
+      "common_mistake": "Treating a quantum superposition as just a classical random coin.",
+      "connection": "Connects superposition to algorithmic advantage and measurement.",
+      "try_it": "Run H-H, H-Z-H, and H-X-H on |0⟩.",
+      "key_takeaway": "Superposition supplies amplitudes; interference controls how those amplitudes combine.",
+      "keywords": [
+        "interference",
+        "constructive",
+        "destructive",
+        "phase"
+      ],
+      "related_concepts": [
+        "C02",
+        "C04",
+        "C08"
+      ]
+    },
+    {
+      "id": "C06",
+      "title": "Multiple Qubits and Exponential State Space",
+      "simple_explanation": "An n-qubit state is described by 2^n complex amplitudes.",
+      "visual_explanation": "Show a counter or growth chart: 1 qubit→2 amplitudes, 2→4, 3→8, 10→1024, 50→2^50.",
+      "technical_explanation": "|Ψ⟩=Σ_x c_x|x⟩ over 2^n computational-basis states, with Σ|c_x|²=1.",
+      "example": "50 qubits require 2^50 = 1,125,899,906,842,624 amplitudes. At 16 bytes per complex amplitude, the simple dense-state estimate is 16 PiB.",
+      "why_it_matters": "This explains why general-purpose classical statevector simulation becomes difficult as qubit count grows.",
+      "how_it_works": "Each added qubit doubles the dimension of the statevector.",
+      "common_mistake": "Saying 50 qubits let you read 2^50 classical numbers from one measurement.",
+      "connection": "Connects measurement limits to classical simulation cost.",
+      "try_it": "Predict the amplitude count for 30 qubits, then estimate memory at 16 bytes per amplitude.",
+      "key_takeaway": "The quantum state dimension grows exponentially, while measurement still returns only a classical outcome string.",
+      "keywords": [
+        "2^n",
+        "statevector",
+        "amplitudes",
+        "exponential",
+        "memory"
+      ],
+      "related_concepts": [
+        "C03",
+        "C07",
+        "C08"
+      ]
+    },
+    {
+      "id": "C07",
+      "title": "Entanglement",
+      "simple_explanation": "Entanglement is a joint quantum state that cannot be written as independent states of the individual qubits.",
+      "visual_explanation": "Show H on q0 followed by CNOT(q0,q1), then a probability table with 00 and 11 at 50% each.",
+      "technical_explanation": "The Bell state |Φ+⟩=(|00⟩+|11⟩)/√2 is entangled. Measuring one qubit gives correlated results with the other, but this does not enable faster-than-light communication.",
+      "example": "Starting from |00⟩, H(q0) then CNOT(q0,q1) produces the Bell state; ideal outcomes are 00 and 11 only.",
+      "why_it_matters": "Entanglement is a distinct quantum resource used by many quantum algorithms and protocols.",
+      "how_it_works": "A multi-qubit state develops correlations that cannot be represented as a product of separate single-qubit states.",
+      "common_mistake": "Thinking entanglement is a communication channel that sends usable information faster than light.",
+      "connection": "Uses superposition, CNOT, and measurement together.",
+      "try_it": "Run the Bell circuit for 1000 shots and inspect the outcome histogram.",
+      "key_takeaway": "Entanglement creates non-classical correlations, not faster-than-light messaging.",
+      "keywords": [
+        "entanglement",
+        "Bell state",
+        "CNOT",
+        "correlation"
+      ],
+      "related_concepts": [
+        "C02",
+        "C03",
+        "C04"
+      ]
+    },
+    {
+      "id": "C08",
+      "title": "What Quantum Computers Are and Aren't Good At",
+      "simple_explanation": "Quantum computers are expected to help on particular problem classes; they are not universally faster than classical computers.",
+      "visual_explanation": "Use a problem-type table: factoring, unstructured search, quantum simulation, NP-complete problems, everyday tasks.",
+      "technical_explanation": "Shor's algorithm gives a polynomial-time quantum algorithm for integer factoring on an ideal fault-tolerant quantum computer; Grover gives roughly √N query scaling for unstructured search. No efficient quantum algorithm for NP-complete problems is known.",
+      "example": "Grover changes unstructured search from roughly N queries classically to roughly √N quantum queries in the query model.",
+      "why_it_matters": "It prevents the central misconception that quantum computing is simply a faster replacement for classical computing.",
+      "how_it_works": "Speedups arise from specific algorithms that exploit quantum structure such as interference and entanglement.",
+      "common_mistake": "Assuming any workload gets a quantum speedup.",
+      "connection": "Builds on all preceding concepts and leads into Topic 1.3 applications.",
+      "try_it": "Classify web browsing, database lookup, factoring, unstructured search, and quantum simulation by whether a quantum advantage is established/expected by the source.",
+      "key_takeaway": "Quantum advantage is problem- and algorithm-specific.",
+      "keywords": [
+        "quantum advantage",
+        "Shor",
+        "Grover",
+        "NP-complete",
+        "simulation"
+      ],
+      "related_concepts": [
+        "C05",
+        "C06",
+        "C07"
+      ]
+    }
+  ]
+}

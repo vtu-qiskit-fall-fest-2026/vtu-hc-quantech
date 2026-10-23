@@ -1,0 +1,15 @@
+{
+  "topic_id": "_template",
+  "concepts": [
+    {
+      "id": "T01",
+      "title": "Template Concept",
+      "simple_explanation": "This is a demonstration concept illustrating schema adherence.",
+      "visual_explanation": "Imagine a template placeholder.",
+      "technical_explanation": "Formally, a template provides a structural baseline.",
+      "example": "Example of a template instance.",
+      "keywords": ["template", "placeholder"],
+      "related_concepts": []
+    }
+  ]
+}

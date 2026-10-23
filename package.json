@@ -1,0 +1,43 @@
+{
+  "name": "quantalearn-ai",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:frontend": "vite",
+    "dev:backend": "python -m backend.main",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "content:generate": "node content-pipeline/scripts/generate_lessons.mjs",
+    "content:verify": "node content-pipeline/scripts/verify_content.mjs",
+    "backend:dev": "python -m backend.main",
+    "backend:test": "python -m unittest discover -s backend/tests -p \"test_*.py\"",
+    "backend:eval": "python backend/scripts/run_eval.py",
+    "validate:pack": "python backend/scripts/validate_pack.py 1.1"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "axios": "^1.20.0",
+    "canvas-confetti": "^1.9.4",
+    "katex": "^0.18.9",
+    "lucide-react": "^1.47.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.18.4",
+    "react-syntax-highlighter": "^15.6.6",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "puppeteer-core": "^25.12.0",
+    "vite": "^8.3.0"
+  }
+}

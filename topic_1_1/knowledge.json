@@ -1,0 +1,121 @@
+{
+  "topic_id": "1.1",
+  "topic_name": "What Is Quantum Computing?",
+  "level": 1,
+  "module": "Introduction to Quantum Computing",
+  "purpose": "Introduce quantum computing and why it exists",
+  "prerequisites": [],
+  "math_required": "Basic probability; complex numbers only lightly (amplitudes).",
+  "estimated_time": "30-40 min",
+  "difficulty": "beginner",
+  "next_topic": "1.2 Classical vs Quantum Computing",
+  "tags": [
+    "qubit",
+    "superposition",
+    "interference",
+    "entanglement",
+    "decoherence",
+    "measurement",
+    "NISQ"
+  ],
+  "learning_objectives": [
+    "Define quantum computing in one or two sentences.",
+    "Explain why it exists, including simulation of nature and problems that scale badly classically.",
+    "Distinguish a classical bit from a qubit, including what measurement does.",
+    "Describe superposition, interference and entanglement in plain language and state a common misconception about each.",
+    "State that quantum computers give speedups only for particular problems and are not general replacements.",
+    "Name noise/decoherence as a major obstacle and explain NISQ.",
+    "Calculate measurement probabilities for a simple one-qubit state."
+  ],
+  "concepts": [
+    {
+      "id": "C01",
+      "title": "Quantum computing",
+      "definition": "A model of computation in which information is held in quantum systems (qubits) and processed by controlled quantum operations (gates), followed by measurement.",
+      "explanation": "Quantum computers use quantum-mechanical properties to tackle certain problems that can be difficult for classical computers. They are specialized tools rather than universal replacements for classical computers."
+    },
+    {
+      "id": "C02",
+      "title": "Classical bit",
+      "definition": "A classical bit has a value of 0 or 1.",
+      "explanation": "A classical bit can be pictured as a switch that is off (0) or on (1)."
+    },
+    {
+      "id": "C03",
+      "title": "Qubit",
+      "definition": "A qubit is the basic unit of quantum information and can be described by a state α|0⟩ + β|1⟩, with |α|² + |β|² = 1.",
+      "explanation": "A qubit can have a superposition of the computational basis states. Measurement in that basis gives 0 or 1 according to the corresponding probabilities."
+    },
+    {
+      "id": "C04",
+      "title": "Superposition",
+      "definition": "A quantum state can be a combination of basis states.",
+      "explanation": "Superposition is not simply a hidden classical value. The amplitudes of the component basis states determine measurement probabilities."
+    },
+    {
+      "id": "C05",
+      "title": "Measurement",
+      "definition": "Measurement of a qubit in the computational basis yields 0 or 1 with probabilities determined by the squared magnitudes of its amplitudes.",
+      "explanation": "After a measurement result is obtained, the state is projected onto the observed basis state in the examples covered here."
+    },
+    {
+      "id": "C06",
+      "title": "Probability amplitudes",
+      "definition": "For |ψ⟩ = α|0⟩ + β|1⟩, α and β are amplitudes and their squared magnitudes give measurement probabilities.",
+      "mathematics": [
+        "|ψ⟩ = α|0⟩ + β|1⟩",
+        "|α|² + |β|² = 1",
+        "P(0) = |α|²",
+        "P(1) = |β|²"
+      ]
+    },
+    {
+      "id": "C07",
+      "title": "Interference",
+      "definition": "Quantum amplitudes can add constructively or destructively.",
+      "explanation": "Quantum algorithms can arrange interference so amplitudes for unwanted outcomes cancel while useful outcomes are amplified."
+    },
+    {
+      "id": "C08",
+      "title": "Entanglement",
+      "definition": "Entanglement creates quantum correlations between qubits that cannot be described as independent states.",
+      "explanation": "Entangled measurement results can be strongly correlated. Entanglement does not provide faster-than-light communication."
+    },
+    {
+      "id": "C09",
+      "title": "Quantum circuit",
+      "definition": "A quantum circuit is a sequence of quantum operations or gates applied to qubits, followed by measurement.",
+      "explanation": "A circuit can be viewed as initialize → apply gates → measure, with repeated shots used to obtain outcome statistics."
+    },
+    {
+      "id": "C10",
+      "title": "Decoherence",
+      "definition": "Decoherence is loss of quantum coherence through interaction with the environment.",
+      "explanation": "Noise and environmental interaction make quantum states difficult to preserve and are major engineering obstacles."
+    },
+    {
+      "id": "C11",
+      "title": "NISQ",
+      "definition": "NISQ stands for Noisy Intermediate-Scale Quantum.",
+      "explanation": "The term describes the era of quantum devices that are noisy and intermediate in scale, before large-scale fault-tolerant quantum computing."
+    },
+    {
+      "id": "C12",
+      "title": "Problem-specific speedup",
+      "definition": "Quantum computers can provide advantages for particular computational problems; they are not generally faster for every task.",
+      "explanation": "The source emphasizes specialized use and hybrid workflows rather than replacing classical computers."
+    },
+    {
+      "id": "C13",
+      "title": "Hybrid quantum-classical computing",
+      "definition": "A workflow in which classical and quantum resources divide computational tasks.",
+      "explanation": "Classical computers remain important for many tasks, including everyday computing and classical post-processing."
+    },
+    {
+      "id": "C14",
+      "title": "Qubit technologies",
+      "definition": "The source identifies implementations including superconducting circuits, trapped ions, quantum dots and photons.",
+      "explanation": "Different hardware approaches have different engineering characteristics; hardware details beyond the Topic 1.1 scope should be treated cautiously."
+    }
+  ]
+}

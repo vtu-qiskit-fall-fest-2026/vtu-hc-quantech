@@ -1,0 +1,122 @@
+{
+  "topic_id": "1.2",
+  "examples": [
+    {
+      "id": "E01",
+      "title": "Hadamard on |0⟩",
+      "num_qubits": 1,
+      "steps": [
+        "Start in |0⟩.",
+        "Apply H = (1/√2)[[1,1],[1,-1]].",
+        "Obtain H|0⟩=(|0⟩+|1⟩)/√2.",
+        "Square amplitude magnitudes: P(0)=1/2 and P(1)=1/2.",
+        "Repeated shots approach a 50/50 distribution."
+      ],
+      "circuit": [
+        {
+          "gate": "H",
+          "qubits": [
+            0
+          ],
+          "position": 0
+        }
+      ],
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      },
+      "interpretation": "The qubit is in a superposition before measurement; each ideal measurement produces 0 or 1.",
+      "common_mistake": "Calling the state two classical values stored simultaneously.",
+      "try_yourself": "Replace the equal superposition with (√3/2)|0⟩+(1/2)|1⟩ and calculate the probabilities."
+    },
+    {
+      "id": "E02",
+      "title": "Random bit versus quantum interference",
+      "num_qubits": 1,
+      "steps": [
+        "Prepare |0⟩.",
+        "Apply H, producing a 50/50 superposition.",
+        "Apply H again.",
+        "The second H recombines the amplitudes and returns |0⟩."
+      ],
+      "circuit": [
+        {
+          "gate": "H",
+          "qubits": [
+            0
+          ],
+          "position": 0
+        },
+        {
+          "gate": "H",
+          "qubits": [
+            0
+          ],
+          "position": 1
+        }
+      ],
+      "expected_probabilities": {
+        "0": 1.0,
+        "1": 0.0
+      },
+      "interpretation": "H-H demonstrates interference and is not equivalent to sampling a classical random bit twice.",
+      "common_mistake": "Assuming any 50/50 state behaves exactly like an independently sampled random bit.",
+      "try_yourself": "Compare H-H, H-Z-H, and H-X-H."
+    },
+    {
+      "id": "E03",
+      "title": "Bell-state circuit",
+      "num_qubits": 2,
+      "steps": [
+        "Start in |00⟩.",
+        "Apply H to q0.",
+        "Apply CNOT with q0 as control and q1 as target.",
+        "The final state is (|00⟩+|11⟩)/√2.",
+        "Measure repeatedly: ideal outcomes are 00 and 11, each with 50% probability."
+      ],
+      "circuit": [
+        {
+          "gate": "H",
+          "qubits": [
+            0
+          ],
+          "position": 0
+        },
+        {
+          "gate": "CNOT",
+          "qubits": [
+            0,
+            1
+          ],
+          "position": 1
+        }
+      ],
+      "expected_probabilities": {
+        "00": 0.5,
+        "01": 0.0,
+        "10": 0.0,
+        "11": 0.5
+      },
+      "interpretation": "The two qubits are entangled; measuring either one gives correlated outcomes with the other.",
+      "common_mistake": "Describing CNOT as copying an arbitrary qubit or claiming the pair communicates faster than light.",
+      "try_yourself": "Remove H and predict the result."
+    },
+    {
+      "id": "E04",
+      "title": "State-space growth",
+      "num_qubits": 50,
+      "steps": [
+        "Use the rule 2^n amplitudes.",
+        "For n=3, there are 8 amplitudes.",
+        "For n=10, there are 1024 amplitudes.",
+        "For n=50, there are 2^50 = 1,125,899,906,842,624 amplitudes.",
+        "At 16 bytes per amplitude, the simple dense statevector estimate is 16 PiB.",
+        "For n=300, 2^300 is approximately 2.04×10^90 amplitudes; the source uses an atom-count comparison as a pedagogical estimate, not as an exact physical constant."
+      ],
+      "expected_result": "2^n amplitudes",
+      "interpretation": "The exponential state-space is a major reason general classical simulation becomes difficult at large n.",
+      "common_mistake": "Interpreting amplitude count as directly readable classical storage.",
+      "try_yourself": "Estimate the memory required for 30 qubits at 16 bytes per amplitude."
+    }
+  ]
+}

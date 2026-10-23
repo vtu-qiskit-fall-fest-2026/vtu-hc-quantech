@@ -1,0 +1,203 @@
+{
+  "topic_id": "1.4",
+  "ground_truth": [
+    {
+      "raw_source": [
+        "FACT ID: GT01",
+        "STATEMENT: A quantum circuit simulator is classical software that calculates what a quantum circuit does; it runs on classical hardware.",
+        "TYPE: definition",
+        "SOURCE: S01, S05",
+        "RELATED CONCEPT: C02",
+        "VERIFICATION: Standard definition."
+      ],
+      "fact_id": "GT01",
+      "statement": "A quantum circuit simulator is classical software that calculates what a quantum circuit does; it runs on classical hardware.",
+      "type": "definition",
+      "source": "S01, S05",
+      "related_concept": "C02",
+      "verification": "Standard definition.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT02",
+        "STATEMENT: A general n-qubit pure state is described by 2ⁿ complex amplitudes; a state-vector simulator stores all of them.",
+        "TYPE: rule",
+        "SOURCE: S01",
+        "RELATED CONCEPT: C03",
+        "VERIFICATION: Standard result (see Topic 1.2 GT07)."
+      ],
+      "fact_id": "GT02",
+      "statement": "A general n-qubit pure state is described by 2ⁿ complex amplitudes; a state-vector simulator stores all of them.",
+      "type": "rule",
+      "source": "S01",
+      "related_concept": "C03",
+      "verification": "Standard result (see Topic 1.2 GT07).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT03",
+        "STATEMENT: At 16 bytes per amplitude (double-precision complex), the state-vector memory is 2ⁿ × 16 bytes: n = 20 → 16 MiB; n = 30 → 16 GiB; n = 40 → 16 TiB; n = 50 → 16 PiB.",
+        "TYPE: numerical",
+        "SOURCE: Arithmetic",
+        "RELATED CONCEPT: C03",
+        "VERIFICATION: Hand arithmetic (E01); confirm with a script."
+      ],
+      "fact_id": "GT03",
+      "statement": "At 16 bytes per amplitude (double-precision complex), the state-vector memory is 2ⁿ × 16 bytes: n = 20 → 16 MiB; n = 30 → 16 GiB; n = 40 → 16 TiB; n = 50 → 16 PiB.",
+      "type": "numerical",
+      "source": "Arithmetic",
+      "related_concept": "C03",
+      "verification": "Hand arithmetic (E01); confirm with a script.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT04",
+        "INPUT: |00⟩ → H on q0 → CNOT (control q0, target q1)",
+        "EXPECTED OUTPUT: State vector (1/√2, 0, 0, 1/√2) in the order 00, 01, 10, 11; P(00) = 0.5, P(11) = 0.5, P(01) = 0, P(10) = 0",
+        "VERIFICATION: Hand calculation (E02); confirm in simulator (note Qiskit prints qubit order reversed, but this result is symmetric).",
+        "TOLERANCE: Exact in an ideal state-vector simulation; sampled counts vary statistically."
+      ],
+      "fact_id": "GT04",
+      "input": "|00⟩ → H on q0 → CNOT (control q0, target q1)",
+      "expected_output": "State vector (1/√2, 0, 0, 1/√2) in the order 00, 01, 10, 11; P(00) = 0.5, P(11) = 0.5, P(01) = 0, P(10) = 0",
+      "verification": "Hand calculation (E02); confirm in simulator (note Qiskit prints qubit order reversed, but this result is symmetric).",
+      "tolerance": "Exact in an ideal state-vector simulation; sampled counts vary statistically.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT05",
+        "INPUT: |00⟩ → CNOT (control q0, target q1) → H on q0",
+        "EXPECTED OUTPUT: (|00⟩ + |10⟩)/√2; P(00) = 0.5, P(10) = 0.5, P(01) = 0, P(11) = 0",
+        "VERIFICATION: Hand calculation (A01 \"try this\"); confirm in simulator.",
+        "TOLERANCE: Exact in ideal simulation."
+      ],
+      "fact_id": "GT05",
+      "input": "|00⟩ → CNOT (control q0, target q1) → H on q0",
+      "expected_output": "(|00⟩ + |10⟩)/√2; P(00) = 0.5, P(10) = 0.5, P(01) = 0, P(11) = 0",
+      "verification": "Hand calculation (A01 \"try this\"); confirm in simulator.",
+      "tolerance": "Exact in ideal simulation.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT06",
+        "STATEMENT: For an outcome with probability p estimated from N independent shots, the standard error of the measured frequency is √(p(1−p)/N); for p = 0.5 it is 0.05 at N = 100, ≈ 0.0158 at N = 1,000 and 0.005 at N = 10,000.",
+        "TYPE: numerical / rule",
+        "SOURCE: Standard statistics",
+        "RELATED CONCEPT: C04",
+        "VERIFICATION: Hand calculation (E03)."
+      ],
+      "fact_id": "GT06",
+      "statement": "For an outcome with probability p estimated from N independent shots, the standard error of the measured frequency is √(p(1−p)/N); for p = 0.5 it is 0.05 at N = 100, ≈ 0.0158 at N = 1,000 and 0.005 at N = 10,000.",
+      "type": "numerical / rule",
+      "source": "Standard statistics",
+      "related_concept": "C04",
+      "verification": "Hand calculation (E03).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT07",
+        "STATEMENT: Real quantum hardware returns sampled measurement outcomes; the full state vector is not directly readable (recovering it requires state tomography, whose cost grows exponentially with the number of qubits).",
+        "TYPE: rule",
+        "SOURCE: S01, S02",
+        "RELATED CONCEPT: C05",
+        "VERIFICATION: Standard result."
+      ],
+      "fact_id": "GT07",
+      "statement": "Real quantum hardware returns sampled measurement outcomes; the full state vector is not directly readable (recovering it requires state tomography, whose cost grows exponentially with the number of qubits).",
+      "type": "rule",
+      "source": "S01, S02",
+      "related_concept": "C05",
+      "verification": "Standard result.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT08",
+        "STATEMENT: Circuits using only Clifford gates (such as H, S, CNOT) on computational-basis inputs, with computational-basis measurements, can be simulated efficiently on a classical computer (Gottesman–Knill theorem). Adding a non-Clifford gate such as T removes this guarantee.",
+        "TYPE: theorem",
+        "SOURCE: S03, S04",
+        "RELATED CONCEPT: C07",
+        "VERIFICATION: Published results (Gottesman 1998; Aaronson and Gottesman 2004)."
+      ],
+      "fact_id": "GT08",
+      "statement": "Circuits using only Clifford gates (such as H, S, CNOT) on computational-basis inputs, with computational-basis measurements, can be simulated efficiently on a classical computer (Gottesman–Knill theorem). Adding a non-Clifford gate such as T removes this guarantee.",
+      "type": "theorem",
+      "source": "S03, S04",
+      "related_concept": "C07",
+      "verification": "Published results (Gottesman 1998; Aaronson and Gottesman 2004).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT09",
+        "INPUT: n-qubit GHZ circuit: H on q0, then CNOT from q0 to q1, q1 to q2, …, q(n−2) to q(n−1)",
+        "EXPECTED OUTPUT: (|00…0⟩ + |11…1⟩)/√2; P(all zeros) = 0.5, P(all ones) = 0.5, all other outcomes 0",
+        "VERIFICATION: Hand derivation (extension of E02, one CNOT per added qubit); confirm in simulator for small n (e.g. n = 3, 4).",
+        "TOLERANCE: Exact in ideal simulation."
+      ],
+      "fact_id": "GT09",
+      "input": "n-qubit GHZ circuit: H on q0, then CNOT from q0 to q1, q1 to q2, …, q(n−2) to q(n−1)",
+      "expected_output": "(|00…0⟩ + |11…1⟩)/√2; P(all zeros) = 0.5, P(all ones) = 0.5, all other outcomes 0",
+      "verification": "Hand derivation (extension of E02, one CNOT per added qubit); confirm in simulator for small n (e.g. n = 3, 4).",
+      "tolerance": "Exact in ideal simulation.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT10",
+        "STATEMENT: Classical computers can in principle simulate any quantum circuit; the cost grows exponentially with qubit number in general, so quantum computers are expected to offer efficiency gains for some problems, not to compute classically uncomputable functions.",
+        "TYPE: statement of current knowledge",
+        "SOURCE: S01, S06",
+        "RELATED CONCEPT: C07, M06",
+        "VERIFICATION: Standard result; whether quantum computers are strictly more efficient for all claimed tasks is an open theoretical question, so the tutor should say \"expected\" or \"believed\", not \"proven\"."
+      ],
+      "fact_id": "GT10",
+      "statement": "Classical computers can in principle simulate any quantum circuit; the cost grows exponentially with qubit number in general, so quantum computers are expected to offer efficiency gains for some problems, not to compute classically uncomputable functions.",
+      "type": "statement of current knowledge",
+      "source": "S01, S06",
+      "related_concept": "C07, M06",
+      "verification": "Standard result; whether quantum computers are strictly more efficient for all claimed tasks is an open theoretical question, so the tutor should say \"expected\" or \"believed\", not \"proven\".",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT11",
+        "STATEMENT: Density-matrix simulation stores a 2ⁿ × 2ⁿ matrix (memory ∝ 4ⁿ) and can represent noisy (mixed) states; state-vector simulation can represent noise only by randomly sampling error events across many runs.",
+        "TYPE: rule",
+        "SOURCE: S01, S05",
+        "RELATED CONCEPT: C07",
+        "VERIFICATION: Standard result."
+      ],
+      "fact_id": "GT11",
+      "statement": "Density-matrix simulation stores a 2ⁿ × 2ⁿ matrix (memory ∝ 4ⁿ) and can represent noisy (mixed) states; state-vector simulation can represent noise only by randomly sampling error events across many runs.",
+      "type": "rule",
+      "source": "S01, S05",
+      "related_concept": "C07",
+      "verification": "Standard result.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT12",
+        "STATEMENT: Project convention — the ideal state-vector simulator is the authoritative reference for what an ideal circuit does; it is not an authority on what a particular physical device will output.",
+        "TYPE: project rule",
+        "SOURCE: QuantumLearnAI design (see Topic 1.2 Section 14)",
+        "RELATED CONCEPT: C06, C08",
+        "VERIFICATION: Design decision, not a scientific fact."
+      ],
+      "fact_id": "GT12",
+      "statement": "Project convention — the ideal state-vector simulator is the authoritative reference for what an ideal circuit does; it is not an authority on what a particular physical device will output.",
+      "type": "project rule",
+      "source": "QuantumLearnAI design (see Topic 1.2 Section 14)",
+      "related_concept": "C06, C08",
+      "verification": "Design decision, not a scientific fact.",
+      "time_sensitive": false
+    }
+  ]
+}

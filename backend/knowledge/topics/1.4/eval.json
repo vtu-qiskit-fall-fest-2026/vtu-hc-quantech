@@ -1,0 +1,232 @@
+{
+  "topic_id": "1.4",
+  "evaluation_items": [
+    {
+      "id": "EV_QC01",
+      "source_type": "quick_check",
+      "source_id": "QC01",
+      "question": "What kind of computer does a quantum circuit simulator run on?",
+      "expected_answer": "B",
+      "expected_key_points": [
+        "B",
+        "A circuit simulator is classical software."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC02",
+      "source_type": "quick_check",
+      "source_id": "QC02",
+      "question": "True or False: A state-vector simulator can show you every amplitude of the state.",
+      "expected_answer": "True",
+      "expected_key_points": [
+        "True",
+        "It stores them in memory, which is why it is useful for learning."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC03",
+      "source_type": "quick_check",
+      "source_id": "QC03",
+      "question": "How many amplitudes does a general 5-qubit state vector contain?",
+      "expected_answer": "32",
+      "expected_key_points": [
+        "32",
+        "2⁵ = 32."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC04",
+      "source_type": "quick_check",
+      "source_id": "QC04",
+      "question": "Roughly how much memory does a 30-qubit state vector need at 16 bytes per amplitude?",
+      "expected_answer": "C",
+      "expected_key_points": [
+        "C",
+        "2³⁰ × 16 bytes = 2³⁴ bytes = 16 GiB."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC05",
+      "source_type": "quick_check",
+      "source_id": "QC05",
+      "question": "In 1000 shots of an ideal 50/50 outcome you observe 488 and 512. Is the circuit wrong?",
+      "expected_answer": "No. The standard error is about 16 counts, so deviations of this size are expected.",
+      "expected_key_points": [
+        "No. The standard error is about 16 counts, so deviations of this size are expected.",
+        "See E03."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC06",
+      "source_type": "quick_check",
+      "source_id": "QC06",
+      "question": "Which is a likely reason a Bell-state circuit on hardware gives some 01 and 10 outcomes?",
+      "expected_answer": "B",
+      "expected_key_points": [
+        "B",
+        "Hardware noise moves some probability into otherwise forbidden outcomes."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC07",
+      "source_type": "quick_check",
+      "source_id": "QC07",
+      "question": "True or False: Any circuit that creates entanglement is hard for a classical computer to simulate.",
+      "expected_answer": "False",
+      "expected_key_points": [
+        "False",
+        "Clifford circuits (e.g. Bell and GHZ circuits) create entanglement but are efficiently simulable."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_QC08",
+      "source_type": "quick_check",
+      "source_id": "QC08",
+      "question": "Which simulator type is best for a 100-qubit circuit using only H, S and CNOT gates?",
+      "expected_answer": "C",
+      "expected_key_points": [
+        "C",
+        "Clifford-only circuits are efficiently simulable by stabilizer methods."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source quick check"
+    },
+    {
+      "id": "EV_Q01",
+      "source_type": "assessment",
+      "source_id": "Q01",
+      "question": "Which statement is correct?",
+      "expected_answer": "A",
+      "expected_key_points": [
+        "A",
+        "It runs on classical hardware."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_Q02",
+      "source_type": "assessment",
+      "source_id": "Q02",
+      "question": "How many amplitudes does a state-vector simulator store for 10 qubits?",
+      "expected_answer": "1,024",
+      "expected_key_points": [
+        "1,024",
+        "2¹⁰ = 1,024."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_Q03",
+      "source_type": "assessment",
+      "source_id": "Q03",
+      "question": "True or False: On real quantum hardware you can read the full state vector directly.",
+      "expected_answer": "B",
+      "expected_key_points": [
+        "B",
+        "Hardware only returns measurement outcomes."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_Q04",
+      "source_type": "assessment",
+      "source_id": "Q04",
+      "question": "How much memory does a 32-qubit state vector need at 16 bytes per amplitude?",
+      "expected_answer": "2³² × 16 = 2³⁶ bytes = 64 GiB",
+      "expected_key_points": [
+        "2³² × 16 = 2³⁶ bytes = 64 GiB",
+        "See E01."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_Q05",
+      "source_type": "assessment",
+      "source_id": "Q05",
+      "question": "Starting in |00⟩, apply H to q0 then CNOT (control q0, target q1). Give the exact probabilities and the standard error of the estimated P(00) from 1,000 shots.",
+      "expected_answer": "P(00) = P(11) = 0.5, P(01) = P(10) = 0; standard error ≈ 0.0158 (about 1.6%, i.e. ±16 counts).",
+      "expected_key_points": [
+        "P(00) = P(11) = 0.5, P(01) = P(10) = 0; standard error ≈ 0.0158 (about 1.6%, i.e. ±16 counts).",
+        "See E02 and E03."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_Q06",
+      "source_type": "assessment",
+      "source_id": "Q06",
+      "question": "Name three reasons why hardware results can differ from an ideal simulation.",
+      "expected_answer": "Any three of: gate errors; readout errors; decoherence; crosstalk; limited connectivity and extra compiled gates; finite number of shots.",
+      "expected_key_points": [
+        "Any three of: gate errors; readout errors; decoherence; crosstalk; limited connectivity and extra compiled gates; finite number of shots.",
+        "See C06."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_Q07",
+      "source_type": "assessment",
+      "source_id": "Q07",
+      "question": "A student wants to simulate a 50-qubit circuit made only of H, S and CNOT gates, starting from |0…0⟩, and measure all qubits. Which simulator type would you recommend and why?",
+      "expected_answer": "A stabilizer simulator, because the circuit is Clifford-only and therefore efficiently simulable (Gottesman–Knill); a state-vector simulator would need 2⁵⁰ × 16 bytes = 16 PiB.",
+      "expected_key_points": [
+        "A stabilizer simulator, because the circuit is Clifford-only and therefore efficiently simulable (Gottesman–Knill); a state-vector simulator would need 2⁵⁰ × 16 bytes = 16 PiB.",
+        "See C07, E04."
+      ],
+      "forbidden_points": [],
+      "source_fidelity": "derived directly from source assessment"
+    },
+    {
+      "id": "EV_MISCONCEPTION_01",
+      "source_type": "misconception_probe",
+      "source_id": "M01",
+      "question": "Does the topic support the claim that a quantum computer simply tries every possible answer at once?",
+      "expected_key_points": [
+        "no",
+        "interference",
+        "amplitudes are manipulated so useful outcomes can be amplified"
+      ],
+      "forbidden_points": [
+        "yes",
+        "brute-force all answers at once"
+      ],
+      "category": "misconception"
+    },
+    {
+      "id": "EV_OUT_OF_SCOPE_01",
+      "source_type": "out_of_scope_probe",
+      "source_id": "OUT_OF_SCOPE",
+      "question": "What is the current qubit count of a specific vendor device?",
+      "expected_key_points": [
+        "outside this topic",
+        "current vendor-specific hardware numbers are intentionally out of scope",
+        "ask to verify current external sources if needed"
+      ],
+      "forbidden_points": [
+        "invented current qubit count",
+        "presenting an unverified current number as source-grounded"
+      ],
+      "category": "out_of_scope"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "1.4",
+  "title": "Quantum Computers vs Quantum Simulators",
+  "order": 4,
+  "category": "Quantum Computing Fundamentals",
+  "level": 1,
+  "difficulty": "Beginner",
+  "estimated_minutes": "30–40 minutes",
+  "prerequisites": [
+    "Topic 1.2 (qubits, superposition, measurement, 2ⁿ amplitudes)",
+    "Topic 1.3 (noisy vs fault-tolerant devices; what \"quantum advantage\" means)",
+    "Basic probability (percentages, repeated trials)"
+  ],
+  "summary": "This topic explains the difference between a real quantum computer (a physical device) and a quantum simulator (a classical program that calculates what a quantum circuit would do). Learners see how a simulator works, why its cost doubles with every added qubit, what a simulator can show that hardware cannot, why hardware results differ from ideal results, and when each tool should be used.",
+  "status": "draft_pending_verification",
+  "gates_used": [
+    "H",
+    "CNOT"
+  ],
+  "learning_objectives": [
+    "Explain the difference between a quantum computer and a quantum simulator, including what hardware each runs on.",
+    "Describe how a state-vector simulator applies gates and produces measurement probabilities, and carry out a two-qubit example by hand.",
+    "Calculate the memory needed to store an n-qubit state vector and explain why simulation does not scale to large general circuits.",
+    "Distinguish exact probabilities from sampled shot counts, and estimate the statistical uncertainty of a shot-based estimate.",
+    "List at least three reasons why a circuit's results on real hardware can differ from its ideal simulation.",
+    "Identify circuit families that can be simulated efficiently on a classical computer (Clifford circuits, low entanglement) and explain why this does not contradict the difficulty of general simulation.",
+    "Decide whether a simulator or real hardware is the right tool for a given task, and avoid confusing \"quantum simulator\" with \"quantum simulation\" of physical systems."
+  ],
+  "source_document": "Quantum Computing(2).docx",
+  "verification_note": "Numerical/circuit results are source-derived and must be confirmed in the project simulator/calculator before release.",
+  "time_sensitivity": "1.4 intentionally avoids vendor-specific current hardware numbers; simulator facts and circuit results still require project-simulator verification.",
+  "conventions": {
+    "multi_qubit_order": "q0 is leftmost in |q0 q1 ...>.",
+    "qiskit_display": "Qiskit-style tools may print the reverse order (q1 q0); tutor should state the ordering used."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "topic_id": "_template",
+  "examples": [
+    {
+      "id": "TEX01",
+      "title": "Template Hadamard Example",
+      "question": "What is H|0⟩?",
+      "steps": ["Apply H to |0⟩", "Result is (|0⟩ + |1⟩)/√2"],
+      "answer": "50% |0⟩ and 50% |1⟩.",
+      "circuit": {
+        "num_qubits": 1,
+        "operations": [{"gate": "H", "qubits": [0]}]
+      },
+      "expected_probabilities": {
+        "0": 0.5,
+        "1": 0.5
+      }
+    }
+  ]
+}

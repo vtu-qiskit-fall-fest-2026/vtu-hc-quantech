@@ -1,0 +1,13 @@
+{
+  "topic_id": "_template",
+  "misconceptions": [
+    {
+      "id": "TM01",
+      "misconception": "Templates are fully functional topics without adaptation.",
+      "why_wrong": "A template provides structure only and must be populated with domain content.",
+      "correction": "Templates provide schemas that creators customize for new curriculum topics.",
+      "trigger_keywords": ["template mistake"],
+      "forbidden_phrases": ["templates are complete"]
+    }
+  ]
+}

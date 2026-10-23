@@ -1,0 +1,12 @@
+{
+  "topic_id": "_template",
+  "evaluations": [
+    {
+      "id": "TE01",
+      "question": "What is the purpose of this template?",
+      "expected_key_points": ["template", "structural baseline"],
+      "forbidden_points": ["production topic"],
+      "category": "definition"
+    }
+  ]
+}

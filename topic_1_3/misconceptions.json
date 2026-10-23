@@ -1,0 +1,149 @@
+{
+  "topic_id": "1.3",
+  "misconceptions": [
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M01",
+        "WRONG CLAIM: \"Quantum computers can already break RSA / encryption is already broken.\"",
+        "WHY IT SEEMS REASONABLE: Headlines about \"quantum advantage\" and \"quantum threat\".",
+        "WHY IT IS WRONG: Breaking RSA-2048 needs a large fault-tolerant quantum computer. Published estimates are on the order of a million noisy physical qubits running for days; no such machine exists today.",
+        "CORRECT STATEMENT: \"RSA is vulnerable in principle to a future large fault-tolerant quantum computer; no machine capable of breaking RSA-2048 exists today.\"",
+        "EXAMPLE: E02; Gidney 2025 is an estimate, not an attack.",
+        "TRIGGER WORDS: already broken, Q-Day happened, cracked RSA, breaks encryption today"
+      ],
+      "misconception_id": "M01",
+      "wrong_claim": "\"Quantum computers can already break RSA / encryption is already broken.\"",
+      "why_it_seems_reasonable": "Headlines about \"quantum advantage\" and \"quantum threat\".",
+      "why_it_is_wrong": "Breaking RSA-2048 needs a large fault-tolerant quantum computer. Published estimates are on the order of a million noisy physical qubits running for days; no such machine exists today.",
+      "correct_statement": "\"RSA is vulnerable in principle to a future large fault-tolerant quantum computer; no machine capable of breaking RSA-2048 exists today.\"",
+      "example": "E02; Gidney 2025 is an estimate, not an attack.",
+      "trigger_words": "already broken, Q-Day happened, cracked RSA, breaks encryption today"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M02",
+        "WRONG CLAIM: \"Quantum computers will break all encryption, including AES.\"",
+        "WHY IT SEEMS REASONABLE: \"Encryption\" is treated as one thing.",
+        "WHY IT IS WRONG: Shor's algorithm targets factoring and discrete-logarithm-based public-key schemes. Symmetric ciphers like AES face only Grover's quadratic speedup, which halves the effective key length in the exponent.",
+        "CORRECT STATEMENT: \"Public-key schemes such as RSA and ECC are threatened by Shor; symmetric ciphers remain secure with sufficiently long keys (e.g. 256-bit).\"",
+        "EXAMPLE: AES-256 → ≈128-bit strength under Grover.",
+        "TRIGGER WORDS: all encryption, AES broken, everything, any cipher"
+      ],
+      "misconception_id": "M02",
+      "wrong_claim": "\"Quantum computers will break all encryption, including AES.\"",
+      "why_it_seems_reasonable": "\"Encryption\" is treated as one thing.",
+      "why_it_is_wrong": "Shor's algorithm targets factoring and discrete-logarithm-based public-key schemes. Symmetric ciphers like AES face only Grover's quadratic speedup, which halves the effective key length in the exponent.",
+      "correct_statement": "\"Public-key schemes such as RSA and ECC are threatened by Shor; symmetric ciphers remain secure with sufficiently long keys (e.g. 256-bit).\"",
+      "example": "AES-256 → ≈128-bit strength under Grover.",
+      "trigger_words": "all encryption, AES broken, everything, any cipher"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M03",
+        "WRONG CLAIM: \"Post-quantum cryptography needs a quantum computer\" or \"PQC and QKD are the same.\"",
+        "WHY IT SEEMS REASONABLE: The word \"quantum\" appears in both names.",
+        "WHY IT IS WRONG: PQC is classical algorithms (ordinary software) designed to resist quantum attacks. QKD uses quantum hardware and communication links, and is a different technology.",
+        "CORRECT STATEMENT: \"PQC runs on classical computers; QKD uses quantum physics for key distribution.\"",
+        "EXAMPLE: ML-KEM (FIPS 203) is software; BB84 is a quantum protocol.",
+        "TRIGGER WORDS: post-quantum, PQC, QKD, quantum encryption, needs quantum computer"
+      ],
+      "misconception_id": "M03",
+      "wrong_claim": "\"Post-quantum cryptography needs a quantum computer\" or \"PQC and QKD are the same.\"",
+      "why_it_seems_reasonable": "The word \"quantum\" appears in both names.",
+      "why_it_is_wrong": "PQC is classical algorithms (ordinary software) designed to resist quantum attacks. QKD uses quantum hardware and communication links, and is a different technology.",
+      "correct_statement": "\"PQC runs on classical computers; QKD uses quantum physics for key distribution.\"",
+      "example": "ML-KEM (FIPS 203) is software; BB84 is a quantum protocol.",
+      "trigger_words": "post-quantum, PQC, QKD, quantum encryption, needs quantum computer"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M04",
+        "WRONG CLAIM: \"Quantum computers will solve optimization problems like logistics exponentially faster.\"",
+        "WHY IT SEEMS REASONABLE: Many optimization problems have huge search spaces, which sounds like \"try all possibilities\".",
+        "WHY IT IS WRONG: No general exponential speedup for NP-hard optimization is known; proven results are at most quadratic (via Grover-type methods), and heuristic quantum methods have not been shown to beat the best classical heuristics in practice.",
+        "CORRECT STATEMENT: \"Quantum optimization is an active research area; at best modest or instance-specific speedups are expected, and none is established for general practical problems.\"",
+        "EXAMPLE: See C06.",
+        "TRIGGER WORDS: optimization, logistics, scheduling, exponentially faster, solve NP-hard"
+      ],
+      "misconception_id": "M04",
+      "wrong_claim": "\"Quantum computers will solve optimization problems like logistics exponentially faster.\"",
+      "why_it_seems_reasonable": "Many optimization problems have huge search spaces, which sounds like \"try all possibilities\".",
+      "why_it_is_wrong": "No general exponential speedup for NP-hard optimization is known; proven results are at most quadratic (via Grover-type methods), and heuristic quantum methods have not been shown to beat the best classical heuristics in practice.",
+      "correct_statement": "\"Quantum optimization is an active research area; at best modest or instance-specific speedups are expected, and none is established for general practical problems.\"",
+      "example": "See C06.",
+      "trigger_words": "optimization, logistics, scheduling, exponentially faster, solve NP-hard"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M05",
+        "WRONG CLAIM: \"Quantum machine learning will make AI training exponentially faster.\"",
+        "WHY IT SEEMS REASONABLE: Machine learning involves large linear algebra, which quantum algorithms can speed up in theory.",
+        "WHY IT IS WRONG: Speedups usually assume cheap data loading and limited read-out; loading classical data can erase the advantage, and several QML speedups were matched by new classical algorithms.",
+        "CORRECT STATEMENT: \"QML claims depend on strong assumptions about data input and output; practical advantages for mainstream machine learning have not been established.\"",
+        "EXAMPLE: Recommendation-system algorithm matched by a classical \"dequantised\" algorithm.",
+        "TRIGGER WORDS: quantum AI, train neural networks, big data, quantum machine learning"
+      ],
+      "misconception_id": "M05",
+      "wrong_claim": "\"Quantum machine learning will make AI training exponentially faster.\"",
+      "why_it_seems_reasonable": "Machine learning involves large linear algebra, which quantum algorithms can speed up in theory.",
+      "why_it_is_wrong": "Speedups usually assume cheap data loading and limited read-out; loading classical data can erase the advantage, and several QML speedups were matched by new classical algorithms.",
+      "correct_statement": "\"QML claims depend on strong assumptions about data input and output; practical advantages for mainstream machine learning have not been established.\"",
+      "example": "Recommendation-system algorithm matched by a classical \"dequantised\" algorithm.",
+      "trigger_words": "quantum AI, train neural networks, big data, quantum machine learning"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M06",
+        "WRONG CLAIM: \"Quantum computers can simulate anything faster, including everyday physical systems.\"",
+        "WHY IT SEEMS REASONABLE: \"Simulation\" sounds general.",
+        "WHY IT IS WRONG: The strong case is for simulating quantum systems. Many classical simulations (weather, traffic, most engineering) have no known quantum speedup.",
+        "CORRECT STATEMENT: \"Quantum computers are expected to simulate quantum systems efficiently; there is no general speedup for classical simulation.\"",
+        "EXAMPLE: Chemistry vs weather forecasting.",
+        "TRIGGER WORDS: simulate anything, weather, simulation, faster physics"
+      ],
+      "misconception_id": "M06",
+      "wrong_claim": "\"Quantum computers can simulate anything faster, including everyday physical systems.\"",
+      "why_it_seems_reasonable": "\"Simulation\" sounds general.",
+      "why_it_is_wrong": "The strong case is for simulating quantum systems. Many classical simulations (weather, traffic, most engineering) have no known quantum speedup.",
+      "correct_statement": "\"Quantum computers are expected to simulate quantum systems efficiently; there is no general speedup for classical simulation.\"",
+      "example": "Chemistry vs weather forecasting.",
+      "trigger_words": "simulate anything, weather, simulation, faster physics"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M07",
+        "WRONG CLAIM: \"Quantum advantage has been achieved, so quantum computers are now useful for business.\"",
+        "WHY IT SEEMS REASONABLE: Press releases announce advantage milestones.",
+        "WHY IT IS WRONG: Advantage demonstrations so far are on specific, often contrived tasks, can be challenged by new classical methods, and do not by themselves show commercially useful results.",
+        "CORRECT STATEMENT: \"Quantum advantage claims show quantum devices beating known classical methods on particular tasks; practical, useful advantage on real-world problems is still being demonstrated and debated.\"",
+        "EXAMPLE: The 2019 supremacy claim was followed by improved classical simulations.",
+        "TRIGGER WORDS: advantage achieved, supremacy, useful today, commercial value now"
+      ],
+      "misconception_id": "M07",
+      "wrong_claim": "\"Quantum advantage has been achieved, so quantum computers are now useful for business.\"",
+      "why_it_seems_reasonable": "Press releases announce advantage milestones.",
+      "why_it_is_wrong": "Advantage demonstrations so far are on specific, often contrived tasks, can be challenged by new classical methods, and do not by themselves show commercially useful results.",
+      "correct_statement": "\"Quantum advantage claims show quantum devices beating known classical methods on particular tasks; practical, useful advantage on real-world problems is still being demonstrated and debated.\"",
+      "example": "The 2019 supremacy claim was followed by improved classical simulations.",
+      "trigger_words": "advantage achieved, supremacy, useful today, commercial value now"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M08",
+        "WRONG CLAIM: \"Quantum computing is all hype and will never work.\"",
+        "WHY IT SEEMS REASONABLE: Over-promising is common, and timelines have slipped.",
+        "WHY IT IS WRONG: Error-correction experiments have shown logical error rates falling as code size grows, and algorithmic resource estimates have dropped sharply. Large-scale usefulness is not guaranteed, but there is real, peer-reviewed progress.",
+        "CORRECT STATEMENT: \"Progress is real but incomplete; most high-value applications depend on hardware that does not yet exist.\"",
+        "EXAMPLE: C08 (below-threshold error correction; resource estimates falling).",
+        "TRIGGER WORDS: hype, scam, never work, vapourware"
+      ],
+      "misconception_id": "M08",
+      "wrong_claim": "\"Quantum computing is all hype and will never work.\"",
+      "why_it_seems_reasonable": "Over-promising is common, and timelines have slipped.",
+      "why_it_is_wrong": "Error-correction experiments have shown logical error rates falling as code size grows, and algorithmic resource estimates have dropped sharply. Large-scale usefulness is not guaranteed, but there is real, peer-reviewed progress.",
+      "correct_statement": "\"Progress is real but incomplete; most high-value applications depend on hardware that does not yet exist.\"",
+      "example": "C08 (below-threshold error correction; resource estimates falling).",
+      "trigger_words": "hype, scam, never work, vapourware"
+    }
+  ]
+}

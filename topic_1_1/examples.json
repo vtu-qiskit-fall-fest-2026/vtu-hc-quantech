@@ -1,0 +1,56 @@
+{
+  "topic_id": "1.1",
+  "examples": [
+    {
+      "id": "EX01",
+      "title": "Measurement probabilities",
+      "question": "For |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, find the measurement probabilities.",
+      "steps": [
+        "Check normalization: (√3/2)² + (1/2)² = 3/4 + 1/4 = 1.",
+        "P(0) = |√3/2|² = 3/4 = 75%.",
+        "P(1) = |1/2|² = 1/4 = 25%."
+      ],
+      "answer": "P(0)=75% and P(1)=25%."
+    },
+    {
+      "id": "EX02",
+      "title": "Complex amplitude",
+      "question": "For (1/√2)|0⟩ + (i/√2)|1⟩, find P(0) and P(1).",
+      "steps": [
+        "|1/√2|² = 1/2.",
+        "|i/√2|² = 1/2."
+      ],
+      "answer": "P(0)=50% and P(1)=50%. The state differs from |+⟩ by relative phase even though the computational-basis measurement is 50/50."
+    },
+    {
+      "id": "EX03",
+      "title": "Two Hadamards",
+      "question": "What happens when H is applied twice to |0⟩?",
+      "steps": [
+        "H|0⟩ = (|0⟩+|1⟩)/√2 = |+⟩.",
+        "H|+⟩ = |0⟩ because the |1⟩ amplitudes cancel and the |0⟩ amplitudes reinforce."
+      ],
+      "answer": "The state returns deterministically to |0⟩. This illustrates interference."
+    },
+    {
+      "id": "EX04",
+      "title": "Bell state",
+      "question": "What happens for |00⟩ → H on the first qubit → CNOT?",
+      "steps": [
+        "After H: (|00⟩+|10⟩)/√2.",
+        "After CNOT: (|00⟩+|11⟩)/√2."
+      ],
+      "answer": "Measurement gives 00 or 11, each with probability 1/2; 01 and 10 do not occur for the ideal state."
+    },
+    {
+      "id": "EX05",
+      "title": "Normalization",
+      "question": "Why must |α|² + |β|² equal 1 for a normalized one-qubit state?",
+      "steps": [
+        "The squared magnitudes are the probabilities of the two computational-basis measurement outcomes.",
+        "Probabilities must sum to 1."
+      ],
+      "answer": "Therefore |α|² + |β|² = 1."
+    }
+  ]
+}

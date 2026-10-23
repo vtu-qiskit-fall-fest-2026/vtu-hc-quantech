@@ -1,0 +1,456 @@
+{
+  "c_classical_bit": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information (10th Anniversary Ed.)",
+        "chapter": "Chapter 1.1: Global Perspectives - Classical Computers",
+        "pages": "pp. 1-12",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Learning",
+        "module": "Basics of Quantum Information: Single Systems",
+        "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems"
+      }
+    ]
+  },
+  "c_qubit_superposition": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.2: Quantum Bits",
+        "pages": "pp. 13-17",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Kaye, Laflamme, Mosca",
+        "book": "An Introduction to Quantum Computing",
+        "chapter": "Chapter 2: Introduction to Quantum Mechanics - Qubits and Superposition",
+        "pages": "pp. 15-28",
+        "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+      }
+    ]
+  },
+  "c_dirac_braket": {
+    "citations": [
+      {
+        "source": "John Preskill",
+        "title": "Quantum Information and Computation Lecture Notes",
+        "chapter": "Chapter 2: Foundations of Quantum Theory - Hilbert Spaces and Dirac Notation",
+        "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+      },
+      {
+        "source": "Qiskit Textbook",
+        "chapter": "The Atoms of Computation: Representing Qubit States",
+        "link": "https://learn.qiskit.org/course/introduction/the-atoms-of-computation"
+      }
+    ]
+  },
+  "c_bloch_sphere": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.2: Bloch Sphere Representation",
+        "pages": "pp. 15-16",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Learning",
+        "module": "Basics of Quantum Information: The Bloch Sphere",
+        "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems#the-bloch-sphere"
+      }
+    ]
+  },
+  "c_born_rule": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 2.2: The Postulates of Quantum Mechanics (Postulate 3: Measurement)",
+        "pages": "pp. 84-90",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "John Preskill",
+        "title": "Quantum Information and Computation Lecture Notes",
+        "chapter": "Chapter 2.1: Quantum States and Measurements",
+        "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+      }
+    ]
+  },
+  "c_pauli_x": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.3: Single Qubit Operations",
+        "pages": "pp. 17-21",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Learning",
+        "module": "Fundamentals of Quantum Algorithms: Quantum Gates",
+        "link": "https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/quantum-circuits"
+      }
+    ]
+  },
+  "c_pauli_z": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.3: Pauli Operators",
+        "pages": "pp. 17-20",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_pauli_y": {
+    "citations": [
+      {
+        "source": "Kaye, Laflamme, Mosca",
+        "book": "An Introduction to Quantum Computing",
+        "chapter": "Chapter 4.1: Single-Qubit Gates",
+        "pages": "pp. 51-56",
+        "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+      }
+    ]
+  },
+  "c_hadamard": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.3: The Hadamard Gate and Superposition",
+        "pages": "pp. 18-19",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Textbook",
+        "chapter": "Single Qubit Gates: The X, Y, Z, and H Gates",
+        "link": "https://learn.qiskit.org/course/introduction/single-qubit-gates"
+      }
+    ]
+  },
+  "c_phase_rotations": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 4.2: Single Qubit Operations and Arbitrary Rotations",
+        "pages": "pp. 174-177",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_global_vs_relative_phase": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 2.2: Global vs. Relative Phase",
+        "pages": "pp. 93-94",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Learning",
+        "module": "Basics of Quantum Information: Relative Phase",
+        "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems"
+      }
+    ]
+  },
+  "c_tensor_product": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 2.1.7: Tensor Products",
+        "pages": "pp. 71-76",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "John Preskill",
+        "title": "Quantum Information and Computation Lecture Notes",
+        "chapter": "Chapter 2.3: Bipartite and Multipartite Systems",
+        "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+      }
+    ]
+  },
+  "c_multi_qubit_basis": {
+    "citations": [
+      {
+        "source": "Kaye, Laflamme, Mosca",
+        "book": "An Introduction to Quantum Computing",
+        "chapter": "Chapter 3: Multiple Qubits and Quantum State Space",
+        "pages": "pp. 37-48",
+        "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+      }
+    ]
+  },
+  "c_cnot_gate": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.3.2: Multiple Qubit Gates - Controlled-NOT",
+        "pages": "pp. 20-22",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Learning",
+        "module": "Basics of Quantum Information: Multiple Systems",
+        "link": "https://learning.quantum.ibm.com/course/basics-of-quantum-information/multiple-systems"
+      }
+    ]
+  },
+  "c_controlled_phase": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 4.3: Controlled Operations",
+        "pages": "pp. 177-185",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_bell_states": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.3.6: Bell States and Quantum Teleportation",
+        "pages": "pp. 25-28",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "John Preskill",
+        "title": "Quantum Information and Computation Lecture Notes",
+        "chapter": "Chapter 4: Quantum Entanglement and Bell Inequalities",
+        "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+      }
+    ]
+  },
+  "c_density_matrix": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 2.4: The Density Operator",
+        "pages": "pp. 98-105",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "John Preskill",
+        "title": "Quantum Information and Computation Lecture Notes",
+        "chapter": "Chapter 2.2: Density Operators and Pure vs Mixed States",
+        "link": "http://theory.caltech.edu/~preskill/ph229/#lecture-notes"
+      }
+    ]
+  },
+  "c_partial_trace": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 2.4.2: The Reduced Density Operator and Partial Trace",
+        "pages": "pp. 105-111",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_ghz_w_states": {
+    "citations": [
+      {
+        "source": "Greenberger, Horne, Zeilinger",
+        "title": "Going Beyond Bell's Theorem",
+        "journal": "Fundamental Questions in Quantum Theory, pp. 69-72 (1989)",
+        "link": "https://doi.org/10.1007/978-94-017-0849-4_10"
+      },
+      {
+        "source": "Dür, Vidal, Cirac",
+        "title": "Three qubits can be entangled in two inequivalent ways",
+        "journal": "Phys. Rev. A 62, 062314 (2000)",
+        "link": "https://doi.org/10.1103/PhysRevA.62.062314"
+      }
+    ]
+  },
+  "c_no_cloning": {
+    "citations": [
+      {
+        "source": "Wootters & Zurek",
+        "title": "A single quantum cannot be cloned",
+        "journal": "Nature 299, 802-803 (1982)",
+        "link": "https://doi.org/10.1038/299802a0"
+      },
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 12.1.1: The No-Cloning Theorem",
+        "pages": "pp. 532-534",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_quantum_interference": {
+    "citations": [
+      {
+        "source": "Feynman, Leighton, Sands",
+        "book": "The Feynman Lectures on Physics, Vol. III",
+        "chapter": "Chapter 1: Quantum Behavior - Double-Slit Probability Amplitudes",
+        "link": "https://www.feynmanlectures.caltech.edu/III_01.html"
+      }
+    ]
+  },
+  "c_phase_kickback": {
+    "citations": [
+      {
+        "source": "Cleve, Ekert, Macchiavello, Mosca",
+        "title": "Quantum algorithms revisited",
+        "journal": "Proc. R. Soc. Lond. A 454, 339-354 (1998)",
+        "link": "https://doi.org/10.1098/rspa.1998.0164"
+      },
+      {
+        "source": "Qiskit Textbook",
+        "chapter": "Quantum Algorithms: Phase Kickback",
+        "link": "https://learn.qiskit.org/course/ch-algorithms/phase-kickback"
+      }
+    ]
+  },
+  "c_deutsch_algorithm": {
+    "citations": [
+      {
+        "source": "David Deutsch",
+        "title": "Quantum theory, the Church-Turing principle and the universal quantum computer",
+        "journal": "Proc. R. Soc. Lond. A 400, 97-117 (1985)",
+        "link": "https://doi.org/10.1098/rspa.1985.0070"
+      },
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.4.3: Deutsch's Algorithm",
+        "pages": "pp. 32-34",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_deutsch_jozsa": {
+    "citations": [
+      {
+        "source": "Deutsch & Jozsa",
+        "title": "Rapid solution of problems by quantum computation",
+        "journal": "Proc. R. Soc. Lond. A 439, 553-558 (1992)",
+        "link": "https://doi.org/10.1098/rspa.1992.0167"
+      },
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 1.4.4: The Deutsch-Jozsa Algorithm",
+        "pages": "pp. 34-36",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_bernstein_vazirani": {
+    "citations": [
+      {
+        "source": "Bernstein & Vazirani",
+        "title": "Quantum complexity theory",
+        "journal": "SIAM Journal on Computing 26(5), 1411-1473 (1997)",
+        "link": "https://doi.org/10.1137/S0097539796300921"
+      },
+      {
+        "source": "Qiskit Textbook",
+        "chapter": "Quantum Algorithms: Bernstein-Vazirani Algorithm",
+        "link": "https://learn.qiskit.org/course/ch-algorithms/bernstein-vazirani-algorithm"
+      }
+    ]
+  },
+  "c_simon_algorithm": {
+    "citations": [
+      {
+        "source": "Daniel R. Simon",
+        "title": "On the power of quantum computation",
+        "journal": "SIAM Journal on Computing 26(5), 1474-1483 (1997)",
+        "link": "https://doi.org/10.1137/S0097539796298637"
+      },
+      {
+        "source": "Kaye, Laflamme, Mosca",
+        "book": "An Introduction to Quantum Computing",
+        "chapter": "Chapter 7.3: Simon's Algorithm",
+        "pages": "pp. 138-145",
+        "link": "https://global.oup.com/academic/product/an-introduction-to-quantum-computing-9780198570493"
+      }
+    ]
+  },
+  "c_grover_oracle": {
+    "citations": [
+      {
+        "source": "Lov K. Grover",
+        "title": "A fast quantum mechanical algorithm for database search",
+        "journal": "Proc. 28th Annual ACM Symposium on Theory of Computing (STOC), pp. 212-219 (1996)",
+        "link": "https://doi.org/10.1145/237814.237866"
+      },
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 6.1: The Quantum Search Algorithm - The Oracle",
+        "pages": "pp. 248-251",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_grover_diffusion": {
+    "citations": [
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 6.1.2: The Diffusion Transform",
+        "pages": "pp. 252-255",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      },
+      {
+        "source": "Qiskit Learning",
+        "module": "Fundamentals of Quantum Algorithms: Grover's Algorithm",
+        "link": "https://learning.quantum.ibm.com/course/fundamentals-of-quantum-algorithms/grovers-algorithm"
+      }
+    ]
+  },
+  "c_qft": {
+    "citations": [
+      {
+        "source": "Coppersmith, Don",
+        "title": "An approximate Fourier transform useful in quantum factoring",
+        "journal": "IBM Research Report RC19642 (1994)",
+        "link": "https://arxiv.org/abs/quant-ph/0201067"
+      },
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 5.1: The Quantum Fourier Transform",
+        "pages": "pp. 216-221",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  },
+  "c_nisq_noise": {
+    "citations": [
+      {
+        "source": "John Preskill",
+        "title": "Quantum Computing in the NISQ era and beyond",
+        "journal": "Quantum 2, 79 (2018)",
+        "link": "https://doi.org/10.22331/q-2018-08-06-79"
+      },
+      {
+        "source": "Nielsen & Chuang",
+        "book": "Quantum Computation and Quantum Information",
+        "chapter": "Chapter 8.3: Quantum Noise Channels (Depolarizing, Amplitude Damping)",
+        "pages": "pp. 373-386",
+        "link": "https://doi.org/10.1017/CBO9780511976667"
+      }
+    ]
+  }
+}

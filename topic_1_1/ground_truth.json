@@ -1,0 +1,46 @@
+{
+  "topic_id": "1.1",
+  "rules": [
+    {
+      "id": "GT01",
+      "input": "|ψ⟩ = α|0⟩ + β|1⟩",
+      "expected": "|α|² + |β|² = 1; P(0)=|α|²; P(1)=|β|²",
+      "type": "one_qubit_measurement"
+    },
+    {
+      "id": "GT02",
+      "input": "(√3/2)|0⟩ + (1/2)|1⟩",
+      "expected": {
+        "P(0)": 0.75,
+        "P(1)": 0.25
+      },
+      "type": "one_qubit_measurement"
+    },
+    {
+      "id": "GT03",
+      "input": "(1/√2)|0⟩ + (i/√2)|1⟩",
+      "expected": {
+        "P(0)": 0.5,
+        "P(1)": 0.5
+      },
+      "type": "one_qubit_measurement"
+    },
+    {
+      "id": "GT04",
+      "input": "H(H|0⟩)",
+      "expected": "|0⟩",
+      "type": "circuit"
+    },
+    {
+      "id": "GT05",
+      "input": "|00⟩ -> H(q0) -> CNOT(q0,q1)",
+      "expected": {
+        "00": 0.5,
+        "11": 0.5,
+        "01": 0.0,
+        "10": 0.0
+      },
+      "type": "bell_state"
+    }
+  ]
+}

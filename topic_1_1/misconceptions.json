@@ -1,0 +1,45 @@
+{
+  "topic_id": "1.1",
+  "misconceptions": [
+    {
+      "id": "M01",
+      "misconception": "Quantum computers try every answer simultaneously and simply pick the best one.",
+      "correction": "Not quite. Quantum algorithms manipulate amplitudes and use interference to amplify or cancel outcomes; measuring the system does not reveal every possible answer."
+    },
+    {
+      "id": "M02",
+      "misconception": "A qubit is simply two classical bits or literally stores two separate values.",
+      "correction": "A qubit is a quantum state described by amplitudes. Measurement in the computational basis gives a single 0 or 1 outcome."
+    },
+    {
+      "id": "M03",
+      "misconception": "Entanglement allows faster-than-light communication.",
+      "correction": "Entanglement produces correlations, but it cannot be used to send usable information faster than light. The correlations are revealed by comparing results through ordinary communication."
+    },
+    {
+      "id": "M04",
+      "misconception": "Quantum computers will replace classical computers.",
+      "correction": "The source describes quantum computers as specialized machines that complement classical computers and can help with particular problems."
+    },
+    {
+      "id": "M05",
+      "misconception": "Quantum computers are exponentially faster at everything.",
+      "correction": "Potential speedups are problem-specific; quantum computers are not universally faster than classical computers."
+    },
+    {
+      "id": "M06",
+      "misconception": "A qubit is just a probabilistic classical bit.",
+      "correction": "Quantum amplitudes, including relative phase, allow interference. This distinguishes a qubit state from a simple classical probability distribution."
+    },
+    {
+      "id": "M07",
+      "misconception": "Measuring a qubit does not affect it.",
+      "correction": "Measurement changes the state in the measurement basis; in the examples in this topic, after observing a basis-state result the state is that result."
+    },
+    {
+      "id": "M08",
+      "misconception": "Decoherence is just a software bug.",
+      "correction": "Decoherence is a physical loss of quantum coherence caused by interaction with the environment."
+    }
+  ]
+}

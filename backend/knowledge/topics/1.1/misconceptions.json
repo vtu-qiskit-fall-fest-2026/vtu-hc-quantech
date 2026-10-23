@@ -1,0 +1,143 @@
+{
+  "topic_id": "1.1",
+  "misconceptions": [
+    {
+      "id": "M01",
+      "misconception": "Quantum computers try every answer simultaneously and simply pick the best one.",
+      "why_wrong": "Measurement collapses the superposition to a single random basis state; you cannot extract all possible answers at once.",
+      "correction": "Quantum algorithms manipulate amplitudes and use interference to amplify correct outcomes while canceling wrong ones, rather than testing all answers in parallel.",
+      "trigger_keywords": [
+        "try every answer",
+        "all answers at once",
+        "try every possibility",
+        "parallel universes",
+        "checks all answers",
+        "try all at once"
+      ],
+      "forbidden_phrases": [
+        "tries every answer at once",
+        "tries every possibility simultaneously",
+        "checks all combinations at once"
+      ]
+    },
+    {
+      "id": "M02",
+      "misconception": "A qubit literally stores two classical bits simultaneously.",
+      "why_wrong": "A qubit state is described by continuous amplitudes, but a computational-basis measurement can only ever yield a single classical bit (0 or 1).",
+      "correction": "A qubit is described by probability amplitudes α and β for |0⟩ and |1⟩. Measurement yields only one definite bit: 0 or 1.",
+      "trigger_keywords": [
+        "literally stores two bits",
+        "stores 0 and 1 at the same time",
+        "holds two values",
+        "both 0 and 1 at the same time",
+        "both 0 and 1",
+        "stores both 0 and 1"
+      ],
+      "forbidden_phrases": [
+        "literally stores two classical bits",
+        "stores both 0 and 1 at once",
+        "holds two classical bits of information"
+      ]
+    },
+    {
+      "id": "M03",
+      "misconception": "Entanglement allows faster-than-light communication or instant messaging.",
+      "why_wrong": "Measurement outcomes on each entangled qubit appear completely random locally. To reveal correlations, outcomes must be compared through classical communication.",
+      "correction": "Entanglement produces quantum correlations between measurement outcomes, but cannot transmit usable information faster than light (the No-Communication Theorem).",
+      "trigger_keywords": [
+        "faster than light",
+        "instant messaging",
+        "teleport information instantly",
+        "faster-than-light",
+        "ftl communication"
+      ],
+      "forbidden_phrases": [
+        "allows faster-than-light communication",
+        "sends messages instantly",
+        "violates relativity by sending data"
+      ]
+    },
+    {
+      "id": "M04",
+      "misconception": "Quantum computers will replace classical computers for everyday tasks.",
+      "why_wrong": "Quantum processors are specialized accelerators that are expensive to cool and error-prone for simple sequential logic.",
+      "correction": "Quantum computers are specialized tools that complement classical computers, excelling at specific problems while classical processors handle general computation.",
+      "trigger_keywords": [
+        "replace classical computers",
+        "replace pcs",
+        "replace laptops",
+        "obsolete classical",
+        "take over classical"
+      ],
+      "forbidden_phrases": [
+        "will replace classical computers",
+        "replaces all classical computing",
+        "makes classical computers obsolete"
+      ]
+    },
+    {
+      "id": "M05",
+      "misconception": "Quantum computers are exponentially faster for everything.",
+      "why_wrong": "Quantum speedups exist only for specific problems where quantum interference can be exploited; many problems show no speedup.",
+      "correction": "Speedups are problem-specific. For many routine algorithms, classical computers remain much faster and more practical.",
+      "trigger_keywords": [
+        "faster at everything",
+        "exponentially faster for all",
+        "faster for every problem",
+        "superior for everything"
+      ],
+      "forbidden_phrases": [
+        "faster for everything",
+        "exponentially faster at all tasks",
+        "universal quantum advantage for everything"
+      ]
+    },
+    {
+      "id": "M06",
+      "misconception": "A qubit is just a probabilistic classical bit with a random switch.",
+      "why_wrong": "Classical probabilities are non-negative real numbers and cannot cancel each other out.",
+      "correction": "Qubit amplitudes are complex numbers possessing phase, allowing destructive interference where amplitudes subtract and cancel, which is impossible in classical probability.",
+      "trigger_keywords": [
+        "just a probabilistic bit",
+        "random switch",
+        "just probability",
+        "coin flip bit"
+      ],
+      "forbidden_phrases": [
+        "just a probabilistic classical bit",
+        "merely a classical random variable"
+      ]
+    },
+    {
+      "id": "M07",
+      "misconception": "Measuring a qubit does not affect its quantum state.",
+      "why_wrong": "Measurement is an active physical interaction that projects the statevector onto the measured basis state.",
+      "correction": "Measurement causes wavefunction collapse: the superposition is projected onto the observed outcome (|0⟩ or |1⟩), irrevocably altering the state.",
+      "trigger_keywords": [
+        "does not affect",
+        "passive observation",
+        "look without changing"
+      ],
+      "forbidden_phrases": [
+        "measuring does not affect it",
+        "observation leaves state intact"
+      ]
+    },
+    {
+      "id": "M08",
+      "misconception": "Decoherence is just a software bug or coding error.",
+      "why_wrong": "Decoherence is an unavoidable physical phenomenon caused by thermodynamic and environmental noise.",
+      "correction": "Decoherence is a fundamental physical loss of quantum phase information caused by unwanted environmental coupling (thermal fluctuations, stray radiation).",
+      "trigger_keywords": [
+        "software bug",
+        "programming bug",
+        "coding error",
+        "compiler bug"
+      ],
+      "forbidden_phrases": [
+        "decoherence is a software bug",
+        "decoherence is just a coding mistake"
+      ]
+    }
+  ]
+}

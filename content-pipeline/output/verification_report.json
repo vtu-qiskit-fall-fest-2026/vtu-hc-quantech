@@ -1,0 +1,218 @@
+{
+  "timestamp": "2026-09-30T09:10:29.177Z",
+  "totalLessons": 30,
+  "passed": 30,
+  "failed": 0,
+  "results": [
+    {
+      "concept_id": "c_classical_bit",
+      "passed": true,
+      "fidelity": 1,
+      "maxProbError": 0,
+      "errors": []
+    },
+    {
+      "concept_id": "c_qubit_superposition",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_dirac_braket",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_bloch_sphere",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_born_rule",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 4.440892098500626e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_pauli_x",
+      "passed": true,
+      "fidelity": 1,
+      "maxProbError": 0,
+      "errors": []
+    },
+    {
+      "concept_id": "c_pauli_z",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_pauli_y",
+      "passed": true,
+      "fidelity": 1,
+      "maxProbError": 0,
+      "errors": []
+    },
+    {
+      "concept_id": "c_hadamard",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_phase_rotations",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_global_vs_relative_phase",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 4.440892098500626e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_tensor_product",
+      "passed": true,
+      "fidelity": 1,
+      "maxProbError": 0,
+      "errors": []
+    },
+    {
+      "concept_id": "c_multi_qubit_basis",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_cnot_gate",
+      "passed": true,
+      "fidelity": 1,
+      "maxProbError": 0,
+      "errors": []
+    },
+    {
+      "concept_id": "c_controlled_phase",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_bell_states",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_density_matrix",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_partial_trace",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_ghz_w_states",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_no_cloning",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_quantum_interference",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 4.440892098500626e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_phase_kickback",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_deutsch_algorithm",
+      "passed": true,
+      "fidelity": 0.9999999966439364,
+      "maxProbError": 2.220446049250313e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_deutsch_jozsa",
+      "passed": true,
+      "fidelity": 0.9999999966439361,
+      "maxProbError": 3.885780586188048e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_bernstein_vazirani",
+      "passed": true,
+      "fidelity": 0.9999999966439364,
+      "maxProbError": 2.220446049250313e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_simon_algorithm",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_grover_oracle",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_grover_diffusion",
+      "passed": true,
+      "fidelity": 0.9999999999999991,
+      "maxProbError": 8.881784197001252e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_qft",
+      "passed": true,
+      "fidelity": 0.9999999999999996,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    },
+    {
+      "concept_id": "c_nisq_noise",
+      "passed": true,
+      "fidelity": 0.9999999966439368,
+      "maxProbError": 1.1102230246251565e-16,
+      "errors": []
+    }
+  ]
+}

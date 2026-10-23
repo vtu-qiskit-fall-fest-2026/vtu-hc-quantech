@@ -1,0 +1,239 @@
+{
+  "topic_id": "1.3",
+  "ground_truth": [
+    {
+      "raw_source": [
+        "FACT ID: GT01",
+        "STATEMENT: Shor's algorithm factors integers and computes discrete logarithms in polynomial time on an ideal quantum computer; no polynomial-time classical factoring algorithm is known.",
+        "TYPE: result",
+        "SOURCE: S01",
+        "RELATED CONCEPT: C02",
+        "VERIFICATION: Published result (Shor 1994/1997)."
+      ],
+      "fact_id": "GT01",
+      "statement": "Shor's algorithm factors integers and computes discrete logarithms in polynomial time on an ideal quantum computer; no polynomial-time classical factoring algorithm is known.",
+      "type": "result",
+      "source": "S01",
+      "related_concept": "C02",
+      "verification": "Published result (Shor 1994/1997).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT02",
+        "STATEMENT: Grover's algorithm finds a marked item among N in about √N queries, and this is optimal for unstructured search.",
+        "TYPE: result",
+        "SOURCE: S02, S03",
+        "RELATED CONCEPT: C05",
+        "VERIFICATION: Published results (Grover 1996; Bennett et al. 1997)."
+      ],
+      "fact_id": "GT02",
+      "statement": "Grover's algorithm finds a marked item among N in about √N queries, and this is optimal for unstructured search.",
+      "type": "result",
+      "source": "S02, S03",
+      "related_concept": "C05",
+      "verification": "Published results (Grover 1996; Bennett et al. 1997).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT03",
+        "INPUT: N = 1,000,000, one marked item",
+        "EXPECTED OUTPUT: Grover ≈ (π/4)·√N ≈ 785 iterations; classical expected ≈ 500,000 checks",
+        "VERIFICATION: Hand calculation (E01); confirm with a calculator.",
+        "TOLERANCE: Whole-number rounding (785 or 786)."
+      ],
+      "fact_id": "GT03",
+      "input": "N = 1,000,000, one marked item",
+      "expected_output": "Grover ≈ (π/4)·√N ≈ 785 iterations; classical expected ≈ 500,000 checks",
+      "verification": "Hand calculation (E01); confirm with a calculator.",
+      "tolerance": "Whole-number rounding (785 or 786).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT04",
+        "STATEMENT: Under idealised Grover analysis, a k-bit symmetric key has effective quantum search cost ≈ 2^(k/2) (AES-128 → 2⁶⁴; AES-256 → 2¹²⁸).",
+        "TYPE: numerical / rule",
+        "SOURCE: S02",
+        "RELATED CONCEPT: C02",
+        "VERIFICATION: Arithmetic; \"idealised\" means ignoring error-correction overhead and parallelisation limits."
+      ],
+      "fact_id": "GT04",
+      "statement": "Under idealised Grover analysis, a k-bit symmetric key has effective quantum search cost ≈ 2^(k/2) (AES-128 → 2⁶⁴; AES-256 → 2¹²⁸).",
+      "type": "numerical / rule",
+      "source": "S02",
+      "related_concept": "C02",
+      "verification": "Arithmetic; \"idealised\" means ignoring error-correction overhead and parallelisation limits.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT05",
+        "STATEMENT: Public-key schemes based on integer factoring or discrete logarithms (RSA, Diffie–Hellman, elliptic-curve cryptography) are vulnerable to Shor-type algorithms; symmetric ciphers and hash functions are affected only by Grover-type quadratic speedups.",
+        "TYPE: rule",
+        "SOURCE: S01, S02, S06",
+        "RELATED CONCEPT: C02",
+        "VERIFICATION: Standard result."
+      ],
+      "fact_id": "GT05",
+      "statement": "Public-key schemes based on integer factoring or discrete logarithms (RSA, Diffie–Hellman, elliptic-curve cryptography) are vulnerable to Shor-type algorithms; symmetric ciphers and hash functions are affected only by Grover-type quadratic speedups.",
+      "type": "rule",
+      "source": "S01, S02, S06",
+      "related_concept": "C02",
+      "verification": "Standard result.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT06",
+        "INPUT: H = Z, |ψ(θ)⟩ = cos(θ/2)|0⟩ + sin(θ/2)|1⟩",
+        "EXPECTED OUTPUT: E(θ) = cos θ; E(0) = +1, E(π/2) = 0, E(π) = −1; minimum −1 equals the ground-state energy",
+        "VERIFICATION: Hand derivation (E04); confirm in simulator.",
+        "TOLERANCE: Exact in ideal simulation; sampled estimates vary (≈ ±0.03 at 1000 shots near θ = π/2)."
+      ],
+      "fact_id": "GT06",
+      "input": "H = Z, |ψ(θ)⟩ = cos(θ/2)|0⟩ + sin(θ/2)|1⟩",
+      "expected_output": "E(θ) = cos θ; E(0) = +1, E(π/2) = 0, E(π) = −1; minimum −1 equals the ground-state energy",
+      "verification": "Hand derivation (E04); confirm in simulator.",
+      "tolerance": "Exact in ideal simulation; sampled estimates vary (≈ ±0.03 at 1000 shots near θ = π/2).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT07",
+        "STATEMENT: A general n-qubit (or n-orbital) state needs 2ⁿ amplitudes classically; at 16 bytes per amplitude, n = 30 needs 16 GiB and n = 50 needs 16 PiB.",
+        "TYPE: numerical",
+        "SOURCE: Arithmetic",
+        "RELATED CONCEPT: C04",
+        "VERIFICATION: Hand arithmetic (E03); confirm with a script."
+      ],
+      "fact_id": "GT07",
+      "statement": "A general n-qubit (or n-orbital) state needs 2ⁿ amplitudes classically; at 16 bytes per amplitude, n = 30 needs 16 GiB and n = 50 needs 16 PiB.",
+      "type": "numerical",
+      "source": "Arithmetic",
+      "related_concept": "C04",
+      "verification": "Hand arithmetic (E03); confirm with a script.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT08",
+        "STATEMENT: Feynman proposed in the early 1980s that quantum systems are best simulated by quantum computers.",
+        "TYPE: history",
+        "SOURCE: S04",
+        "RELATED CONCEPT: C04",
+        "VERIFICATION: Published paper (Feynman 1982)."
+      ],
+      "fact_id": "GT08",
+      "statement": "Feynman proposed in the early 1980s that quantum systems are best simulated by quantum computers.",
+      "type": "history",
+      "source": "S04",
+      "related_concept": "C04",
+      "verification": "Published paper (Feynman 1982).",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT09",
+        "STATEMENT: No efficient quantum algorithm for NP-complete problems is known; it is widely believed none exists.",
+        "TYPE: statement of current knowledge",
+        "SOURCE: S03, S05",
+        "RELATED CONCEPT: C06",
+        "VERIFICATION: Literature; the tutor must phrase as \"not known / widely believed\"."
+      ],
+      "fact_id": "GT09",
+      "statement": "No efficient quantum algorithm for NP-complete problems is known; it is widely believed none exists.",
+      "type": "statement of current knowledge",
+      "source": "S03, S05",
+      "related_concept": "C06",
+      "verification": "Literature; the tutor must phrase as \"not known / widely believed\".",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT10",
+        "STATEMENT: Some proposed quantum machine-learning speedups depend on assumptions about loading classical data, and some (such as a recommendation-system algorithm) were matched by new classical \"dequantised\" algorithms.",
+        "TYPE: statement of current knowledge",
+        "SOURCE: S08, S09",
+        "RELATED CONCEPT: C06",
+        "VERIFICATION: Published papers."
+      ],
+      "fact_id": "GT10",
+      "statement": "Some proposed quantum machine-learning speedups depend on assumptions about loading classical data, and some (such as a recommendation-system algorithm) were matched by new classical \"dequantised\" algorithms.",
+      "type": "statement of current knowledge",
+      "source": "S08, S09",
+      "related_concept": "C06",
+      "verification": "Published papers.",
+      "time_sensitive": false
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT11  [TIME-SENSITIVE — checked 1 Oct 2026]",
+        "STATEMENT: NIST published FIPS 203 (ML-KEM), FIPS 204 (ML-DSA) and FIPS 205 (SLH-DSA) on 13 August 2024. FIPS 206 (FALCON-based) was still listed as in development, and HQC was selected for standardisation on 11 March 2025; NIST's page was updated in August 2026.",
+        "TYPE: standards status",
+        "SOURCE: S10",
+        "RELATED CONCEPT: C03",
+        "VERIFICATION: NIST CSRC project page. Re-check before release; draft/final status of FIPS 206 and the HQC standard may have changed."
+      ],
+      "fact_id": "GT11",
+      "statement": "NIST published FIPS 203 (ML-KEM), FIPS 204 (ML-DSA) and FIPS 205 (SLH-DSA) on 13 August 2024. FIPS 206 (FALCON-based) was still listed as in development, and HQC was selected for standardisation on 11 March 2025; NIST's page was updated in August 2026.",
+      "type": "standards status",
+      "source": "S10",
+      "related_concept": "C03",
+      "verification": "NIST CSRC project page. Re-check before release; draft/final status of FIPS 206 and the HQC standard may have changed.",
+      "time_sensitive": true
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT12  [TIME-SENSITIVE — checked 1 Oct 2026]",
+        "STATEMENT: Gidney (Google Quantum AI, 2025) estimated that a 2048-bit RSA integer could be factored in under a week by a quantum computer with fewer than one million noisy qubits, assuming a square grid with nearest-neighbour connections, 0.1% uniform gate error, 1 µs surface-code cycle and 10 µs control reaction time; the 2019 Gidney–Ekerå estimate was about 20 million qubits and 8 hours. This is a resource estimate, not a demonstration.",
+        "TYPE: estimate",
+        "SOURCE: S11",
+        "RELATED CONCEPT: C02, C08",
+        "VERIFICATION: arXiv abstract. Newer estimates may exist; check before release."
+      ],
+      "fact_id": "GT12",
+      "statement": "Gidney (Google Quantum AI, 2025) estimated that a 2048-bit RSA integer could be factored in under a week by a quantum computer with fewer than one million noisy qubits, assuming a square grid with nearest-neighbour connections, 0.1% uniform gate error, 1 µs surface-code cycle and 10 µs control reaction time; the 2019 Gidney–Ekerå estimate was about 20 million qubits and 8 hours. This is a resource estimate, not a demonstration.",
+      "type": "estimate",
+      "source": "S11",
+      "related_concept": "C02, C08",
+      "verification": "arXiv abstract. Newer estimates may exist; check before release.",
+      "time_sensitive": true
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT13  [TIME-SENSITIVE — checked 1 Oct 2026]",
+        "STATEMENT: On 30 July 2026, IBM and the University of Chicago announced a demonstration of \"quantum advantage\" with trusted computation on 70 logical qubits (2,415 logical two-qubit operations and 468 logical T gates). IBM also references other advantage demonstrations with partners. These are vendor/partner claims, and advantage claims of this kind are routinely tested by new classical simulation methods.",
+        "TYPE: status of claims",
+        "SOURCE: S12, S13",
+        "RELATED CONCEPT: C08",
+        "VERIFICATION: IBM press release and IBM blog. The tutor should attribute these as announced claims, not settled facts, and should re-check for independent assessments (including classical-simulation counter-results) before release."
+      ],
+      "fact_id": "GT13",
+      "statement": "On 30 July 2026, IBM and the University of Chicago announced a demonstration of \"quantum advantage\" with trusted computation on 70 logical qubits (2,415 logical two-qubit operations and 468 logical T gates). IBM also references other advantage demonstrations with partners. These are vendor/partner claims, and advantage claims of this kind are routinely tested by new classical simulation methods.",
+      "type": "status of claims",
+      "source": "S12, S13",
+      "related_concept": "C08",
+      "verification": "IBM press release and IBM blog. The tutor should attribute these as announced claims, not settled facts, and should re-check for independent assessments (including classical-simulation counter-results) before release.",
+      "time_sensitive": true
+    },
+    {
+      "raw_source": [
+        "FACT ID: GT14  [TIME-SENSITIVE — checked 1 Oct 2026]",
+        "STATEMENT: Google Quantum AI's peer-reviewed surface-code experiments reported below-threshold error correction (a distance-7 code with 101 physical qubits showing logical error suppression).",
+        "TYPE: status of research",
+        "SOURCE: S14",
+        "RELATED CONCEPT: C08",
+        "VERIFICATION: Nature paper (verify exact reference); this shows error correction works at small scale, not that large fault-tolerant computers exist."
+      ],
+      "fact_id": "GT14",
+      "statement": "Google Quantum AI's peer-reviewed surface-code experiments reported below-threshold error correction (a distance-7 code with 101 physical qubits showing logical error suppression).",
+      "type": "status of research",
+      "source": "S14",
+      "related_concept": "C08",
+      "verification": "Nature paper (verify exact reference); this shows error correction works at small scale, not that large fault-tolerant computers exist.",
+      "time_sensitive": true
+    }
+  ]
+}

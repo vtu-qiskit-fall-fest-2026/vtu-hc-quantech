@@ -1,0 +1,119 @@
+{
+  "topic_id": "1.2",
+  "misconceptions": [
+    {
+      "id": "M01",
+      "wrong_claim": "A qubit is both 0 and 1, so it stores two values.",
+      "why_wrong": "A superposition is a quantum state described by amplitudes; measurement does not return two classical values.",
+      "correct_statement": "A qubit can be in a superposition of basis states, but a measurement returns a classical 0 or 1.",
+      "trigger_keywords": [
+        "both 0 and 1",
+        "stores two values",
+        "two bits",
+        "qubit stores"
+      ],
+      "forbidden_phrases": [
+        "qubit literally stores two classical bits",
+        "qubit stores two classical values"
+      ]
+    },
+    {
+      "id": "M02",
+      "wrong_claim": "A quantum computer tries every possible answer at once.",
+      "why_wrong": "Quantum states can contain superpositions of basis states, but measurement does not expose every candidate answer; useful algorithms rely on controlled interference.",
+      "correct_statement": "Quantum algorithms manipulate amplitudes and interference so that useful information can be extracted from measurement.",
+      "trigger_keywords": [
+        "tries every answer",
+        "all answers at once",
+        "brute force quantum"
+      ],
+      "forbidden_phrases": [
+        "tries every answer at once"
+      ]
+    },
+    {
+      "id": "M03",
+      "wrong_claim": "Quantum computers are faster at everything.",
+      "why_wrong": "Quantum speedups depend on the problem and algorithm.",
+      "correct_statement": "Quantum computers may provide advantages for particular problem classes, while classical computers remain appropriate for many tasks.",
+      "trigger_keywords": [
+        "faster at everything",
+        "faster than classical for everything",
+        "quantum is always faster"
+      ],
+      "forbidden_phrases": [
+        "quantum computers are faster for everything"
+      ]
+    },
+    {
+      "id": "M04",
+      "wrong_claim": "Quantum computers solve NP-complete problems efficiently.",
+      "why_wrong": "The source states that no efficient quantum algorithm for NP-complete problems is known.",
+      "correct_statement": "No efficient quantum algorithm for NP-complete problems is known; the topic does not claim such a general speedup exists.",
+      "trigger_keywords": [
+        "NP complete",
+        "NP-complete instantly",
+        "solve NP"
+      ],
+      "forbidden_phrases": [
+        "quantum computers solve NP-complete efficiently"
+      ]
+    },
+    {
+      "id": "M05",
+      "wrong_claim": "Entanglement allows faster-than-light communication.",
+      "why_wrong": "Entanglement produces correlations, but those correlations cannot be used to transmit usable information faster than light.",
+      "correct_statement": "Entanglement creates non-classical correlations without enabling faster-than-light communication.",
+      "trigger_keywords": [
+        "faster than light",
+        "instant communication",
+        "FTL entanglement"
+      ],
+      "forbidden_phrases": [
+        "entanglement allows faster-than-light communication"
+      ]
+    },
+    {
+      "id": "M06",
+      "wrong_claim": "Superposition is just a random classical bit.",
+      "why_wrong": "A quantum superposition retains coherent amplitude and phase information that can interfere; an ordinary random bit does not behave this way.",
+      "correct_statement": "A superposition is a coherent quantum state, and interference can make it behave differently from a classical random bit.",
+      "trigger_keywords": [
+        "just random",
+        "random classical bit",
+        "same as coin"
+      ],
+      "forbidden_phrases": [
+        "superposition is just a random bit"
+      ]
+    },
+    {
+      "id": "M07",
+      "wrong_claim": "50 qubits let you read 2^50 numbers.",
+      "why_wrong": "The 2^50 figure is the number of amplitudes in the state description, not the number of classical values returned by one measurement.",
+      "correct_statement": "A 50-qubit state has 2^50 amplitudes, but a measurement returns one 50-bit outcome string per shot.",
+      "trigger_keywords": [
+        "50 qubits read",
+        "2^50 numbers",
+        "read all amplitudes"
+      ],
+      "forbidden_phrases": [
+        "50 qubits let you read 2^50 numbers"
+      ]
+    },
+    {
+      "id": "M08",
+      "wrong_claim": "Every quantum gate creates superposition.",
+      "why_wrong": "Some gates change phase or flip basis states without creating a superposition from the input considered.",
+      "correct_statement": "Quantum gates perform unitary transformations; only some gates/input combinations create superposition.",
+      "trigger_keywords": [
+        "every gate",
+        "all gates create superposition",
+        "gate always superposition"
+      ],
+      "forbidden_phrases": [
+        "every quantum gate creates superposition"
+      ]
+    }
+  ]
+}

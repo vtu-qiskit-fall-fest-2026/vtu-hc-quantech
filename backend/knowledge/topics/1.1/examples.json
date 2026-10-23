@@ -1,0 +1,83 @@
+{
+  "topic_id": "1.1",
+  "examples": [
+    {
+      "id": "EX01",
+      "title": "Measurement probabilities calculation",
+      "question": "For |ψ⟩ = (√3/2)|0⟩ + (1/2)|1⟩, find the measurement probabilities P(0) and P(1).",
+      "steps": [
+        "Check normalization: (√3/2)² + (1/2)² = 3/4 + 1/4 = 1.",
+        "Calculate P(0) = |√3/2|² = 3/4 = 75%.",
+        "Calculate P(1) = |1/2|² = 1/4 = 25%."
+      ],
+      "answer": "P(0) = 75% and P(1) = 25%."
+    },
+    {
+      "id": "EX02",
+      "title": "Complex amplitude and phase",
+      "question": "For state (1/√2)|0⟩ + (i/√2)|1⟩, find the computational-basis probabilities P(0) and P(1).",
+      "steps": [
+        "P(0) = |1/√2|² = 1/2 = 50%.",
+        "P(1) = |i/√2|² = (1/√2)² · |i|² = 1/2 · 1 = 50%."
+      ],
+      "answer": "P(0) = 50% and P(1) = 50%. The state differs from |+⟩ by relative phase (π/2) even though measurement in the computational basis is 50/50."
+    },
+    {
+      "id": "EX03",
+      "title": "Two Hadamards and Interference",
+      "question": "What happens when the Hadamard gate (H) is applied twice consecutively to |0⟩?",
+      "steps": [
+        "First H gate: H|0⟩ = (|0⟩ + |1⟩)/√2 = |+⟩.",
+        "Second H gate: H|+⟩ = 1/√2 [ (|0⟩ + |1⟩)/√2 + (|0⟩ - |1⟩)/√2 ].",
+        "The |1⟩ amplitudes cancel destructively (1/2 - 1/2 = 0) while the |0⟩ amplitudes add constructively (1/2 + 1/2 = 1)."
+      ],
+      "answer": "The state returns deterministically to |0⟩ (100% probability of 0). This illustrates quantum interference.",
+      "circuit": {
+        "num_qubits": 1,
+        "operations": [
+          {"gate": "H", "qubits": [0]},
+          {"gate": "H", "qubits": [0]}
+        ]
+      },
+      "expected_probabilities": {
+        "0": 1.0,
+        "1": 0.0
+      }
+    },
+    {
+      "id": "EX04",
+      "title": "Creating an entangled Bell state",
+      "question": "What happens when starting from |00⟩, applying H to qubit 0, followed by CNOT with control q0 and target q1?",
+      "steps": [
+        "Start in initial ground state |00⟩.",
+        "Apply H to q0: (|00⟩ + |10⟩)/√2.",
+        "Apply CNOT (q0 controls q1): When q0 is 0, q1 remains 0 (|00⟩). When q0 is 1, q1 flips to 1 (|11⟩).",
+        "Final state is the Bell state (|00⟩ + |11⟩)/√2."
+      ],
+      "answer": "Measurement gives |00⟩ with 50% probability and |11⟩ with 50% probability. The outcomes |01⟩ and |10⟩ never occur.",
+      "circuit": {
+        "num_qubits": 2,
+        "operations": [
+          {"gate": "H", "qubits": [0]},
+          {"gate": "CNOT", "qubits": [0, 1]}
+        ]
+      },
+      "expected_probabilities": {
+        "00": 0.5,
+        "11": 0.5,
+        "01": 0.0,
+        "10": 0.0
+      }
+    },
+    {
+      "id": "EX05",
+      "title": "Statevector Normalization Condition",
+      "question": "Why must |α|² + |β|² equal 1 for any valid one-qubit state α|0⟩ + β|1⟩?",
+      "steps": [
+        "The squared magnitudes |α|² and |β|² represent the probabilities of mutually exclusive measurement outcomes 0 and 1.",
+        "The sum of probabilities for all possible outcomes in any physical measurement must equal 100% (1)."
+      ],
+      "answer": "Therefore, |α|² + |β|² = 1 to preserve total probability."
+    }
+  ]
+}

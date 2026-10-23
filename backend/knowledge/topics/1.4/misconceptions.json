@@ -1,0 +1,149 @@
+{
+  "topic_id": "1.4",
+  "misconceptions": [
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M01",
+        "WRONG CLAIM: \"A quantum simulator is a (small or weak) quantum computer.\"",
+        "WHY IT SEEMS REASONABLE: The name and the identical-looking results.",
+        "WHY IT IS WRONG: A circuit simulator is classical software on a classical computer; nothing quantum happens inside it.",
+        "CORRECT STATEMENT: \"A quantum circuit simulator is a classical program that calculates what a quantum circuit would do.\"",
+        "EXAMPLE: A laptop simulating 10 qubits is still an ordinary laptop.",
+        "TRIGGER WORDS: simulator is a quantum computer, runs on qubits, small quantum computer"
+      ],
+      "misconception_id": "M01",
+      "wrong_claim": "\"A quantum simulator is a (small or weak) quantum computer.\"",
+      "why_it_seems_reasonable": "The name and the identical-looking results.",
+      "why_it_is_wrong": "A circuit simulator is classical software on a classical computer; nothing quantum happens inside it.",
+      "correct_statement": "\"A quantum circuit simulator is a classical program that calculates what a quantum circuit would do.\"",
+      "example": "A laptop simulating 10 qubits is still an ordinary laptop.",
+      "trigger_words": "simulator is a quantum computer, runs on qubits, small quantum computer"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M02",
+        "WRONG CLAIM: \"'Quantum simulator' and 'quantum simulation' mean the same thing.\"",
+        "WHY IT SEEMS REASONABLE: The words are almost identical.",
+        "WHY IT IS WRONG: A circuit simulator is software; quantum simulation is the task of modelling quantum systems (molecules, materials); an analog quantum simulator is special quantum hardware.",
+        "CORRECT STATEMENT: \"The word simulator can refer to classical software, to a physical analog device, or (as 'simulation') to a task; check which is meant.\"",
+        "EXAMPLE: V07.",
+        "TRIGGER WORDS: simulator, simulation, analog, same thing"
+      ],
+      "misconception_id": "M02",
+      "wrong_claim": "\"'Quantum simulator' and 'quantum simulation' mean the same thing.\"",
+      "why_it_seems_reasonable": "The words are almost identical.",
+      "why_it_is_wrong": "A circuit simulator is software; quantum simulation is the task of modelling quantum systems (molecules, materials); an analog quantum simulator is special quantum hardware.",
+      "correct_statement": "\"The word simulator can refer to classical software, to a physical analog device, or (as 'simulation') to a task; check which is meant.\"",
+      "example": "V07.",
+      "trigger_words": "simulator, simulation, analog, same thing"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M03",
+        "WRONG CLAIM: \"A simulator can handle any number of qubits.\"",
+        "WHY IT SEEMS REASONABLE: It is \"just software\".",
+        "WHY IT IS WRONG: A general state needs 2ⁿ amplitudes, so memory and time double with each qubit; ordinary machines top out at around 30–35 qubits for general circuits.",
+        "CORRECT STATEMENT: \"General state-vector simulation is limited to a few dozen qubits; only special circuit types scale further.\"",
+        "EXAMPLE: E01.",
+        "TRIGGER WORDS: unlimited qubits, any number, 100 qubits on my laptop"
+      ],
+      "misconception_id": "M03",
+      "wrong_claim": "\"A simulator can handle any number of qubits.\"",
+      "why_it_seems_reasonable": "It is \"just software\".",
+      "why_it_is_wrong": "A general state needs 2ⁿ amplitudes, so memory and time double with each qubit; ordinary machines top out at around 30–35 qubits for general circuits.",
+      "correct_statement": "\"General state-vector simulation is limited to a few dozen qubits; only special circuit types scale further.\"",
+      "example": "E01.",
+      "trigger_words": "unlimited qubits, any number, 100 qubits on my laptop"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M04",
+        "WRONG CLAIM: \"If my circuit works on the simulator, it will give the same results on hardware.\"",
+        "WHY IT SEEMS REASONABLE: It is the same circuit.",
+        "WHY IT IS WRONG: Hardware has gate errors, readout errors, decoherence, crosstalk and limited connectivity, and gives finite shots.",
+        "CORRECT STATEMENT: \"Ideal simulator results are what a perfect machine would give; real hardware results approximate them, with differences caused by noise and constraints.\"",
+        "EXAMPLE: V05; Bell state with small 01/10 counts.",
+        "TRIGGER WORDS: same results on hardware, simulator vs real, why 01 and 10 appear"
+      ],
+      "misconception_id": "M04",
+      "wrong_claim": "\"If my circuit works on the simulator, it will give the same results on hardware.\"",
+      "why_it_seems_reasonable": "It is the same circuit.",
+      "why_it_is_wrong": "Hardware has gate errors, readout errors, decoherence, crosstalk and limited connectivity, and gives finite shots.",
+      "correct_statement": "\"Ideal simulator results are what a perfect machine would give; real hardware results approximate them, with differences caused by noise and constraints.\"",
+      "example": "V05; Bell state with small 01/10 counts.",
+      "trigger_words": "same results on hardware, simulator vs real, why 01 and 10 appear"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M05",
+        "WRONG CLAIM: \"Real quantum hardware can show you the full state vector or exact probabilities.\"",
+        "WHY IT SEEMS REASONABLE: Simulators show them.",
+        "WHY IT IS WRONG: Hardware returns only sampled measurement outcomes. Recovering the full state requires state tomography, whose cost grows exponentially with qubit number.",
+        "CORRECT STATEMENT: \"Simulators can display amplitudes and exact probabilities; hardware gives only shot counts.\"",
+        "EXAMPLE: C05.",
+        "TRIGGER WORDS: read the state vector from hardware, exact probabilities from device, see the amplitudes"
+      ],
+      "misconception_id": "M05",
+      "wrong_claim": "\"Real quantum hardware can show you the full state vector or exact probabilities.\"",
+      "why_it_seems_reasonable": "Simulators show them.",
+      "why_it_is_wrong": "Hardware returns only sampled measurement outcomes. Recovering the full state requires state tomography, whose cost grows exponentially with qubit number.",
+      "correct_statement": "\"Simulators can display amplitudes and exact probabilities; hardware gives only shot counts.\"",
+      "example": "C05.",
+      "trigger_words": "read the state vector from hardware, exact probabilities from device, see the amplitudes"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M06",
+        "WRONG CLAIM: \"Quantum computers can compute things that no classical computer could ever compute.\"",
+        "WHY IT SEEMS REASONABLE: They are described as fundamentally more powerful.",
+        "WHY IT IS WRONG: A classical computer can simulate any quantum circuit in principle (as simulators do), just with resources that in general grow exponentially. The difference is efficiency, not what is computable.",
+        "CORRECT STATEMENT: \"Quantum computers are expected to solve some problems much more efficiently, not to compute functions beyond classical computability.\"",
+        "EXAMPLE: E01; the same circuit can be simulated, but cost doubles per qubit.",
+        "TRIGGER WORDS: uncomputable, impossible for classical, beyond Turing"
+      ],
+      "misconception_id": "M06",
+      "wrong_claim": "\"Quantum computers can compute things that no classical computer could ever compute.\"",
+      "why_it_seems_reasonable": "They are described as fundamentally more powerful.",
+      "why_it_is_wrong": "A classical computer can simulate any quantum circuit in principle (as simulators do), just with resources that in general grow exponentially. The difference is efficiency, not what is computable.",
+      "correct_statement": "\"Quantum computers are expected to solve some problems much more efficiently, not to compute functions beyond classical computability.\"",
+      "example": "E01; the same circuit can be simulated, but cost doubles per qubit.",
+      "trigger_words": "uncomputable, impossible for classical, beyond Turing"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M07",
+        "WRONG CLAIM: \"Any circuit with entanglement is hard for classical computers to simulate.\"",
+        "WHY IT SEEMS REASONABLE: Entanglement is described as a key quantum resource.",
+        "WHY IT IS WRONG: Clifford circuits can produce heavily entangled states (Bell, GHZ) yet are efficiently simulable (Gottesman–Knill); low-entanglement circuits may be simulated with tensor networks.",
+        "CORRECT STATEMENT: \"Entanglement is not enough for classical hardness; the structure of the circuit matters.\"",
+        "EXAMPLE: E04(c).",
+        "TRIGGER WORDS: entangled so hard to simulate, entanglement means advantage"
+      ],
+      "misconception_id": "M07",
+      "wrong_claim": "\"Any circuit with entanglement is hard for classical computers to simulate.\"",
+      "why_it_seems_reasonable": "Entanglement is described as a key quantum resource.",
+      "why_it_is_wrong": "Clifford circuits can produce heavily entangled states (Bell, GHZ) yet are efficiently simulable (Gottesman–Knill); low-entanglement circuits may be simulated with tensor networks.",
+      "correct_statement": "\"Entanglement is not enough for classical hardness; the structure of the circuit matters.\"",
+      "example": "E04(c).",
+      "trigger_words": "entangled so hard to simulate, entanglement means advantage"
+    },
+    {
+      "raw_source": [
+        "MISCONCEPTION ID: M08",
+        "WRONG CLAIM: \"A noisy simulator reproduces a real device exactly.\"",
+        "WHY IT SEEMS REASONABLE: It is labelled as modelling noise.",
+        "WHY IT IS WRONG: A noise model is an approximation built from measured error rates; real devices have drifting, correlated and hard-to-model errors.",
+        "CORRECT STATEMENT: \"A noise model gives a plausible, approximate picture of hardware noise, not an exact replica.\"",
+        "EXAMPLE: C06.",
+        "TRIGGER WORDS: noisy simulator exact, same noise as hardware, replicates the device"
+      ],
+      "misconception_id": "M08",
+      "wrong_claim": "\"A noisy simulator reproduces a real device exactly.\"",
+      "why_it_seems_reasonable": "It is labelled as modelling noise.",
+      "why_it_is_wrong": "A noise model is an approximation built from measured error rates; real devices have drifting, correlated and hard-to-model errors.",
+      "correct_statement": "\"A noise model gives a plausible, approximate picture of hardware noise, not an exact replica.\"",
+      "example": "C06.",
+      "trigger_words": "noisy simulator exact, same noise as hardware, replicates the device"
+    }
+  ]
+}
