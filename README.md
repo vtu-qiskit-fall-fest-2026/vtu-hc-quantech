@@ -171,6 +171,9 @@ Quantech enforces a 6-stage progressive mastery loop:
 https://youtu.be/fHh8XDecRiY
 ## 📁 Project Structure
 
+## PPT LINK
+https://drive.google.com/file/d/1rSTV7p4ssi5qPmP8Q288WuhibDTw2uZj/view?usp=sharing
+
 ```text
 vtu-hc-quantech/
 ├── README.md                          # Project documentation and submission report
