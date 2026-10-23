@@ -13,7 +13,6 @@ import QMLStudio from './components/QMLStudio';
 import CodeStudio from './components/CodeStudio';
 import CompilerStudio from './components/CompilerStudio';
 import NISQDigitalTwin from './components/NISQDigitalTwin';
-import BusinessDossier from './components/BusinessDossier';
 import LegalModals from './components/LegalModals';
 
 import { LearningProvider, useLearning } from './context/LearningContext';
@@ -55,7 +54,6 @@ function AppContent() {
             <Route path="/code" element={<CodeStudio />} />
             <Route path="/compiler" element={<CompilerStudio />} />
             <Route path="/digital-twin" element={<NISQDigitalTwin />} />
-            <Route path="/dossier" element={<BusinessDossier />} />
             {/* Backward compatibility redirects */}
             <Route path="/tutor" element={<Navigate to="/learn" replace />} />
             <Route path="/results" element={<Navigate to="/lab" replace />} />

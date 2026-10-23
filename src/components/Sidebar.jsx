@@ -14,7 +14,6 @@ import {
   Code2,
   Cpu,
   Activity,
-  Briefcase,
   FileText
 } from 'lucide-react';
 import apiClient from '../api/client';
@@ -108,8 +107,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen = () => {}, 
     { to: '/qml', label: 'QSVM Studio', icon: BrainCircuit, badge: 'Pillar A' },
     { to: '/code', label: 'Code & Transpiler', icon: Code2, badge: 'Pillar B' },
     { to: '/compiler', label: 'Compiler & QAS', icon: Cpu, badge: 'Pillar C/D' },
-    { to: '/digital-twin', label: 'NISQ Digital Twin', icon: Activity, badge: 'Pillar E' },
-    { to: '/dossier', label: 'Business Dossier', icon: Briefcase, badge: 'SIH 2026' }
+    { to: '/digital-twin', label: 'NISQ Digital Twin', icon: Activity, badge: 'Pillar E' }
   ];
 
   const sidebarBody = (
